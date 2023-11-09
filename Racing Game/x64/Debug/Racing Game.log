@@ -1,21 +1,69 @@
 ﻿  Actor.cpp
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,31): error C2143: syntax error: missing ',' before '*'
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,37): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,37): error C2143: syntax error: missing ',' before '*'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(55,13): error C2511: 'void Actor::processInput(const Uint8 *)': overloaded member function not found in 'Actor'
+E:\GitHub\Racing Game\Racing Game\Component.h(5,7): message : see declaration of 'Actor'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(57,12): error C2677: binary '==': no global operator found which takes type 'Actor::ActorState' (or there is no acceptable conversion)
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): error C2597: illegal reference to non-static member 'Actor::components'
+E:\GitHub\Racing Game\Racing Game\Actor.h(57,21): message : see declaration of 'Actor::components'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): error C3535: cannot deduce type for 'auto &&' from 'unknown'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): error C2440: 'initializing': cannot convert from 'unknown' to 'int &&'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : Reason: cannot convert from 'unknown' to 'int'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : There is no context in which this conversion is possible
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): error C2672: 'begin': no matching overloaded function found
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1589,27): message : could be '_Ty *std::begin(_Ty (&)[_Size]) noexcept'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : '_Ty *std::begin(_Ty (&)[_Size]) noexcept': could not deduce template argument for '_Ty (&)[_Size]' from 'int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1571,30): message : or       'unknown-type std::begin(const _Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : Failed to specialize function template 'unknown-type std::begin(const _Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : With the following template arguments:
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : '_Container=int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1565,30): message : or       'unknown-type std::begin(_Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : Failed to specialize function template 'unknown-type std::begin(_Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : With the following template arguments:
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : '_Container=int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\initializer_list(55,35): message : or       'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : 'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'int'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): error C2672: 'end': no matching overloaded function found
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1594,27): message : could be '_Ty *std::end(_Ty (&)[_Size]) noexcept'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : '_Ty *std::end(_Ty (&)[_Size]) noexcept': could not deduce template argument for '_Ty (&)[_Size]' from 'int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1583,30): message : or       'unknown-type std::end(const _Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : Failed to specialize function template 'unknown-type std::end(const _Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : With the following template arguments:
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : '_Container=int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1577,30): message : or       'unknown-type std::end(_Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : Failed to specialize function template 'unknown-type std::end(_Container &) noexcept(<expr>)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : With the following template arguments:
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : '_Container=int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\initializer_list(60,35): message : or       'const _Elem *std::end(std::initializer_list<_Elem>) noexcept'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,25): message : 'const _Elem *std::end(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'int'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(60,3): error C3536: '<begin>$L0': cannot be used before it is initialized
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(60,3): error C3536: '<end>$L0': cannot be used before it is initialized
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(59,35): error C2100: illegal indirection
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(63,3): error C2664: 'void Actor::actorInput(const int)': cannot convert argument 1 from 'const Uint8 *' to 'const int'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(63,14): message : There is no context in which this conversion is possible
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,15): message : see declaration of 'Actor::actorInput'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(63,3): message : while trying to match the argument list '(const Uint8 *)'
+E:\GitHub\Racing Game\Racing Game\Actor.cpp(67,13): error C2511: 'void Actor::actorInput(const Uint8 *)': overloaded member function not found in 'Actor'
+E:\GitHub\Racing Game\Racing Game\Component.h(5,7): message : see declaration of 'Actor'
   Assets.cpp
   Component.cpp
   Game.cpp
-  Log.cpp
-  main.cpp
-  Rectangle.cpp
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,31): error C2143: syntax error: missing ',' before '*'
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,37): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,37): error C2143: syntax error: missing ',' before '*'
+E:\GitHub\Racing Game\Racing Game\Game.cpp(46,8): error C2664: 'void Actor::processInput(const int)': cannot convert argument 1 from 'const Uint8 *' to 'const int'
+E:\GitHub\Racing Game\Racing Game\Game.cpp(46,23): message : There is no context in which this conversion is possible
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,7): message : see declaration of 'Actor::processInput'
+E:\GitHub\Racing Game\Racing Game\Game.cpp(46,8): message : while trying to match the argument list '(const Uint8 *)'
   Renderer.cpp
   SpriteComponent.cpp
   Texture.cpp
-  Timer.cpp
-  Vector2.cpp
-  Window.cpp
+  main.cpp
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\GitHub\Racing Game\Racing Game\Actor.h(40,31): error C2143: syntax error: missing ',' before '*'
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,37): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\GitHub\Racing Game\Racing Game\Actor.h(41,37): error C2143: syntax error: missing ',' before '*'
   Generating Code...
-Assets.obj : error LNK2019: unresolved external symbol "public: __cdecl Texture::~Texture(void)" (??1Texture@@QEAA@XZ) referenced in function "public: __cdecl std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Texture>::~pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Texture>(void)" (??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexture@@@std@@QEAA@XZ)
-SpriteComponent.obj : error LNK2001: unresolved external symbol "public: __cdecl Texture::~Texture(void)" (??1Texture@@QEAA@XZ)
-Assets.obj : error LNK2019: unresolved external symbol "public: void __cdecl Texture::unload(void)" (?unload@Texture@@QEAAXXZ) referenced in function "public: static void __cdecl Assets::clear(void)" (?clear@Assets@@SAXXZ)
-Assets.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Texture::load(class Renderer &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?load@Texture@@QEAA_NAEAVRenderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "private: static class Texture __cdecl Assets::loadTextureFromFile(class Renderer &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadTextureFromFile@Assets@@CA?AVTexture@@AEAVRenderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-SpriteComponent.obj : error LNK2019: unresolved external symbol "public: void __cdecl Texture::updateInfo(int &,int &)" (?updateInfo@Texture@@QEAAXAEAH0@Z) referenced in function "public: virtual void __cdecl SpriteComponent::setTexture(class Texture const &)" (?setTexture@SpriteComponent@@UEAAXAEBVTexture@@@Z)
-MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-E:\GitHub\Racing Game\x64\Debug\Racing Game.exe : fatal error LNK1120: 5 unresolved externals

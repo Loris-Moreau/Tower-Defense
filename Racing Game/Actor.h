@@ -3,7 +3,7 @@
 #include <vector>
 #include "Vector2.h"
 
-#include <SDL_stdinc.h>
+#include <SDL.h>
 
 using std::vector;
 

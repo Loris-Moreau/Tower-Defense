@@ -10,8 +10,6 @@
 
 using std::vector;
 
-class Actor;
-
 class Game
 {
 public:
