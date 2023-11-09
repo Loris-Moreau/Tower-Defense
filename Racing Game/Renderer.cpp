@@ -98,6 +98,18 @@ void Renderer::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcR
 	delete srcSDL;
 }
 
+void Renderer::drawCar(Car* car)
+{
+	// Draw the car using drawSprite function or similar
+	drawSprite(*car, car->getTexture()/*, other parameters */);
+}
+
+void Renderer::drawCar(Track* track)
+{
+	// Draw the track using drawSprite function or similar
+	drawSprite(*track, track->getTexture()/*, other parameters */);
+}
+
 void Renderer::close()
 {
 	SDL_DestroyRenderer(SDLRenderer);

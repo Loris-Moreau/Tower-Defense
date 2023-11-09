@@ -8,6 +8,9 @@
 #include "Renderer.h"
 #include "Vector2.h"
 
+#include "Car.h"
+#include "Track.h"
+
 using std::vector;
 
 class Game
@@ -23,6 +26,9 @@ public:
 	Game& operator=(const Game&) = delete;
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
+
+	Car* playerCar;
+	Track* racingTrack;
 
 private:
 	Game() : isRunning(true), isUpdatingActors(false) {}

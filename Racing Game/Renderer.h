@@ -8,6 +8,9 @@
 #include "Vector2.h"
 #include "Actor.h"
 
+#include "Car.h"
+#include "Track.h"
+
 class Renderer
 {
 public:
@@ -36,6 +39,9 @@ public:
 
 	void drawSprites();
 	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
+
+	void drawCar(Car* car);
+	void drawTrack(Track* track);
 
 	SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }
 	void close();

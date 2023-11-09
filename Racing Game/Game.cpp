@@ -15,7 +15,13 @@ bool Game::initialize()
 void Game::load()
 {
 	//Load Textures
+	
 
+	// Create the player's car
+	playerCar = new Car(this);
+
+	// Create the racing track
+	racingTrack = new Track(this);
 }
 
 void Game::processInput()
@@ -46,6 +52,9 @@ void Game::processInput()
 		actor->processInput(keyboardState);
 	}
 	isUpdatingActors = false;
+
+	// Forward input to the player's car
+	playerCar->processInput(SDL_GetKeyboardState(nullptr));
 }
 
 void Game::update(float dt)
@@ -78,12 +87,22 @@ void Game::update(float dt)
 	{
 		delete deadActor;
 	}
+
+	// Update the player's car
+	playerCar->update(dt);
+
+	// Update the racing track
+	racingTrack->update(dt);
 }
 
 void Game::render()
 {
 	renderer.beginDraw();
 	renderer.draw();
+
+	renderer.drawTrack(racingTrack);
+	renderer.drawCar(playerCar);
+
 	renderer.endDraw();
 }
 
