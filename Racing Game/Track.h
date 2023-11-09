@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Actor.h"
+#include "Component.h"
 
 class Track : public Actor
 {
 public:
-    Track(Actor* ownerP, int updateOrderP);
+    Track();
 
-    void update(float dt) override;
+    void update(float dt);
 };

@@ -5,7 +5,6 @@
 #include "SpriteComponent.h"
 
 #include <SDL_image.h>
-#include <algorithm>
 
 Renderer::~Renderer()
 {
@@ -22,7 +21,7 @@ bool Renderer::initialize(Window& window)
 	}
 	if (IMG_Init(IMG_INIT_PNG) == 0)
 	{
-		Log::error(LogCategory::Video, "Unable to initialize SDL_image" + std::string(IMG_GetError()));
+		Log::error(LogCategory::Video, "Unable to initialize SDL_image");
 		return false;
 	}
 	return true;
@@ -98,18 +97,6 @@ void Renderer::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcR
 	delete srcSDL;
 }
 
-void Renderer::drawCar(Car* car)
-{
-	// Draw the car using drawSprite function or similar
-	drawSprite(*car, car->getTexture()/*, other parameters */);
-}
-
-void Renderer::drawCar(Track* track)
-{
-	// Draw the track using drawSprite function or similar
-	drawSprite(*track, track->getTexture()/*, other parameters */);
-}
-
 void Renderer::close()
 {
 	SDL_DestroyRenderer(SDLRenderer);
@@ -117,17 +104,14 @@ void Renderer::close()
 
 void Renderer::addSprite(SpriteComponent* sprite)
 {
-	// Insert the sprite at the right place in function of DrawOrder
+	// Insert the sprite at the right place in function of drawOrder
 	int spriteDrawOrder = sprite->getDrawOrder();
 	auto iter = begin(sprites);
 	for (; iter != end(sprites); ++iter)
 	{
 		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
 	}
-	//sprites.insert(iter, sprite);
-	sprites.emplace_back(sprite);
-	std::sort(sprites.begin(), sprites.end(), [](const auto& a, const auto& b)
-		{ return a->getDrawOrder() < b->getDrawOrder(); });
+	sprites.insert(iter, sprite);
 }
 
 void Renderer::removeSprite(SpriteComponent* sprite)

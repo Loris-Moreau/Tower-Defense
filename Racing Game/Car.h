@@ -7,8 +7,8 @@ class Component;
 class Car : public Actor
 {
 public:
-	Car(Actor* ownerP, int updateOrderP = 100);
+	Car();
 
-	void processInput(const Uint8* keyState) override;
-	void update(float dt) override;
+	void processInput(const Uint8* keyState);
+	void update(float dt);
 };

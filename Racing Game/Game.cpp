@@ -15,13 +15,15 @@ bool Game::initialize()
 void Game::load()
 {
 	//Load Textures
-	
+	Assets::loadTexture(renderer, "..\\Assets\\Res_005-011\\Ship01.png", "Ship01");
+
 
 	// Create the player's car
-	playerCar = new Car(this);
+	playerCar = new Car();
+	playerCar->setPosition(Vector2{ 100,300 });
 
 	// Create the racing track
-	racingTrack = new Track(this);
+	racingTrack = new Track();
 }
 
 void Game::processInput()
@@ -99,10 +101,6 @@ void Game::render()
 {
 	renderer.beginDraw();
 	renderer.draw();
-
-	renderer.drawTrack(racingTrack);
-	renderer.drawCar(playerCar);
-
 	renderer.endDraw();
 }
 
