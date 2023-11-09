@@ -1,0 +1,21 @@
+﻿  Actor.cpp
+  Assets.cpp
+  Component.cpp
+  Game.cpp
+  Log.cpp
+  main.cpp
+  Rectangle.cpp
+  Renderer.cpp
+  SpriteComponent.cpp
+  Texture.cpp
+  Timer.cpp
+  Vector2.cpp
+  Window.cpp
+  Generating Code...
+Assets.obj : error LNK2019: unresolved external symbol "public: __cdecl Texture::~Texture(void)" (??1Texture@@QEAA@XZ) referenced in function "public: __cdecl std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Texture>::~pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Texture>(void)" (??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VTexture@@@std@@QEAA@XZ)
+SpriteComponent.obj : error LNK2001: unresolved external symbol "public: __cdecl Texture::~Texture(void)" (??1Texture@@QEAA@XZ)
+Assets.obj : error LNK2019: unresolved external symbol "public: void __cdecl Texture::unload(void)" (?unload@Texture@@QEAAXXZ) referenced in function "public: static void __cdecl Assets::clear(void)" (?clear@Assets@@SAXXZ)
+Assets.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Texture::load(class Renderer &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?load@Texture@@QEAA_NAEAVRenderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "private: static class Texture __cdecl Assets::loadTextureFromFile(class Renderer &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadTextureFromFile@Assets@@CA?AVTexture@@AEAVRenderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+SpriteComponent.obj : error LNK2019: unresolved external symbol "public: void __cdecl Texture::updateInfo(int &,int &)" (?updateInfo@Texture@@QEAAXAEAH0@Z) referenced in function "public: virtual void __cdecl SpriteComponent::setTexture(class Texture const &)" (?setTexture@SpriteComponent@@UEAAXAEBVTexture@@@Z)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+E:\GitHub\Racing Game\x64\Debug\Racing Game.exe : fatal error LNK1120: 5 unresolved externals

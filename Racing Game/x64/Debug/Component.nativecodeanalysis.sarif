@@ -1,0 +1,99 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.35.32215.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/racing game/component.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "0f0f75495dcc58120a81372a2e48cf041f9b2be1ff55fa84fb874361741e0520"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/racing game/component.h"
+          },
+          "hashes": {
+            "sha-256": "8f9029f0921fdc81c4b13dffccfff4132897079dec7e914ee99f9806704da53e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/externals/sdl2-2.28.5/include/sdl_stdinc.h"
+          },
+          "hashes": {
+            "sha-256": "559e8ee6c5607971cd9000953f574c00265c8b67f59137089f4b60e4104e83d5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/externals/sdl2-2.28.5/include/sdl_config.h"
+          },
+          "hashes": {
+            "sha-256": "4860c759233673e2204c958ead4fb177be6a97cfcff1f1873975e1ef0a7f5059"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/externals/sdl2-2.28.5/include/sdl_platform.h"
+          },
+          "hashes": {
+            "sha-256": "ca34f28f985b2cc3ecef79c64bdd0a2ecd63447c3ea96029d27713af9eadcc15"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/externals/sdl2-2.28.5/include/begin_code.h"
+          },
+          "hashes": {
+            "sha-256": "9598e70462ae4224aea70b66de465396220c30f94756652c55346d43b13458c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/externals/sdl2-2.28.5/include/close_code.h"
+          },
+          "hashes": {
+            "sha-256": "ff1f06c5cd46688a338973b3fec79b23b7743f2b438845a2f245997e3929d16c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/racing game/actor.h"
+          },
+          "hashes": {
+            "sha-256": "33bae45cec45eb7064be8f4017f74b435ef178d54ff7b24a21f51a9999a1bb24"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/github/racing game/racing game/vector2.h"
+          },
+          "hashes": {
+            "sha-256": "2a6bd59a8cad00716e99ff7078c94a71fdc927ba4f171b0399c53d69b672739a"
+          }
+        }
+      ]
+    }
+  ]
+}
