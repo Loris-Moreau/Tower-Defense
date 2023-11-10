@@ -1,15 +1,12 @@
 #pragma once
 
 #include <vector>
-
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
 #include "Renderer.h"
 #include "Vector2.h"
-
-#include "Car.h"
-#include "Track.h"
+#include "Grid.h"
 
 using std::vector;
 
@@ -27,11 +24,8 @@ public:
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
 
-	Car* playerCar;
-	Track* racingTrack;
-
 private:
-	Game() : isRunning(true), isUpdatingActors(false) {}
+	Game() : isRunning(true), isUpdatingActors(false), grid(nullptr), nextEnemyTimer(0.0f) {}
 
 public:
 	bool initialize();
@@ -45,6 +39,10 @@ public:
 
 	Renderer& getRenderer() { return renderer; }
 
+	// Game specific
+	class Grid& getGrid() { return *grid; }
+	std::vector<class Enemy*>& getEnemies() { return enemies; }
+
 private:
 	void processInput();
 	void update(float dt);
@@ -57,4 +55,9 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
+
+	// Game specific
+	Grid* grid;
+	std::vector<class Enemy*> enemies;
+	float nextEnemyTimer;
 };

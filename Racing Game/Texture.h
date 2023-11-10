@@ -18,7 +18,8 @@ public:
 	inline SDL_Texture* toSDLTexture() const { return SDLTexture; }
 
 	void updateInfo(int& widthOut, int& heightOut); //Function will be used when an other Object wants to store the Texture width & height. 
-	//It will pass a Reference to those Variables & the Texture will Modify Them
+												   //It will pass a Reference to those Variables & the Texture will Modify Them
+	
 	inline int getWidth() const { return width; }
 	inline int getHeight() const { return height; }
 

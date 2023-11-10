@@ -8,9 +8,6 @@
 #include "Vector2.h"
 #include "Actor.h"
 
-#include "Car.h"
-#include "Track.h"
-
 class Renderer
 {
 public:
@@ -24,7 +21,7 @@ public:
 	Renderer() = default;
 	~Renderer();
 	Renderer(const Renderer&) = delete;
-	Renderer& operator=(const Renderer&) = delete;
+	Renderer& operator = (const Renderer&) = delete;
 
 	bool initialize(Window& window);
 
@@ -44,6 +41,6 @@ public:
 	void close();
 
 private:
-	SDL_Renderer* SDLRenderer{ nullptr };
+	SDL_Renderer* SDLRenderer { nullptr };
 	std::vector<SpriteComponent*> sprites;
 };

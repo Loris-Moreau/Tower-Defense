@@ -1,29 +1,55 @@
 #include "Game.h"
-
+#include "Actor.h"
+#include "SpriteComponent.h"
+//#include "AnimSpriteComponent.h"
 #include "Timer.h"
-
 #include "Assets.h"
+#include "BackgroundSpriteComponent.h"
 
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
-
-	return isWindowInit && isRendererInit; //Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
 {
 	//Load Textures
-	Assets::loadTexture(renderer, "..\\Assets\\Res_005-011\\Ship01.png", "Ship01");
+	string filePath = "..\\Assets\\Res_012-015\\";
 
+	Assets::loadTexture(renderer, (filePath + "Airplane.png"), "Airplane");
+	Assets::loadTexture(renderer, (filePath + "Base.png"), "Base");
 
+	Assets::loadTexture(renderer, (filePath + "Missile.png"), "Missile");
+	Assets::loadTexture(renderer, (filePath + "Projectile.png"), "Projectile");
+
+	Assets::loadTexture(renderer, (filePath + "Tower.png"), "Tower");
+	//Tiles
+	Assets::loadTexture(renderer, (filePath + "TileBrown.png"), "TileBrown");
+	Assets::loadTexture(renderer, (filePath + "TileBrownSelected.png"), "TileBrownSelected");
+
+	Assets::loadTexture(renderer, (filePath + "TileGreen.png"), "TileGreen");
+	Assets::loadTexture(renderer, (filePath + "TileGreenSelected.png"), "TileGreenSelected");
+
+	Assets::loadTexture(renderer, (filePath + "TileGrey.png"), "TileGrey");
+	Assets::loadTexture(renderer, (filePath + "TileGreySelected.png"), "TileGreySelected");
+
+	Assets::loadTexture(renderer, (filePath + "TileTan.png"), "TileTan");
+	Assets::loadTexture(renderer, (filePath + "TileTanSelected.png"), "TileTanSelected");
+
+	Assets::loadTexture(renderer, (filePath + "TileRedSelected.png"), "TileRedSelected");
+	Assets::loadTexture(renderer, (filePath + "TileRed.png"), "TileRed");
+
+	grid = new Grid();
+	/*
 	// Create the player's car
 	playerCar = new Car();
 	playerCar->setPosition(Vector2{ 100,300 });
 
 	// Create the racing track
 	racingTrack = new Track();
+	*/
 }
 
 void Game::processInput()
@@ -55,8 +81,13 @@ void Game::processInput()
 	}
 	isUpdatingActors = false;
 
-	// Forward input to the player's car
-	playerCar->processInput(SDL_GetKeyboardState(nullptr));
+	// Process mouse
+	int x, y;
+	Uint32 buttons = SDL_GetMouseState(&x, &y);
+	if (SDL_BUTTON(buttons) & SDL_BUTTON_LEFT)
+	{
+		grid->processClick(x, y);
+	}
 }
 
 void Game::update(float dt)
@@ -89,12 +120,6 @@ void Game::update(float dt)
 	{
 		delete deadActor;
 	}
-
-	// Update the player's car
-	playerCar->update(dt);
-
-	// Update the racing track
-	racingTrack->update(dt);
 }
 
 void Game::render()
@@ -122,14 +147,14 @@ void Game::loop()
 
 void Game::unload()
 {
-	//Delete Actors
-	//Because ~Actor calls RemoveActor, have to use a Different Style Loop
+	// Delete actors
+	// Because ~Actor calls RemoveActor, have to use a different style loop
 	while (!actors.empty())
 	{
 		delete actors.back();
 	}
 
-	//Ressources
+	// Resources
 	Assets::clear();
 }
 

@@ -1,2 +1,4 @@
-﻿  Game.cpp
+﻿  BackgroundSpriteComponent.cpp
+  Vector2.cpp
+  Generating Code...
   Racing Game.vcxproj -> E:\GitHub\Racing Game\x64\Debug\Racing Game.exe
