@@ -4,6 +4,7 @@
 #include "NavComponent.h"
 #include "CircleCollisionComponent.h"
 #include "Maths.h"
+#include "Grid.h"
 
 Enemy::Enemy() : Actor(), circle(nullptr)
 {

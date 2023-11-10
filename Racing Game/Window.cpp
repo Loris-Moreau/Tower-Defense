@@ -4,8 +4,7 @@
 bool Window::initialize()
 {
 	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO);
-	if (sdlInitResult != 0) 
-	{
+	if (sdlInitResult != 0) {
 		Log::error(LogCategory::Video, "Unable to initialize SDL");
 		return false;
 	}

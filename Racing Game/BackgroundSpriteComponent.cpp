@@ -28,13 +28,13 @@ void BackgroundSpriteComponent::update(float dt)
 	}
 }
 
-void BackgroundSpriteComponent::draw(const Renderer& renderer)
+void BackgroundSpriteComponent::draw(const RendererSDL& renderer)
 {
 	// Draw each background texture
 	for (auto& bg : textures)
 	{
 		owner.setPosition(Vector2(bg.offset.x, bg.offset.y));
-		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, Renderer::Flip::None);
+		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, RendererSDL::Flip::None);
 	}
 }
 

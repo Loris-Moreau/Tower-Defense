@@ -4,9 +4,10 @@
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
-#include "Renderer.h"
+#include "IRenderer.h"
 #include "Vector2.h"
-#include "Grid.h"
+#include "RendererSDL.h"
+
 
 using std::vector;
 
@@ -37,7 +38,8 @@ public:
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
 
-	Renderer& getRenderer() { return renderer; }
+	RendererSDL& getRenderer() { return renderer; }
+	IRenderer::Type type() { return IRenderer::Type::SDL; }
 
 	// Game specific
 	class Grid& getGrid() { return *grid; }
@@ -50,7 +52,7 @@ private:
 
 	bool isRunning;
 	Window window;
-	Renderer renderer;
+	RendererSDL renderer;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
