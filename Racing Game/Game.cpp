@@ -34,13 +34,13 @@ void Game::load()
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileBrownSelected.png"), "TileBrownSelected");
 
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreen.png"), "TileGreen");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreenSelected.png"), "TileGreenSelected");
+	//Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreenSelected.png"), "TileGreenSelected");
 
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGrey.png"), "TileGrey");
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreySelected.png"), "TileGreySelected");
 
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileTan.png"), "TileTan");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileTanSelected.png"), "TileTanSelected");
+	//Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileTanSelected.png"), "TileTanSelected");
 
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileRed.png"), "TileRed");
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
