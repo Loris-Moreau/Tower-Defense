@@ -5,6 +5,7 @@
 #include "Actor.h"
 
 #include "SpriteComponent.h"
+
 #include "Window.h"
 #include "Renderer.h"
 

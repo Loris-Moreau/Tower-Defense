@@ -21,7 +21,7 @@ public:
 	Renderer() = default;
 	virtual ~Renderer();
 	Renderer(const Renderer&) = delete;
-	Renderer& operator=(const Renderer&) = delete;
+	Renderer& operator = (const Renderer&) = delete;
 
 	bool initialize(Window& window);
 
