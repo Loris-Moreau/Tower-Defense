@@ -12,7 +12,7 @@ unsigned int Timer::computeDeltaTime()
 	frameStart = SDL_GetTicks();
 	unsigned int dt = frameStart - lastFrame;
 	lastFrame = frameStart;
-	return std::min(dt, MAX_DT);    // Clamp delta time
+	return std::min(dt, MAX_DT); //Clamp Delta Time (dt)
 }
 
 void Timer::delayTime()

@@ -21,5 +21,4 @@ public:
 private:
 	float forwardSpeed;
 	float angularSpeed;
-
 };

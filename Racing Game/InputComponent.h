@@ -28,6 +28,6 @@ private:
 
 	int forwardKey;
 	int backKey;
-	int rightKey;
-	int leftKey;
+	int clockwiseKey;
+	int counterClockwiseKey;
 };

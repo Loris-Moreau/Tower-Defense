@@ -1,21 +1,25 @@
 #include "Game.h"
+
 #include "Actor.h"
+
 #include "SpriteComponent.h"
-//#include "AnimSpriteComponent.h"
+#include "AnimSpriteComponent.h"
+
 #include "Timer.h"
+
 #include "Assets.h"
-#include "BackgroundSpriteComponent.h"
-#include"Grid.h"
+#include "Enemy.h"
 
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
-	return isWindowInit && isRendererInit; // Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit; //Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
 {
+	//Load textures
 	//Load Textures
 	string filePath = "..\\Assets\\";
 	string filePathRes1 = "Res_005-011\\";
@@ -46,19 +50,34 @@ void Game::load()
 	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
 
 	grid = new Grid();
-	/*
-	// Create the player's car
-	playerCar = new Car();
-	playerCar->setPosition(Vector2{ 100,300 });
+}
 
-	// Create the racing track
-	racingTrack = new Track();
-	*/
+Enemy* Game::getNearestEnemy(const Vector2& position)
+{
+	Enemy* best = nullptr;
+
+	if (enemies.size() > 0)
+	{
+		best = enemies[0];
+		//Save the distance squared of first enemy, and test if others are closer
+		float bestDistSq = (position - enemies[0]->getPosition()).lengthSq();
+		for (size_t i = 1; i < enemies.size(); ++i)
+		{
+			float newDistSq = (position - enemies[i]->getPosition()).lengthSq();
+			if (newDistSq < bestDistSq)
+			{
+				bestDistSq = newDistSq;
+				best = enemies[i];
+			}
+		}
+	}
+
+	return best;
 }
 
 void Game::processInput()
 {
-	// SDL Event
+	//SDL Event
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -70,14 +89,20 @@ void Game::processInput()
 		}
 	}
 
-	// Keyboard state
+	//Keyboard state
 	const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
-	// Escape: quit game
+	//Escape: quit game
 	if (keyboardState[SDL_SCANCODE_ESCAPE])
 	{
 		isRunning = false;
 	}
-	// Actor input
+
+	if (keyboardState[SDL_SCANCODE_B])
+	{
+		grid->buildTower();
+	}
+
+	//Actor input
 	isUpdatingActors = true;
 	for (auto actor : actors)
 	{
@@ -85,7 +110,7 @@ void Game::processInput()
 	}
 	isUpdatingActors = false;
 
-	// Process mouse
+	//Process mouse
 	int x, y;
 	Uint32 buttons = SDL_GetMouseState(&x, &y);
 	if (SDL_BUTTON(buttons) & SDL_BUTTON_LEFT)
@@ -96,7 +121,7 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	// Update actors 
+	//Update actors 
 	isUpdatingActors = true;
 	for (auto actor : actors)
 	{
@@ -104,14 +129,14 @@ void Game::update(float dt)
 	}
 	isUpdatingActors = false;
 
-	// Move pending actors to actors
+	//Move pending actors to actors
 	for (auto pendingActor : pendingActors)
 	{
 		actors.emplace_back(pendingActor);
 	}
 	pendingActors.clear();
 
-	// Delete dead actors
+	//Delete dead actors
 	vector<Actor*> deadActors;
 	for (auto actor : actors)
 	{
@@ -151,14 +176,14 @@ void Game::loop()
 
 void Game::unload()
 {
-	// Delete actors
-	// Because ~Actor calls RemoveActor, have to use a different style loop
+	//Delete actors
+	//Because ~Actor calls RemoveActor, have to use a different style loop
 	while (!actors.empty())
 	{
 		delete actors.back();
 	}
 
-	// Resources
+	//Resources clear
 	Assets::clear();
 }
 
@@ -183,11 +208,11 @@ void Game::addActor(Actor* actor)
 
 void Game::removeActor(Actor* actor)
 {
-	// Erase actor from the two vectors
+	//Erase actor from the two vectors
 	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);
 	if (iter != end(pendingActors))
 	{
-		// Swap to end of vector and pop off (avoid erase copies)
+		//Swap to end of vector and pop off (avoid erase copies)
 		std::iter_swap(iter, end(pendingActors) - 1);
 		pendingActors.pop_back();
 	}

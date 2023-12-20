@@ -6,8 +6,12 @@
 #include "Component.h"
 #include "Maths.h"
 
-Actor::Actor()
-	: state(Actor::ActorState::Active), position(Vector2::zero), scale(1.0f), rotation(0.0f), game(Game::instance())
+Actor::Actor() :
+	state(Actor::ActorState::Active),
+	position(Vector2::zero),
+	scale(1.0f),
+	rotation(0.0f),
+	game(Game::instance())
 {
 	game.addActor(this);
 }
@@ -62,6 +66,7 @@ void Actor::processInput(const Uint8* keyState)
 
 void Actor::actorInput(const Uint8* keyState)
 {
+
 }
 
 void Actor::update(float dt)

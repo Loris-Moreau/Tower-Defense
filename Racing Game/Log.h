@@ -1,6 +1,8 @@
 #pragma once
+
 #include <string>
 using std::string;
+
 #include <SDL_log.h>
 
 enum class LogCategory //Enums are integers, From 0 by Default

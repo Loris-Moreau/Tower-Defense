@@ -20,10 +20,10 @@ public:
 	void setScrollSpeed(float scrollSpeedP);
 
 	void update(float dt) override;
-	void draw(const RendererSDL& renderer) override;
+	virtual void draw(Renderer& renderer) override;
 
 private:
-	// Struct to encapsulate each bg image and its offset
+	//Struct to encapsulate each bg image and its offset
 	struct BGTexture
 	{
 		BGTexture(Texture& t, Vector2 o) : texture(t), offset(o) {}
@@ -32,6 +32,7 @@ private:
 	};
 
 	std::vector<BGTexture> textures;
+
 	Vector2 screenSize;
 	float scrollSpeed;
 };

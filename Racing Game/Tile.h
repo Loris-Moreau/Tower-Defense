@@ -37,7 +37,7 @@ private:
 	TileState tileState;
 	bool isSelected;
 
-	// Pathfinding
+	//Pathfinding
 	std::vector<Tile*> adjacentTiles;
 	Tile* parent;
 	float f;

@@ -3,6 +3,11 @@
 
 #include <SDL_image.h>
 
+Texture::Texture() : filename(""), width(0), height(0), SDLTexture(nullptr)
+{
+
+}
+
 Texture::~Texture()
 {
 
@@ -16,10 +21,10 @@ void Texture::unload()
 	}
 }
 
-bool Texture::load(RendererSDL& renderer, const string& filenameP)
+bool Texture::load(Renderer& renderer, const string& filenameP)
 {
 	filename = filenameP;
-	// Load from file
+	//Load from file
 	SDL_Surface* surf = IMG_Load(filename.c_str());
 	if (!surf)
 	{
@@ -29,7 +34,7 @@ bool Texture::load(RendererSDL& renderer, const string& filenameP)
 	width = surf->w;
 	height = surf->h;
 
-	// Create texture from surface
+	//Create texture from surface
 	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surf);
 	SDL_FreeSurface(surf);
 	if (!SDLTexture)

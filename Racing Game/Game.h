@@ -1,14 +1,16 @@
 #pragma once
 
 #include <vector>
+
 #include "Actor.h"
+
 #include "SpriteComponent.h"
 #include "Window.h"
-#include "IRenderer.h"
+#include "Renderer.h"
+
+#include "Grid.h"
+
 #include "Vector2.h"
-#include "RendererSDL.h"
-
-
 using std::vector;
 
 class Game
@@ -38,12 +40,12 @@ public:
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
 
-	RendererSDL& getRenderer() { return renderer; }
-	IRenderer::Type type() { return IRenderer::Type::SDL; }
+	Renderer& getRenderer() { return renderer; }
 
-	// Game specific
+	//Game specific
 	class Grid& getGrid() { return *grid; }
 	std::vector<class Enemy*>& getEnemies() { return enemies; }
+	Enemy* getNearestEnemy(const Vector2& position);
 
 private:
 	void processInput();
@@ -51,14 +53,15 @@ private:
 	void render();
 
 	bool isRunning;
+
 	Window window;
-	RendererSDL renderer;
+	Renderer renderer;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
 
-	// Game specific
+	//Game specific
 	Grid* grid;
 	std::vector<class Enemy*> enemies;
 	float nextEnemyTimer;

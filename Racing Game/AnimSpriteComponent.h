@@ -23,7 +23,7 @@ public:
 
 private:
 	vector<Texture*> animTextures;
-	
+
 	float currentFrame;
 	float animFPS;
 };

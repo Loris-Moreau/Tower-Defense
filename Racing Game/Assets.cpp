@@ -5,7 +5,7 @@
 
 std::map<std::string, Texture> Assets::textures;
 
-Texture Assets::loadTexture(RendererSDL& renderer, const string& filename, const string& name)
+Texture Assets::loadTexture(Renderer& renderer, const string& filename, const string& name)
 {
     textures[name] = loadTextureFromFile(renderer, filename.c_str());
 
@@ -20,27 +20,23 @@ Texture& Assets::getTexture(const string& name)
         loadError << "Texture " << name << " does not exist in assets manager.";
         Log::error(LogCategory::Application, loadError.str());
     }
+
     return textures[name];
 }
 
 void Assets::clear()
 {
-    //(Properly) delete all textures
-    for (auto& iter : textures)
+    // (Properly) delete all textures
+    for (auto iter : textures)
         iter.second.unload();
 
     textures.clear();
 }
 
-Texture Assets::loadTextureFromFile(RendererSDL& renderer, const string& filename)
+Texture Assets::loadTextureFromFile(Renderer& renderer, const string& filename)
 {
     Texture texture;
     texture.load(renderer, filename);
-
-    if (!texture.load(renderer, filename))
-    {
-        Log::error(LogCategory::Application, "Failed to load texture: " + filename);
-    }
 
     return texture;
 }

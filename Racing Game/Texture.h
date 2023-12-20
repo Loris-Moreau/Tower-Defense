@@ -2,18 +2,18 @@
 
 #include <string>
 
-#include "RendererSDL.h"
+#include "Renderer.h"
 
 using std::string;
 
 class Texture
 {
 public:
-	Texture() = default;
+	Texture();
 	~Texture();
 
 	void unload();
-	bool load(RendererSDL& rendererP, const string& filenameP);
+	bool load(Renderer& rendererP, const string& filenameP);
 
 	inline SDL_Texture* toSDLTexture() const { return SDLTexture; }
 

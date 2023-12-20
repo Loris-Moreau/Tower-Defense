@@ -1,4 +1,5 @@
 #include "InputComponent.h"
+
 #include <SDL_scancode.h>
 
 InputComponent::InputComponent(Actor* ownerP) :
@@ -7,8 +8,8 @@ InputComponent::InputComponent(Actor* ownerP) :
 	maxAngularSpeed(1.0f),
 	forwardKey(SDL_SCANCODE_W),
 	backKey(SDL_SCANCODE_S),
-	rightKey(SDL_SCANCODE_D),
-	leftKey(SDL_SCANCODE_A)
+	clockwiseKey(SDL_SCANCODE_D),
+	counterClockwiseKey(SDL_SCANCODE_A)
 {
 }
 
@@ -26,11 +27,11 @@ void InputComponent::processInput(const Uint8* keyState)
 	setForwardSpeed(forwardSpeed);
 
 	float angularSpeed = 0.0f;
-	if (keyState[rightKey])
+	if (keyState[clockwiseKey])
 	{
 		angularSpeed -= maxAngularSpeed;
 	}
-	if (keyState[leftKey])
+	if (keyState[counterClockwiseKey])
 	{
 		angularSpeed += maxAngularSpeed;
 	}
@@ -59,10 +60,10 @@ void InputComponent::setBackKey(int key)
 
 void InputComponent::setClockwiseKey(int key)
 {
-	rightKey = key;
+	clockwiseKey = key;
 }
 
 void InputComponent::setCounterClockwiseKey(int key)
 {
-	leftKey = key;
+	counterClockwiseKey = key;
 }

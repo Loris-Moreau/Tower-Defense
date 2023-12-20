@@ -1,7 +1,10 @@
 #include "Grid.h"
+
 #include "Enemy.h"
 
 #include <algorithm>
+
+#include "Tower.h"
 
 Grid::Grid() : Actor(), selectedTile(nullptr), nextEnemyTimer(0)
 {
@@ -12,7 +15,7 @@ Grid::Grid() : Actor(), selectedTile(nullptr), nextEnemyTimer(0)
 		tiles[i].resize(NB_COLS);
 	}
 
-	// Create tiles
+	//Create tiles
 	for (size_t i = 0; i < NB_ROWS; i++)
 	{
 		for (size_t j = 0; j < NB_COLS; j++)
@@ -30,11 +33,11 @@ Grid::Grid() : Actor(), selectedTile(nullptr), nextEnemyTimer(0)
 		}
 	}
 
-	// Set start/end tiles
+	//Set start/end tiles
 	getStartTile().setTileState(Tile::TileState::Start);
 	getEndTile().setTileState(Tile::TileState::Base);
 
-	// Fill adjacent tiles
+	//Fill adjacent tiles
 	for (size_t i = 0; i < NB_ROWS; i++)
 	{
 		for (size_t j = 0; j < NB_COLS; j++)
@@ -58,7 +61,7 @@ Grid::Grid() : Actor(), selectedTile(nullptr), nextEnemyTimer(0)
 		}
 	}
 
-	// Find path in reverse
+	//Find path in reverse
 	findPath(getEndTile(), getStartTile());
 	updatePathTiles(getStartTile());
 }
@@ -104,7 +107,7 @@ bool Grid::findPath(Tile& start, const Tile& goal)
 
 	do
 	{
-		// Add adjacent nodes to open set
+		//Add adjacent nodes to open set
 		for (Tile* neighbour : current->adjacentTiles)
 		{
 			if (neighbour->isBlocked)
@@ -141,14 +144,16 @@ bool Grid::findPath(Tile& start, const Tile& goal)
 				}
 			}
 		}
-		// If open set is empty, all possible paths are exhausted
+
+		//If open set is empty, all possible paths are exhausted
 		if (openSet.empty())
 		{
 			break;
 		}
-		// Find lowest cost node in open set
+
+		//Find lowest cost node in open set
 		auto iter = std::min_element(begin(openSet), end(openSet), [](Tile* a, Tile* b) { return a->f < b->f; });
-		// Set to current and move from open to closed set
+		//Set to current and move from open to closed set
 		current = *iter;
 		openSet.erase(iter);
 		current->isInOpenSet = false;
@@ -166,6 +171,26 @@ void Grid::updateActor(float dt)
 	{
 		new Enemy();
 		nextEnemyTimer += TIME_BETWEEN_ENEMIES;
+	}
+}
+
+void Grid::buildTower()
+{
+	if (selectedTile && !selectedTile->isBlocked)
+	{
+		selectedTile->isBlocked = true;
+		if (findPath(getEndTile(), getStartTile()))
+		{
+			Tower* t = new Tower();
+			t->setPosition(selectedTile->getPosition());
+		}
+		else
+		{
+			// This tower would block the path, so don't allow build
+			selectedTile->isBlocked = false;
+			findPath(getEndTile(), getStartTile());
+		}
+		updatePathTiles(getStartTile());
 	}
 }
 
