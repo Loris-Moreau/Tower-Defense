@@ -7,7 +7,7 @@
 #include "SpriteComponent.h"
 
 #include "Window.h"
-#include "Renderer.h"
+#include "RendererSDL.h"
 
 #include "Grid.h"
 
@@ -41,7 +41,7 @@ public:
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
 
-	Renderer& getRenderer() { return renderer; }
+	RendererSDL& getRenderer() { return renderer; }
 
 	//Game specific
 	class Grid& getGrid() { return *grid; }
@@ -56,7 +56,7 @@ private:
 	bool isRunning;
 
 	Window window;
-	Renderer renderer;
+	RendererSDL renderer;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;

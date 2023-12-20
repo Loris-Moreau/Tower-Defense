@@ -2,15 +2,14 @@
 #include "Actor.h"
 
 BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP) :
-	SpriteComponent(ownerP, *texturesP[0], drawOrderP),
-	scrollSpeed(0.0f),
-	screenSize(Vector2(WINDOW_WIDTH, WINDOW_HEIGHT))
+	SpriteComponent(ownerP, *texturesP[0], drawOrderP), scrollSpeed(0.0f), screenSize(Vector2(WINDOW_WIDTH, WINDOW_HEIGHT))
 {
 	setTextures(texturesP);
 }
 
 BackgroundSpriteComponent::~BackgroundSpriteComponent()
 {
+
 }
 
 void BackgroundSpriteComponent::update(float dt)
@@ -28,13 +27,13 @@ void BackgroundSpriteComponent::update(float dt)
 	}
 }
 
-void BackgroundSpriteComponent::draw(Renderer& renderer)
+void BackgroundSpriteComponent::draw(const RendererSDL& renderer)
 {
 	//Draw each background texture
 	for (auto& bg : textures)
 	{
 		owner.setPosition(Vector2(bg.offset.x, bg.offset.y));
-		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, Renderer::Flip::None);
+		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2::zero, RendererSDL::Flip::None);
 	}
 }
 

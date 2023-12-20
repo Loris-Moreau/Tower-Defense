@@ -9,7 +9,7 @@ class BackgroundSpriteComponent : public SpriteComponent
 {
 public:
 	BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP = 10);
-	virtual ~BackgroundSpriteComponent();
+	~BackgroundSpriteComponent();
 	BackgroundSpriteComponent() = delete;
 	BackgroundSpriteComponent(const BackgroundSpriteComponent&) = delete;
 	BackgroundSpriteComponent& operator=(const BackgroundSpriteComponent&) = delete;
@@ -20,7 +20,7 @@ public:
 	void setScrollSpeed(float scrollSpeedP);
 
 	void update(float dt) override;
-	virtual void draw(Renderer& renderer) override;
+	void draw(const RendererSDL& renderer) override;
 
 private:
 	//Struct to encapsulate each bg image and its offset

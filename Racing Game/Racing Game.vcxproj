@@ -150,7 +150,7 @@
     <ClCompile Include="NavComponent.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RendererSDL.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -171,14 +171,13 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="InputComponent.h" />
-    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="NavComponent.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RendererSDL.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />

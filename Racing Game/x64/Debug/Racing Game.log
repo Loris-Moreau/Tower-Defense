@@ -1,52 +1,5 @@
-﻿  Actor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
-  AnimSpriteComponent.cpp
-  Assets.cpp
-  BackgroundSpriteComponent.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\BackgroundSpriteComponent.h(23,15): error C3668: 'BackgroundSpriteComponent::draw': method with override specifier 'override' did not override any base class methods
+﻿  BackgroundSpriteComponent.cpp
   Bullet.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
-  Enemy.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
-  Game.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
-  Grid.cpp
-  main.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
-  NavComponent.cpp
-  Renderer.cpp
-  SpriteComponent.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
-  Texture.cpp
-  Tile.cpp
   Tower.cpp
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): error C2259: 'Renderer': cannot instantiate abstract class
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Renderer.h(11,7): message : see declaration of 'Renderer'
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : due to following members:
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Game.h(59,11): message : 'void IRenderer::drawSprite(const Actor &,const Texture &,Rectangle,Vector2,IRenderer::Flip) const': is abstract
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\IRenderer.h(27,15): message : see declaration of 'IRenderer::drawSprite'
   Generating Code...
+  Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Racing-Game\x64\Debug\Racing Game.exe

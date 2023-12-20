@@ -2,7 +2,7 @@ C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Actor.cpp;C:\User
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\AnimSpriteComponent.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\AnimSpriteComponent.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Assets.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Assets.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\BackgroundSpriteComponent.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\BackgroundSpriteComponent.obj
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Car.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Car.obj
+C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Bullet.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Bullet.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\CircleCollisionComponent.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\CircleCollisionComponent.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Component.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Component.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Enemy.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Enemy.obj
@@ -20,6 +20,6 @@ C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\SpriteComponent.c
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Texture.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Texture.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Tile.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Tile.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Timer.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Timer.obj
-C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Track.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Track.obj
+C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Tower.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Tower.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Vector2.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Vector2.obj
 C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\Window.cpp;C:\Users\loris.moreau\Documents\GitHub\Racing-Game\Racing Game\x64\Debug\Window.obj
