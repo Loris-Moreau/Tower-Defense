@@ -22,32 +22,32 @@ void Game::load()
 	//Load textures
 	//Load Textures
 	string filePath = "..\\Assets\\";
-	string filePathRes1 = "Res_005-011\\";
-	string filePathRes2 = "Res_012-015\\";
-	string filePathRes3 = "Res_016-025\\";
+	string filePathRes1 = filePath + "Res_005-011\\";
+	string filePathRes2 = filePath + "Res_012-015\\";
+	string filePathRes3 = filePath + "Res_016-025\\";
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "Airplane.png"), "Airplane");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "Base.png"), "Base");
+	Assets::loadTexture(renderer, (filePathRes2 + "Airplane.png"), "Airplane");
+	Assets::loadTexture(renderer, (filePathRes2 + "Base.png"), "Base");
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "Missile.png"), "Missile");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "Projectile.png"), "Projectile");
+	Assets::loadTexture(renderer, (filePathRes2 + "Missile.png"), "Missile");
+	Assets::loadTexture(renderer, (filePathRes2 + "Projectile.png"), "Projectile");
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "Tower.png"), "Tower");
+	Assets::loadTexture(renderer, (filePathRes2 + "Tower.png"), "Tower");
 	//Tiles
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileBrown.png"), "TileBrown");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileBrownSelected.png"), "TileBrownSelected");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileBrown.png"), "TileBrown");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileBrownSelected.png"), "TileBrownSelected");
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreen.png"), "TileGreen");
-	//Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreenSelected.png"), "TileGreenSelected");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileGreen.png"), "TileGreen");
+	//Assets::loadTexture(renderer, (filePathRes2 + "TileGreenSelected.png"), "TileGreenSelected");
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGrey.png"), "TileGrey");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileGreySelected.png"), "TileGreySelected");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileGrey.png"), "TileGrey");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileGreySelected.png"), "TileGreySelected");
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileTan.png"), "TileTan");
-	//Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileTanSelected.png"), "TileTanSelected");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileTan.png"), "TileTan");
+	//Assets::loadTexture(renderer, (filePathRes2 + "TileTanSelected.png"), "TileTanSelected");
 
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileRed.png"), "TileRed");
-	Assets::loadTexture(renderer, (filePath + filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileRed.png"), "TileRed");
+	Assets::loadTexture(renderer, (filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
 
 	grid = new Grid();
 }

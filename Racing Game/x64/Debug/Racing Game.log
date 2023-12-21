@@ -1,5 +1,2 @@
-﻿  BackgroundSpriteComponent.cpp
-  Bullet.cpp
-  Tower.cpp
-  Generating Code...
+﻿  Game.cpp
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Racing-Game\x64\Debug\Racing Game.exe
