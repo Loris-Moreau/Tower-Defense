@@ -42,6 +42,7 @@ public:
 	void removeActor(Actor* actor);
 
 	RendererSDL& getRenderer() { return renderer; }
+	IRenderer::Type type() { return IRenderer::Type::SDL; }
 
 	//Game specific
 	class Grid& getGrid() { return *grid; }

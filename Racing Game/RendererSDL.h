@@ -5,8 +5,9 @@
 #include "Window.h"
 #include "Vector2.h"
 #include "Actor.h"
+#include "IRenderer.h"
 
-class RendererSDL
+class RendererSDL : public IRenderer
 {
 public:
 	enum class Flip
