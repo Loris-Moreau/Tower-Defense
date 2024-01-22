@@ -34,7 +34,7 @@ private:
 	unsigned int vertexArray;
 
 	//OpenGL ID of the Vertex Buffer <--will store data
-	unsigned int vertexbuffer;
+	unsigned int vertexBuffer;
 
 	//OpenGL ID of the Index Buffer
 	unsigned int indexBuffer;

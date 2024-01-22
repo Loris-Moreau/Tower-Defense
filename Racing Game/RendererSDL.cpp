@@ -1,4 +1,3 @@
-
 #include "RendererSDL.h"
 #include "Log.h"
 #include "Texture.h"
@@ -100,7 +99,7 @@ void RendererSDL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 		srcSDL,
 		&dstRect,
 		-Maths::toDegrees(rotation),
-		nullptr,		//rotation point, center by default
+		nullptr,	//rotation point, center by default
 		SDL_FLIP_NONE);
 
 	delete srcSDL;

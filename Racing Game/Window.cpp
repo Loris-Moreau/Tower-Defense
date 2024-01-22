@@ -1,6 +1,8 @@
 #include "Window.h"
 #include "Log.h"
 
+#include <GL/glew.h>
+
 bool Window::initialize()
 {
 	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO);
@@ -11,7 +13,7 @@ bool Window::initialize()
 		return false;
 	}
 
-	SDLWindow = SDL_CreateWindow("Tower defense", 100, 100, width, height, 0); //0 is flag we will use later
+	SDLWindow = SDL_CreateWindow("OpenGL Rendering", 100, 100, width, height, SDL_WINDOW_OPENGL); //0 is flag we will use later
 	if (!SDLWindow)
 	{
 		Log::error(LogCategory::System, "Failed to create window");

@@ -1,10 +1,21 @@
 ﻿  Actor.cpp
+  AnimSpriteComponent.cpp
+  Assets.cpp
+  BackgroundSpriteComponent.cpp
   Bullet.cpp
+  CircleCollisionComponent.cpp
+  Component.cpp
   Enemy.cpp
   Game.cpp
   Grid.cpp
-  SpriteComponent.cpp
-  Tower.cpp
   main.cpp
+  MoveComponent.cpp
+  NavComponent.cpp
+  RendererSDL.cpp
+  SpriteComponent.cpp
+  Texture.cpp
+  Tile.cpp
+  Tower.cpp
+  Window.cpp
   Generating Code...
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe
