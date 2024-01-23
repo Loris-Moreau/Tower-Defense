@@ -1,10 +1,2 @@
-﻿  Actor.cpp
-  Bullet.cpp
-  Enemy.cpp
-  Game.cpp
-  RendererOGL.cpp
-  SpriteComponent.cpp
-  Tower.cpp
-  main.cpp
-  Generating Code...
+﻿  Shader.cpp
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe
