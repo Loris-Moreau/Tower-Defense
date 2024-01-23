@@ -1,37 +1,10 @@
 ﻿  Actor.cpp
-  AnimSpriteComponent.cpp
-  Assets.cpp
-  BackgroundSpriteComponent.cpp
   Bullet.cpp
-  CircleCollisionComponent.cpp
-  Component.cpp
   Enemy.cpp
   Game.cpp
-  Grid.cpp
-  InputComponent.cpp
-  Log.cpp
-  main.cpp
-  MoveComponent.cpp
-  NavComponent.cpp
-  Random.cpp
-  Rectangle.cpp
   RendererOGL.cpp
-  RendererSDL.cpp
   SpriteComponent.cpp
-  Generating Code...
-  Compiling...
-  Texture.cpp
-  Tile.cpp
-  Timer.cpp
   Tower.cpp
-  Vector2.cpp
-  VertexArray.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\VertexArray.cpp(13,49): warning C4244: 'argument': conversion from 'double' to 'GLsizeiptr', possible loss of data
-  Window.cpp
+  main.cpp
   Generating Code...
-RendererOGL.obj : error LNK2019: unresolved external symbol __imp_glBlendFunc referenced in function "public: virtual void __cdecl RendererOGL::beginDraw(void)" (?beginDraw@RendererOGL@@UEAAXXZ)
-RendererOGL.obj : error LNK2019: unresolved external symbol __imp_glClear referenced in function "public: virtual void __cdecl RendererOGL::beginDraw(void)" (?beginDraw@RendererOGL@@UEAAXXZ)
-RendererOGL.obj : error LNK2019: unresolved external symbol __imp_glClearColor referenced in function "public: virtual void __cdecl RendererOGL::beginDraw(void)" (?beginDraw@RendererOGL@@UEAAXXZ)
-RendererOGL.obj : error LNK2019: unresolved external symbol __imp_glEnable referenced in function "public: virtual void __cdecl RendererOGL::beginDraw(void)" (?beginDraw@RendererOGL@@UEAAXXZ)
-RendererOGL.obj : error LNK2019: unresolved external symbol __imp_glGetError referenced in function "public: virtual bool __cdecl RendererOGL::initialize(class Window &)" (?initialize@RendererOGL@@UEAA_NAEAVWindow@@@Z)
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe : fatal error LNK1120: 5 unresolved externals
+  Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe
