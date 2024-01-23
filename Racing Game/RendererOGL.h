@@ -13,6 +13,9 @@
 
 #include <SDL_image.h>
 
+#include "Shader.h"
+#include "Assets.h"
+
 class RendererOGL : public IRenderer
 {
 public:
@@ -41,4 +44,6 @@ private:
 	VertexArray* vertexArray;
 	SDL_GLContext context;
 	std::vector<class SpriteComponent*> sprites;
+
+	Shader* shader;
 };

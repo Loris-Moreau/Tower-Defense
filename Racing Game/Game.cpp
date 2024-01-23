@@ -13,19 +13,24 @@
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
+	
 	bool isRendererInit = renderer.initialize(window);
 	return isWindowInit && isRendererInit; //Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
 {
-	
-	//Load Textures
+	//FilePaths
 	string filePath = "..\\Assets\\";
 	string filePathRes1 = filePath + "Res_005-011\\";
 	string filePathRes2 = filePath + "Res_012-015\\";
 	string filePathRes3 = filePath + "Res_016-025\\";
 
+	//Load Shaders
+	Assets::loadShader("Res_016-025\\Shaders\\Basic.vert", "Res_016-025\\Shaders\\Basic.frag", "", "", "", "Basic");
+	Assets::loadShader("Res_016-025\\Shaders\\Sprite.vert", "Res_016-025\\Shaders\\Sprite.frag", "", "", "", "Sprite");
+
+	//Load Textures
 	Assets::loadTexture(renderer, (filePathRes2 + "Airplane.png"), "Airplane");
 	Assets::loadTexture(renderer, (filePathRes2 + "Base.png"), "Base");
 
@@ -49,10 +54,6 @@ void Game::load()
 	Assets::loadTexture(renderer, (filePathRes2 + "TileRed.png"), "TileRed");
 	Assets::loadTexture(renderer, (filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
 	
-	//Load Shaders
-	Assets::loadShader(filePathRes3 + "Shaders\\Basic.vert", filePathRes3 + "Shaders\\Basic.frag", "", "", "", "Basic");
-	Assets::loadShader(filePathRes3 + "Shaders\\Sprite.vert", filePathRes3 + "Shaders\\Sprite.frag", "", "", "", "Sprite");
-
 	grid = new Grid();
 }
 

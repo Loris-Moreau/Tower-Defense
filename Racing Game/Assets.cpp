@@ -137,7 +137,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
         if (gShaderFile != "")
             geomShaderFile = gShaderFile;
 
-        loadError << "ERROR::SHADER: Failed to read shader files " << vShaderFile << " " << fShaderFile << " "
+        loadError << "ERROR::SHADER : Failed to read shader files " << vShaderFile << " " << fShaderFile << " "
             << geomShaderFile << "\n"
             << "\n -- --------------------------------------------------- -- "
             << std::endl;

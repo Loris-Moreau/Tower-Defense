@@ -1,6 +1,6 @@
 #include "RendererOGL.h"
 
-RendererOGL::RendererOGL() : window(nullptr), vertexArray(nullptr), context(nullptr)
+RendererOGL::RendererOGL() : window(nullptr), vertexArray(nullptr), context(nullptr), shader(nullptr)
 {
 
 }
@@ -33,6 +33,7 @@ bool RendererOGL::initialize(Window& windowP)
 
 	context = SDL_GL_CreateContext(windowP.getSDLWindow());
 	glewExperimental = GL_TRUE;
+
 	if (glewInit() != GLEW_OK)
 	{
 		Log::error(LogCategory::Video, "Failed to initialize GLEW.");
@@ -45,21 +46,32 @@ bool RendererOGL::initialize(Window& windowP)
 	if (IMG_Init(IMG_INIT_PNG) == 0)
 	{
 		Log::error(LogCategory::Video, "Unable to initialize SDL_image");
+
 		return false;
 	}
 
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
+	
+
 	return true;
 }
 
 void RendererOGL::beginDraw()
 {
 	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
+
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT);
+
 	// Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	shader = &Assets::getShader("Basic");
+
+	// Active shader and vertex array
+	shader->use();
+	vertexArray->setActive();
 }
 
 void RendererOGL::draw()
@@ -69,7 +81,7 @@ void RendererOGL::draw()
 
 void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
-
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
 void RendererOGL::endDraw()
@@ -87,12 +99,13 @@ void RendererOGL::addSprite(SpriteComponent* sprite)
 {
 	// Insert the sprite at the right place in function of drawOrder
 	int spriteDrawOrder = sprite->getDrawOrder();
-
 	auto iter = begin(sprites);
+
 	for (; iter != end(sprites); ++iter)
 	{
 		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
 	}
+
 	sprites.insert(iter, sprite);
 }
 
