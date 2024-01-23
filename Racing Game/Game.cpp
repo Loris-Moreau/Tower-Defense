@@ -19,7 +19,7 @@ bool Game::initialize()
 
 void Game::load()
 {
-	//Load textures
+	
 	//Load Textures
 	string filePath = "..\\Assets\\";
 	string filePathRes1 = filePath + "Res_005-011\\";
@@ -48,6 +48,10 @@ void Game::load()
 
 	Assets::loadTexture(renderer, (filePathRes2 + "TileRed.png"), "TileRed");
 	Assets::loadTexture(renderer, (filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
+	
+	//Load Shaders
+	Assets::loadShader(filePathRes3 + "Shaders\\Basic.vert", filePathRes3 + "Shaders\\Basic.frag", "", "", "", "Basic");
+	Assets::loadShader(filePathRes3 + "Shaders\\Sprite.vert", filePathRes3 + "Shaders\\Sprite.frag", "", "", "", "Sprite");
 
 	grid = new Grid();
 }
