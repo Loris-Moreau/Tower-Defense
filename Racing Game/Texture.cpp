@@ -21,28 +21,31 @@ void Texture::unload()
 	}
 }
 
-bool Texture::load(RendererSDL& renderer, const string& filenameP)
+bool Texture::loadSDL(RendererSDL& renderer, const string& filenameP)
 {
 	filename = filenameP;
-	//Load from file
+	// Load from file
 	SDL_Surface* surf = IMG_Load(filename.c_str());
 	if (!surf)
 	{
 		Log::error(LogCategory::Application, "Failed to load texture file " + filename);
 		return false;
 	}
+
 	width = surf->w;
 	height = surf->h;
 
-	//Create texture from surface
+	// Create texture from surface
 	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surf);
 	SDL_FreeSurface(surf);
+
 	if (!SDLTexture)
 	{
 		Log::error(LogCategory::Render, "Failed to convert surface to texture for " + filename);
 		return false;
 	}
 	Log::info("Loaded texture " + filename);
+
 	return true;
 }
 

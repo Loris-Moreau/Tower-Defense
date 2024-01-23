@@ -33,7 +33,7 @@ private:
 	//OpenGL ID of the vertex array obj
 	unsigned int vertexArray;
 
-	//OpenGL ID of the Vertex Buffer <--will store data
+	//OpenGL ID of the Vertex Buffer	<-- will store data
 	unsigned int vertexBuffer;
 
 	//OpenGL ID of the Index Buffer

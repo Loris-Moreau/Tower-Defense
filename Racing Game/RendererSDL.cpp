@@ -2,9 +2,8 @@
 #include "Log.h"
 #include "Texture.h"
 #include "Maths.h"
+#include "Actor.h"
 #include "SpriteComponent.h"
-
-#include <SDL_image.h>
 
 RendererSDL::RendererSDL() : SDLRenderer(nullptr)
 {
@@ -22,12 +21,6 @@ bool RendererSDL::initialize(Window& window)
 	if (!SDLRenderer)
 	{
 		Log::error(LogCategory::Video, "Failed to create renderer");
-
-		return false;
-	}
-	if (IMG_Init(IMG_INIT_PNG) == 0)
-	{
-		Log::error(LogCategory::Video, "Unable to initialize SDL_image");
 
 		return false;
 	}
@@ -73,15 +66,16 @@ void RendererSDL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 	float rotation = actor.getRotation();
 	float scale = actor.getScale();
 
-	//Scale the width/height by owner's scale
+	// Scale the width/height by owner's scale
 	dstRect.w = static_cast<int>(tex.getWidth() * scale);
 	dstRect.h = static_cast<int>(tex.getHeight() * scale);
 
-	//Center the rectangle around the position of the owner
+	// Center the rectangle around the position of the owner
 	dstRect.x = static_cast<int>(position.x - origin.x);
 	dstRect.y = static_cast<int>(position.y - origin.y);
 
 	SDL_Rect* srcSDL = nullptr;
+
 	if (srcRect != Rectangle::nullRect)
 	{
 		srcSDL = new SDL_Rect
@@ -99,7 +93,7 @@ void RendererSDL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 		srcSDL,
 		&dstRect,
 		-Maths::toDegrees(rotation),
-		nullptr,	//rotation point, center by default
+		nullptr,	// rotation point, center by default
 		SDL_FLIP_NONE);
 
 	delete srcSDL;
@@ -112,8 +106,9 @@ void RendererSDL::close()
 
 void RendererSDL::addSprite(SpriteComponent* sprite)
 {
-	//Insert the sprite at the right place in function of drawOrder
+	// Insert the sprite at the right place in function of drawOrder
 	int spriteDrawOrder = sprite->getDrawOrder();
+
 	auto iter = begin(sprites);
 	for (; iter != end(sprites); ++iter)
 	{

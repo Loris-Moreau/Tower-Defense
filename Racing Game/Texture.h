@@ -13,21 +13,19 @@ public:
 	~Texture();
 
 	void unload();
-	bool load(RendererSDL& rendererP, const string& filenameP);
-
+	bool loadSDL(RendererSDL& rendererP, const string& filenameP);
 	inline SDL_Texture* toSDLTexture() const { return SDLTexture; }
 
-	void updateInfo(int& widthOut, int& heightOut); //Function will be used when an other Object wants to store the Texture width & height. 
-												   //It will pass a Reference to those Variables & the Texture will Modify Them
-	
+	void updateInfo(int& widthOut, int& heightOut);
+
 	inline int getWidth() const { return width; }
 	inline int getHeight() const { return height; }
 
 private:
-	string filename{ "" };
+	string filename;
 
-	SDL_Texture* SDLTexture{ nullptr };
+	int width;
+	int height;
 
-	int width{ 0 };
-	int height{ 0 };
+	SDL_Texture* SDLTexture = nullptr;
 };

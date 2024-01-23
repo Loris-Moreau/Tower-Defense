@@ -1,10 +1,8 @@
 #pragma once
+
 #include "IRenderer.h"
 #include "Rectangle.h"
 #include <SDL.h>
-#include "Window.h"
-#include "Vector2.h"
-#include "Actor.h"
 
 #include <vector>
 
@@ -21,6 +19,7 @@ public:
 	void beginDraw();
 	void draw();
 	void endDraw();
+
 	IRenderer::Type type() { return Type::SDL; }
 
 	void drawRect(const Rectangle& rect) const;

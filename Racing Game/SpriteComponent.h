@@ -14,7 +14,7 @@ public:
 
 	virtual void setTexture(const Texture& textureP);
 
-	virtual void draw(const RendererSDL& renderer);
+	virtual void draw(const IRenderer& renderer);
 
 	int getDrawOrder() const { return drawOrder; }
 
