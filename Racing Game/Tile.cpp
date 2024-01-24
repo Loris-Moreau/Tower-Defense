@@ -1,5 +1,4 @@
 #include "Tile.h"
-#include "Assets.h"
 
 Tile::Tile() :
 	Actor(),

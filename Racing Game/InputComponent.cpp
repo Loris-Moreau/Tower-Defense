@@ -1,5 +1,4 @@
 #include "InputComponent.h"
-
 #include <SDL_scancode.h>
 
 InputComponent::InputComponent(Actor* ownerP) :

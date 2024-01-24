@@ -1,8 +1,8 @@
 #pragma once
 
+#include <vector>
 #include "SpriteComponent.h"
 
-#include <vector>
 using std::vector;
 
 class AnimSpriteComponent : public SpriteComponent
@@ -23,7 +23,6 @@ public:
 
 private:
 	vector<Texture*> animTextures;
-
 	float currentFrame;
 	float animFPS;
 };

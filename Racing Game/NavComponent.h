@@ -1,6 +1,10 @@
 #pragma once
+
 #include "MoveComponent.h"
 #include "Vector2.h"
+#include "Actor.h"
+#include "Tile.h"
+#include "Maths.h"
 
 class NavComponent : public MoveComponent
 {

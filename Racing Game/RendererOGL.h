@@ -3,18 +3,9 @@
 #include "IRenderer.h"
 #include "VertexArray.h"
 #include "Vector2.h"
+#include "Shader.h"
 
 #include <vector>
-
-#include <GL/glew.h>
-#include "Rectangle.h"
-#include "Log.h"
-#include "SpriteComponent.h"
-
-#include <SDL_image.h>
-
-#include "Shader.h"
-#include "Assets.h"
 
 class RendererOGL : public IRenderer
 {
@@ -41,9 +32,9 @@ private:
 	void drawSprites();
 
 	Window* window;
-	VertexArray* vertexArray;
 	SDL_GLContext context;
-	std::vector<class SpriteComponent*> sprites;
-
+	VertexArray* vertexArray;
 	Shader* shader;
+	std::vector<class SpriteComponent*> sprites;
+	Matrix4 viewProj;
 };

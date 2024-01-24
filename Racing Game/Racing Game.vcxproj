@@ -136,16 +136,16 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AnimSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Astroid.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
-    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="NavComponent.cpp" />
     <ClCompile Include="Random.cpp" />
@@ -153,12 +153,13 @@
     <ClCompile Include="RendererOGL.cpp" />
     <ClCompile Include="RendererSDL.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -166,17 +167,17 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AnimSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="Astroid.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
-    <ClInclude Include="Bullet.h" />
     <ClInclude Include="CircleCollisionComponent.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Grid.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="IRenderer.h" />
+    <ClInclude Include="Laser.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="Matrix4.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="NavComponent.h" />
     <ClInclude Include="Random.h" />
@@ -184,16 +185,20 @@
     <ClInclude Include="RendererOGL.h" />
     <ClInclude Include="RendererSDL.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Ship.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="Tower.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Vector3.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\Downloads\opengl-training-master\opengl-training-master\SimpleEngineWithOpenGL\SimpleEngineWithOpenGL-019\Res\Shaders\Sprite.frag" />
+    <None Include="..\..\..\..\Downloads\opengl-training-master\opengl-training-master\SimpleEngineWithOpenGL\SimpleEngineWithOpenGL-019\Res\Shaders\Sprite.vert" />
+    <None Include="..\Assets\Res_016-025\Shaders\Transform.vert" />
     <None Include="Basic.frag" />
     <None Include="Basic.vert" />
   </ItemGroup>

@@ -1,19 +1,17 @@
 #pragma once
 
-constexpr float vertices[] = //Define vertices on left,right -top & left,right -bottom & middle of the screen. 
-							//They will be used by the indices list to define 2 twiangles that will define a wectangle
-							//0 & 1 are UV (texture position)
+constexpr float vertices[] = 
 {
-	-0.5f,0.5f,0.0f, //0.0f,0.0f, //Top Left
-	0.5f,0.5f,0.0f, //1.0f,0.0f, //Top Right
-	0.5f,-0.5f,0.0f, //1.0f,1.0f, //Bottom Right
-	-0.5f,-0.5f,0.0f, //0.0f,1.0f //Bottom Left
+	-0.5f,  0.5f, 0.f, //0.f, 0.f, // top left
+	 0.5f,  0.5f, 0.f, //1.f, 0.f, // top right
+	 0.5f, -0.5f, 0.f, //1.f, 1.f, // bottom right
+	-0.5f, -0.5f, 0.f, //0.f, 1.f  // bottom left
 };
 
-constexpr unsigned int indices[] = //1st Twiangle will be composed of the left,right -top & right-bottom vertices, and the 2nd twiangle is composed of the right, left - bottom & top-left vertices
+constexpr unsigned int indices[] = 
 {
-	0,1,2,
-	2,3,0
+	0, 1, 2,
+	2, 3, 0
 };
 
 class VertexArray
@@ -23,19 +21,19 @@ public:
 	~VertexArray();
 
 	void setActive();
-	unsigned int getNbVerctices() const { return nbVertices; }
+
+	unsigned int getNbVertices() const { return nbVertices; }
 	unsigned int getNbIndices() const { return nbIndices; }
 
 private:
 	unsigned int nbVertices;
 	unsigned int nbIndices;
 
-	//OpenGL ID of the vertex array obj
-	unsigned int vertexArray;
-
-	//OpenGL ID of the Vertex Buffer	<-- will store data
+	// OpenGL ID of the vertex buffer
 	unsigned int vertexBuffer;
-
-	//OpenGL ID of the Index Buffer
+	// OpenGL ID of the index buffer
 	unsigned int indexBuffer;
+	// OpenGL ID of the vertex array object
+	unsigned int vertexArray;
 };
+

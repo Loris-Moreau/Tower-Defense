@@ -18,7 +18,9 @@ public:
 
 	void update(float dt) override;
 
+
 private:
 	float forwardSpeed;
 	float angularSpeed;
+
 };

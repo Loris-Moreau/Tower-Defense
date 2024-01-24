@@ -3,6 +3,9 @@
 #include "Actor.h"
 #include <vector>
 #include "SpriteComponent.h"
+#include "Log.h"
+#include <SDL_image.h>
+#include "Assets.h"
 
 class Tile : public Actor
 {

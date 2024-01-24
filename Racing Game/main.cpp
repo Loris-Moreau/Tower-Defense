@@ -9,7 +9,6 @@ int main(int argc, char** argv)
 		Game::instance().loop();
 		Game::instance().unload();
 	}
-
 	Game::instance().close();
 
 	return 0;

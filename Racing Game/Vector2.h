@@ -7,17 +7,13 @@ struct Vector2
 
 	float x;
 	float y;
-
 	static const Vector2 zero;
-
 	static const Vector2 unitX;
 	static const Vector2 unitY;
 
 	void set(float xP, float yP);
-
 	float lengthSq() const;
 	float length() const;
-
 	void normalize();
 
 	static Vector2 normalize(const Vector2& vec)
@@ -41,7 +37,6 @@ struct Vector2
 	{
 		x += right.x;
 		y += right.y;
-
 		return *this;
 	}
 
@@ -54,7 +49,6 @@ struct Vector2
 	{
 		x -= right.x;
 		y -= right.y;
-
 		return *this;
 	}
 
@@ -67,7 +61,6 @@ struct Vector2
 	{
 		x *= scalar;
 		y *= scalar;
-
 		return *this;
 	}
 

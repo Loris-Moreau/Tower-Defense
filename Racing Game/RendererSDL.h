@@ -3,6 +3,8 @@
 #include "IRenderer.h"
 #include "Rectangle.h"
 #include <SDL.h>
+#include "Window.h"
+#include "Vector2.h"
 
 #include <vector>
 
@@ -19,7 +21,6 @@ public:
 	void beginDraw();
 	void draw();
 	void endDraw();
-
 	IRenderer::Type type() { return Type::SDL; }
 
 	void drawRect(const Rectangle& rect) const;
@@ -36,3 +37,4 @@ private:
 	std::vector<class SpriteComponent*> sprites;
 	SDL_Renderer* SDLRenderer = nullptr;
 };
+

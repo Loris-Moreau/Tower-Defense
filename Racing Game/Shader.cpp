@@ -1,4 +1,9 @@
 #include "Shader.h"
+#include "Log.h"
+#include <SDL.h>
+
+#include <sstream>
+#include <string>
 
 void Shader::unload()
 {
@@ -8,7 +13,6 @@ void Shader::unload()
 Shader& Shader::use()
 {
     glUseProgram(id);
-
     return *this;
 }
 
@@ -16,16 +20,11 @@ void Shader::compile(const GLchar* vertexSource, const GLchar* fragmentSource,
     const GLchar* tessControlSource, const GLchar* tessEvalSource, const GLchar* geometrySource)
 {
     compileVertexShader(vertexSource);
-
     bool tessExists = compileTessControlShader(tessControlSource);
     tessExists &= compileTessEvalShader(tessEvalSource);
-
     bool gsExists = compileGeometryShader(geometrySource);
-
     compileFragmentShader(fragmentSource);
-
     createShaderProgram(tessExists, gsExists);
-
     printAllParams(id);
 }
 
@@ -34,7 +33,6 @@ void Shader::compileVertexShader(const GLchar* vertex_source)
     vs = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vs, 1, &vertex_source, NULL);
     glCompileShader(vs);
-
     checkShaderErrors(vs, "vertex");
 }
 
@@ -43,39 +41,30 @@ void Shader::compileFragmentShader(const GLchar* fragment_source)
     fs = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fs, 1, &fragment_source, NULL);
     glCompileShader(fs);
-
     checkShaderErrors(fs, "fragment");
 }
 
-bool Shader::compileTessControlShader(const GLchar* tessControlSource) 
-{
-    if (tessControlSource == nullptr) 
-    {
+bool Shader::compileTessControlShader(const GLchar* tessControlSource) {
+    if (tessControlSource == nullptr) {
         return false;
     }
 
     tcs = glCreateShader(GL_TESS_CONTROL_SHADER);
     glShaderSource(tcs, 1, &tessControlSource, NULL);
     glCompileShader(tcs);
-
     checkShaderErrors(tcs, "tessellation control");
-
     return true;
 }
 
-bool Shader::compileTessEvalShader(const GLchar* tessEvalSource) 
-{
-    if (tessEvalSource == nullptr) 
-    {
+bool Shader::compileTessEvalShader(const GLchar* tessEvalSource) {
+    if (tessEvalSource == nullptr) {
         return false;
     }
 
     tes = glCreateShader(GL_TESS_EVALUATION_SHADER);
     glShaderSource(tes, 1, &tessEvalSource, NULL);
     glCompileShader(tes);
-
     checkShaderErrors(tes, "tessellation evaluation");
-
     return true;
 }
 
@@ -89,7 +78,6 @@ bool Shader::compileGeometryShader(const GLchar* geometry_source)
     gs = glCreateShader(GL_GEOMETRY_SHADER);
     glShaderSource(gs, 1, &geometry_source, NULL);
     glCompileShader(gs);
-
     checkShaderErrors(gs, "geometry");
 
     return true;
@@ -100,7 +88,6 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     // Create program
     id = glCreateProgram();
     glAttachShader(id, fs);
-
     if (tessShadersExist)
     {
         glAttachShader(id, tcs);
@@ -110,7 +97,6 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     {
         glAttachShader(id, gs);
     }
-
     glAttachShader(id, vs);
     glLinkProgram(id);
 
@@ -120,7 +106,7 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     if (params != GL_TRUE)
     {
         std::ostringstream s;
-        s << "Could not link shader program GL index " << id;
+        s << "Could not link shader programme GL index " << id;
         Log::error(LogCategory::Render, s.str());
         printProgrammeInfoLog(id);
     }
@@ -145,28 +131,23 @@ void Shader::createShaderProgram(bool tessShadersExist, bool geometryShaderExist
     glDeleteShader(fs);
 }
 
-
 void Shader::setFloat(const GLchar* name, GLfloat value)
 {
     glUniform1f(glGetUniformLocation(id, name), value);
 }
-
 void Shader::setInteger(const GLchar* name, GLint value)
 {
     glUniform1i(glGetUniformLocation(id, name), value);
 }
-
 void Shader::setVector2f(const GLchar* name, GLfloat x, GLfloat y)
 {
     glUniform2f(glGetUniformLocation(id, name), x, y);
 }
-
 void Shader::setVector2f(const GLchar* name, const Vector2& value)
 {
     glUniform2f(glGetUniformLocation(id, name), value.x, value.y);
 }
 
-/*
 void Shader::setVector3f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z)
 {
     glUniform3f(glGetUniformLocation(id, name), x, y, z);
@@ -175,6 +156,7 @@ void Shader::setVector3f(const GLchar* name, const Vector3& value)
 {
     glUniform3f(glGetUniformLocation(id, name), value.x, value.y, value.z);
 }
+/*
 void Shader::setVector4f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
     glUniform4f(glGetUniformLocation(id, name), x, y, z, w);
@@ -183,18 +165,17 @@ void Shader::setVector4f(const GLchar* name, const Vector4& value)
 {
     glUniform4f(glGetUniformLocation(id, name), value.x, value.y, value.z, value.w);
 }
+*/
 void Shader::setMatrix4(const GLchar* name, const Matrix4& matrix)
 {
-    glUniformMatrix4fv(glGetUniformLocation(id, name), 1, GL_FALSE, matrix.getAsFloatPtr());
+    glUniformMatrix4fv(glGetUniformLocation(id, name), 1, GL_TRUE, matrix.getAsFloatPtr());
 }
-*/
 
 void Shader::printShaderInfoLog(GLuint shaderIndex)
 {
     int max_length = 2048;
     int actual_length = 0;
     char log[2048];
-
     glGetShaderInfoLog(shaderIndex, max_length, &actual_length, log);
     std::ostringstream s;
     s << "Shader info log for GL index " << shaderIndex;
@@ -206,7 +187,6 @@ void Shader::printProgrammeInfoLog(GLuint id)
     int max_length = 2048;
     int actual_length = 0;
     char log[2048];
-
     glGetProgramInfoLog(id, max_length, &actual_length, log);
     std::ostringstream s;
     s << "Program info log for GL index " << id;
@@ -266,7 +246,7 @@ void Shader::printAllParams(GLuint id)
 {
     Log::info("-----------------------------");
     std::ostringstream s;
-    s << "Shader program " << id << " info : ";
+    s << "Shader programme " << id << " info: ";
     Log::info(s.str());
     int params = -1;
     glGetProgramiv(id, GL_LINK_STATUS, &params);
@@ -289,7 +269,6 @@ void Shader::printAllParams(GLuint id)
         int max_length = 64;
         int actual_length = 0;
         int size = 0;
-
         GLenum type;
         glGetActiveAttrib(id, i, max_length, &actual_length, &size, &type, name);
         if (size > 1)
@@ -300,7 +279,7 @@ void Shader::printAllParams(GLuint id)
                 sprintf_s(long_name, "%s[%i]", name, j);
                 int location = glGetAttribLocation(id, long_name);
                 std::ostringstream s;
-                s << "  " << i << ") type :" << GLTypeToString(type) << " name :" << long_name << " location :" << location;
+                s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << long_name << " location:" << location;
                 Log::info(s.str());
             }
         }
@@ -308,7 +287,7 @@ void Shader::printAllParams(GLuint id)
         {
             int location = glGetAttribLocation(id, name);
             std::ostringstream s;
-            s << "  " << i << ") type :" << GLTypeToString(type) << " name :" << name << " location :" << location;
+            s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << name << " location:" << location;
             Log::info(s.str());
         }
     }
@@ -323,7 +302,6 @@ void Shader::printAllParams(GLuint id)
         int max_length = 64;
         int actual_length = 0;
         int size = 0;
-
         GLenum type;
         glGetActiveUniform(id, i, max_length, &actual_length, &size, &type, name);
         if (size > 1)
@@ -334,7 +312,7 @@ void Shader::printAllParams(GLuint id)
                 sprintf_s(long_name, "%s[%i]", name, j);
                 int location = glGetUniformLocation(id, long_name);
                 std::ostringstream s;
-                s << "  " << i << ") type :" << GLTypeToString(type) << " name :" << long_name << " location :" << location;
+                s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << long_name << " location:" << location;
                 Log::info(s.str());
             }
         }
@@ -342,7 +320,7 @@ void Shader::printAllParams(GLuint id)
         {
             int location = glGetUniformLocation(id, name);
             std::ostringstream s;
-            s << "  " << i << ") type :" << GLTypeToString(type) << " name :" << name << " location :" << location;
+            s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << name << " location:" << location;
             Log::info(s.str());
         }
     }
@@ -354,7 +332,6 @@ bool Shader::isValid(GLuint id)
     glValidateProgram(id);
     int params = -1;
     glGetProgramiv(id, GL_VALIDATE_STATUS, &params);
-
     Log::info("");
     std::ostringstream s;
     s << "program " << id << " GL_VALIDATE_STATUS = " << params;
@@ -362,9 +339,7 @@ bool Shader::isValid(GLuint id)
     if (params != GL_TRUE)
     {
         printProgrammeInfoLog(id);
-
         return false;
     }
-
     return true;
 }

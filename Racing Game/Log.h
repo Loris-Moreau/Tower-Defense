@@ -5,7 +5,7 @@ using std::string;
 
 #include <SDL_log.h>
 
-enum class LogCategory //Enums are integers, From 0 by Default
+enum class LogCategory
 {
 	Application = SDL_LOG_CATEGORY_APPLICATION,
 	Assert = SDL_LOG_CATEGORY_ASSERT,
@@ -18,12 +18,12 @@ enum class LogCategory //Enums are integers, From 0 by Default
 	Video = SDL_LOG_CATEGORY_VIDEO
 };
 
-class Log
+class Log 
 {
 public:
 	Log() = delete;
 	Log(const Log&) = delete;
-	Log& operator = (const Log&) = delete; //Delete Default & Copy Constructor & Assignement Operator so they cannot be used
+	Log& operator=(const Log&) = delete;
 
 	static void info(const string& message);
 	static void error(LogCategory category, const string& message);

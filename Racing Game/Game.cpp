@@ -1,21 +1,18 @@
 #include "Game.h"
-
 #include "Actor.h"
-
 #include "SpriteComponent.h"
 #include "AnimSpriteComponent.h"
-
 #include "Timer.h"
-
 #include "Assets.h"
-#include "Enemy.h"
+#include "BackgroundSpriteComponent.h"
+#include "Astroid.h"
+#include "Ship.h"
 
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
-	
 	bool isRendererInit = renderer.initialize(window);
-	return isWindowInit && isRendererInit; //Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
@@ -26,63 +23,77 @@ void Game::load()
 	string filePathRes2 = filePath + "Res_012-015\\";
 	string filePathRes3 = filePath + "Res_016-025\\";
 
+	//Load textures
+	Assets::loadTexture(renderer, filePathRes1 + "Ship01.png", "Ship01");
+	Assets::loadTexture(renderer, filePathRes1 + "Ship02.png", "Ship02");
+	Assets::loadTexture(renderer, filePathRes1 + "Ship03.png", "Ship03");
+	Assets::loadTexture(renderer, filePathRes1 + "Ship04.png", "Ship04");
+	Assets::loadTexture(renderer, filePathRes1 + "Farback01.png", "Farback01");
+	Assets::loadTexture(renderer, filePathRes1 + "Farback02.png", "Farback02");
+	Assets::loadTexture(renderer, filePathRes1 + "Stars.png", "Stars");
+	Assets::loadTexture(renderer, filePathRes1 + "Astroid.png", "Astroid");
+	Assets::loadTexture(renderer, filePathRes1 + "Ship.png", "Ship");
+	Assets::loadTexture(renderer, filePathRes1 + "Laser.png", "Laser");
+
 	//Load Shaders
-	Assets::loadShader("Res_016-025\\Shaders\\Basic.vert", "Res_016-025\\Shaders\\Basic.frag", "", "", "", "Basic");
-	Assets::loadShader("Res_016-025\\Shaders\\Sprite.vert", "Res_016-025\\Shaders\\Sprite.frag", "", "", "", "Sprite");
+	Assets::loadShader(filePathRes3 + "Shaders\\Basic.vert", filePathRes3 + "Shaders\\Basic.frag", "", "", "", "Basic");
+	Assets::loadShader(filePathRes3 + "Shaders\\Transform.vert", filePathRes3 + "Shaders\\Basic.frag", "", "", "", "Transform");
+	Assets::loadShader(filePathRes3 + "Shaders\\Sprite.vert", filePathRes3 + "Shaders\\Sprite.frag", "", "", "", "Sprite");
 
-	//Load Textures
-	Assets::loadTexture(renderer, (filePathRes2 + "Airplane.png"), "Airplane");
-	Assets::loadTexture(renderer, (filePathRes2 + "Base.png"), "Base");
+	// Single sprite
+	/*
+	Actor* actor = new Actor();
+	SpriteComponent* sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
+	actor->setPosition(Vector2{ 100, 100 });
+	*/
 
-	Assets::loadTexture(renderer, (filePathRes2 + "Missile.png"), "Missile");
-	Assets::loadTexture(renderer, (filePathRes2 + "Projectile.png"), "Projectile");
+	// Animated sprite
+	/*
+	vector<Texture*> animTextures {
+		&Assets::getTexture("Ship01"),
+		&Assets::getTexture("Ship02"),
+		&Assets::getTexture("Ship03"),
+		&Assets::getTexture("Ship04"),
+	};
+	Actor* ship = new Actor();
+	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ship, animTextures);
+	ship->setPosition(Vector2{ 100, 300 });
+	*/
 
-	Assets::loadTexture(renderer, (filePathRes2 + "Tower.png"), "Tower");
-	//Tiles
-	Assets::loadTexture(renderer, (filePathRes2 + "TileBrown.png"), "TileBrown");
-	Assets::loadTexture(renderer, (filePathRes2 + "TileBrownSelected.png"), "TileBrownSelected");
+	// Controlled ship
+	Ship* ship = new Ship();
+	ship->setPosition(Vector2{ 100, 300 });
 
-	Assets::loadTexture(renderer, (filePathRes2 + "TileGreen.png"), "TileGreen");
-	//Assets::loadTexture(renderer, (filePathRes2 + "TileGreenSelected.png"), "TileGreenSelected");
+	// Background
+	// Create the "far back" background
+	/*
+	vector<Texture*> bgTexsFar {
+		&Assets::getTexture("Farback01"),
+		&Assets::getTexture("Farback02")
+	};
+	Actor* bgFar = new Actor();
+	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTexsFar);
+	bgSpritesFar->setScrollSpeed(-100.0f);
 
-	Assets::loadTexture(renderer, (filePathRes2 + "TileGrey.png"), "TileGrey");
-	Assets::loadTexture(renderer, (filePathRes2 + "TileGreySelected.png"), "TileGreySelected");
-
-	Assets::loadTexture(renderer, (filePathRes2 + "TileTan.png"), "TileTan");
-	//Assets::loadTexture(renderer, (filePathRes2 + "TileTanSelected.png"), "TileTanSelected");
-
-	Assets::loadTexture(renderer, (filePathRes2 + "TileRed.png"), "TileRed");
-	Assets::loadTexture(renderer, (filePathRes2 + "TileRedSelected.png"), "TileRedSelected");
-	
-	grid = new Grid();
-}
-
-Enemy* Game::getNearestEnemy(const Vector2& position)
-{
-	Enemy* best = nullptr;
-
-	if (enemies.size() > 0)
+	// Create the closer background
+	Actor* bgClose = new Actor();
+	std::vector<Texture*> bgTexsClose {
+		&Assets::getTexture("Stars"),
+		&Assets::getTexture("Stars")
+	};
+	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 50);
+	bgSpritesClose->setScrollSpeed(-200.0f);
+	*/
+	const int astroidNumber = 20;
+	for (int i = 0; i < astroidNumber; ++i)
 	{
-		best = enemies[0];
-		//Save the distance squared of first enemy, and test if others are closer
-		float bestDistSq = (position - enemies[0]->getPosition()).lengthSq();
-		for (size_t i = 1; i < enemies.size(); ++i)
-		{
-			float newDistSq = (position - enemies[i]->getPosition()).lengthSq();
-			if (newDistSq < bestDistSq)
-			{
-				bestDistSq = newDistSq;
-				best = enemies[i];
-			}
-		}
+		Astroid* a = new Astroid();
 	}
-
-	return best;
 }
 
 void Game::processInput()
 {
-	//SDL Event
+	// SDL Event
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -93,55 +104,41 @@ void Game::processInput()
 			break;
 		}
 	}
-
-	//Keyboard state
+	// Keyboard state
 	const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
-	//Escape: quit game
+	// Escape: quit game
 	if (keyboardState[SDL_SCANCODE_ESCAPE])
 	{
 		isRunning = false;
 	}
-
-	if (keyboardState[SDL_SCANCODE_B])
-	{
-		grid->buildTower();
-	}
-
-	//Actor input
+	// Actor input
 	isUpdatingActors = true;
 	for (auto actor : actors)
 	{
 		actor->processInput(keyboardState);
 	}
 	isUpdatingActors = false;
-
-	//Process mouse
-	int x, y;
-	Uint32 buttons = SDL_GetMouseState(&x, &y);
-	if (SDL_BUTTON(buttons) & SDL_BUTTON_LEFT)
-	{
-		grid->processClick(x, y);
-	}
 }
 
 void Game::update(float dt)
 {
-	//Update actors 
+	// Update actors 
 	isUpdatingActors = true;
-	for (auto actor : actors)
+	for(auto actor: actors) 
 	{
 		actor->update(dt);
 	}
 	isUpdatingActors = false;
 
-	//Move pending actors to actors
-	for (auto pendingActor : pendingActors)
+	// Move pending actors to actors
+	for (auto pendingActor: pendingActors)
 	{
+		pendingActor->computeWorldTransform();
 		actors.emplace_back(pendingActor);
 	}
 	pendingActors.clear();
 
-	//Delete dead actors
+	// Delete dead actors
 	vector<Actor*> deadActors;
 	for (auto actor : actors)
 	{
@@ -163,6 +160,25 @@ void Game::render()
 	renderer.endDraw();
 }
 
+vector<Astroid*>& Game::getAstroids()
+{
+	return astroids;
+}
+
+void Game::addAstroid(Astroid* astroid)
+{
+	astroids.emplace_back(astroid);
+}
+
+void Game::removeAstroid(Astroid* astroid)
+{
+	auto iter = std::find(begin(astroids), end(astroids), astroid);
+	if (iter != astroids.end())
+	{
+		astroids.erase(iter);
+	}
+}
+
 void Game::loop()
 {
 	Timer timer;
@@ -170,25 +186,23 @@ void Game::loop()
 	while (isRunning)
 	{
 		float dt = timer.computeDeltaTime() / 1000.0f;
-
 		processInput();
 		update(dt);
 		render();
-
 		timer.delayTime();
 	}
 }
 
 void Game::unload()
 {
-	//Delete actors
-	//Because ~Actor calls RemoveActor, have to use a different style loop
+	// Delete actors
+	// Because ~Actor calls RemoveActor, have to use a different style loop
 	while (!actors.empty())
 	{
 		delete actors.back();
 	}
 
-	//Resources clear
+	// Resources
 	Assets::clear();
 }
 
@@ -213,15 +227,14 @@ void Game::addActor(Actor* actor)
 
 void Game::removeActor(Actor* actor)
 {
-	//Erase actor from the two vectors
+	// Erase actor from the two vectors
 	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);
 	if (iter != end(pendingActors))
 	{
-		//Swap to end of vector and pop off (avoid erase copies)
+		// Swap to end of vector and pop off (avoid erase copies)
 		std::iter_swap(iter, end(pendingActors) - 1);
 		pendingActors.pop_back();
 	}
-
 	iter = std::find(begin(actors), end(actors), actor);
 	if (iter != end(actors))
 	{
