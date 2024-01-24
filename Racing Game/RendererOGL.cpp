@@ -16,12 +16,10 @@ RendererOGL::RendererOGL():
 	shader(nullptr),
 	viewProj(Matrix4::createSimpleViewProj(WINDOW_WIDTH, WINDOW_HEIGHT))
 {
-
 }
 
 RendererOGL::~RendererOGL()
 {
-
 }
 
 bool RendererOGL::initialize(Window& windowP)
@@ -32,16 +30,13 @@ bool RendererOGL::initialize(Window& windowP)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-
 	// Request a color buffer with 8-bits per RGBA channel
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
-
 	// Enable double buffering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
 	// Force OpenGL to use hardware acceleration
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
@@ -63,13 +58,11 @@ bool RendererOGL::initialize(Window& windowP)
 	}
 
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
-	
     return true;
 }
 
 void RendererOGL::beginDraw()
 {
-	
 	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -95,6 +88,7 @@ void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle s
 	Matrix4 world = scaleMat * actor.getWorldTransform();
 	Matrix4 pixelTranslation = Matrix4::createTranslation(Vector3(-WINDOW_WIDTH / 2 - origin.x, -WINDOW_HEIGHT / 2 - origin.y, 0.0f)); // Screen pixel coordinates
 	shader->setMatrix4("uWorldTransform", world * pixelTranslation);
+	tex.setActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 

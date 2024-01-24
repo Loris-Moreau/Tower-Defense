@@ -1,15 +1,13 @@
 #pragma once
 
-constexpr float vertices[] = 
-{
-	-0.5f,  0.5f, 0.f, //0.f, 0.f, // top left
-	 0.5f,  0.5f, 0.f, //1.f, 0.f, // top right
-	 0.5f, -0.5f, 0.f, //1.f, 1.f, // bottom right
-	-0.5f, -0.5f, 0.f, //0.f, 1.f  // bottom left
+constexpr float vertices[] = {
+	-0.5f,  0.5f, 0.f, 0.f, 0.f, // top left
+	 0.5f,  0.5f, 0.f, 1.f, 0.f, // top right
+	 0.5f, -0.5f, 0.f, 1.f, 1.f, // bottom right
+	-0.5f, -0.5f, 0.f, 0.f, 1.f  // bottom left
 };
 
-constexpr unsigned int indices[] = 
-{
+constexpr unsigned int indices[] = {
 	0, 1, 2,
 	2, 3, 0
 };
@@ -24,7 +22,6 @@ public:
 
 	unsigned int getNbVertices() const { return nbVertices; }
 	unsigned int getNbIndices() const { return nbIndices; }
-
 private:
 	unsigned int nbVertices;
 	unsigned int nbIndices;

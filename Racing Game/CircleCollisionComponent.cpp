@@ -3,7 +3,6 @@
 
 CircleCollisionComponent::CircleCollisionComponent(Actor* owner) : Component(owner), radius(1.0f)
 {
-
 }
 
 float CircleCollisionComponent::getRadius() const
@@ -26,9 +25,7 @@ bool Intersect(const CircleCollisionComponent& a, const CircleCollisionComponent
 	Vector2 aCenter = a.getCenter();
 	Vector2 bCenter = b.getCenter();
 	Vector2 ab = bCenter - aCenter;
-
 	float distSq = ab.lengthSq();
 	float sumOfRadius = a.getRadius() + b.getRadius();
-
 	return distSq <= sumOfRadius * sumOfRadius;
 }

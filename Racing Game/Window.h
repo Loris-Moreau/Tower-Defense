@@ -1,5 +1,4 @@
 #pragma once
-
 #include <SDL.h>
 
 const int WINDOW_WIDTH = 1024;
@@ -24,3 +23,4 @@ private:
 	int width;
 	int height;
 };
+

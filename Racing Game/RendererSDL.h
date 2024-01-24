@@ -1,5 +1,4 @@
 #pragma once
-
 #include "IRenderer.h"
 #include "Rectangle.h"
 #include <SDL.h>

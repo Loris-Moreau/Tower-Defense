@@ -66,7 +66,6 @@ void Game::load()
 
 	// Background
 	// Create the "far back" background
-	/*
 	vector<Texture*> bgTexsFar {
 		&Assets::getTexture("Farback01"),
 		&Assets::getTexture("Farback02")
@@ -83,7 +82,7 @@ void Game::load()
 	};
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTexsClose, 50);
 	bgSpritesClose->setScrollSpeed(-200.0f);
-	*/
+	
 	const int astroidNumber = 20;
 	for (int i = 0; i < astroidNumber; ++i)
 	{

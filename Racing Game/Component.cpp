@@ -15,10 +15,8 @@ Component::~Component()
 
 void Component::processInput(const Uint8* keyState)
 {
-
 }
 
 void Component::update(float dt)
 {
-
 }

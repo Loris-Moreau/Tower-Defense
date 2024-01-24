@@ -1,8 +1,6 @@
 #pragma once
-
 #include <string>
 using std::string;
-
 #include <SDL_log.h>
 
 enum class LogCategory
@@ -18,8 +16,7 @@ enum class LogCategory
 	Video = SDL_LOG_CATEGORY_VIDEO
 };
 
-class Log 
-{
+class Log {
 public:
 	Log() = delete;
 	Log(const Log&) = delete;

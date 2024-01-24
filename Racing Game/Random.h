@@ -1,5 +1,4 @@
 #pragma once
-
 #include <random>
 #include "Vector2.h"
 
@@ -26,3 +25,4 @@ public:
 private:
 	static std::mt19937 sGenerator;
 };
+

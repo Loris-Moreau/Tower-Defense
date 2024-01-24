@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Maths.h"
-
 class Vector3
 {
 

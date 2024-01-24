@@ -1,5 +1,4 @@
 #pragma once
-
 #include "IRenderer.h"
 #include "VertexArray.h"
 #include "Vector2.h"
@@ -16,7 +15,6 @@ public:
 	RendererOGL& operator=(const RendererOGL&) = delete;
 
 	bool initialize(Window& window);
-
 	void beginDraw();
 	void draw();
 	void endDraw();

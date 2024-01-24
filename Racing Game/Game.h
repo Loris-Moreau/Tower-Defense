@@ -1,5 +1,4 @@
 #pragma once
-
 #include <vector>
 #include "Actor.h"
 #include "SpriteComponent.h"

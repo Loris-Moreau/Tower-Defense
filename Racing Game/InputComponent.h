@@ -1,5 +1,4 @@
 #pragma once
-
 #include "MoveComponent.h"
 #include <SDL_stdinc.h>
 
@@ -30,3 +29,4 @@ private:
 	int clockwiseKey;
 	int counterClockwiseKey;
 };
+

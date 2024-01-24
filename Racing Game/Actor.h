@@ -1,5 +1,4 @@
 #pragma once
-
 #include <vector>
 #include "Vector2.h"
 #include <SDL_stdinc.h>
@@ -57,3 +56,4 @@ private:
 
 	vector<Component*> components;
 };
+
