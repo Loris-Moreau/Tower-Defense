@@ -1,34 +1,4 @@
-﻿  Actor.cpp
-  AnimSpriteComponent.cpp
-  Assets.cpp
-  Astroid.cpp
-  BackgroundSpriteComponent.cpp
-  CircleCollisionComponent.cpp
-  Component.cpp
-  Game.cpp
-  InputComponent.cpp
-  Laser.cpp
-  Log.cpp
-  main.cpp
-  Matrix4.cpp
-  MoveComponent.cpp
-  NavComponent.cpp
-  Random.cpp
-  Rectangle.cpp
+﻿  Game.cpp
   RendererOGL.cpp
-  RendererSDL.cpp
-  Shader.cpp
-  Generating Code...
-  Compiling...
-  Ship.cpp
-  SpriteComponent.cpp
-  Texture.cpp
-  Tile.cpp
-  Timer.cpp
-  Vector2.cpp
-  Vector3.cpp
-  VertexArray.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\VertexArray.cpp(14,49): warning C4244: 'argument': conversion from 'double' to 'GLsizeiptr', possible loss of data
-  Window.cpp
   Generating Code...
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe

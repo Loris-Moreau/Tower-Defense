@@ -1,4 +1,4 @@
-//Request GLSL 3.3
+// Request GLSL 3.3
 #version 330
 
 uniform mat4 uWorldTransform;
