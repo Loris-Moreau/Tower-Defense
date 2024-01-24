@@ -34,3 +34,29 @@ void Vector3::normalize()
 	y /= len;
 	z /= len;
 }
+
+Vector3 Vector3::transform(const Vector3& vec, const Matrix4& mat, float w)
+{
+	Vector3 retVal;
+	retVal.x = vec.x * mat.mat[0][0] + vec.y * mat.mat[1][0] + 
+		vec.z * mat.mat[2][0] + w * mat.mat[3][0];
+
+	retVal.y = vec.x * mat.mat[0][1] + vec.y * mat.mat[1][1] + 
+		vec.z * mat.mat[2][1] + w * mat.mat[3][1];
+
+	retVal.z = vec.x * mat.mat[0][2] + vec.y * mat.mat[1][2] + 
+		vec.z * mat.mat[2][2] + w * mat.mat[3][2];
+
+	//ignore w since we aren't returning a new value for it
+	return retVal;
+}
+
+Vector3 Vector3::transformWithPerspDiv(const Vector3& vec, const Matrix4& mat, float w)
+{
+
+}
+
+Vector3 Vector3::transform(const Vector3& v, const Quaternion& q)
+{
+
+}

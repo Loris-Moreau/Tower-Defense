@@ -1,2 +1,28 @@
-﻿  Game.cpp
-  Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe
+﻿  Actor.cpp
+  Tile.cpp
+  Vector3.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(41,24): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(41,48): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(42,14): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(42,34): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(44,24): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(44,48): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(45,14): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(45,34): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(47,24): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(47,48): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(48,14): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp(48,34): error C2027: use of undefined type 'Matrix4'
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.h(119,59): message : see declaration of 'Matrix4'
+  Generating Code...

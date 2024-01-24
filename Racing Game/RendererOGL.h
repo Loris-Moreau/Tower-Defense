@@ -35,4 +35,6 @@ private:
 	Shader* shader;
 	std::vector<class SpriteComponent*> sprites;
 	Matrix4 viewProj;
+
+	string shaderName = "Sprite";
 };
