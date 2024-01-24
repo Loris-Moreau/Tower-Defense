@@ -18,20 +18,30 @@ public:
 	void beginDraw();
 	void draw();
 	void endDraw();
-
-	void addSprite(class SpriteComponent* sprite);
-	void removeSprite(class SpriteComponent* sprite);
-	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
-
 	void close();
 	IRenderer::Type type() { return Type::OGL; }
 
+	void addSprite(class SpriteComponent* sprite);
+	void removeSprite(class SpriteComponent* sprite);
+	void drawSprite(const Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
+
+	void addMesh(class MeshComponent* mesh);
+	void removeMesh(class MeshComponent* mesh);
+
+	void setViewMatrix(const Matrix4& viewP);
+
 private:
+	void drawMeshes();
 	void drawSprites();
 
 	Window* window;
 	SDL_GLContext context;
-	VertexArray* vertexArray;
+	VertexArray* spriteVertexArray;
+	Matrix4 spriteViewProj;
+	Matrix4 view;
+	Matrix4 projection;
+
+	std::vector<class MeshComponent*> meshes;
 	std::vector<class SpriteComponent*> sprites;
-	Matrix4 viewProj;
 };
+

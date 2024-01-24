@@ -46,8 +46,7 @@ Vector3 Vector3::transform(const Vector3& vec, const Matrix4& mat, float w)
 		vec.z * mat.mat[2][1] + w * mat.mat[3][1];
 	retVal.z = vec.x * mat.mat[0][2] + vec.y * mat.mat[1][2] +
 		vec.z * mat.mat[2][2] + w * mat.mat[3][2];
-
-	//ignore w since we aren't returning a new value for it ...
+	//ignore w since we aren't returning a new value for it...
 	return retVal;
 }
 

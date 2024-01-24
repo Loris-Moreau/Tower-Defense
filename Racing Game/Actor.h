@@ -29,7 +29,6 @@ public:
 	const Quaternion getRotation() const { return rotation; }
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
 
-
 	void setPosition(Vector3 positionP);
 	void setScale(float scaleP);
 	void setRotation(Quaternion rotationP);

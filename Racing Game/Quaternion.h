@@ -18,7 +18,8 @@ public:
 	explicit Quaternion(float inX, float inY, float inZ, float inW);
 
 	// Construct the quaternion from an axis and angle
-	// It is assumed that axis is already normalized, and the angle is in radians
+	// It is assumed that axis is already normalized,
+	// and the angle is in radians
 	explicit Quaternion(const Vector3& axis, float angle);
 
 	void set(float inX, float inY, float inZ, float inW);

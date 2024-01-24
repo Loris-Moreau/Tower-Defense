@@ -32,7 +32,6 @@ void MoveComponent::update(float dt)
 	if (!Maths::nearZero(forwardSpeed))
 	{
 		Vector3 newPosition = owner.getPosition() + owner.getForward() * forwardSpeed * dt;
-
 		owner.setPosition(newPosition);
 	}
 }
