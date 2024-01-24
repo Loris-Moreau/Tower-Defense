@@ -24,17 +24,18 @@ public:
 
 	Game& getGame() const { return game; }
 	const ActorState getState() const { return state; }
-	const Vector2 getPosition() const { return position; }
+	const Vector3 getPosition() const { return position; }
 	const float getScale() const { return scale; }
-	const float getRotation() const { return rotation; }
+	const Quaternion getRotation() const { return rotation; }
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
 
-	void setPosition(Vector2 positionP);
+
+	void setPosition(Vector3 positionP);
 	void setScale(float scaleP);
-	void setRotation(float rotationP);
+	void setRotation(Quaternion rotationP);
 	void setState(ActorState stateP);
 
-	Vector2 getForward() const;
+	Vector3 getForward() const;
 	void computeWorldTransform();
 
 	void processInput(const Uint8* keyState);
@@ -48,9 +49,9 @@ public:
 private:
 	Game& game;
 	ActorState state;
-	Vector2 position;
+	Vector3 position;
 	float scale;
-	float rotation;	// Rotation in radians
+	Quaternion rotation;
 	Matrix4 worldTransform;
 	bool mustRecomputeWorldTransform;
 

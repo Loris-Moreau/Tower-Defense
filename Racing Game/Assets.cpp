@@ -14,7 +14,7 @@ Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const s
     return textures[name];
 }
 
-Texture& Assets::getTexture(const string& name) 
+Texture& Assets::getTexture(const string& name)
 {
     if (textures.find(name) == end(textures))
     {
@@ -42,7 +42,7 @@ Shader& Assets::getShader(const std::string& name)
     return shaders[name];
 }
 
-void Assets::clear() 
+void Assets::clear()
 {
     // (Properly) delete all textures
     for (auto iter : textures)
@@ -60,7 +60,7 @@ Texture Assets::loadTextureFromFile(IRenderer& renderer, const string& filename)
     // Not very elegant, but simpler architecture
     if (renderer.type() == IRenderer::Type::SDL)
     {
-        texture.loadSDL(dynamic_cast<RendererSDL&>(renderer), filename);
+        //texture.loadSDL(dynamic_cast<RendererSDL&>(renderer), filename);
     }
     else if (renderer.type() == IRenderer::Type::OGL)
     {

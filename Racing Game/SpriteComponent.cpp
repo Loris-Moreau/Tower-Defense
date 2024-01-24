@@ -1,11 +1,12 @@
 #include "SpriteComponent.h"
 #include "Actor.h"
 #include "Game.h"
+#include "Rectangle.h"
 
-SpriteComponent::SpriteComponent(Actor* ownerP, Texture& textureP, int drawOrderP):
+SpriteComponent::SpriteComponent(Actor* ownerP, Texture& textureP, int drawOrderP) :
 	Component(ownerP),
-	texture(textureP), 
-	drawOrder(drawOrderP), 
+	texture(textureP),
+	drawOrder(drawOrderP),
 	texWidth(textureP.getWidth()),
 	texHeight(textureP.getHeight())
 {
@@ -28,4 +29,3 @@ void SpriteComponent::draw(IRenderer& renderer)
 	Vector2 origin{ texWidth / 2.f, texHeight / 2.f };
 	renderer.drawSprite(owner, texture, Rectangle::nullRect, origin, IRenderer::Flip::None);
 }
-
