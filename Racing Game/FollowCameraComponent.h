@@ -1,5 +1,7 @@
 #pragma once
+
 #include "CameraComponent.h"
+
 class FollowCameraComponent : public CameraComponent
 {
 public:
