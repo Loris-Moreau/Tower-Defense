@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Component.h"
 #include "Texture.h"
 
@@ -29,3 +28,4 @@ protected:
 	int texHeight;
 	bool isVisible;
 };
+

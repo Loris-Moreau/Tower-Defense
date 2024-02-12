@@ -9,13 +9,13 @@
 #include <GL/glew.h>
 #include <SDL_image.h>
 
-RendererOGL::RendererOGL() :
+RendererOGL::RendererOGL():
 	window(nullptr),
 	context(nullptr),
 	spriteVertexArray(nullptr),
 	spriteViewProj(Matrix4::createSimpleViewProj(WINDOW_WIDTH, WINDOW_HEIGHT)),
 	view(Matrix4::createLookAt(Vector3::zero, Vector3::unitX, Vector3::unitZ)),
-	projection(Matrix4::createPerspectiveFOV(Maths::toRadians(70.0f), WINDOW_WIDTH, WINDOW_HEIGHT, 25.0f, 10000.0f)),
+	projection(Matrix4::createPerspectiveFOV(Maths::toRadians(70.0f), WINDOW_WIDTH, WINDOW_HEIGHT, 10.0f, 10000.0f)),
 	ambientLight(Vector3(1.0f, 1.0f, 1.0f)),
 	dirLight({ Vector3::zero, Vector3::zero, Vector3::zero })
 {
@@ -66,7 +66,7 @@ bool RendererOGL::initialize(Window& windowP)
 	}
 
 	spriteVertexArray = new VertexArray(spriteVertices, 4, indices, 6);
-	return true;
+    return true;
 }
 
 void RendererOGL::beginDraw()
@@ -107,7 +107,10 @@ void RendererOGL::drawMeshes()
 	// Draw
 	for (auto mc : meshes)
 	{
-		mc->draw(Assets::getShader("Phong"));
+		if (mc->getVisible())
+		{
+			mc->draw(Assets::getShader("Phong"));
+		}
 	}
 }
 
@@ -134,7 +137,7 @@ void RendererOGL::drawSprites()
 	glDisable(GL_DEPTH_TEST);
 	// Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
-	//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
 	glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
@@ -146,7 +149,10 @@ void RendererOGL::drawSprites()
 
 	for (auto sprite : sprites)
 	{
-		sprite->draw(*this);
+		if (sprite->getVisible())
+		{
+			sprite->draw(*this);
+		}
 	}
 }
 

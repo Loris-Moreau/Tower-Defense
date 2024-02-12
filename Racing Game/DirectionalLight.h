@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Vector3.h"
-
 struct DirectionalLight
 {
 	Vector3 direction;

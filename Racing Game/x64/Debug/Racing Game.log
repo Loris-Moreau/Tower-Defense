@@ -1,28 +1,2 @@
-﻿  Actor.cpp
-  AnimSpriteComponent.cpp
-  Assets.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(262,36): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(279,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Camera.cpp
-  CameraComponent.cpp
-  Cube.cpp
-  FPSActor.cpp
-  FollowActor.cpp
-  Game.cpp
-  Mesh.cpp
-  MeshComponent.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MeshComponent.cpp(28,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  MoveComponent.cpp
-  OrbitActor.cpp
-  Plane.cpp
-  RendererOGL.cpp
-  Sphere.cpp
-  SpriteComponent.cpp
-  Texture.cpp
-  Tile.cpp
-  Window.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+﻿  Game.cpp
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe

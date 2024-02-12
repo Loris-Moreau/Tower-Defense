@@ -26,7 +26,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr), follow(nullptr), orbit (nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
 
 public:
 	bool initialize();
@@ -57,12 +57,7 @@ private:
 	vector<Actor*> pendingActors;
 
 	// Game specific
-	void changeCamera(int mode);
-
 	//SoundEvent musicEvent;
 	class FPSActor* fps;
 	class SpriteComponent* crosshair;
-	class FollowActor* follow;
-	class OrbitActor* orbit;
 };
-

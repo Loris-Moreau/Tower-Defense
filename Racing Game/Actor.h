@@ -1,10 +1,8 @@
 #pragma once
-
 #include <vector>
 #include "Vector2.h"
 #include <SDL_stdinc.h>
 #include "Matrix4.h"
-
 using std::vector;
 
 class Game;

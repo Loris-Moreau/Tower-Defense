@@ -3,13 +3,15 @@
 #include "Timer.h"
 #include "Assets.h"
 #include "MeshComponent.h"
-#include "Cube.h"
-#include "Sphere.h"
-#include "Plane.h"
+#include "CubeActor.h"
+#include "SphereActor.h"
+#include "PlaneActor.h"
 //#include "AudioComponent.h"
 #include "FPSActor.h"
 #include "FollowActor.h"
 #include "OrbitActor.h"
+#include "SplineActor.h"
+#include <algorithm>
 
 bool Game::initialize()
 {
@@ -57,17 +59,15 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 
 	fps = new FPSActor();
-	follow = new FollowActor();
-	orbit = new OrbitActor();
 
-	Cube* a = new Cube();
+	CubeActor* a = new CubeActor();
 	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
 	a->setScale(100.0f);
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
 	a->setRotation(q);
 
-	Sphere* b = new Sphere();
+	SphereActor* b = new SphereActor();
 	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
 	b->setScale(3.0f);
 
@@ -79,7 +79,7 @@ void Game::load()
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			Plane* p = new Plane();
+			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
 		}
 	}
@@ -88,11 +88,11 @@ void Game::load()
 	q = Quaternion(Vector3::unitX, Maths::piOver2);
 	for (int i = 0; i < 10; i++)
 	{
-		Plane* p = new Plane();
+		PlaneActor* p = new PlaneActor();
 		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
 		p->setRotation(q);
 
-		p = new Plane();
+		p = new PlaneActor();
 		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
 		p->setRotation(q);
 	}
@@ -101,11 +101,11 @@ void Game::load()
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
 	for (int i = 0; i < 10; i++)
 	{
-		Plane* p = new Plane();
+		PlaneActor* p = new PlaneActor();
 		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
 		p->setRotation(q);
 
-		p = new Plane();
+		p = new PlaneActor();
 		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
 		p->setRotation(q);
 	}
@@ -119,17 +119,15 @@ void Game::load()
 
 	/*
 	// Create spheres with audio components playing different sounds
-	Sphere* soundSphere = new Sphere();
+	SphereActor* soundSphere = new SphereActor();
 	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
 	soundSphere->setScale(1.0f);
 	AudioComponent* ac = new AudioComponent(soundSphere);
 	ac->playEvent("event:/FireLoop");
 	*/
-	//1024 width
-	//768  height
-	// UI elements
+
 	Actor* ui = new Actor();
-	
+
 	ui->setPosition(Vector3(-(window.getWidth() / 3.5f + 105.0f), -(window.getHeight() / 2.0f - 35.0f), 0.0f));
 	SpriteComponent* sc = new SpriteComponent(ui, Assets::getTexture("HealthBar"));
 
@@ -145,8 +143,6 @@ void Game::load()
 
 	// Start music
 	//musicEvent = audioSystem.playEvent("event:/Music");
-
-	changeCamera(1);
 }
 
 void Game::processInput()
@@ -167,19 +163,6 @@ void Game::processInput()
 	if (input.keyboard.getKeyState(SDL_SCANCODE_ESCAPE) == ButtonState::Released)
 	{
 		isRunning = false;
-	}
-
-	if (input.keyboard.getKeyState(SDL_SCANCODE_1) == ButtonState::Pressed)
-	{
-		changeCamera(1);
-	}
-	else if (input.keyboard.getKeyState(SDL_SCANCODE_2) == ButtonState::Pressed)
-	{
-		changeCamera(2);
-	}
-	else if (input.keyboard.getKeyState(SDL_SCANCODE_3) == ButtonState::Pressed)
-	{
-		changeCamera(3);
 	}
 
 	// Actor input
@@ -232,37 +215,6 @@ void Game::render()
 	renderer.beginDraw();
 	renderer.draw();
 	renderer.endDraw();
-}
-
-void Game::changeCamera(int mode)
-{
-	// Disable everything
-	fps->setState(Actor::ActorState::Paused);
-	fps->setVisible(false);
-	crosshair->setVisible(false);
-	follow->setState(Actor::ActorState::Paused);
-	follow->setVisible(false);
-	orbit->setState(Actor::ActorState::Paused);
-	orbit->setVisible(false);
-
-	// Enable the camera specified by the mode
-	switch (mode)
-	{
-	case 1:
-	default:
-		fps->setState(Actor::ActorState::Active);
-		fps->setVisible(true);
-		crosshair->setVisible(true);
-		break;
-	case 2:
-		follow->setState(Actor::ActorState::Active);
-		follow->setVisible(true);
-		break;
-	case 3:
-		orbit->setState(Actor::ActorState::Active);
-		orbit->setVisible(true);
-		break;
-	}
 }
 
 void Game::loop()
