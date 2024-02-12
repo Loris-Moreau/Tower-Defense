@@ -11,10 +11,10 @@
 FPSActor::FPSActor() : 
 	Actor(), 
 	moveComponent(nullptr), 
-	//audioComponent(nullptr), 
+	audioComponent(nullptr), 
 	meshComponent(nullptr),
-	cameraComponent(nullptr)
-	//lastFootstep(0.0f)
+	cameraComponent(nullptr),
+	lastFootstep(0.0f)
 {
 	moveComponent = new MoveComponent(this);
 	//audioComponent = new AudioComponent(this);

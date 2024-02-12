@@ -63,6 +63,7 @@ void Game::load()
 	CubeActor* a = new CubeActor();
 	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
 	a->setScale(100.0f);
+
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
 	a->setRotation(q);
@@ -96,7 +97,7 @@ void Game::load()
 		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
 		p->setRotation(q);
 	}
-
+	
 	// Forward/back walls
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
 	for (int i = 0; i < 10; i++)
@@ -117,15 +118,14 @@ void Game::load()
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
-	/*
-	// Create spheres with audio components playing different sounds
+	/*// Create spheres with audio components playing different sounds
 	SphereActor* soundSphere = new SphereActor();
 	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
 	soundSphere->setScale(1.0f);
 	AudioComponent* ac = new AudioComponent(soundSphere);
-	ac->playEvent("event:/FireLoop");
-	*/
+	ac->playEvent("event:/FireLoop");*/
 
+	/*//UI
 	Actor* ui = new Actor();
 
 	ui->setPosition(Vector3(-(window.getWidth() / 3.5f + 105.0f), -(window.getHeight() / 2.0f - 35.0f), 0.0f));
@@ -135,10 +135,11 @@ void Game::load()
 	ui->setPosition(Vector3(window.getWidth() / 2.0f - 137, -(window.getHeight() / 2.0f - 120), 0.0f));
 	ui->setScale(0.75f);
 	sc = new SpriteComponent(ui, Assets::getTexture("Radar"));
+	*/
 
 	// Corsshair
 	Actor* crosshairActor = new Actor();
-	crosshairActor->setScale(2.0f);
+	crosshairActor->setScale(1.75f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
 	// Start music

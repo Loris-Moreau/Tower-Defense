@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Vector3.h"
 struct Plane
 {
@@ -12,3 +11,4 @@ struct Plane
 	float d;
 	Vector3 normal;
 };
+

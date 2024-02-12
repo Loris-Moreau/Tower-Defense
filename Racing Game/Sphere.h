@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Vector3.h"
-
 struct Sphere
 {
 	Sphere(const Vector3& centerP, float radiusP);

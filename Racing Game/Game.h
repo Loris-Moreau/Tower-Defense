@@ -8,6 +8,7 @@
 #include "RendererOGL.h"
 //#include "AudioSystem.h"
 #include "InputSystem.h"
+#include "PhysicsSystem.h"
 
 using std::vector;
 
@@ -39,6 +40,7 @@ public:
 	void removeActor(Actor* actor);
 	RendererOGL& getRenderer() { return renderer; }
 	//AudioSystem& getAudioSystem() { return audioSystem; }
+	PhysicsSystem& getPhysicsSystem() { return physicsSystem; }
 
 
 private:
@@ -51,6 +53,7 @@ private:
 	RendererOGL renderer;
 	//AudioSystem audioSystem;
 	InputSystem inputSystem;
+	PhysicsSystem physicsSystem;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
@@ -61,3 +64,4 @@ private:
 	class FPSActor* fps;
 	class SpriteComponent* crosshair;
 };
+
