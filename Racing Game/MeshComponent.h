@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Component.h"
+
 class MeshComponent : public Component
 {
 public:
@@ -15,4 +17,3 @@ protected:
 	Mesh* mesh;
 	size_t textureIndex;
 };
-

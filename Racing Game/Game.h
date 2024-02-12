@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include "Actor.h"
 #include "SpriteComponent.h"
@@ -51,4 +52,3 @@ private:
 	vector<Actor*> pendingActors;
 	Camera* camera;
 };
-
