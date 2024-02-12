@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 #include <vector>
 #include "Texture.h"
@@ -35,3 +34,4 @@ private:
 	float radius; // Bounding sphere radius
 	float specularPower;
 };
+

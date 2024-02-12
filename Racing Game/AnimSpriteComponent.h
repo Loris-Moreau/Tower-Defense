@@ -1,6 +1,8 @@
 #pragma once
-#include <vector>
+
 #include "SpriteComponent.h"
+
+#include <vector>
 using std::vector;
 
 class AnimSpriteComponent :	public SpriteComponent
@@ -24,4 +26,3 @@ private:
 	float currentFrame;
 	float animFPS;
 };
-
