@@ -24,6 +24,7 @@ bool Game::initialize()
 void Game::load()
 {
 	inputSystem.setMouseRelativeMode(true);
+
 	//FilePaths
 	string filePath = "..\\Assets\\";
 	string filePathRes1 = filePath + "Res_005-011\\";
@@ -38,15 +39,17 @@ void Game::load()
 	//Textures
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Default.png", "Default");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Cube.png", "Cube");
-	Assets::loadTexture(renderer, filePathRes3 + "Textures\\HealthBar.png", "HealthBar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Plane.png", "Plane");
-	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Radar.png", "Radar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Sphere.png", "Sphere");
-
-	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Crosshair.png", "Crosshair");
-	Assets::loadTexture(renderer, filePathRes3 + "Textures\\RacingCar.png", "RacingCar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Rifle.png", "Rifle");
+	Assets::loadTexture(renderer, filePathRes3 + "Textures\\RacingCar.png", "RacingCar");
 
+	//UI Textures
+	Assets::loadTexture(renderer, filePathRes3 + "Textures\\HealthBar.png", "HealthBar");
+	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Radar.png", "Radar");
+	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Crosshair.png", "Crosshair");
+
+	//Meshes
 	Assets::loadMesh(filePathRes3 + "Meshes\\Cube.gpmesh", "Mesh_Cube");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Plane.gpmesh", "Mesh_Plane");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Sphere.gpmesh", "Mesh_Sphere");
@@ -69,7 +72,6 @@ void Game::load()
 	b->setScale(3.0f);
 
 	// Floor and walls
-
 	// Setup floor
 	const float start = -1250.0f;
 	const float size = 250.0f;
@@ -115,12 +117,26 @@ void Game::load()
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
+	/*
 	// Create spheres with audio components playing different sounds
 	Sphere* soundSphere = new Sphere();
 	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
 	soundSphere->setScale(1.0f);
-	//AudioComponent* ac = new AudioComponent(soundSphere);
-	//ac->playEvent("event:/FireLoop");
+	AudioComponent* ac = new AudioComponent(soundSphere);
+	ac->playEvent("event:/FireLoop");
+	*/
+	//1024 width
+	//768  height
+	// UI elements
+	Actor* ui = new Actor();
+	
+	ui->setPosition(Vector3(-(window.getWidth() / 3.5f + 105.0f), -(window.getHeight() / 2.0f - 35.0f), 0.0f));
+	SpriteComponent* sc = new SpriteComponent(ui, Assets::getTexture("HealthBar"));
+
+	ui = new Actor();
+	ui->setPosition(Vector3(window.getWidth() / 2.0f - 137, -(window.getHeight() / 2.0f - 120), 0.0f));
+	ui->setScale(0.75f);
+	sc = new SpriteComponent(ui, Assets::getTexture("Radar"));
 
 	// Corsshair
 	Actor* crosshairActor = new Actor();
