@@ -146,7 +146,7 @@ void Game::load()
 	// Start music
 	//musicEvent = audioSystem.playEvent("event:/Music");
 
-	changeCamera(2);
+	changeCamera(1);
 }
 
 void Game::processInput()
