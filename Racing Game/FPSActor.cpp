@@ -42,16 +42,18 @@ void FPSActor::updateActor(float dt)
 {
 	Actor::updateActor(dt);
 
-	/*// Play the footstep if we're moving and haven't recently
+	/*
+	// Play the footstep if we're moving and haven't recently
 	lastFootstep -= dt;
 	if (!Maths::nearZero(moveComponent->getForwardSpeed()) && lastFootstep <= 0.0f)
 	{
 		footstep.setPaused(false);
 		footstep.restart();
 		lastFootstep = 0.5f;
-	}*/
+	}
+	*/
 
-	// Update position and rotation of model relatively to position
+	//Update position and rotation of model relatively to position
 	Vector3 modelPosition = getPosition();
 	modelPosition += getForward() * MODEL_OFFSET.x;
 	modelPosition += getRight() * MODEL_OFFSET.y;
@@ -68,7 +70,8 @@ void FPSActor::actorInput(const InputState& inputState)
 {
 	float forwardSpeed = 0.0f;
 	float strafeSpeed = 0.0f;
-	// wasd movement
+
+	//KeyBoard Movement
 	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_W))
 	{
 		forwardSpeed += 400.0f;
@@ -88,7 +91,7 @@ void FPSActor::actorInput(const InputState& inputState)
 	moveComponent->setForwardSpeed(forwardSpeed);
 	moveComponent->setStrafeSpeed(strafeSpeed);
 
-	// Mouse mouvement
+	//Mouse Mouvement
 	Vector2 mousePosition = inputState.mouse.getPosition();
 	float x = mousePosition.x;
 	float y = mousePosition.y;
@@ -112,7 +115,7 @@ void FPSActor::actorInput(const InputState& inputState)
 	}
 	cameraComponent->setPitchSpeed(pitchSpeed);
 
-	// Shoot
+	//Shooting
 	if (inputState.mouse.getButtonState(1) == ButtonState::Pressed)
 	{
 		shoot();
@@ -121,37 +124,39 @@ void FPSActor::actorInput(const InputState& inputState)
 
 void FPSActor::shoot()
 {
-	// Get start point (in center of screen on near plane)
+	//Get start point (in center of screen on near plane)
 	Vector3 screenPoint(0.0f, 0.0f, 0.0f);
 	Vector3 start = getGame().getRenderer().unproject(screenPoint);
 
-	// Get end point (in center of screen, between near and far)
+	//Get end point (in center of screen, between near and far)
 	screenPoint.z = 0.9f;
 	Vector3 end = getGame().getRenderer().unproject(screenPoint);
 
-	// Get direction vector
+	//Get direction vector
 	Vector3 dir = end - start;
 	dir.normalize();
 
-	// Spawn a ball
+	//Spawn a ball
 	BallActor* ball = new BallActor();
 	ball->setPlayer(this);
-	ball->setPosition(start + dir * 20.0f);
+	ball->setPosition(start + dir * 40.0f);
 
-	// Rotate the ball to face new direction
+	//Rotate the ball to face new direction
 	ball->rotateToNewForward(dir);
 
-	// Play shooting sound
+	//Play shooting sound
 	//audioComponent->playEvent("event:/Shot");
 }
 
-/*void FPSActor::setFootstepSurface(float value)
+/*
+void FPSActor::setFootstepSurface(float value)
 {
 	// Pause here because the way I setup the parameter in FMOD
 	// changing it will play a footstep
 	footstep.setPaused(true);
 	footstep.setParameter("Surface", value);
-}*/
+}
+*/
 
 void FPSActor::setVisible(bool isVisible)
 {
@@ -160,7 +165,7 @@ void FPSActor::setVisible(bool isVisible)
 
 void FPSActor::fixCollisions()
 {
-	// Need to recompute world transform to update world box
+	//Need to recompute world transform to update world box
 	computeWorldTransform();
 
 	const AABB& playerBox = boxComponent->getWorldBox();
