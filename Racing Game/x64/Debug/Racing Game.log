@@ -1,4 +1,22 @@
-﻿  BallActor.cpp
-  TargetActor.cpp
+﻿  Actor.cpp
+  BallMoveComponent.cpp
+  BoxComponent.cpp
+  Camera.cpp
+  CameraComponent.cpp
+  Component.cpp
+  ControllerState.cpp
+  FPSActor.cpp
+  FollowActor.cpp
+  Game.cpp
+  InputComponent.cpp
+  InputSystem.cpp
+  KeyboardState.cpp
+  MeshComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MeshComponent.cpp(28,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  MouseState.cpp
+  OrbitActor.cpp
+  PlaneActor.cpp
+  SpriteComponent.cpp
+  main.cpp
   Generating Code...
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe

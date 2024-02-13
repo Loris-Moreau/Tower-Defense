@@ -77,7 +77,6 @@ void Game::load()
 	b->setScale(3.0f);
 
 	// Floor and walls
-
 	// Setup floor
 	const float start = -1250.0f;
 	const float size = 250.0f;
@@ -103,8 +102,8 @@ void Game::load()
 		p->setRotation(q);
 	}
 
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
 	// Forward/back walls
+	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
 	for (int i = 0; i < 10; i++)
 	{
 		PlaneActor* p = new PlaneActor();
@@ -138,6 +137,7 @@ void Game::load()
 	// Start music
 	//musicEvent = audioSystem.playEvent("event:/Music");
 
+	//Targets
 	TargetActor* t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
 	t = new TargetActor();

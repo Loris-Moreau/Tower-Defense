@@ -1,7 +1,9 @@
 #pragma once
+
 #include <SDL_stdinc.h>
 #include <SDL_gamecontroller.h>
 #include "Vector2.h"
+
 class ControllerState
 {
 public:
@@ -28,4 +30,3 @@ private:
 	float rightTrigger;
 	bool isConnected;
 };
-

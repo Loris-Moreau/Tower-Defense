@@ -9,9 +9,7 @@ ControllerState::ControllerState() :
 	rightTrigger(0.0f),
 	isConnected(false)
 {
-
 }
-
 
 bool ControllerState::getButtonValue(SDL_GameControllerButton button) const
 {
