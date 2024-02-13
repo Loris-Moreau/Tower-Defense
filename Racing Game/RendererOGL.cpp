@@ -93,6 +93,32 @@ void RendererOGL::close()
 	SDL_GL_DeleteContext(context);
 }
 
+Vector3 RendererOGL::unproject(const Vector3& screenPoint) const
+{
+	// Convert screenPoint to device coordinates (between -1 and +1)
+	Vector3 deviceCoord = screenPoint;
+	deviceCoord.x /= WINDOW_WIDTH * 0.5f;
+	deviceCoord.y /= WINDOW_HEIGHT * 0.5f;
+
+	// Transform vector by unprojection matrix
+	Matrix4 unprojection = view * projection;
+	unprojection.invert();
+	return Vector3::transformWithPerspDiv(deviceCoord, unprojection);
+}
+
+void RendererOGL::getScreenDirection(Vector3& outStart, Vector3& outDir) const
+{
+	// Get start point (in center of screen on near plane)
+	Vector3 screenPoint(0.0f, 0.0f, 0.0f);
+	outStart = unproject(screenPoint);
+	// Get end point (in center of screen, between near and far)
+	screenPoint.z = 0.9f;
+	Vector3 end = unproject(screenPoint);
+	// Get direction vector
+	outDir = end - outStart;
+	outDir.normalize();
+}
+
 void RendererOGL::drawMeshes()
 {
 	// Enable depth buffering/disable alpha blend
@@ -135,13 +161,13 @@ void RendererOGL::removeSprite(SpriteComponent* sprite)
 void RendererOGL::drawSprites()
 {
 	glDisable(GL_DEPTH_TEST);
-	// Enable alpha blending on the color buffer
+	//Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
 	glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
-	// Active shader and vertex array
+	//Active shader and vertex array
 	Shader& spriteShader = Assets::getShader("Sprite");
 	spriteShader.use();
 	spriteShader.setMatrix4("uViewProj", spriteViewProj);

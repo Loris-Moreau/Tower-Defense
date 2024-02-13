@@ -9,6 +9,7 @@
 //#include "AudioSystem.h"
 #include "InputSystem.h"
 #include "PhysicsSystem.h"
+#include "PlaneActor.h"
 
 using std::vector;
 
@@ -42,6 +43,11 @@ public:
 	//AudioSystem& getAudioSystem() { return audioSystem; }
 	PhysicsSystem& getPhysicsSystem() { return physicsSystem; }
 
+	// Game-specific
+	void addPlane(class PlaneActor* plane);
+	void removePlane(class PlaneActor* plane);
+	vector<PlaneActor*>& getPlanes() { return planes; }
+
 
 private:
 	void processInput();
@@ -60,9 +66,9 @@ private:
 	vector<Actor*> pendingActors;
 
 	// Game specific
-	void changeCamera(int mode);
 	//SoundEvent musicEvent;
 	class FPSActor* fps;
 	class SpriteComponent* crosshair;
-	class FollowActor* follow;
+	vector<PlaneActor*> planes;
 };
+

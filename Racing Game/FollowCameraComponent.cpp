@@ -8,7 +8,6 @@ FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
 	targetDistance(FOLLOW_TARGET_DISTANCE),
 	springConstant(FOLLOW_SPRING_CONSTANT)
 {
-
 }
 
 void FollowCameraComponent::update(float dt)
