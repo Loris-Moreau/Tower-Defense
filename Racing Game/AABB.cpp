@@ -22,24 +22,30 @@ void AABB::rotate(const Quaternion& q)
 {
 	// Construct the 8 points for the corners of the box
 	array<Vector3, 8> points;
+
 	// Min point is always a corner
 	points[0] = min;
+
 	// Permutations with 2 min and 1 max
 	points[1] = Vector3(max.x, min.y, min.z);
 	points[2] = Vector3(min.x, max.y, min.z);
 	points[3] = Vector3(min.x, min.y, max.z);
+
 	// Permutations with 2 max and 1 min
 	points[4] = Vector3(min.x, max.y, max.z);
 	points[5] = Vector3(max.x, min.y, max.z);
 	points[6] = Vector3(max.x, max.y, min.z);
+
 	// Max point corner
 	points[7] = Vector3(max);
 
 	// Rotate first point
 	Vector3 p = Vector3::transform(points[0], q);
+
 	// Reset min/max to first point rotated
 	min = p;
 	max = p;
+
 	// Update min/max based on remaining points, rotated
 	for (size_t i = 1; i < points.size(); i++)
 	{
@@ -56,6 +62,7 @@ bool AABB::contains(const Vector3& point) const
 		point.x > max.x ||
 		point.y > max.y ||
 		point.z > max.z;
+
 	return !outside;
 }
 
