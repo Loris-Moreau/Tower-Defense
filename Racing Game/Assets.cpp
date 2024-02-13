@@ -67,13 +67,16 @@ void Assets::clear()
     for (auto iter : textures)
         iter.second.unload();
     textures.clear();
+
     // (Properly) delete all shaders
     for (auto iter : shaders)
         iter.second.unload();
     shaders.clear();
+
     // (Properly) delete all meshes
     for (auto iter : meshes)
         iter.second.unload();
+
     meshes.clear();
 }
 
@@ -100,22 +103,28 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     std::string tcCode;
     std::string teCode;
     std::string geometryCode;
-    try {
+    try 
+    {
         // Open files
         std::ifstream vertexShaderFile(vShaderFile);
         std::ifstream fragmentShaderFile(fShaderFile);
         std::stringstream vShaderStream, fShaderStream;
+
         // Read file's buffer contents into streams
         vShaderStream << vertexShaderFile.rdbuf();
         fShaderStream << fragmentShaderFile.rdbuf();
+
         // close file handlers
         vertexShaderFile.close();
         fragmentShaderFile.close();
+
         // Convert stream into string
         vertexCode = vShaderStream.str();
         fragmentCode = fShaderStream.str();
+
         // If tess control shader path is present, also load a tess control shader
-        if (tcShaderFile != "") {
+        if (tcShaderFile != "") 
+        {
             std::ifstream tessControlShaderFile(tcShaderFile);
             std::stringstream tcShaderStream;
             tcShaderStream << tessControlShaderFile.rdbuf();
@@ -123,7 +132,8 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             tcCode = tcShaderStream.str();
         }
         // If tess evaluation shader path is present, also load a tess evaluation shader
-        if (teShaderFile != "") {
+        if (teShaderFile != "") 
+        {
             std::ifstream tessEvalShaderFile(teShaderFile);
             std::stringstream teShaderStream;
             teShaderStream << tessEvalShaderFile.rdbuf();
@@ -131,7 +141,8 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             teCode = teShaderStream.str();
         }
         // If geometry shader path is present, also load a geometry shader
-        if (gShaderFile != "") {
+        if (gShaderFile != "") 
+        {
             std::ifstream geometryShaderFile(gShaderFile);
             std::stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
@@ -139,7 +150,8 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             geometryCode = gShaderStream.str();
         }
     }
-    catch (std::exception e) {
+    catch (std::exception e) 
+    {
         std::ostringstream loadError;
         std::string geomShaderFile = "";
         if (gShaderFile != "")
@@ -147,7 +159,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
 
         loadError << "ERROR::SHADER: Failed to read shader files " << vShaderFile << " " << fShaderFile << " "
             << geomShaderFile << "\n"
-            << "\n -- --------------------------------------------------- -- "
+            << "\n --  ------------------------------------------------------------------------------------------------------  -- "
             << std::endl;
         Log::error(LogCategory::Render, loadError.str());
     }
@@ -156,6 +168,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     const GLchar* tcShaderCode = tcCode.c_str();
     const GLchar* teShaderCode = teCode.c_str();
     const GLchar* gShaderCode = geometryCode.c_str();
+
     // 2. Now create shader object from source code
     Shader shader;
     shader.compile(vShaderCode, fShaderCode,
@@ -172,7 +185,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	std::ifstream file(filename);
 	if (!file.is_open())
 	{
-		Log::error(LogCategory::Application, "File not found: Mesh " + filename);
+		Log::error(LogCategory::Application, "File not found : Mesh " + filename);
 	}
 
 	std::stringstream fileStream;
@@ -281,7 +294,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	// Now create a vertex array
 	mesh.setVertexArray(new VertexArray(vertices.data(), static_cast<unsigned int>(vertices.size()) / vertSize,	indices.data(), static_cast<unsigned int>(indices.size())));
 
-    Log::info("Loaded mesh " + filename);
+    Log::info("Loaded mesh    " + filename);
 
 	return mesh;
 }

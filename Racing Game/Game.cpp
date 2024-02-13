@@ -80,12 +80,22 @@ void Game::load()
 	// Setup floor
 	const float start = -1250.0f;
 	const float size = 250.0f;
+
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
 			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
+			p->setPosition(Vector3(start + i * size, start + j * size, -size / 2));
+		}
+	}
+	//Ceilling
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			PlaneActor* p = new PlaneActor();
+			p->setPosition(Vector3(start + i * size, start + j * size, size * 2.0f));
 		}
 	}
 
@@ -119,7 +129,7 @@ void Game::load()
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
 	DirectionalLight& dir = renderer.getDirectionalLight();
 	dir.direction = Vector3(0.0f, -0.707f, -0.707f);
-	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
+	dir.diffuseColor = Vector3(0.75f, 0.85f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
 	/*// Create spheres with audio components playing different sounds
@@ -139,13 +149,13 @@ void Game::load()
 
 	//Targets
 	TargetActor* t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
+	t->setPosition(Vector3(-start + (size - 10), 0.0f, size / 4));
 	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
+	t->setPosition(Vector3(-start + (size - 10), 0.0f, 375));
 	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
+	t->setPosition(Vector3(-start + (size - 10), -size * 2, 200.0f));
 	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
+	t->setPosition(Vector3(-start + (size - 10), size * 2, 200.0f));
 }
 
 void Game::processInput()

@@ -23,4 +23,3 @@ protected:
 	Actor& owner;
 	int updateOrder;		// Order of the component in the actor's updateComponent method
 };
-

@@ -4,7 +4,7 @@
 //#include "AudioComponent.h"
 #include "BallMoveComponent.h"
 
-BallActor::BallActor() : Actor(), lifetimeSpan(10.0f),/* audio(nullptr),*/ ballMove(nullptr)
+BallActor::BallActor() : Actor(), lifetimeSpan(25.0f),/* audio(nullptr),*/ ballMove(nullptr)
 {
 	MeshComponent* mc = new MeshComponent(this);
 	mc->setMesh(Assets::getMesh("Mesh_Sphere"));
@@ -32,4 +32,5 @@ void BallActor::setPlayer(Actor* player)
 void BallActor::hitTarget()
 {
 	//audio->playEvent("event:/Ding");
+
 }
