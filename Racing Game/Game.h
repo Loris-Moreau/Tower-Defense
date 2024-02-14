@@ -71,4 +71,3 @@ private:
 	class SpriteComponent* crosshair;
 	vector<PlaneActor*> planes;
 };
-

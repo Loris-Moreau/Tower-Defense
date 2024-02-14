@@ -79,7 +79,7 @@ void Game::load()
 	// Floor and walls
 	// Setup floor
 	const float start = -1250.0f;
-	const float size = 250.0f;
+	const float size = 1000.0f;
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -89,7 +89,7 @@ void Game::load()
 			p->setPosition(Vector3(start + i * size, start + j * size, -size / 2));
 		}
 	}
-	//Ceilling
+	/*//Ceilling
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -123,7 +123,7 @@ void Game::load()
 		p = new PlaneActor();
 		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
 		p->setRotation(q);
-	}
+	}*/
 
 	// Setup lights
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
@@ -132,30 +132,20 @@ void Game::load()
 	dir.diffuseColor = Vector3(0.75f, 0.85f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
-	/*// Create spheres with audio components playing different sounds
-	SphereActor* soundSphere = new SphereActor();
-	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
-	soundSphere->setScale(1.0f);
-	AudioComponent* ac = new AudioComponent(soundSphere);
-	ac->playEvent("event:/FireLoop");*/
-
 	// Corsshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
-	// Start music
-	//musicEvent = audioSystem.playEvent("event:/Music");
-
 	//Targets
 	TargetActor* t = new TargetActor();
-	t->setPosition(Vector3(-start + (size - 10), 0.0f, size / 4));
+	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
 	t = new TargetActor();
-	t->setPosition(Vector3(-start + (size - 10), 0.0f, 375));
+	t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
 	t = new TargetActor();
-	t->setPosition(Vector3(-start + (size - 10), -size * 2, 200.0f));
+	t->setPosition(Vector3(1450.0f, -500, 200.0f));
 	t = new TargetActor();
-	t->setPosition(Vector3(-start + (size - 10), size * 2, 200.0f));
+	t->setPosition(Vector3(1450.0f, 500, 200.0f));
 }
 
 void Game::processInput()

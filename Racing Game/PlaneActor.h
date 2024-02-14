@@ -9,8 +9,6 @@ public:
 	~PlaneActor();
 	class BoxComponent* getBox() { return box; }
 
-
 private:
 	class BoxComponent* box;
 };
-
