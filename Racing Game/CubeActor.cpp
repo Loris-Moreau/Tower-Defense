@@ -6,18 +6,10 @@
 
 CubeActor::CubeActor() : Actor()
 {
-	setScale(1.0f);
+	setRotation(Quaternion(Vector3::unitZ, Maths::pi));
 	MeshComponent* mc = new MeshComponent(this);
-	Mesh* mesh = &Assets::getMesh("Mesh_Cube");
-	mc->setMesh(*mesh);
-	box = new BoxComponent(this);
-	//box->setShouldRotate(true);
-	box->setObjectBox(mesh->getBox());
-
-	getGame().addActor(this);
-}
-
-CubeActor::~CubeActor()
-{
-	getGame().removeActor(this);
+	mc->setMesh(Assets::getMesh("Mesh_Cube"));
+	// Add collision box
+	BoxComponent* bc = new BoxComponent(this);
+	bc->setObjectBox(Assets::getMesh("Mesh_Cube").getBox());
 }

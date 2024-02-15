@@ -36,4 +36,5 @@ void BallActor::hitTarget(CubeActor* target)
 	{
 		target->setState(ActorState::Dead);
 	}
+	setState(ActorState::Dead);
 }
