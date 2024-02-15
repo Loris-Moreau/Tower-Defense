@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include "Vector3.h"
 
@@ -11,4 +12,3 @@ struct Spline
 	size_t getNbPoints() const { return controlPoints.size(); }
 	Vector3 compute(size_t index, float t) const;
 };
-

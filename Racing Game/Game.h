@@ -28,7 +28,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), splineActor(nullptr), crosshair(nullptr) {}
 
 public:
 	bool initialize();
@@ -67,7 +67,10 @@ private:
 
 	// Game specific
 	//SoundEvent musicEvent;
-	class FPSActor* fps;
+	//class FPSActor* fps;
+	//class OrbitActor* orbitActor;
+	class SplineActor* splineActor;
+
 	class SpriteComponent* crosshair;
 	vector<PlaneActor*> planes;
 };

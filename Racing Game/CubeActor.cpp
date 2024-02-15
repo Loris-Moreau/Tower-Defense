@@ -11,6 +11,7 @@ CubeActor::CubeActor() : Actor()
 	Mesh* mesh = &Assets::getMesh("Mesh_Cube");
 	mc->setMesh(*mesh);
 	box = new BoxComponent(this);
+	//box->setShouldRotate(true);
 	box->setObjectBox(mesh->getBox());
 
 	getGame().addActor(this);

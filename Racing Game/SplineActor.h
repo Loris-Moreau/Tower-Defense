@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Actor.h"
+
 class SplineActor : public Actor
 {
 public:
@@ -12,4 +14,3 @@ public:
 private:
 	class SplineCameraComponent* cameraComponent;
 };
-

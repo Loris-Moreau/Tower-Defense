@@ -28,4 +28,4 @@ private:
 	class BoxComponent* boxComponent;
 };
 
-const Vector3 MODEL_OFFSET = Vector3(10.0f, 10.0f, -10.0f);
+const Vector3 MODEL_OFFSET = Vector3(10.0f, 10.0f, -10.0f); //Gun Model Offset

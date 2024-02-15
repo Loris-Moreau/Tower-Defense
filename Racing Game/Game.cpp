@@ -63,10 +63,15 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
 
-	fps = new FPSActor();
+	//fps = new FPSActor();
+	//orbitActor = new OrbitActor();
+	splineActor = new SplineActor();
 
+
+	/*
 	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
+
+	a->setPosition(Vector3(2000.0f, 0.0f, 1.0f));
 	a->setScale(100.0f);
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
@@ -75,15 +80,16 @@ void Game::load()
 	SphereActor* b = new SphereActor();
 	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
 	b->setScale(3.0f);
+	*/
 
 	// Floor and walls
 	// Setup floor
-	const float start = -1250.0f;
 	const float size = 1000.0f;
+	const float start = -4000;
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int j = 0; j < 20; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, -size / 2));
@@ -137,6 +143,7 @@ void Game::load()
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
+	/*
 	//Targets
 	TargetActor* t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
@@ -146,6 +153,28 @@ void Game::load()
 	t->setPosition(Vector3(1450.0f, -500, 200.0f));
 	t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 500, 200.0f));
+	*/
+
+	/*//Cube Targets
+	CubeActor* a = new CubeActor();
+	a->setPosition(Vector3(2000.0f, 0.0f, -size / 2 + 50));
+	a->setScale(500.0f);*/
+
+	for (int i = 0; i < 5; i++)
+	{
+		int r = rand() % 1000;
+
+		for (int j = 0; j < 5; j++)
+		{
+			int r2 = rand() % 1000;
+
+			CubeActor* a = new CubeActor;
+			a->setPosition(Vector3(i * size + r2, j * size - r, -size / 2 + ((i + j) * 20)));
+
+			float randScale = rand() % 70 + 400;
+			a->setScale(randScale);
+		}
+	}
 }
 
 void Game::processInput()
