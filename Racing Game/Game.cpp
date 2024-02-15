@@ -14,6 +14,7 @@
 #include "TargetActor.h"
 #include <algorithm>
 #include <algorithm>
+#include "Random.h"
 
 bool Game::initialize()
 {
@@ -159,18 +160,22 @@ void Game::load()
 	a->setPosition(Vector3(2000.0f, 0.0f, -size / 2 + 50));
 	a->setScale(500.0f);*/
 
+	Random rando;
 	for (int i = 0; i < 5; i++)
 	{
-		int r = rand() % 1000;
+		//int r = rand() % 1000;
+		int r = rando.getIntRange(100, 1000);
 
 		for (int j = 0; j < 5; j++)
 		{
-			int r2 = rand() % 1000;
+			//int r2 = rand() % 1000;
+			int r2 = rando.getIntRange(100, 1000);
 
 			CubeActor* a = new CubeActor;
 			a->setPosition(Vector3(i * size + r2, j * size - r, -size / 2 + ((i + j) * 20)));
 
-			float randScale = rand() % 70 + 400;
+			//float randScale = rand() % 50 + 450;
+			float randScale = rando.getFloatRange(250, 550);
 			a->setScale(randScale);
 		}
 	}
