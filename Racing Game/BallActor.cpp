@@ -38,3 +38,8 @@ void BallActor::hitTarget(CubeActor* target)
 	}
 	setState(ActorState::Dead);
 }
+
+void BallActor::hitPlane(PlaneActor* actor)
+{
+	setAngle(Vector3::unitX,0);
+}

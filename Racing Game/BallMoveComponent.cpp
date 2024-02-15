@@ -38,11 +38,18 @@ void BallMoveComponent::update(float dt)
 		dir = Vector3::reflect(dir, info.normal);
 		owner.rotateToNewForward(dir);
 
-		// Did we hit a target?
+		// Did we hit a Cube ?
 		CubeActor* target = dynamic_cast<CubeActor*>(info.actor);
 		if (target)
 		{
 			static_cast<BallActor*>(&owner)->hitTarget(target);
+		}
+
+		// Did we hit a Plane ?
+		PlaneActor* pTarget = dynamic_cast<PlaneActor*>(info.actor);
+		if (pTarget)
+		{
+			static_cast<BallActor*>(&owner)->hitPlane(pTarget);
 		}
 	}
 
