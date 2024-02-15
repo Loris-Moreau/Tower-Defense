@@ -83,8 +83,8 @@ void Game::load()
 
 	// Floor and walls
 	// Setup floor
+	const float start = -4000.0f;
 	const float size = 1000.0f;
-	const float start = -4000;
 
 	for (int i = 0; i < 20; i++)
 	{
