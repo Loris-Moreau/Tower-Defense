@@ -11,6 +11,8 @@ public:
 
 	void updateActor(float dt) override;
 	void setPlayer(Actor* player);
+
+	//hit functions
 	void hitTarget(CubeActor* target);
 	void hitPlane(PlaneActor* actor);
 

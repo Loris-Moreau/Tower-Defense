@@ -41,5 +41,5 @@ void BallActor::hitTarget(CubeActor* target)
 
 void BallActor::hitPlane(PlaneActor* actor)
 {
-	setAngle(Vector3::unitX,0);
+	setAngle(Vector3::unitX, 0);
 }
