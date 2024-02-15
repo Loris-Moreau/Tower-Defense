@@ -3,6 +3,7 @@
 #include "Assets.h"
 //#include "AudioComponent.h"
 #include "BallMoveComponent.h"
+#include "PhysicsSystem.h"
 
 BallActor::BallActor() : Actor(), lifetimeSpan(25.0f),/* audio(nullptr),*/ ballMove(nullptr)
 {
@@ -29,8 +30,10 @@ void BallActor::setPlayer(Actor* player)
 	ballMove->setPlayer(player);
 }
 
-void BallActor::hitTarget()
+void BallActor::hitTarget(CubeActor* target)
 {
-	//audio->playEvent("event:/Ding");
-
+	if (target != nullptr)
+	{
+		target->setState(ActorState::Dead);
+	}
 }

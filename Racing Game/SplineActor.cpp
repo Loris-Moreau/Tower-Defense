@@ -12,11 +12,11 @@ SplineActor::SplineActor() : Actor(), cameraComponent(nullptr)
 	{
 		if (i % 2 == 0)
 		{
-			spline.controlPoints.emplace_back(Vector3(0,0,0));
+			spline.controlPoints.emplace_back(Vector3(300.0f * (i + 1), 300.0f, 500));
 		}
 		else
 		{
-			spline.controlPoints.emplace_back(Vector3(0,1000,20));
+			spline.controlPoints.emplace_back(Vector3(300.0f * (i + 1), 0, 500));
 		}
 	}
 

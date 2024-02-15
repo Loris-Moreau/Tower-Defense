@@ -63,10 +63,9 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
 
-	//fps = new FPSActor();
+	fps = new FPSActor();
 	//orbitActor = new OrbitActor();
-	splineActor = new SplineActor();
-
+	//path = new SplineActor();
 
 	/*
 	CubeActor* a = new CubeActor();

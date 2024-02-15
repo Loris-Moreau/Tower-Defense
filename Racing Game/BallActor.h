@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Actor.h"
+#include "CubeActor.h"
 
 class BallActor : public Actor
 {
@@ -9,7 +10,7 @@ public:
 
 	void updateActor(float dt) override;
 	void setPlayer(Actor* player);
-	void hitTarget();
+	void hitTarget(CubeActor* target);
 
 private:
 	//class AudioComponent* audio;

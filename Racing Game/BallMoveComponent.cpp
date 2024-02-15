@@ -5,6 +5,7 @@
 #include "Collisions.h"
 #include "PhysicsSystem.h"
 #include "BallActor.h"
+#include "CubeActor.h"
 #include "TargetActor.h"
 #include "Game.h"
 
@@ -38,10 +39,10 @@ void BallMoveComponent::update(float dt)
 		owner.rotateToNewForward(dir);
 
 		// Did we hit a target?
-		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
+		CubeActor* target = dynamic_cast<CubeActor*>(info.actor);
 		if (target)
 		{
-			static_cast<BallActor*>(&owner)->hitTarget();
+			static_cast<BallActor*>(&owner)->hitTarget(target);
 		}
 	}
 
