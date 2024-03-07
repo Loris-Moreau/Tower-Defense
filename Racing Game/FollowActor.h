@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Actor.h"
+
 class FollowActor : public Actor
 {
 public:

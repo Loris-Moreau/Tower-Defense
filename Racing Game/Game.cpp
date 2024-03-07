@@ -67,19 +67,19 @@ void Game::load()
 	//orbit = new OrbitActor();
 	//path = new SplineActor();
 	follow = new FollowActor();
-	follow->setSpeed(750.0f); // Changer vitesse 
+	follow->setSpeed(700.0f); // Changer vitesse 
 
+	Random rando;
 	// Cube for Boat
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		CubeActor* a = new CubeActor();
-		a->setPosition(Vector3(Random::getFloatRange(2000, 20000), Random::getFloatRange(-900, 900), 0.0f));
-		a->setScale(200.f);
-	}
+		a->setPosition(Vector3(rando.getFloatRange(2000, 50000), rando.getFloatRange(-2500, 2500), rando.getFloatRange(-0.1f,2.0f)));
 
-	SphereActor* s = new SphereActor();
-	s->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	s->setScale(3.0f);
+		//float randScale = rand() % 50 + 450;
+		float randScale = rando.getFloatRange(200, 950);
+		a->setScale(randScale);
+	}
 
 	// Floor and walls
 	// Setup floor
@@ -93,37 +93,6 @@ void Game::load()
 			p->setPosition(Vector3(-200 + i * size, start + j * size, 0));
 		}
 	}
-	Quaternion q(Vector3::unitY, -Maths::piOver2);
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 2.0f));
-	// Left/right walls
-	q = Quaternion(Vector3::unitX, Maths::piOver2);
-	for (int i = 0; i < 50; i++)
-	{
-		PlaneActor* p = new PlaneActor();
-		p->setPosition(Vector3(-200 + i * size, -200 - size, 0.0f));
-		p->setRotation(q);
-		p->setScale(50.0f);
-
-		p = new PlaneActor();
-		p->setPosition(Vector3(-200 + i * size, 200 + size, 0.0f));
-		p->setRotation(q);
-		p->setScale(50.0f);
-	}
-
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
-	/*
-	// Forward/back walls
-	for (int i = 0; i < 20; i++)
-	{
-		PlaneActor* p = new PlaneActor();
-		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
-		p->setRotation(q);
-
-		p = new PlaneActor();
-		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
-		p->setRotation(q);
-	}
-	*/
 
 	// Setup lights
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));

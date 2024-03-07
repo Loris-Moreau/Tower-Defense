@@ -17,7 +17,7 @@ FollowActor::FollowActor() :
 {
 	meshComponent = new MeshComponent(this);
 	meshComponent->setMesh(Assets::getMesh("Mesh_RacingCar"));
-	setPosition(Vector3(0.0f, 0.0f, 100.0f));		// Position Car on the map with coordinate
+	setPosition(Vector3(0.0f, 0.0f, 500.0f));		// Position Car on the map with coordinate
 
 	boxComponent = new BoxComponent(this);
 	AABB collision(Vector3(-35.0f, -35.f, -85.7f), Vector3(35.f, 35.f, 87.5f));
@@ -31,18 +31,8 @@ FollowActor::FollowActor() :
 
 void FollowActor::actorInput(const InputState& inputState)
 {
-	//float forwardSpeed = 0.0f;
 	float strafeSpeed = 0.0f;
-	// wasd movement
-	/*if (inputState.keyboard.getKeyValue(SDL_SCANCODE_W))
-	{
-		forwardSpeed += 400.0f;
-	}
-	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_S))
-	{
-		forwardSpeed -= 400.0f;
-	}
-	*/
+	
 	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_A))
 	{
 		strafeSpeed -= 1000.0f;
@@ -58,20 +48,6 @@ void FollowActor::actorInput(const InputState& inputState)
 
 	moveComponent->setForwardSpeed(speed);
 	moveComponent->setStrafeSpeed(strafeSpeed);
-	
-
-	/*
-	// Adjust horizontal distance of camera based on speed
-	if (!Maths::nearZero(forwardSpeed))
-	{
-		cameraComponent->setHorizontalDistance(500.0f);
-	}
-	else
-	{
-		cameraComponent->setHorizontalDistance(350.0f);
-	}
-	*/
-
 }
 
 void FollowActor::updateActor(float dt)
