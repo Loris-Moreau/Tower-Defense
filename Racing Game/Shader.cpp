@@ -178,7 +178,7 @@ void Shader::printShaderInfoLog(GLuint shaderIndex)
     char log[2048];
     glGetShaderInfoLog(shaderIndex, max_length, &actual_length, log);
     std::ostringstream s;
-    s << "Shader info log for GL index " << shaderIndex << " \n";
+    s << "Shader info log for GL index " << shaderIndex;
     Log::info(s.str());
 }
 
@@ -189,7 +189,7 @@ void Shader::printProgrammeInfoLog(GLuint id)
     char log[2048];
     glGetProgramInfoLog(id, max_length, &actual_length, log);
     std::ostringstream s;
-    s << "Program info log for GL index " << id << " \n";
+    s << "Program info log for GL index " << id;
     Log::info(s.str());
 }
 
@@ -244,9 +244,9 @@ const char* Shader::GLTypeToString(GLenum type)
 
 void Shader::printAllParams(GLuint id)
 {
-    Log::info(" ------------------------------------------------------------------------------------------------- \n");
+    Log::info("-----------------------------");
     std::ostringstream s;
-    s << "Shader program " << id << " info : ";
+    s << "Shader programme " << id << " info: ";
     Log::info(s.str());
     int params = -1;
     glGetProgramiv(id, GL_LINK_STATUS, &params);
@@ -279,7 +279,7 @@ void Shader::printAllParams(GLuint id)
                 sprintf_s(long_name, "%s[%i]", name, j);
                 int location = glGetAttribLocation(id, long_name);
                 std::ostringstream s;
-                s << "  " << i << ") type : " << GLTypeToString(type) << " name : " << long_name << " location : " << location;
+                s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << long_name << " location:" << location;
                 Log::info(s.str());
             }
         }
@@ -287,7 +287,7 @@ void Shader::printAllParams(GLuint id)
         {
             int location = glGetAttribLocation(id, name);
             std::ostringstream s;
-            s << "  " << i << ") type : " << GLTypeToString(type) << " name : " << name << " location : " << location;
+            s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << name << " location:" << location;
             Log::info(s.str());
         }
     }
@@ -312,7 +312,7 @@ void Shader::printAllParams(GLuint id)
                 sprintf_s(long_name, "%s[%i]", name, j);
                 int location = glGetUniformLocation(id, long_name);
                 std::ostringstream s;
-                s << "  " << i << ") type : " << GLTypeToString(type) << " name : " << long_name << " location : " << location;
+                s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << long_name << " location:" << location;
                 Log::info(s.str());
             }
         }
@@ -320,7 +320,7 @@ void Shader::printAllParams(GLuint id)
         {
             int location = glGetUniformLocation(id, name);
             std::ostringstream s;
-            s << "  " << i << ") type : " << GLTypeToString(type) << " name : " << name << " location : " << location;
+            s << "  " << i << ") type:" << GLTypeToString(type) << " name:" << name << " location:" << location;
             Log::info(s.str());
         }
     }

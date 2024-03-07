@@ -127,4 +127,3 @@ public:
 
 	static const Quaternion identity;
 };
-

@@ -61,4 +61,3 @@ private:
 	Vector3 ambientLight;
 	DirectionalLight dirLight;
 };
-

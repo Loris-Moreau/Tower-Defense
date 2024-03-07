@@ -1,6 +1,6 @@
 #include "InputComponent.h"
-#include "InputSystem.h"
 #include <SDL_scancode.h>
+#include "InputSystem.h"
 
 InputComponent::InputComponent(Actor* ownerP) :
 	MoveComponent(ownerP),

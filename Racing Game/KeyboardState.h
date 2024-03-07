@@ -1,5 +1,4 @@
 #pragma once
-
 #include <SDL_keyboard.h>
 
 class KeyboardState
@@ -14,4 +13,3 @@ private:
 	const Uint8* currentState;
 	Uint8 previousState[SDL_NUM_SCANCODES];
 };
-

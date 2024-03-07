@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Actor.h"
-
 class SplineActor : public Actor
 {
 public:

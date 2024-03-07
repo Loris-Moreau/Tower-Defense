@@ -1,12 +1,10 @@
 #pragma once
-
 #include <vector>
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
 #include "Vector2.h"
 #include "RendererOGL.h"
-//#include "AudioSystem.h"
 #include "InputSystem.h"
 #include "PhysicsSystem.h"
 #include "PlaneActor.h"
@@ -40,7 +38,6 @@ public:
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
 	RendererOGL& getRenderer() { return renderer; }
-	//AudioSystem& getAudioSystem() { return audioSystem; }
 	PhysicsSystem& getPhysicsSystem() { return physicsSystem; }
 
 	// Game-specific
@@ -57,7 +54,6 @@ private:
 	bool isRunning;
 	Window window;
 	RendererOGL renderer;
-	//AudioSystem audioSystem;
 	InputSystem inputSystem;
 	PhysicsSystem physicsSystem;
 
@@ -66,11 +62,10 @@ private:
 	vector<Actor*> pendingActors;
 
 	// Game specific
-	//SoundEvent musicEvent;
 	class FPSActor* fps;
-	//class OrbitActor* orbitActor;
-	//class SplineActor* path;
-
+	class FollowActor* follow;
+	class OrbitActor* orbit;
+	class SplineActor* path;
 	class SpriteComponent* crosshair;
 	vector<PlaneActor*> planes;
 };

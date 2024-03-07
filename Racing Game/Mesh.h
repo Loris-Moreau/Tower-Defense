@@ -38,4 +38,3 @@ private:
 	float specularPower;
 	AABB box;
 };
-

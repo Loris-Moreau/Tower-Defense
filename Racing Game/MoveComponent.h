@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Component.h"
-
 class MoveComponent : public Component
 {
 public:
@@ -17,6 +15,7 @@ public:
 	void setForwardSpeed(float forwardSpeedP);
 	void setAngularSpeed(float angularSpeedP);
 	void setStrafeSpeed(float strafeSpeedP);
+	void setLateralSpeed(float lateralSpeedP);
 
 	void update(float dt) override;
 
@@ -25,5 +24,5 @@ private:
 	float forwardSpeed;
 	float angularSpeed;
 	float strafeSpeed;
+	float lateralSpeed;
 };
-

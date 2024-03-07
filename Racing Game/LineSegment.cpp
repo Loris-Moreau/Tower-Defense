@@ -53,7 +53,7 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 	float tc, tN, tD = D;       // tc = tN / tD, default tD = D >= 0
 
 	// compute the line parameters of the two closest points
-	if (Maths::nearZero(D)) 
+	if (Maths::nearZero(D))
 	{
 		// the lines are almost parallel
 		sN = 0.0;         // force using point P0 on segment S1
@@ -62,8 +62,8 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 		tD = c;
 	}
 	// get the closest points on the infinite lines
-	else 
-	{                 
+	else
+	{
 		sN = (b * e - c * d);
 		tN = (a * e - b * d);
 		if (sN < 0.0) {        // sc < 0 => the s=0 edge is visible
@@ -79,7 +79,7 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 	}
 
 	// tc < 0 => the t=0 edge is visible
-	if (tN < 0.0) {            
+	if (tN < 0.0) {
 		tN = 0.0;
 		// recompute sc for this edge
 		if (-d < 0.0)
@@ -92,15 +92,15 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 		}
 	}
 	// tc > 1  => the t=1 edge is visible
-	else if (tN > tD) 
-	{      
+	else if (tN > tD)
+	{
 		tN = tD;
 		// recompute sc for this edge
 		if (-d + b < 0.0)
 			sN = 0;
 		else if ((-d + b) > a)
 			sN = sD;
-		else 
+		else
 		{
 			sN = (-d + b);
 			sD = a;

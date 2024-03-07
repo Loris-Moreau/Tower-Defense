@@ -25,4 +25,3 @@ public:
 private:
 	static std::mt19937 sGenerator;
 };
-

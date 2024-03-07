@@ -1,5 +1,4 @@
 #pragma once
-
 #include "KeyboardState.h"
 #include "MouseState.h"
 #include "ControllerState.h"
@@ -9,7 +8,7 @@ enum class ButtonState
 {
 	None,
 	Pressed,
-	Released, 
+	Released,
 	Held
 };
 

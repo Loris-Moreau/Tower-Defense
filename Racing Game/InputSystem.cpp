@@ -4,7 +4,7 @@
 #include <SDL_mouse.h>
 #include "Maths.h"
 
-InputSystem::InputSystem() : 
+InputSystem::InputSystem() :
 	inputState(),
 	isCursorDisplayed(false),
 	controller(nullptr)
@@ -50,7 +50,9 @@ bool InputSystem::processEvent(SDL_Event& event)
 		isRunning = false;
 		break;
 	case SDL_MOUSEWHEEL:
-		inputState.mouse.scrollWheel = Vector2(static_cast<float>(event.wheel.x), static_cast<float>(event.wheel.y));
+		inputState.mouse.scrollWheel = Vector2(
+			static_cast<float>(event.wheel.x),
+			static_cast<float>(event.wheel.y));
 		break;
 	default:
 		break;
@@ -94,7 +96,7 @@ void InputSystem::update()
 	}
 
 	// Triggers
-	inputState.controller.leftTrigger =	filter1D(SDL_GameControllerGetAxis(controller,	SDL_CONTROLLER_AXIS_TRIGGERLEFT));
+	inputState.controller.leftTrigger = filter1D(SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERLEFT));
 	inputState.controller.rightTrigger = filter1D(SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERRIGHT));
 
 	// Sticks

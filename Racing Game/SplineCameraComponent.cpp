@@ -22,7 +22,7 @@ void SplineCameraComponent::update(float dt)
 		if (t >= 1.0f)
 		{
 			// Make sure we have enough points to advance the path
-			if (index < spline.getNbPoints() - 2)
+			if (index < spline.getNbPoints() - 3)
 			{
 				index++;
 				t = t - 1.0f;

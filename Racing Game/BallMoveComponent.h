@@ -12,4 +12,3 @@ public:
 protected:
 	class Actor* player;
 };
-

@@ -1,7 +1,7 @@
 #include "OrbitCameraComponent.h"
 #include "Actor.h"
 
-OrbitCameraComponent::OrbitCameraComponent(Actor* ownerP):
+OrbitCameraComponent::OrbitCameraComponent(Actor* ownerP) :
 	CameraComponent(ownerP),
 	offset(-400.0f, 0.0f, 0.0f),
 	up(Vector3::unitZ),
@@ -14,7 +14,7 @@ void OrbitCameraComponent::update(float dt)
 {
 	CameraComponent::update(dt);
 
-	Quaternion yaw { Vector3::unitZ, yawSpeed * dt };
+	Quaternion yaw{ Vector3::unitZ, yawSpeed * dt };
 	offset = Vector3::transform(offset, yaw);
 	up = Vector3::transform(up, yaw);
 
@@ -25,7 +25,7 @@ void OrbitCameraComponent::update(float dt)
 	Vector3 right = Vector3::cross(up, forward);
 	right.normalize();
 
-	Quaternion pitch { right, pitchSpeed * dt };
+	Quaternion pitch{ right, pitchSpeed * dt };
 	offset = Vector3::transform(offset, pitch);
 	up = Vector3::transform(up, pitch);
 

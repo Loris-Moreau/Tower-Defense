@@ -2,7 +2,7 @@
 #include "SpriteComponent.h"
 #include "Vector2.h"
 #include <vector>
-using std::vector; 
+using std::vector;
 
 class BackgroundSpriteComponent : public SpriteComponent
 {
@@ -33,4 +33,3 @@ private:
 	Vector2 screenSize;
 	float scrollSpeed;
 };
-

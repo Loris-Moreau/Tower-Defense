@@ -27,4 +27,3 @@ private:
 	int height;
 	SDL_Texture* SDLTexture = nullptr;
 };
-

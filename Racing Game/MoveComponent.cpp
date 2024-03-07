@@ -24,6 +24,11 @@ void MoveComponent::setStrafeSpeed(float strafeSpeedP)
 	strafeSpeed = strafeSpeedP;
 }
 
+void MoveComponent::setLateralSpeed(float lateralSpeedP)
+{
+	lateralSpeed = lateralSpeedP;
+}
+
 void MoveComponent::update(float dt)
 {
 	if (!Maths::nearZero(angularSpeed))

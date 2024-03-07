@@ -23,4 +23,3 @@ private:
 	float pitchSpeed;
 	float yawSpeed;
 };
-

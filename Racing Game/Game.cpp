@@ -6,7 +6,6 @@
 #include "CubeActor.h"
 #include "SphereActor.h"
 #include "PlaneActor.h"
-//#include "AudioComponent.h"
 #include "FPSActor.h"
 #include "FollowActor.h"
 #include "OrbitActor.h"
@@ -20,10 +19,11 @@ bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
-	//bool isAudioInit = audioSystem.initialize();
 	bool isInputInit = inputSystem.initialize();
 
-	return isWindowInit && isRendererInit /*&& isAudioInit*/ && isInputInit; // Return bool && bool && bool ...to detect error
+	Random::init();
+	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
+	
 }
 
 void Game::load()
@@ -48,7 +48,6 @@ void Game::load()
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Sphere.png", "Sphere");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Rifle.png", "Rifle");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\RacingCar.png", "RacingCar");
-
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Target.png", "Target");
 
 	//UI Textures
@@ -64,63 +63,57 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
 
-	fps = new FPSActor();
-	//orbitActor = new OrbitActor();
+	//fps = new FPSActor();
+	//orbit = new OrbitActor();
 	//path = new SplineActor();
+	follow = new FollowActor();
+	follow->setSpeed(750.0f); // Changer vitesse 
 
-	/*
-	CubeActor* a = new CubeActor();
+	// Cube for Boat
+	for (int i = 0; i < 25; i++)
+	{
+		CubeActor* a = new CubeActor();
+		a->setPosition(Vector3(Random::getFloatRange(2000, 20000), Random::getFloatRange(-900, 900), 0.0f));
+		a->setScale(200.f);
+	}
 
-	a->setPosition(Vector3(2000.0f, 0.0f, 1.0f));
-	a->setScale(100.0f);
-	Quaternion q(Vector3::unitY, -Maths::piOver2);
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
-	a->setRotation(q);
-
-	SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	b->setScale(3.0f);
-	*/
+	SphereActor* s = new SphereActor();
+	s->setPosition(Vector3(200.0f, -75.0f, 0.0f));
+	s->setScale(3.0f);
 
 	// Floor and walls
 	// Setup floor
-	const float start = -4000.0f;
+	const float start = -10000.0f;
 	const float size = 1000.0f;
-
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		for (int j = 0; j < 20; j++)
 		{
 			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(start + i * size, start + j * size, -size / 2));
+			p->setPosition(Vector3(-200 + i * size, start + j * size, 0));
 		}
 	}
-	/*//Ceilling
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 10; j++)
-		{
-			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(start + i * size, start + j * size, size * 2.0f));
-		}
-	}
-
+	Quaternion q(Vector3::unitY, -Maths::piOver2);
+	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 2.0f));
 	// Left/right walls
 	q = Quaternion(Vector3::unitX, Maths::piOver2);
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		PlaneActor* p = new PlaneActor();
-		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
+		p->setPosition(Vector3(-200 + i * size, -200 - size, 0.0f));
 		p->setRotation(q);
+		p->setScale(50.0f);
 
 		p = new PlaneActor();
-		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
+		p->setPosition(Vector3(-200 + i * size, 200 + size, 0.0f));
 		p->setRotation(q);
+		p->setScale(50.0f);
 	}
 
-	// Forward/back walls
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
-	for (int i = 0; i < 10; i++)
+	/*
+	// Forward/back walls
+	for (int i = 0; i < 20; i++)
 	{
 		PlaneActor* p = new PlaneActor();
 		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
@@ -129,56 +122,32 @@ void Game::load()
 		p = new PlaneActor();
 		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
 		p->setRotation(q);
-	}*/
+	}
+	*/
 
 	// Setup lights
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
 	DirectionalLight& dir = renderer.getDirectionalLight();
 	dir.direction = Vector3(0.0f, -0.707f, -0.707f);
-	dir.diffuseColor = Vector3(0.75f, 0.85f, 1.0f);
+	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
+	/*
 	// Corsshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
-	/*
-	//Targets
+
 	TargetActor* t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
 	t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
 	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, -500, 200.0f));
+	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
 	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 500, 200.0f));
+	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
 	*/
-
-	/*//Cube Targets
-	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(2000.0f, 0.0f, -size / 2 + 50));
-	a->setScale(500.0f);*/
-
-	Random rando;
-	for (int i = 0; i < 5; i++)
-	{
-		//int r = rand() % 1000;
-		int r = rando.getIntRange(100, 1000);
-
-		for (int j = 0; j < 5; j++)
-		{
-			//int r2 = rand() % 1000;
-			int r2 = rando.getIntRange(100, 1000);
-
-			CubeActor* a = new CubeActor;
-			a->setPosition(Vector3(i * size + r2, j * size - r, -size / 2 + ((i + j) * 20)));
-
-			//float randScale = rand() % 50 + 450;
-			float randScale = rando.getFloatRange(250, 550);
-			a->setScale(randScale);
-		}
-	}
 }
 
 void Game::processInput()
@@ -212,19 +181,16 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	// Update audio
-	//audioSystem.update(dt);
-
 	// Update actors 
 	isUpdatingActors = true;
-	for(auto actor: actors) 
+	for (auto actor : actors)
 	{
 		actor->update(dt);
 	}
 	isUpdatingActors = false;
 
 	// Move pending actors to actors
-	for (auto pendingActor: pendingActors)
+	for (auto pendingActor : pendingActors)
 	{
 		pendingActor->computeWorldTransform();
 		actors.emplace_back(pendingActor);
@@ -284,7 +250,6 @@ void Game::close()
 {
 	inputSystem.close();
 	renderer.close();
-	//audioSystem.close();
 	window.close();
 	SDL_Quit();
 }

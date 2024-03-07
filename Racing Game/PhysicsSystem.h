@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Vector3.h"
 #include "LineSegment.h"
 #include <functional>
@@ -40,4 +39,3 @@ private:
 	vector<class BoxComponent*> boxes;
 
 };
-

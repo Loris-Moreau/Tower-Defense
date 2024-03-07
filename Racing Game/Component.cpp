@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "InputSystem.h"
 
-Component::Component(Actor* ownerP, int updateOrderP):
+Component::Component(Actor* ownerP, int updateOrderP) :
 	owner(*ownerP),
 	updateOrder(updateOrderP)
 {

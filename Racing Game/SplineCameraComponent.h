@@ -1,8 +1,6 @@
 #pragma once
-
 #include "CameraComponent.h"
 #include "Spline.h"
-
 class SplineCameraComponent : public CameraComponent
 {
 public:
@@ -15,6 +13,7 @@ public:
 	void setPaused(bool isPausedP);
 
 	void restart();
+
 
 private:
 	Spline spline;

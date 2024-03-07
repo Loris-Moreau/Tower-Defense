@@ -33,4 +33,3 @@ private:
 	// OpenGL ID of the vertex array object
 	unsigned int vertexArray;
 };
-

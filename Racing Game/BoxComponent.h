@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Component.h"
 #include "AABB.h"
 
@@ -21,4 +20,3 @@ private:
 	AABB worldBox;
 	bool shouldRotate;
 };
-

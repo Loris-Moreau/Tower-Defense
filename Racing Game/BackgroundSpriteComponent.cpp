@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "Rectangle.h"
 
-BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP):
+BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP) :
 	SpriteComponent(ownerP, *texturesP[0], drawOrderP),
 	scrollSpeed(0.0f),
 	screenSize(Vector2(WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -44,7 +44,7 @@ void BackgroundSpriteComponent::setTextures(const vector<Texture*>& texturesP)
 	int count = 0;
 	for (auto tex : texturesP)
 	{
-		BGTexture temp { *tex, Vector2(count * screenSize.x, 0) }; 	// Each texture is screen width in offset
+		BGTexture temp{ *tex, Vector2(count * screenSize.x, 0) }; 	// Each texture is screen width in offset
 		textures.emplace_back(temp);
 		count++;
 	}

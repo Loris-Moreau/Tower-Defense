@@ -13,4 +13,3 @@ struct LineSegment
 	Vector3 start;
 	Vector3 end;
 };
-

@@ -9,11 +9,13 @@ ControllerState::ControllerState() :
 	rightTrigger(0.0f),
 	isConnected(false)
 {
+
 }
+
 
 bool ControllerState::getButtonValue(SDL_GameControllerButton button) const
 {
-    return currentButtons[button] == 1;
+	return currentButtons[button] == 1;
 }
 
 ButtonState ControllerState::getButtonState(SDL_GameControllerButton button) const

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Actor.h"
 
 class OrbitActor : public Actor
@@ -13,4 +12,3 @@ private:
 	class OrbitCameraComponent* cameraComponent;
 	class MeshComponent* meshComponent;
 };
-
