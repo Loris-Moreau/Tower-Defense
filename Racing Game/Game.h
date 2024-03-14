@@ -44,6 +44,7 @@ public:
 	void addPlane(class PlaneActor* plane);
 	void removePlane(class PlaneActor* plane);
 	vector<PlaneActor*>& getPlanes() { return planes; }
+	class CubeActor* getArrow() { return arrow; }
 
 
 private:
@@ -64,8 +65,7 @@ private:
 	// Game specific
 	class FPSActor* fps;
 	class FollowActor* follow;
-	class OrbitActor* orbit;
-	class SplineActor* path;
 	class SpriteComponent* crosshair;
+	class CubeActor* arrow;
 	vector<PlaneActor*> planes;
 };

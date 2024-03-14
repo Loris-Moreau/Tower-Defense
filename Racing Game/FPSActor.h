@@ -15,6 +15,10 @@ public:
 	void setVisible(bool isVisible);
 	void fixCollisions();
 
+	bool getDirectionClick() { return directionClick; }
+	bool getPowerClick() { return powerClick; }
+	bool getHasShoot() { return hasShoot; }
+
 private:
 	class MoveComponent* moveComponent;
 	class AudioComponent* audioComponent;
@@ -23,6 +27,9 @@ private:
 	class Actor* FPSModel;
 	float lastFootstep;
 	class BoxComponent* boxComponent;
+	bool directionClick = false;
+	bool powerClick = false;
+	bool hasShoot = false;
 };
 
 const Vector3 MODEL_OFFSET = Vector3(10.0f, 10.0f, -10.0f);

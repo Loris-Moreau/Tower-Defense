@@ -13,7 +13,7 @@
 #include "TargetActor.h"
 #include <algorithm>
 #include <algorithm>
-#include "Random.h"
+#include "Rectangle.h"
 
 bool Game::initialize()
 {
@@ -21,9 +21,7 @@ bool Game::initialize()
 	bool isRendererInit = renderer.initialize(window);
 	bool isInputInit = inputSystem.initialize();
 
-	Random::init();
 	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
-	
 }
 
 void Game::load()
@@ -63,34 +61,87 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
 
-	//fps = new FPSActor();
+	fps = new FPSActor();
+	fps->setPosition(Vector3(-50.0f, 38.0f, 55.0f));
 	//orbit = new OrbitActor();
 	//path = new SplineActor();
-	follow = new FollowActor();
-	follow->setSpeed(700.0f); // Changer vitesse 
+	//follow = new FollowActor();
 
-	Random rando;
-	// Cube for Boat
-	for (int i = 0; i < 50; i++)
-	{
-		CubeActor* a = new CubeActor();
-		a->setPosition(Vector3(rando.getFloatRange(2000, 50000), rando.getFloatRange(-2500, 2500), rando.getFloatRange(-0.1f,2.0f)));
 
-		//float randScale = rand() % 50 + 450;
-		float randScale = rando.getFloatRange(200, 950);
-		a->setScale(randScale);
-	}
+	// Pins
+	// Back line
+	CubeActor* a = new CubeActor();
+	a->setPosition(Vector3(700.0f, -5.0f, 15.0f)); //4
+    a->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	CubeActor* a1 = new CubeActor();
+	a1->setPosition(Vector3(700.0f, 25.0f, 15.0f)); //4
+	a1->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	CubeActor* a2 = new CubeActor();
+	a2->setPosition(Vector3(700.0f, 55.0f, 15.0f)); //4
+	a2->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	CubeActor* a3 = new CubeActor();
+	a3->setPosition(Vector3(700.0f, 85.0f, 15.0f)); //4
+	a3->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	// Middle line
+	CubeActor* a4 = new CubeActor();
+	a4->setPosition(Vector3(670.0f, 10.0f, 15.0f)); //3
+	a4->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	CubeActor* a5 = new CubeActor();
+	a5->setPosition(Vector3(670.0f, 40.f, 15.0f)); //3
+	a5->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	CubeActor* a6 = new CubeActor();
+	a6->setPosition(Vector3(670.0f, 70.0f, 15.0f)); //3
+	a6->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	// Second line
+	CubeActor* a7 = new CubeActor();
+	a7->setPosition(Vector3(640.0f, 25.0f, 15.0f)); //2
+	a7->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	CubeActor* a8 = new CubeActor();
+	a8->setPosition(Vector3(640.0f, 55.0f, 15.0f)); //2
+	a8->setScale(Vector3(10.0f, 10.0f, 30.0f));
+
+	// Front line
+	CubeActor* a9 = new CubeActor();
+	a9->setPosition(Vector3(610.0f, 40.0f, 15.0f)); //1
+	a9->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	// End Pins
+
+	Quaternion q(Vector3::unitZ, -Maths::piOver2/2);
+	//q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
+
+	// Arrow for direction & Power
+	arrow = new CubeActor();
+	arrow->setPosition(Vector3(50.0f, 38.0f, 2.0f));
+	arrow->setScale(Vector3(50.0f, 5.0f, 1.0f));
+	arrow->setRotation(q);
+
+
+	//a->setRotation(q);
+	
+	// Bowling Ball
+	SphereActor* b = new SphereActor();
+	b->setPosition(Vector3(4.0f, 38.0f, 0.0f));
+	b->setScale(Vector3(1.0f, 1.0f, 1.0f));
 
 	// Floor and walls
+
 	// Setup floor
-	const float start = -10000.0f;
-	const float size = 1000.0f;
-	for (int i = 0; i < 50; i++)
+	const float start = 0.0f;
+	const float size = 75.0f;
+	for (int i = 0; i < 10; i++)
 	{
-		for (int j = 0; j < 20; j++)
+		for (int j = 0; j < 2; j++)
 		{
 			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(-200 + i * size, start + j * size, 0));
+			p->setPosition(Vector3(0 + i * size, 0 + j * size, 0.0f));
 		}
 	}
 
@@ -100,23 +151,6 @@ void Game::load()
 	dir.direction = Vector3(0.0f, -0.707f, -0.707f);
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
-
-	/*
-	// Corsshair
-	Actor* crosshairActor = new Actor();
-	crosshairActor->setScale(2.0f);
-	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
-
-
-	TargetActor* t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
-	*/
 }
 
 void Game::processInput()
@@ -192,12 +226,52 @@ void Game::loop()
 {
 	Timer timer;
 	float dt = 0;
+	float scale = 20;
+	bool positive = true;
+	float rotateDire = Maths::piOver2 / 2 * dt;
 	while (isRunning)
 	{
 		float dt = timer.computeDeltaTime() / 1000.0f;
 		processInput();
 		update(dt);
 		render();
+
+		if(!fps->getDirectionClick())
+		{
+			if (arrow->getRotation().z >= -0.45 && arrow->getRotation().z <= -0.38)
+			{
+				rotateDire = Maths::piOver2 / 2 * dt;
+			}
+
+			if (arrow->getRotation().z >= 0.40)
+			{
+				rotateDire = -Maths::piOver2 / 2 * dt;
+			}
+			arrow->rotate(Vector3::unitZ, rotateDire);
+		}
+		
+		if (fps->getDirectionClick() && !fps->getPowerClick())
+		{
+
+			if (scale <= 100 && positive)
+			{
+				scale += 20 * dt;
+			}
+			if (scale <= 110 && !positive)
+			{
+				scale -= 20 * dt;
+			}
+			if (scale >= 100)
+			{
+				positive = false;
+			}
+			if (scale <= 20)
+			{
+				positive = true;
+			}
+			arrow->setScale(Vector3(scale, 10, 1));
+		}
+
 		timer.delayTime();
 	}
 }

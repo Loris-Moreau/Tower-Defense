@@ -7,7 +7,6 @@
 #include "BallActor.h"
 #include "TargetActor.h"
 #include "Game.h"
-#include "CubeActor.h"
 
 BallMoveComponent::BallMoveComponent(Actor* ownerP) : MoveComponent(ownerP), player(nullptr)
 {
@@ -35,13 +34,13 @@ void BallMoveComponent::update(float dt)
 	if (owner.getGame().getPhysicsSystem().segmentCast(l, info) && info.actor != player)
 	{
 		// If we collided, reflect the ball about the normal
-		dir = Vector3(1.0f, 0.0f, 0.0f);
+		dir = Vector3::reflect(dir, info.normal);
 		owner.rotateToNewForward(dir);
 		// Did we hit a target?
-		CubeActor* cube = dynamic_cast<CubeActor*>(info.actor);
-		if (cube)
+		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
+		if (target)
 		{
-			static_cast<BallActor*>(&owner)->hitTarget(cube);
+			static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}
 
