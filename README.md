@@ -1,8 +1,8 @@
 # Basic 3D Engine
 
-#### Top Down Torpedo Launcher Game (main Branch)
+#### Top Down Torpedo Launcher Game ([Main Branch](https://github.com/Loris-Moreau/Tower-Defense/tree/main))
 
-#### Bowling Game (Bowling Branch)
+#### Bowling Game ([Bowling Branch](https://github.com/Loris-Moreau/Tower-Defense/tree/Bowling))
 
 > [!TIP]
 > If you get a compiling error "could not find/load SDL2.lib",
