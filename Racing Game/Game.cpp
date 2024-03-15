@@ -63,10 +63,6 @@ void Game::load()
 
 	fps = new FPSActor();
 	fps->setPosition(Vector3(-50.0f, 38.0f, 55.0f));
-	//orbit = new OrbitActor();
-	//path = new SplineActor();
-	//follow = new FollowActor();
-
 
 	// Pins
 	// Back line

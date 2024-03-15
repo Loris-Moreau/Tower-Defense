@@ -1,2 +1,67 @@
-﻿  Game.cpp
-  Racing Game.vcxproj -> E:\Github\Tower-Defense\x64\Debug\Racing Game.exe
+﻿  AABB.cpp
+  Actor.cpp
+  AnimSpriteComponent.cpp
+  Assets.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(265,36): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(282,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  BackgroundSpriteComponent.cpp
+  BallActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\BallActor.cpp(22,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  BallMoveComponent.cpp
+  BoxComponent.cpp
+  Camera.cpp
+  CameraComponent.cpp
+  CircleCollisionComponent.cpp
+  Collisions.cpp
+  Component.cpp
+  ControllerState.cpp
+  Cube.cpp
+  CubeActor.cpp
+  FollowActor.cpp
+  FollowCameraComponent.cpp
+  FPSActor.cpp
+  FPSCameraComponent.cpp
+  Generating Code...
+  Compiling...
+  Game.cpp
+  InputComponent.cpp
+  InputSystem.cpp
+  KeyboardState.cpp
+  LineSegment.cpp
+  Log.cpp
+  main.cpp
+  Matrix4.cpp
+  Mesh.cpp
+  MeshComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MeshComponent.cpp(28,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  MouseState.cpp
+  MoveComponent.cpp
+  OrbitActor.cpp
+  OrbitCameraComponent.cpp
+  PhysicsSystem.cpp
+  Plane.cpp
+  PlaneActor.cpp
+  Quaternion.cpp
+  Random.cpp
+  Rectangle.cpp
+  Generating Code...
+  Compiling...
+  RendererOGL.cpp
+  Shader.cpp
+  Sphere.cpp
+  SphereActor.cpp
+  Spline.cpp
+  SplineActor.cpp
+  SplineCameraComponent.cpp
+  SpriteComponent.cpp
+  TargetActor.cpp
+  Texture.cpp
+  Tile.cpp
+  Timer.cpp
+  Vector2.cpp
+  Vector3.cpp
+  VertexArray.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\VertexArray.cpp(14,49): warning C4244: 'argument': conversion from 'double' to 'GLsizeiptr', possible loss of data
+  Window.cpp
+  Generating Code...
+  Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe
