@@ -4,6 +4,7 @@
 #include "BallMoveComponent.h"
 #include "CubeActor.h"
 #include "Game.h"
+#include "BoxComponent.h"
 
 
 BallActor::BallActor() : Actor(), lifetimeSpan(10.0f), audio(nullptr), ballMove(nullptr)
@@ -11,7 +12,9 @@ BallActor::BallActor() : Actor(), lifetimeSpan(10.0f), audio(nullptr), ballMove(
 	MeshComponent* mc = new MeshComponent(this);
 	mc->setMesh(Assets::getMesh("Mesh_Sphere"));
 	ballMove = new BallMoveComponent(this);
-	ballMove->setForwardSpeed(4*getGame().getArrow()->getScale().x);
+	ballMove->setForwardSpeed(6*getGame().getArrow()->getScale().x);
+	BoxComponent* bc = new BoxComponent(this);
+	bc->setObjectBox(Assets::getMesh("Mesh_Sphere").getBox());
 }
 
 void BallActor::updateActor(float dt)
@@ -35,7 +38,12 @@ void BallActor::setPlayer(Actor* player)
 	ballMove->setPlayer(player);
 }
 
-void BallActor::hitTarget()
+void BallActor::setArrow(Actor* arrow)
 {
-	
+	ballMove->setArrow(arrow);
+}
+
+void BallActor::hitTarget(CubeActor* target)
+{
+		
 }

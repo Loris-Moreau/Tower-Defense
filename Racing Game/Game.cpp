@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <algorithm>
 #include "Rectangle.h"
+#include "CubeMoveComponent.h"
 
 bool Game::initialize()
 {
@@ -21,7 +22,7 @@ bool Game::initialize()
 	bool isRendererInit = renderer.initialize(window);
 	bool isInputInit = inputSystem.initialize();
 
-	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit && isInputInit; 
 }
 
 void Game::load()
@@ -64,71 +65,18 @@ void Game::load()
 	fps = new FPSActor();
 	fps->setPosition(Vector3(-50.0f, 38.0f, 55.0f));
 
-	// Pins
-	// Back line
-	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(700.0f, -5.0f, 15.0f)); //4
-    a->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	CubeActor* a1 = new CubeActor();
-	a1->setPosition(Vector3(700.0f, 25.0f, 15.0f)); //4
-	a1->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	CubeActor* a2 = new CubeActor();
-	a2->setPosition(Vector3(700.0f, 55.0f, 15.0f)); //4
-	a2->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	CubeActor* a3 = new CubeActor();
-	a3->setPosition(Vector3(700.0f, 85.0f, 15.0f)); //4
-	a3->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	// Middle line
-	CubeActor* a4 = new CubeActor();
-	a4->setPosition(Vector3(670.0f, 10.0f, 15.0f)); //3
-	a4->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	CubeActor* a5 = new CubeActor();
-	a5->setPosition(Vector3(670.0f, 40.f, 15.0f)); //3
-	a5->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	CubeActor* a6 = new CubeActor();
-	a6->setPosition(Vector3(670.0f, 70.0f, 15.0f)); //3
-	a6->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	// Second line
-	CubeActor* a7 = new CubeActor();
-	a7->setPosition(Vector3(640.0f, 25.0f, 15.0f)); //2
-	a7->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	CubeActor* a8 = new CubeActor();
-	a8->setPosition(Vector3(640.0f, 55.0f, 15.0f)); //2
-	a8->setScale(Vector3(10.0f, 10.0f, 30.0f));
-
-	// Front line
-	CubeActor* a9 = new CubeActor();
-	a9->setPosition(Vector3(610.0f, 40.0f, 15.0f)); //1
-	a9->setScale(Vector3(10.0f, 10.0f, 30.0f));
-	// End Pins
-
 	Quaternion q(Vector3::unitZ, -Maths::piOver2/2);
-	//q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
+
+	initiateGame();
 
 	// Arrow for direction & Power
 	arrow = new CubeActor();
 	arrow->setPosition(Vector3(50.0f, 38.0f, 2.0f));
 	arrow->setScale(Vector3(50.0f, 5.0f, 1.0f));
 	arrow->setRotation(q);
-
-
-	//a->setRotation(q);
+	arrow->setArrow(arrow);
 	
-	// Bowling Ball
-	SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(4.0f, 38.0f, 0.0f));
-	b->setScale(Vector3(1.0f, 1.0f, 1.0f));
-
 	// Floor and walls
-
 	// Setup floor
 	const float start = 0.0f;
 	const float size = 75.0f;
@@ -141,12 +89,41 @@ void Game::load()
 		}
 	}
 
+	// Left/right walls
+	q = Quaternion(Vector3::unitX, Maths::piOver2);
+	for (int i = 0; i < 10; i++)
+	{
+		PlaneActor* p = new PlaneActor();
+		p->setPosition(Vector3(start + i * size, 120, -47.0f));
+		p->setRotation(q);
+
+		p = new PlaneActor();
+		p->setPosition(Vector3(start + i * size, -45, -47.0f));
+		p->setRotation(q);
+
+		
+		p = new PlaneActor();
+		p->setPosition(Vector3(start + i * size, 120 + 40 , -45.0f));
+		p->setRotation(q);
+
+		p = new PlaneActor();
+		p->setPosition(Vector3(start + i * size, -120 + 40, -45.0f));
+		p->setRotation(q);
+		
+	}
+
+	// Bowling Ball
+	SphereActor* bBall = new SphereActor();
+	bBall->setPosition(Vector3(4.0f, 38.0f, 0.0f));
+	bBall->setScale(Vector3(1.0f, 1.0f, 1.0f));
+
 	// Setup lights
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
 	DirectionalLight& dir = renderer.getDirectionalLight();
 	dir.direction = Vector3(0.0f, -0.707f, -0.707f);
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
+
 }
 
 void Game::processInput()
@@ -225,6 +202,7 @@ void Game::loop()
 	float scale = 20;
 	bool positive = true;
 	float rotateDire = Maths::piOver2 / 2 * dt;
+	arrow->cubeMove->getArrow()->removeComponent(arrow->cubeMove);
 	while (isRunning)
 	{
 		float dt = timer.computeDeltaTime() / 1000.0f;
@@ -332,4 +310,76 @@ void Game::removePlane(PlaneActor* plane)
 {
 	auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
+}
+
+void Game::addCubes(CubeActor* cube)
+{
+	cubes.emplace_back(cube);
+}
+
+void Game::initiateGame()
+{
+	// Pins
+	// Back line
+	CubeActor* a = new CubeActor();
+	a->setPosition(Vector3(700.0f, -5.0f, 15.0f)); //4
+	a->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a);
+
+	CubeActor* a1 = new CubeActor();
+	a1->setPosition(Vector3(700.0f, 25.0f, 15.0f)); //4
+	a1->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a1);
+
+	CubeActor* a2 = new CubeActor();
+	a2->setPosition(Vector3(700.0f, 55.0f, 15.0f)); //4
+	a2->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a2);
+
+	CubeActor* a3 = new CubeActor();
+	a3->setPosition(Vector3(700.0f, 85.0f, 15.0f)); //4
+	a3->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a3);
+
+	// Middle line
+	CubeActor* a4 = new CubeActor();
+	a4->setPosition(Vector3(670.0f, 10.0f, 15.0f)); //3
+	a4->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a4);
+
+	CubeActor* a5 = new CubeActor();
+	a5->setPosition(Vector3(670.0f, 40.f, 15.0f)); //3
+	a5->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a5);
+
+	CubeActor* a6 = new CubeActor();
+	a6->setPosition(Vector3(670.0f, 70.0f, 15.0f)); //3
+	a6->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a6);
+
+	// Second line
+	CubeActor* a7 = new CubeActor();
+	a7->setPosition(Vector3(640.0f, 25.0f, 15.0f)); //2
+	a7->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a7);
+
+	CubeActor* a8 = new CubeActor();
+	a8->setPosition(Vector3(640.0f, 55.0f, 15.0f)); //2
+	a8->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a8);
+
+	// Front line
+	CubeActor* a9 = new CubeActor();
+	a9->setPosition(Vector3(610.0f, 40.0f, 15.0f)); //1
+	a9->setScale(Vector3(10.0f, 10.0f, 30.0f));
+	addCubes(a9);
+	// End Pins
+}
+
+void Game::deleteCubes(vector<CubeActor*>& cubes)
+{
+	for (int i = cubes.size() - 1; i >= 0; --i)
+	{
+		cubes[i]->setState(Actor::ActorState::Dead);
+	}
 }

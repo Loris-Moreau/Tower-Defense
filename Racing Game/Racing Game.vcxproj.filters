@@ -205,6 +205,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>Main Files</Filter>
     </ClCompile>
+    <ClCompile Include="CubeMoveComponent.cpp">
+      <Filter>Inputs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Log.h">
@@ -380,6 +383,9 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Main Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMoveComponent.h">
+      <Filter>Inputs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

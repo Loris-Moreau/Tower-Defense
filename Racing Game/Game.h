@@ -42,9 +42,16 @@ public:
 
 	// Game-specific
 	void addPlane(class PlaneActor* plane);
+	void addCubes(class CubeActor* cube);
 	void removePlane(class PlaneActor* plane);
+	void initiateGame();
+	void deleteCubes(vector<CubeActor*>& cubes);
+	vector<CubeActor*>& getCubes() { return cubes; }
 	vector<PlaneActor*>& getPlanes() { return planes; }
 	class CubeActor* getArrow() { return arrow; }
+	void setScore() { score += 1; }
+	void setScore(int scoreP) { score = scoreP; }
+	int getScore() { return score; }
 
 
 private:
@@ -68,4 +75,6 @@ private:
 	class SpriteComponent* crosshair;
 	class CubeActor* arrow;
 	vector<PlaneActor*> planes;
+	vector<CubeActor*> cubes;
+	int score;
 };
