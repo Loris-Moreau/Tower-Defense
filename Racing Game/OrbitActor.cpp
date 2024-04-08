@@ -40,7 +40,7 @@ void OrbitActor::actorInput(const InputState& inputState)
 	}
 }
 
-void OrbitActor::setVisible(bool visible)
+void OrbitActor::setVisible(bool visible) const
 {
 	meshComponent->setVisible(visible);
 }

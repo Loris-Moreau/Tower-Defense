@@ -84,19 +84,16 @@ void InputSystem::update()
 	{
 		inputState.mouse.currentButtons = SDL_GetMouseState(&x, &y);
 	}
-
-	inputState.mouse.position.x = static_cast<float>(x);
-	inputState.mouse.position.y = static_cast<float>(y);
-
+	
 	inputState.mouse.position.x = static_cast<float>(x);
 	inputState.mouse.position.y = static_cast<float>(y);
 	if (!inputState.mouse.isRelativeMode)
 	{
 		// We want mouse coordinates to be between minus half the screen's size and plus half the screen size
 		inputState.mouse.position.x -= WINDOW_WIDTH * 0.5f;
-		inputState.mouse.position.y = WINDOW_HEIGHT * 0.5f -
-		inputState.mouse.position.y;
+		inputState.mouse.position.y = WINDOW_HEIGHT * 0.5f - inputState.mouse.position.y;
 	}
+	
 	// Controller
 	// Buttons
 	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++)

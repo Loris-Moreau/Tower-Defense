@@ -56,7 +56,7 @@ void FollowActor::updateActor(float dt)
 }
 
 
-void FollowActor::setVisible(bool isVisibleP)
+void FollowActor::setVisible(bool isVisibleP) const
 {
 	meshComponent->setVisible(isVisibleP);
 }

@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-void Shader::unload()
+void Shader::unload() const
 {
     glDeleteProgram(id);
 }

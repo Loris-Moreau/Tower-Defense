@@ -18,7 +18,7 @@ public:
 	VertexArray(const float* verticesP, unsigned int nbVerticesP, const unsigned int* indicesP, unsigned int nbIndicesP);
 	~VertexArray();
 
-	void setActive();
+	void setActive() const;
 
 	unsigned int getNbVertices() const { return nbVertices; }
 	unsigned int getNbIndices() const { return nbIndices; }

@@ -140,7 +140,7 @@ void Actor::update(float dt)
 	}
 }
 
-void Actor::updateComponents(float dt)
+void Actor::updateComponents(float dt) const
 {
 	for (const auto component : components)
 	{

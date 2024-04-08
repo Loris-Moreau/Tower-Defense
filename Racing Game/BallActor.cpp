@@ -23,7 +23,7 @@ void BallActor::updateActor(float dt)
 	}
 }
 
-void BallActor::setPlayer(Actor* player)
+void BallActor::setPlayer(Actor* player) const
 {
 	ballMove->setPlayer(player);
 }

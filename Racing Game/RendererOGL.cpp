@@ -195,8 +195,8 @@ void RendererOGL::drawUI()
 
 void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
-	const Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
-	const Matrix4 world = scaleMat * actor.getWorldTransform();
+	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
+	Matrix4 world = scaleMat * actor.getWorldTransform();
 	Assets::getShader("Sprite").setMatrix4("uWorldTransform", world);
 	tex.setActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);

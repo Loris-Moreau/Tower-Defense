@@ -6,7 +6,7 @@ public:
 	SplineActor();
 
 	void actorInput(const InputState& inputState) override;
-	void restartSpline();
+	void restartSpline() const;
 
 
 private:

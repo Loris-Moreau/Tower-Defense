@@ -22,7 +22,7 @@ bool Window::initialize()
 	return true;
 }
 
-void Window::close()
+void Window::close() const
 {
 	SDL_DestroyWindow(SDLWindow);
 }

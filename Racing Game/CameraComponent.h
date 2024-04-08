@@ -8,5 +8,5 @@ public:
 	CameraComponent(class Actor* owner, int updateOrder = 200);
 
 protected:
-	void setViewMatrix(const Matrix4& view);
+	void setViewMatrix(const Matrix4& view) const;
 };

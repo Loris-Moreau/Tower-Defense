@@ -23,7 +23,7 @@ void PhysicsSystem::removeBox(const BoxComponent* box)
 	}
 }
 
-bool PhysicsSystem::segmentCast(const LineSegment& l, CollisionInfo& outColl)
+bool PhysicsSystem::segmentCast(const LineSegment& l, CollisionInfo& outColl) const
 {
 	bool collided = false;
 	// Initialize closestT to infinity, so first

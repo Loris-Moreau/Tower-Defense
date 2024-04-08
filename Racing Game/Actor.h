@@ -44,7 +44,7 @@ public:
 	void processInput(const struct InputState& inputState);
 	virtual void actorInput(const struct InputState& inputState);
 	void update(float dt);
-	void updateComponents(float dt);
+	void updateComponents(float dt) const;
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);
 	void removeComponent(const Component* component);

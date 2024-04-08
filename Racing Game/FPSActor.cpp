@@ -142,7 +142,7 @@ void FPSActor::setFootstepSurface(float value)
 }
 */
 
-void FPSActor::setVisible(bool isVisible)
+void FPSActor::setVisible(bool isVisible) const
 {
 	meshComponent->setVisible(isVisible);
 }

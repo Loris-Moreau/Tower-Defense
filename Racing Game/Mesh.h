@@ -15,14 +15,14 @@ public:
 
 	void unload();
 
-	class VertexArray* getVertexArray() { return vertexArray; }
+	class VertexArray* getVertexArray() const { return vertexArray; }
 	const string& getShaderName() const { return shaderName; }
 	float getRadius() const { return radius; }
 	float getSpecularPower() const { return specularPower; }
 	const AABB& getBox() const { return box; }
 
 	void addTexture(Texture* texture);
-	Texture* getTexture(int index);
+	Texture* getTexture(int index) const;
 
 	void setVertexArray(VertexArray* vertexArrayP);
 	void setShaderName(const string& shaderNameP);

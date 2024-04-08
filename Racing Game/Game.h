@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
+#include "Vector2.h"
 #include "RendererOGL.h"
 #include "InputSystem.h"
 #include "PhysicsSystem.h"
@@ -29,9 +30,6 @@ public:
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
 	
-	const vector<class UIScreen*>& getUIStack() { return UIStack; }
-	void pushUI(UIScreen* screen);
-	
 private:
 	Game() : state(GameState::Gameplay), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
 
@@ -39,21 +37,25 @@ public:
 	bool initialize();
 	void load();
 	void loop();
-	void unload();
+	void unload() const;
 	void close();
 
+	GameState getState() const { return state; }
+	void setState(GameState stateP);
+	
 	void addActor(Actor* actor);
 	void removeActor(const Actor* actor);
 	RendererOGL& getRenderer() { return renderer; }
 	PhysicsSystem& getPhysicsSystem() { return physicsSystem; }
 	
-	GameState getState() const { return state; }
-	void setState(GameState stateP);
 	InputSystem& getInputSystem() { return inputSystem; }
 	
+	const vector<class UIScreen*>& getUIStack() { return UIStack; }
+	void pushUI(UIScreen* screen);
+	
 	// Game-specific
-	void addPlane(class PlaneActor* plane);
-	void removePlane(const class PlaneActor* plane);
+	void addPlane(PlaneActor* plane);
+	void removePlane(const PlaneActor* plane);
 	vector<PlaneActor*>& getPlanes() { return planes; }
 
 

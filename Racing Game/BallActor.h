@@ -8,7 +8,7 @@ public:
 	BallActor();
 
 	void updateActor(float dt) override;
-	void setPlayer(Actor* player);
+	void setPlayer(Actor* player) const;
 	void hitTarget(CubeActor* target);
 
 private:

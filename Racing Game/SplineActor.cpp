@@ -27,7 +27,7 @@ void SplineActor::actorInput(const InputState& inputState)
 {
 }
 
-void SplineActor::restartSpline()
+void SplineActor::restartSpline() const
 {
 	cameraComponent->restart();
 }

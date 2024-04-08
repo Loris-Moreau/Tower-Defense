@@ -6,7 +6,7 @@ class OrbitActor : public Actor
 public:
 	OrbitActor();
 	void actorInput(const InputState& inputState) override;
-	void setVisible(bool visible);
+	void setVisible(bool visible) const;
 
 private:
 	class OrbitCameraComponent* cameraComponent;

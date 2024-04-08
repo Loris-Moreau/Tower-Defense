@@ -12,7 +12,6 @@
 #include "SplineActor.h"
 #include "TargetActor.h"
 #include <algorithm>
-#include <algorithm>
 #include "Random.h"
 #include "Font.h"
 #include "UIScreen.h"
@@ -74,7 +73,8 @@ void Game::load()
 
 	//Fonts
 	Assets::loadFont(filePathRes4 + "Fonts\\Carlito-Regular.ttf", "Carlito");
-
+	//Assets::loadFont(filePathRes4 + "Fonts\\feet.ttf", "Carlito");
+	
 	//fps = new FPSActor();
 	//orbit = new OrbitActor();
 	//path = new SplineActor();
@@ -139,7 +139,7 @@ void Game::processInput()
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
-		const bool isRunning = inputSystem.processEvent(event);
+		bool isRunning = inputSystem.processEvent(event);
 		if (!isRunning) state = GameState::Quit;
 	}
 	inputSystem.update();
@@ -180,6 +180,7 @@ void Game::update(float dt)
 			actor->update(dt);
 		}
 		isUpdatingActors = false;
+		
 		// Move pending actors to actors
 		for (auto pendingActor : pendingActors)
 		{
@@ -187,6 +188,7 @@ void Game::update(float dt)
 			actors.emplace_back(pendingActor);
 		}
 		pendingActors.clear();
+		
 		// Delete dead actors
 		vector<Actor*> deadActors;
 		for (auto actor : actors)
@@ -247,7 +249,7 @@ void Game::loop()
 	}
 }
 
-void Game::unload()
+void Game::unload() const
 {
 	// Delete actors
 	// Because ~Actor calls RemoveActor, have to use a different style loop
@@ -267,6 +269,11 @@ void Game::close()
 	renderer.close();
 	window.close();
 	SDL_Quit();
+}
+
+void Game::setState(GameState stateP)
+{
+	state = stateP;
 }
 
 void Game::addActor(Actor* actor)
@@ -299,9 +306,9 @@ void Game::removeActor(const Actor* actor)
 	}
 }
 
-void Game::setState(GameState stateP)
+void Game::pushUI(UIScreen* screen)
 {
-	state = stateP;
+	UIStack.emplace_back(screen);
 }
 
 void Game::addPlane(PlaneActor* plane)
@@ -313,9 +320,4 @@ void Game::removePlane(const PlaneActor* plane)
 {
 	const auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
-}
-
-void Game::pushUI(UIScreen* screen)
-{
-	UIStack.emplace_back(screen);
 }

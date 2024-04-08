@@ -9,7 +9,7 @@ public:
 
 	void actorInput(const InputState& inputState) override;
 	void updateActor(float dt) override;
-	void setVisible(bool isVisibleP);
+	void setVisible(bool isVisibleP) const;
 	void setSpeed(float speedP);
 	void shoot();
 	void fixCollisions();

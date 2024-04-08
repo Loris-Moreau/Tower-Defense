@@ -3,15 +3,17 @@
 #include <string>
 #include <functional>
 #include "Vector2.h"
+#include "Font.h"
 
 using std::string;
 
 class Button
 {
 public:
-	Button(const string& name, class Font& font, const std::function<void()> & onClick, const Vector2& position, const Vector2& dimensions);
+	Button(const string& name, Font& font, const std::function<void()> onClick, const Vector2& position, const Vector2& dimensions);
 	~Button();
-	class Texture* getNameTex() { return nameTex; }
+	
+	Texture* getNameTex() { return nameTex; }
 	const Vector2& getPosition() const { return position; }
 	bool getHighlighted() const { return isHighlighted; }
 	void setName(const string& nameP);

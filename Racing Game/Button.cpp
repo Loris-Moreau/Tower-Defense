@@ -2,10 +2,7 @@
 #include "Texture.h"
 #include "Font.h"
 
-Button::Button(const string& nameP, Font& fontP,
-
-const std::function<void()>& onClickP, const Vector2& positionP, const
-Vector2& dimensionsP) :
+Button::Button(const string& nameP, Font& fontP, const std::function<void()> onClickP, const Vector2& positionP, const Vector2& dimensionsP) :
 name(nameP),
 font_(fontP),
 onClickFunc(onClickP),
@@ -35,7 +32,7 @@ void Button::setName(const std::string& nameP)
 		delete nameTex;
 		nameTex = nullptr;
 	}
-	nameTex = font_.renderText(name, Color::white, 20);
+	nameTex = font_.renderText(name);
 }
 
 void Button::setHighlighted(bool isHighlightedP)

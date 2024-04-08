@@ -12,7 +12,7 @@ public:
 	void shoot();
 
 	void setFootstepSurface(float value);
-	void setVisible(bool isVisible);
+	void setVisible(bool isVisible) const;
 	void fixCollisions();
 
 private:

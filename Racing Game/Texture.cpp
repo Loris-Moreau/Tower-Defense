@@ -11,7 +11,7 @@ Texture::~Texture()
 {
 }
 
-void Texture::unload()
+void Texture::unload() const
 {
 	if (SDLTexture)
 	{
