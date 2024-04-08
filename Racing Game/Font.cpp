@@ -28,7 +28,7 @@ void Font::close()
 
 void Font::unload()
 {
-	for (auto& font : fontData)
+	for (const auto& font : fontData)
 	{
 		TTF_CloseFont(font.second);
 	}
@@ -39,12 +39,12 @@ Texture* Font::renderText(const string& text, const Vector3& color, int pointSiz
 	Texture* texture = nullptr;
 	// Convert to SDL_Color
 	SDL_Color sdlColor;
-	sdlColor.r = static_cast(color.x * 255);
-	sdlColor.g = static_cast(color.y * 255);
-	sdlColor.b = static_cast(color.z * 255);
+	sdlColor.r = static_cast<Uint8>(color.x * 255);
+	sdlColor.g = static_cast<Uint8>(color.y * 255);
+	sdlColor.b = static_cast<Uint8>(color.z * 255);
 	sdlColor.a = 255;
 	// Find the font data for this point size
-	auto iter = fontData.find(pointSize);
+	const auto iter = fontData.find(pointSize);
 	if (iter != fontData.end())
 	{
 		TTF_Font* font = iter->second;

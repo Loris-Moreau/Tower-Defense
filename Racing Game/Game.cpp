@@ -15,6 +15,8 @@
 #include <algorithm>
 #include "Random.h"
 #include "Font.h"
+#include "UIScreen.h"
+#include "PauseScreen.h"
 
 bool Game::initialize()
 {
@@ -59,6 +61,9 @@ void Game::load()
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Radar.png", "Radar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Crosshair.png", "Crosshair");
 
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\ButtonYellow.png", "ButtonYellow");
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\ButtonBlue.png", "ButtonBlue");
+	
 	//Meshes
 	Assets::loadMesh(filePathRes3 + "Meshes\\Cube.gpmesh", "Mesh_Cube");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Plane.gpmesh", "Mesh_Plane");
@@ -129,62 +134,95 @@ void Game::load()
 void Game::processInput()
 {
 	inputSystem.preUpdate();
-
 	// SDL Event
+
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
-		isRunning = inputSystem.processEvent(event);
+		const bool isRunning = inputSystem.processEvent(event);
+		if (!isRunning) state = GameState::Quit;
 	}
-
 	inputSystem.update();
 	const InputState& input = inputSystem.getInputState();
-
-	// Escape: quit game
-	if (input.keyboard.getKeyState(SDL_SCANCODE_ESCAPE) == ButtonState::Released)
+	if (state == GameState::Gameplay)
 	{
-		isRunning = false;
+		// Escape: pause game
+		if (input.keyboard.getKeyState(SDL_SCANCODE_ESCAPE) == ButtonState::Released)
+		{
+			new PauseScreen();
+			return;
+		}
+		// Actor input
+		isUpdatingActors = true;
+		for (const auto actor : actors)
+		{
+			actor->processInput(input);
+		}
+		isUpdatingActors = false;
 	}
-
-	// Actor input
-	isUpdatingActors = true;
-	for (const auto actor : actors)
+	else
 	{
-		actor->processInput(input);
+		if (!UIStack.empty())
+		{
+			UIStack.back()->processInput(input);
+		}
 	}
-	isUpdatingActors = false;
 }
 
 void Game::update(float dt)
 {
-	// Update actors 
-	isUpdatingActors = true;
-	for (const auto actor : actors)
+	if (state == GameState::Gameplay)
 	{
-		actor->update(dt);
-	}
-	isUpdatingActors = false;
-
-	// Move pending actors to actors
-	for (auto pendingActor : pendingActors)
-	{
-		pendingActor->computeWorldTransform();
-		actors.emplace_back(pendingActor);
-	}
-	pendingActors.clear();
-
-	// Delete dead actors
-	vector<Actor*> deadActors;
-	for (auto actor : actors)
-	{
-		if (actor->getState() == Actor::ActorState::Dead)
+		// Update actors
+		isUpdatingActors = true;
+		for (const auto actor : actors)
 		{
-			deadActors.emplace_back(actor);
+			actor->update(dt);
+		}
+		isUpdatingActors = false;
+		// Move pending actors to actors
+		for (auto pendingActor : pendingActors)
+		{
+			pendingActor->computeWorldTransform();
+			actors.emplace_back(pendingActor);
+		}
+		pendingActors.clear();
+		// Delete dead actors
+		vector<Actor*> deadActors;
+		for (auto actor : actors)
+		{
+			if (actor->getState() == Actor::ActorState::Dead)
+			{
+				deadActors.emplace_back(actor);
+			}
+		}
+		for (const auto deadActor : deadActors)
+		{
+			delete deadActor;
 		}
 	}
-	for (const auto deadActor : deadActors)
+	
+	// Update UI screens
+	for (const auto ui : UIStack)
 	{
-		delete deadActor;
+		if (ui->getState() == UIState::Active)
+		{
+			ui->update(dt);
+		}
+	}
+	// Delete any UIScreens that are closed
+	auto iter = UIStack.begin();
+	while (iter != UIStack.end())
+	{
+		if ((*iter)->getState() == UIState::Closing)
+		{
+			delete* iter;
+			iter = UIStack.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 
@@ -199,7 +237,7 @@ void Game::loop()
 {
 	Timer timer;
 	float dt = 0;
-	while (isRunning)
+	while (state != GameState::Quit)
 	{
 		const float dt = timer.computeDeltaTime() / 1000.0f;
 		processInput();
@@ -261,6 +299,11 @@ void Game::removeActor(const Actor* actor)
 	}
 }
 
+void Game::setState(GameState stateP)
+{
+	state = stateP;
+}
+
 void Game::addPlane(PlaneActor* plane)
 {
 	planes.emplace_back(plane);
@@ -270,4 +313,9 @@ void Game::removePlane(const PlaneActor* plane)
 {
 	const auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
+}
+
+void Game::pushUI(UIScreen* screen)
+{
+	UIStack.emplace_back(screen);
 }

@@ -6,6 +6,9 @@ using std::string;
 #include "Vector3.h"
 #include "Color.h"
 
+#include <SDL_ttf.h>
+#include <unordered_map>
+
 class Font
 {
 public:
@@ -21,5 +24,5 @@ public:
 	
 private:
 	// Each font stores TTF fonts for all point sizes
-	std::unordered_map fontData;
+	std::unordered_map<int, TTF_Font*> fontData;
 };

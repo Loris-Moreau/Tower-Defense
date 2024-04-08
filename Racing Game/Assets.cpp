@@ -9,6 +9,7 @@
 std::map<std::string, Texture> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;
 std::map<std::string, Mesh> Assets::meshes;
+std::map<std::string, Font> Assets::fonts;
 
 Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const string& name)
 {
@@ -309,7 +310,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 
 Font Assets::loadFontFromFile(const string& filename)
 {
-    vector fontSizes =
+    const vector<int> fontSizes =
     {
     8, 9,
     10, 11, 12, 14, 16, 18,
@@ -321,7 +322,7 @@ Font Assets::loadFontFromFile(const string& filename)
     72
     };
     Font font;
-    for (auto& size : fontSizes)
+    for (const auto& size : fontSizes)
     {
         TTF_Font* ttfFont = TTF_OpenFont(filename.c_str(), size);
         if (ttfFont == nullptr)
