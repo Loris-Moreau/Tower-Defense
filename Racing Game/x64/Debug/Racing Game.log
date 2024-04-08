@@ -1,2 +1,61 @@
-﻿  Game.cpp
+﻿  Actor.cpp
+  BackgroundSpriteComponent.cpp
+  BallActor.cpp
+  BallMoveComponent.cpp
+  BoxComponent.cpp
+  Camera.cpp
+  CameraComponent.cpp
+  CircleCollisionComponent.cpp
+  Component.cpp
+  Cube.cpp
+  CubeActor.cpp
+  FPSActor.cpp
+  FPSCameraComponent.cpp
+  FollowActor.cpp
+  FollowCameraComponent.cpp
+  Game.cpp
+  InputComponent.cpp
+  MeshComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MeshComponent.cpp(28,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  MoveComponent.cpp
+  OrbitActor.cpp
+  Generating Code...
+  Compiling...
+  OrbitCameraComponent.cpp
+  PlaneActor.cpp
+  RendererOGL.cpp
+  SphereActor.cpp
+  SplineActor.cpp
+  SpriteComponent.cpp
+  TargetActor.cpp
+  Tile.cpp
+  main.cpp
+  Generating Code...
+AABB.obj : warning LNK4099: PDB '' was not found with 'AABB.obj' or at ''; linking object as if no debug info
+AnimSpriteComponent.obj : warning LNK4099: PDB '' was not found with 'AnimSpriteComponent.obj' or at ''; linking object as if no debug info
+Assets.obj : warning LNK4099: PDB '' was not found with 'Assets.obj' or at ''; linking object as if no debug info
+Collisions.obj : warning LNK4099: PDB '' was not found with 'Collisions.obj' or at ''; linking object as if no debug info
+ControllerState.obj : warning LNK4099: PDB '' was not found with 'ControllerState.obj' or at ''; linking object as if no debug info
+InputSystem.obj : warning LNK4099: PDB '' was not found with 'InputSystem.obj' or at ''; linking object as if no debug info
+KeyboardState.obj : warning LNK4099: PDB '' was not found with 'KeyboardState.obj' or at ''; linking object as if no debug info
+LineSegment.obj : warning LNK4099: PDB '' was not found with 'LineSegment.obj' or at ''; linking object as if no debug info
+Log.obj : warning LNK4099: PDB '' was not found with 'Log.obj' or at ''; linking object as if no debug info
+Matrix4.obj : warning LNK4099: PDB '' was not found with 'Matrix4.obj' or at ''; linking object as if no debug info
+Mesh.obj : warning LNK4099: PDB '' was not found with 'Mesh.obj' or at ''; linking object as if no debug info
+MouseState.obj : warning LNK4099: PDB '' was not found with 'MouseState.obj' or at ''; linking object as if no debug info
+PhysicsSystem.obj : warning LNK4099: PDB '' was not found with 'PhysicsSystem.obj' or at ''; linking object as if no debug info
+Plane.obj : warning LNK4099: PDB '' was not found with 'Plane.obj' or at ''; linking object as if no debug info
+Quaternion.obj : warning LNK4099: PDB '' was not found with 'Quaternion.obj' or at ''; linking object as if no debug info
+Random.obj : warning LNK4099: PDB '' was not found with 'Random.obj' or at ''; linking object as if no debug info
+Rectangle.obj : warning LNK4099: PDB '' was not found with 'Rectangle.obj' or at ''; linking object as if no debug info
+Shader.obj : warning LNK4099: PDB '' was not found with 'Shader.obj' or at ''; linking object as if no debug info
+Sphere.obj : warning LNK4099: PDB '' was not found with 'Sphere.obj' or at ''; linking object as if no debug info
+Spline.obj : warning LNK4099: PDB '' was not found with 'Spline.obj' or at ''; linking object as if no debug info
+SplineCameraComponent.obj : warning LNK4099: PDB '' was not found with 'SplineCameraComponent.obj' or at ''; linking object as if no debug info
+Texture.obj : warning LNK4099: PDB '' was not found with 'Texture.obj' or at ''; linking object as if no debug info
+Timer.obj : warning LNK4099: PDB '' was not found with 'Timer.obj' or at ''; linking object as if no debug info
+Vector2.obj : warning LNK4099: PDB '' was not found with 'Vector2.obj' or at ''; linking object as if no debug info
+Vector3.obj : warning LNK4099: PDB '' was not found with 'Vector3.obj' or at ''; linking object as if no debug info
+VertexArray.obj : warning LNK4099: PDB '' was not found with 'VertexArray.obj' or at ''; linking object as if no debug info
+Window.obj : warning LNK4099: PDB '' was not found with 'Window.obj' or at ''; linking object as if no debug info
   Racing Game.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe
