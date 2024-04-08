@@ -157,6 +157,7 @@
     <ClCompile Include="FPSActor.cpp" />
     <ClCompile Include="FPSCameraComponent.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="KeyboardState.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="FPSActor.h" />
     <ClInclude Include="FPSCameraComponent.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="IRenderer.h" />
