@@ -41,7 +41,7 @@ void InputSystem::close()
 	}
 }
 
-bool InputSystem::processEvent(SDL_Event& event)
+bool InputSystem::processEvent(const SDL_Event& event)
 {
 	bool isRunning = true;
 	switch (event.type)
@@ -124,7 +124,7 @@ void InputSystem::setMouseCursor(bool isCursorDisplayedP)
 
 void InputSystem::setMouseRelativeMode(bool isMouseRelativeOnP)
 {
-	SDL_bool set = isMouseRelativeOnP ? SDL_TRUE : SDL_FALSE;
+	const SDL_bool set = isMouseRelativeOnP ? SDL_TRUE : SDL_FALSE;
 	SDL_SetRelativeMouseMode(set);
 
 	inputState.mouse.isRelativeMode = isMouseRelativeOnP;
@@ -132,11 +132,11 @@ void InputSystem::setMouseRelativeMode(bool isMouseRelativeOnP)
 
 float InputSystem::filter1D(int input)
 {
-	const int deadZone = CONTROLLER_DEAD_ZONE_1D;
-	const int maxValue = CONTROLLER_MAX_VALUE;
+	constexpr int deadZone = CONTROLLER_DEAD_ZONE_1D;
+	constexpr int maxValue = CONTROLLER_MAX_VALUE;
 	float retVal = 0.0f;
 
-	int absValue = input > 0 ? input : -input;
+	const int absValue = input > 0 ? input : -input;
 	if (absValue > deadZone)
 	{
 		// Compute fractional value between dead zone and max value
@@ -152,13 +152,13 @@ float InputSystem::filter1D(int input)
 
 Vector2 InputSystem::filter2D(int inputX, int inputY)
 {
-	const float deadZone = CONTROLLER_DEAD_ZONE_2D;
-	const float maxValue = CONTROLLER_MAX_VALUE;
+	constexpr float deadZone = CONTROLLER_DEAD_ZONE_2D;
+	constexpr float maxValue = CONTROLLER_MAX_VALUE;
 
 	Vector2 dir;
 	dir.x = static_cast<float>(inputX);
 	dir.y = static_cast<float>(inputY);
-	float length = dir.length();
+	const float length = dir.length();
 
 	// If length < deadZone, should be no input
 	if (length < deadZone)

@@ -14,7 +14,7 @@ void OrbitCameraComponent::update(float dt)
 {
 	CameraComponent::update(dt);
 
-	Quaternion yaw{ Vector3::unitZ, yawSpeed * dt };
+	const Quaternion yaw{ Vector3::unitZ, yawSpeed * dt };
 	offset = Vector3::transform(offset, yaw);
 	up = Vector3::transform(up, yaw);
 
@@ -25,13 +25,13 @@ void OrbitCameraComponent::update(float dt)
 	Vector3 right = Vector3::cross(up, forward);
 	right.normalize();
 
-	Quaternion pitch{ right, pitchSpeed * dt };
+	const Quaternion pitch{ right, pitchSpeed * dt };
 	offset = Vector3::transform(offset, pitch);
 	up = Vector3::transform(up, pitch);
 
-	Vector3 target = owner.getPosition();
-	Vector3 cameraPosition = target + offset;
-	Matrix4 view = Matrix4::createLookAt(cameraPosition, target, up);
+	const Vector3 target = owner.getPosition();
+	const Vector3 cameraPosition = target + offset;
+	const Matrix4 view = Matrix4::createLookAt(cameraPosition, target, up);
 	setViewMatrix(view);
 }
 

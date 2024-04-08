@@ -42,7 +42,7 @@ void BackgroundSpriteComponent::draw(IRenderer& renderer)
 void BackgroundSpriteComponent::setTextures(const vector<Texture*>& texturesP)
 {
 	int count = 0;
-	for (auto tex : texturesP)
+	for (const auto tex : texturesP)
 	{
 		BGTexture temp{ *tex, Vector2(count * screenSize.x, 0) }; 	// Each texture is screen width in offset
 		textures.emplace_back(temp);

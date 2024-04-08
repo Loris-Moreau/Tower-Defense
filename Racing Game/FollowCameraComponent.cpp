@@ -14,15 +14,15 @@ void FollowCameraComponent::update(float dt)
 {
 	CameraComponent::update(dt);
 
-	float dampening = 2.0f * Maths::sqrt(springConstant);
-	Vector3 idealPosition = computeCameraPosition();
-	Vector3 diff = actualPosition - idealPosition;
-	Vector3 accel = -springConstant * diff - dampening * velocity;
+	const float dampening = 2.0f * Maths::sqrt(springConstant);
+	const Vector3 idealPosition = computeCameraPosition();
+	const Vector3 diff = actualPosition - idealPosition;
+	const Vector3 accel = -springConstant * diff - dampening * velocity;
 	velocity += accel * dt;
 	actualPosition += velocity * dt;
 
-	Vector3 target = owner.getPosition() + owner.getForward() * targetDistance;
-	Matrix4 view = Matrix4::createLookAt(actualPosition, target, Vector3::unitZ);
+	const Vector3 target = owner.getPosition() + owner.getForward() * targetDistance;
+	const Matrix4 view = Matrix4::createLookAt(actualPosition, target, Vector3::unitZ);
 	setViewMatrix(view);
 }
 
@@ -30,8 +30,8 @@ void FollowCameraComponent::snapToIdeal()
 {
 	actualPosition = computeCameraPosition();
 	velocity = Vector3::zero;
-	Vector3 target = owner.getPosition() + owner.getForward() * targetDistance;
-	Matrix4 view = Matrix4::createLookAt(actualPosition, target, Vector3::unitZ);
+	const Vector3 target = owner.getPosition() + owner.getForward() * targetDistance;
+	const Matrix4 view = Matrix4::createLookAt(actualPosition, target, Vector3::unitZ);
 	setViewMatrix(view);
 }
 

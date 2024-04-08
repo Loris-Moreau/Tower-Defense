@@ -47,7 +47,7 @@ public:
 	void updateComponents(float dt);
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);
-	void removeComponent(Component* component);
+	void removeComponent(const Component* component);
 
 private:
 	Game& game;

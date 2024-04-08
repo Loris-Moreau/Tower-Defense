@@ -35,6 +35,9 @@
     <Filter Include="Main Files">
       <UniqueIdentifier>{fb3bacdd-7ea7-4bec-bdc0-f1f3fbb2ddec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{064babf2-8ec2-4558-b35c-cdf57b7ddb82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp">
@@ -204,6 +207,9 @@
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Main Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -380,6 +386,9 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Main Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

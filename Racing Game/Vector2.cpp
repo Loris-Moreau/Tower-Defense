@@ -23,7 +23,7 @@ float Vector2::length() const
 
 void Vector2::normalize()
 {
-	float len = length();
+	const float len = length();
 	x /= len;
 	y /= len;
 }

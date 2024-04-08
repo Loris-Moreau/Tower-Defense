@@ -14,8 +14,8 @@ public:
 	void delayTime();
 
 private:
-	const static unsigned int FPS = 60;
-	const static unsigned int FRAME_DELAY = 1000 / FPS;
+	static constexpr unsigned int FPS = 60;
+	static constexpr unsigned int FRAME_DELAY = 1000 / FPS;
 	const unsigned int MAX_DT = 50;
 
 	// Time in milliseconds when frame starts

@@ -47,14 +47,14 @@ void Actor::setRotation(Quaternion rotationP)
 void Actor::rotate(const Vector3& axis, float angle)
 {
 	Quaternion newRotation = rotation;
-	Quaternion increment(axis, angle);
+	const Quaternion increment(axis, angle);
 	newRotation = Quaternion::concatenate(newRotation, increment);
 	setRotation(newRotation);
 }
 
 void Actor::setAngle(const Vector3& axis, float angle)
 {
-	Quaternion newRotation(axis, angle);
+	const Quaternion newRotation(axis, angle);
 	setRotation(newRotation);
 }
 
@@ -82,7 +82,7 @@ void Actor::computeWorldTransform()
 		worldTransform *= Matrix4::createFromQuaternion(rotation);
 		worldTransform *= Matrix4::createTranslation(position);
 
-		for (auto component : components)
+		for (const auto component : components)
 		{
 			component->onUpdateWorldTransform();
 		}
@@ -92,8 +92,8 @@ void Actor::computeWorldTransform()
 void Actor::rotateToNewForward(const Vector3& newForward)
 {
 	// Figure out difference between original (unit x) and new
-	float dot = Vector3::dot(Vector3::unitX, newForward);
-	float angle = Maths::acos(dot);
+	const float dot = Vector3::dot(Vector3::unitX, newForward);
+	const float angle = Maths::acos(dot);
 	// Facing down X
 	if (dot > 0.9999f)
 	{
@@ -117,7 +117,7 @@ void Actor::processInput(const InputState& inputState)
 {
 	if (state == Actor::ActorState::Active)
 	{
-		for (auto component : components)
+		for (const auto component : components)
 		{
 			component->processInput(inputState);
 		}
@@ -142,7 +142,7 @@ void Actor::update(float dt)
 
 void Actor::updateComponents(float dt)
 {
-	for (auto component : components)
+	for (const auto component : components)
 	{
 		component->update(dt);
 	}
@@ -156,7 +156,7 @@ void Actor::addComponent(Component* component)
 {
 	// Find the insertion point in the sorted vector
 	// (The first element with a order higher than me)
-	int myOrder = component->getUpdateOrder();
+	const int myOrder = component->getUpdateOrder();
 	auto iter = begin(components);
 	for (; iter != end(components); ++iter)
 	{
@@ -170,9 +170,9 @@ void Actor::addComponent(Component* component)
 	components.insert(iter, component);
 }
 
-void Actor::removeComponent(Component* component)
+void Actor::removeComponent(const Component* component)
 {
-	auto iter = std::find(begin(components), end(components), component);
+	const auto iter = std::find(begin(components), end(components), component);
 	if (iter != end(components))
 	{
 		components.erase(iter);

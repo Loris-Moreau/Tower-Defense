@@ -12,10 +12,10 @@ Vector3 LineSegment::pointOnSegment(float t) const
 float LineSegment::minDistSq(const Vector3& point) const
 {
 	// Construct vectors
-	Vector3 ab = end - start;
-	Vector3 ba = -1.0f * ab;
-	Vector3 ac = point - start;
-	Vector3 bc = point - end;
+	const Vector3 ab = end - start;
+	const Vector3 ba = -1.0f * ab;
+	const Vector3 ac = point - start;
+	const Vector3 bc = point - end;
 
 	// Case 1: C projects prior to A
 	if (Vector3::dot(ab, ac) < 0.0f)
@@ -31,8 +31,8 @@ float LineSegment::minDistSq(const Vector3& point) const
 	else
 	{
 		// Compute p
-		float scalar = Vector3::dot(ac, ab) / Vector3::dot(ab, ab);
-		Vector3 p = scalar * ab;
+		const float scalar = Vector3::dot(ac, ab) / Vector3::dot(ab, ab);
+		const Vector3 p = scalar * ab;
 		// Compute length squared of ac - p
 		return (ac - p).lengthSq();
 	}
@@ -40,15 +40,15 @@ float LineSegment::minDistSq(const Vector3& point) const
 
 float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 {
-	Vector3 u = s1.end - s1.start;
-	Vector3 v = s2.end - s2.start;
-	Vector3 w = s1.start - s2.start;
-	float a = Vector3::dot(u, u);         // always >= 0
-	float b = Vector3::dot(u, v);
-	float c = Vector3::dot(v, v);         // always >= 0
-	float d = Vector3::dot(u, w);
-	float e = Vector3::dot(v, w);
-	float D = a * c - b * b;        // always >= 0
+	const Vector3 u = s1.end - s1.start;
+	const Vector3 v = s2.end - s2.start;
+	const Vector3 w = s1.start - s2.start;
+	const float a = Vector3::dot(u, u);         // always >= 0
+	const float b = Vector3::dot(u, v);
+	const float c = Vector3::dot(v, v);         // always >= 0
+	const float d = Vector3::dot(u, w);
+	const float e = Vector3::dot(v, w);
+	const float D = a * c - b * b;        // always >= 0
 	float sc, sN, sD = D;       // sc = sN / sD, default sD = D >= 0
 	float tc, tN, tD = D;       // tc = tN / tD, default tD = D >= 0
 
@@ -111,7 +111,7 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 	tc = (Maths::nearZero(tN) ? 0.0f : tN / tD);
 
 	// get the difference of the two closest points
-	Vector3   dP = w + (sc * u) - (tc * v);  // =  S1(sc) - S2(tc)
+	const Vector3   dP = w + (sc * u) - (tc * v);  // =  S1(sc) - S2(tc)
 
 	return dP.lengthSq();   // return the closest distance squared
 }

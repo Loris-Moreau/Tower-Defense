@@ -29,7 +29,7 @@ public:
 
 	const InputState getInputState() const { return inputState; }
 
-	bool processEvent(SDL_Event& event); // Returns isRunning status
+	bool processEvent(const SDL_Event& event); // Returns isRunning status
 	void preUpdate();
 	void update();
 

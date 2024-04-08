@@ -20,7 +20,7 @@ FollowActor::FollowActor() :
 	setPosition(Vector3(0.0f, 0.0f, 500.0f));		// Position Car on the map with coordinate
 
 	boxComponent = new BoxComponent(this);
-	AABB collision(Vector3(-35.0f, -35.f, -85.7f), Vector3(35.f, 35.f, 87.5f));
+	const AABB collision(Vector3(-35.0f, -35.f, -85.7f), Vector3(35.f, 35.f, 87.5f));
 	boxComponent->setObjectBox(collision);
 	boxComponent->setShouldRotate(false);
 
@@ -70,11 +70,11 @@ void FollowActor::shoot()
 {
 	//Get start point (in center of screen on near plane)
 	Vector3 screenPoint(0.0f, 0.0f, 0.0f);
-	Vector3 start = getGame().getRenderer().unproject(screenPoint);
+	const Vector3 start = getGame().getRenderer().unproject(screenPoint);
 
 	//Get end point (in center of screen, between near and far)
 	screenPoint.z = 0.9f;
-	Vector3 end = getGame().getRenderer().unproject(screenPoint);
+	const Vector3 end = getGame().getRenderer().unproject(screenPoint);
 
 	//Get direction vector
 	Vector3 dir = end - start;
@@ -98,8 +98,8 @@ void FollowActor::fixCollisions()
 	const AABB& playerBox = boxComponent->getWorldBox();
 	Vector3 pos = getPosition();
 
-	auto& planes = getGame().getPlanes();
-	for (auto pa : planes)
+	const auto& planes = getGame().getPlanes();
+	for (const auto pa : planes)
 	{
 		// Do we collide with this PlaneActor?
 		const AABB& planeBox = pa->getBox()->getWorldBox();
@@ -114,11 +114,11 @@ void FollowActor::fixCollisions()
 			float dz2 = planeBox.min.z - playerBox.max.z;
 
 			// Set dx to whichever of dx1/dx2 have a lower abs
-			float dx = Maths::abs(dx1) < Maths::abs(dx2) ? dx1 : dx2;
+			const float dx = Maths::abs(dx1) < Maths::abs(dx2) ? dx1 : dx2;
 			// Ditto for dy
-			float dy = Maths::abs(dy1) < Maths::abs(dy2) ? dy1 : dy2;
+			const float dy = Maths::abs(dy1) < Maths::abs(dy2) ? dy1 : dy2;
 			// Ditto for dz
-			float dz = Maths::abs(dz1) < Maths::abs(dz2) ? dz1 : dz2;
+			const float dz = Maths::abs(dz1) < Maths::abs(dz2) ? dz1 : dz2;
 
 			// Whichever is closest, adjust x/y position
 			if (Maths::abs(dx) <= Maths::abs(dy) && Maths::abs(dx) <= Maths::abs(dz))

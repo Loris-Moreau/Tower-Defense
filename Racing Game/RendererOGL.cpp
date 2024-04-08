@@ -113,7 +113,7 @@ void RendererOGL::getScreenDirection(Vector3& outStart, Vector3& outDir) const
 	outStart = unproject(screenPoint);
 	// Get end point (in center of screen, between near and far)
 	screenPoint.z = 0.9f;
-	Vector3 end = unproject(screenPoint);
+	const Vector3 end = unproject(screenPoint);
 	// Get direction vector
 	outDir = end - outStart;
 	outDir.normalize();
@@ -131,7 +131,7 @@ void RendererOGL::drawMeshes()
 	// Lights
 	setLightUniforms(shader);
 	// Draw
-	for (auto mc : meshes)
+	for (const auto mc : meshes)
 	{
 		if (mc->getVisible())
 		{
@@ -143,7 +143,7 @@ void RendererOGL::drawMeshes()
 void RendererOGL::addSprite(SpriteComponent* sprite)
 {
 	// Insert the sprite at the right place in function of drawOrder
-	int spriteDrawOrder = sprite->getDrawOrder();
+	const int spriteDrawOrder = sprite->getDrawOrder();
 	auto iter = begin(sprites);
 	for (; iter != end(sprites); ++iter)
 	{
@@ -152,9 +152,9 @@ void RendererOGL::addSprite(SpriteComponent* sprite)
 	sprites.insert(iter, sprite);
 }
 
-void RendererOGL::removeSprite(SpriteComponent* sprite)
+void RendererOGL::removeSprite(const SpriteComponent* sprite)
 {
-	auto iter = std::find(begin(sprites), end(sprites), sprite);
+	const auto iter = std::find(begin(sprites), end(sprites), sprite);
 	sprites.erase(iter);
 }
 
@@ -173,7 +173,7 @@ void RendererOGL::drawSprites()
 	spriteShader.setMatrix4("uViewProj", spriteViewProj);
 	spriteVertexArray->setActive();
 
-	for (auto sprite : sprites)
+	for (const auto sprite : sprites)
 	{
 		if (sprite->getVisible())
 		{
@@ -184,8 +184,8 @@ void RendererOGL::drawSprites()
 
 void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
-	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
-	Matrix4 world = scaleMat * actor.getWorldTransform();
+	const Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
+	const Matrix4 world = scaleMat * actor.getWorldTransform();
 	Assets::getShader("Sprite").setMatrix4("uWorldTransform", world);
 	tex.setActive();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
@@ -196,9 +196,9 @@ void RendererOGL::addMesh(MeshComponent* mesh)
 	meshes.emplace_back(mesh);
 }
 
-void RendererOGL::removeMesh(MeshComponent* mesh)
+void RendererOGL::removeMesh(const MeshComponent* mesh)
 {
-	auto iter = std::find(begin(meshes), end(meshes), mesh);
+	const auto iter = std::find(begin(meshes), end(meshes), mesh);
 	meshes.erase(iter);
 }
 

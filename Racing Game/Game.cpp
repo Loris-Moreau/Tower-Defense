@@ -14,16 +14,18 @@
 #include <algorithm>
 #include <algorithm>
 #include "Random.h"
+#include "Font.h"
 
 bool Game::initialize()
 {
-	bool isWindowInit = window.initialize();
-	bool isRendererInit = renderer.initialize(window);
-	bool isInputInit = inputSystem.initialize();
-
-	Random::init();
-	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
+	const bool isWindowInit = window.initialize();
+	const bool isRendererInit = renderer.initialize(window);
+	const bool isInputInit = inputSystem.initialize();
+	const bool isFontInit = Font::initialize();
 	
+	Random::init();
+	
+	return isWindowInit && isRendererInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
@@ -31,10 +33,12 @@ void Game::load()
 	inputSystem.setMouseRelativeMode(true);
 
 	//FilePaths
-	string filePath = "..\\Assets\\";
+	const string filePath = "..\\Assets\\";
 	string filePathRes1 = filePath + "Res_005-011\\";
 	string filePathRes2 = filePath + "Res_012-015\\";
-	string filePathRes3 = filePath + "Res_016-025\\";
+	const string filePathRes3 = filePath + "Res_016-025\\";
+	const string filePathRes4 = filePath + "Res_036-042\\";
+	const string filePathRes5 = filePath + "Res_043-044\\";
 
 	//Shaders
 	Assets::loadShader(filePathRes3 + "Shaders\\Sprite.vert", filePathRes3 + "Shaders\\Sprite.frag", "", "", "", "Sprite");
@@ -63,6 +67,9 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
 
+	//Fonts
+	Assets::loadFont(filePathRes4 + "Fonts\\Carlito-Regular.ttf", "Carlito");
+
 	//fps = new FPSActor();
 	//orbit = new OrbitActor();
 	//path = new SplineActor();
@@ -77,14 +84,14 @@ void Game::load()
 		a->setPosition(Vector3(rando.getFloatRange(2000, 50000), rando.getFloatRange(-2500, 2500), rando.getFloatRange(-0.1f,2.0f)));
 
 		//float randScale = rand() % 50 + 450;
-		float randScale = rando.getFloatRange(200, 950);
+		const float randScale = rando.getFloatRange(200, 950);
 		a->setScale(randScale);
 	}
 
 	// Floor and walls
 	// Setup floor
-	const float start = -10000.0f;
-	const float size = 1000.0f;
+	constexpr float start = -10000.0f;
+	constexpr float size = 1000.0f;
 	for (int i = 0; i < 50; i++)
 	{
 		for (int j = 0; j < 20; j++)
@@ -102,7 +109,7 @@ void Game::load()
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
 	/*
-	// Corsshair
+	// Crosshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
@@ -141,7 +148,7 @@ void Game::processInput()
 
 	// Actor input
 	isUpdatingActors = true;
-	for (auto actor : actors)
+	for (const auto actor : actors)
 	{
 		actor->processInput(input);
 	}
@@ -152,7 +159,7 @@ void Game::update(float dt)
 {
 	// Update actors 
 	isUpdatingActors = true;
-	for (auto actor : actors)
+	for (const auto actor : actors)
 	{
 		actor->update(dt);
 	}
@@ -175,7 +182,7 @@ void Game::update(float dt)
 			deadActors.emplace_back(actor);
 		}
 	}
-	for (auto deadActor : deadActors)
+	for (const auto deadActor : deadActors)
 	{
 		delete deadActor;
 	}
@@ -194,7 +201,7 @@ void Game::loop()
 	float dt = 0;
 	while (isRunning)
 	{
-		float dt = timer.computeDeltaTime() / 1000.0f;
+		const float dt = timer.computeDeltaTime() / 1000.0f;
 		processInput();
 		update(dt);
 		render();
@@ -217,6 +224,7 @@ void Game::unload()
 
 void Game::close()
 {
+	Font::close();
 	inputSystem.close();
 	renderer.close();
 	window.close();
@@ -235,7 +243,7 @@ void Game::addActor(Actor* actor)
 	}
 }
 
-void Game::removeActor(Actor* actor)
+void Game::removeActor(const Actor* actor)
 {
 	// Erase actor from the two vectors
 	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);
@@ -258,8 +266,8 @@ void Game::addPlane(PlaneActor* plane)
 	planes.emplace_back(plane);
 }
 
-void Game::removePlane(PlaneActor* plane)
+void Game::removePlane(const PlaneActor* plane)
 {
-	auto iter = std::find(begin(planes), end(planes), plane);
+	const auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
 }

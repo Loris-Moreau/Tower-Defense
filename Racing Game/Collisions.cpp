@@ -3,14 +3,14 @@
 
 bool Collisions::intersect(const Sphere& a, const Sphere& b)
 {
-	float distSq = (a.center - b.center).lengthSq();
-	float sumRadii = a.radius + b.radius;
+	const float distSq = (a.center - b.center).lengthSq();
+	const float sumRadii = a.radius + b.radius;
 	return distSq <= (sumRadii * sumRadii);
 }
 
 bool Collisions::intersect(const AABB& a, const AABB& b)
 {
-	bool outside = a.max.x < b.min.x ||
+	const bool outside = a.max.x < b.min.x ||
 		a.max.y < b.min.y ||
 		a.max.z < b.min.z ||
 		b.max.x < a.min.x ||
@@ -21,18 +21,18 @@ bool Collisions::intersect(const AABB& a, const AABB& b)
 
 bool Collisions::intersect(const Sphere& s, const AABB& box)
 {
-	float distSq = box.minDistSq(s.center);
+	const float distSq = box.minDistSq(s.center);
 	return distSq <= (s.radius * s.radius);
 }
 
 bool Collisions::intersect(const LineSegment& l, const Sphere& s, float& outT)
 {
 	// Compute X, Y, a, b, c as per equations
-	Vector3 X = l.start - s.center;
-	Vector3 Y = l.end - l.start;
-	float a = Vector3::dot(Y, Y);
-	float b = 2.0f * Vector3::dot(X, Y);
-	float c = Vector3::dot(X, X) - s.radius * s.radius;
+	const Vector3 X = l.start - s.center;
+	const Vector3 Y = l.end - l.start;
+	const float a = Vector3::dot(Y, Y);
+	const float b = 2.0f * Vector3::dot(X, Y);
+	const float c = Vector3::dot(X, X) - s.radius * s.radius;
 	// Compute discriminant
 	float disc = b * b - 4.0f * a * c;
 	if (disc < 0.0f)
@@ -43,8 +43,8 @@ bool Collisions::intersect(const LineSegment& l, const Sphere& s, float& outT)
 	{
 		disc = Maths::sqrt(disc);
 		// Compute min and max solutions of t
-		float tMin = (-b - disc) / (2.0f * a);
-		float tMax = (-b + disc) / (2.0f * a);
+		const float tMin = (-b - disc) / (2.0f * a);
+		const float tMax = (-b + disc) / (2.0f * a);
 		// Check whether either t is within bounds of segment
 		if (tMin >= 0.0f && tMin <= 1.0f)
 		{
@@ -66,7 +66,7 @@ bool Collisions::intersect(const LineSegment& l, const Sphere& s, float& outT)
 bool Collisions::intersect(const LineSegment& l, const Plane& p, float& outT)
 {
 	// First test if there's a solution for t
-	float denom = Vector3::dot(l.end - l.start, p.normal);
+	const float denom = Vector3::dot(l.end - l.start, p.normal);
 	if (Maths::nearZero(denom))
 	{
 		// The only way they intersect is if start
@@ -82,7 +82,7 @@ bool Collisions::intersect(const LineSegment& l, const Plane& p, float& outT)
 	}
 	else
 	{
-		float numer = -Vector3::dot(l.start, p.normal) - p.d;
+		const float numer = -Vector3::dot(l.start, p.normal) - p.d;
 		outT = numer / denom;
 		// Validate t is within bounds of the line segment
 		if (outT >= 0.0f && outT <= 1.0f)
@@ -118,7 +118,7 @@ bool Collisions::intersect(const LineSegment& l, const AABB& b, float& outT, Vec
 		});
 	// Test if the box contains any of these points of intersection
 	Vector3 point;
-	for (auto& t : tValues)
+	for (const auto& t : tValues)
 	{
 		point = l.pointOnSegment(t.first);
 		if (b.contains(point))
@@ -135,14 +135,14 @@ bool Collisions::intersect(const LineSegment& l, const AABB& b, float& outT, Vec
 
 bool Collisions::testSidePlane(float start, float end, float negd, const Vector3& norm, vector<pair<float, Vector3>>& out)
 {
-	float denom = end - start;
+	const float denom = end - start;
 	if (Maths::nearZero(denom))
 	{
 		return false;
 	}
 	else
 	{
-		float numer = -start + negd;
+		const float numer = -start + negd;
 		float t = numer / denom;
 		// Test that t is within bounds
 		if (t >= 0.0f && t <= 1.0f)
@@ -160,13 +160,13 @@ bool Collisions::testSidePlane(float start, float end, float negd, const Vector3
 bool Collisions::sweptSphere(const Sphere& P0, const Sphere& P1, const Sphere& Q0, const Sphere& Q1, float& outT)
 {
 	// Compute X, Y, a, b, and c
-	Vector3 X = P0.center - Q0.center;
-	Vector3 Y = P1.center - P0.center -
+	const Vector3 X = P0.center - Q0.center;
+	const Vector3 Y = P1.center - P0.center -
 		(Q1.center - Q0.center);
-	float a = Vector3::dot(Y, Y);
-	float b = 2.0f * Vector3::dot(X, Y);
-	float sumRadii = P0.radius + Q0.radius;
-	float c = Vector3::dot(X, X) - sumRadii * sumRadii;
+	const float a = Vector3::dot(Y, Y);
+	const float b = 2.0f * Vector3::dot(X, Y);
+	const float sumRadii = P0.radius + Q0.radius;
+	const float c = Vector3::dot(X, X) - sumRadii * sumRadii;
 	// Solve discriminant
 	float disc = b * b - 4.0f * a * c;
 	if (disc < 0.0f)

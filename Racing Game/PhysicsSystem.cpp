@@ -12,9 +12,9 @@ void PhysicsSystem::addBox(BoxComponent* box)
 	boxes.emplace_back(box);
 }
 
-void PhysicsSystem::removeBox(BoxComponent* box)
+void PhysicsSystem::removeBox(const BoxComponent* box)
 {
-	auto iter = std::find(begin(boxes), end(boxes), box);
+	const auto iter = std::find(begin(boxes), end(boxes), box);
 	if (iter != end(boxes))
 	{
 		// Swap to end of vector and pop off (avoid erase copies)
@@ -28,10 +28,10 @@ bool PhysicsSystem::segmentCast(const LineSegment& l, CollisionInfo& outColl)
 	bool collided = false;
 	// Initialize closestT to infinity, so first
 	// intersection will always update closestT
-	float closestT = Maths::infinity;
+	const float closestT = Maths::infinity;
 	Vector3 norm;
 	// Test against all boxes
-	for (auto box : boxes)
+	for (const auto box : boxes)
 	{
 		float t;
 		// Does the segment intersect with the box?
@@ -74,7 +74,7 @@ void PhysicsSystem::testSweepAndPrune(std::function<void(Actor*, Actor*)> f)
 {
 	// Sort by min.x
 	std::sort(begin(boxes), end(boxes),
-		[](BoxComponent* a, BoxComponent* b) {
+		[](const BoxComponent* a, const BoxComponent* b) {
 			return a->getWorldBox().min.x < b->getWorldBox().min.x;
 		});
 
@@ -82,7 +82,7 @@ void PhysicsSystem::testSweepAndPrune(std::function<void(Actor*, Actor*)> f)
 	{
 		// Get max.x for current box
 		BoxComponent* a = boxes[i];
-		float max = a->getWorldBox().max.x;
+		const float max = a->getWorldBox().max.x;
 		for (size_t j = i + 1; j < boxes.size(); j++)
 		{
 			BoxComponent* b = boxes[j];

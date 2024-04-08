@@ -35,9 +35,9 @@ void SplineCameraComponent::update(float dt)
 		}
 	}
 
-	Vector3 cameraPosition = spline.compute(index, t);
-	Vector3 target = spline.compute(index, t + 0.01f);
-	Matrix4 view = Matrix4::createLookAt(cameraPosition, target, Vector3::unitZ);
+	const Vector3 cameraPosition = spline.compute(index, t);
+	const Vector3 target = spline.compute(index, t + 0.01f);
+	const Matrix4 view = Matrix4::createLookAt(cameraPosition, target, Vector3::unitZ);
 	setViewMatrix(view);
 }
 

@@ -12,11 +12,11 @@ void Camera::updateActor(float deltaTime)
 	Actor::updateActor(deltaTime);
 
 	// Compute new camera from this actor
-	Vector3 cameraPos = getPosition();
-	Vector3 target = getPosition() + getForward() * 100.0f;
-	Vector3 up = Vector3::unitZ;
+	const Vector3 cameraPos = getPosition();
+	const Vector3 target = getPosition() + getForward() * 100.0f;
+	const Vector3 up = Vector3::unitZ;
 
-	Matrix4 view = Matrix4::createLookAt(cameraPos, target, up);
+	const Matrix4 view = Matrix4::createLookAt(cameraPos, target, up);
 	getGame().getRenderer().setViewMatrix(view);
 }
 

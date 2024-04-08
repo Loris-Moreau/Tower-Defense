@@ -23,11 +23,11 @@ public:
 	IRenderer::Type type() { return Type::OGL; }
 
 	void addSprite(class SpriteComponent* sprite);
-	void removeSprite(class SpriteComponent* sprite);
+	void removeSprite(const class SpriteComponent* sprite);
 	void drawSprite(const class Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
 
 	void addMesh(class MeshComponent* mesh);
-	void removeMesh(class MeshComponent* mesh);
+	void removeMesh(const class MeshComponent* mesh);
 
 	DirectionalLight& getDirectionalLight() { return dirLight; }
 

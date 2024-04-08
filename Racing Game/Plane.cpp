@@ -6,8 +6,8 @@ Plane::Plane(const Vector3& normalP, float dP) : normal(normalP), d(dP)
 
 Plane::Plane(const Vector3& a, const Vector3& b, const Vector3& c)
 {
-	Vector3 ab = b - a;
-	Vector3 ac = c - a;
+	const Vector3 ab = b - a;
+	const Vector3 ac = c - a;
 	normal = Vector3::cross(ab, ac);
 	normal.normalize();
 	// d = -P dot n

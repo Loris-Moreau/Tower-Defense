@@ -26,7 +26,7 @@ public:
 	PhysicsSystem();
 
 	void addBox(class BoxComponent* box);
-	void removeBox(class BoxComponent* box);
+	void removeBox(const class BoxComponent* box);
 	bool segmentCast(const LineSegment& l, CollisionInfo& outColl);
 
 	// Tests collisions using naive pairwise

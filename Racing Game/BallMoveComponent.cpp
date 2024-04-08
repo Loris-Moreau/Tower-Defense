@@ -21,13 +21,13 @@ void BallMoveComponent::setPlayer(Actor* playerP)
 void BallMoveComponent::update(float dt)
 {
 	// Construct segment in direction of travel
-	const float segmentLength = 30.0f;
-	Vector3 start = owner.getPosition();
+	constexpr float segmentLength = 30.0f;
+	const Vector3 start = owner.getPosition();
 	Vector3 dir = owner.getForward();
-	Vector3 end = start + dir * segmentLength;
+	const Vector3 end = start + dir * segmentLength;
 
 	// Create line segment
-	LineSegment l(start, end);
+	const LineSegment l(start, end);
 
 	// Test segment vs world
 	PhysicsSystem::CollisionInfo info;

@@ -17,16 +17,16 @@ void CircleCollisionComponent::setRadius(float radiusP)
 
 const Vector2 CircleCollisionComponent::getCenter() const
 {
-	Vector3 position = owner.getPosition();
+	const Vector3 position = owner.getPosition();
 	return Vector2(position.x, position.y);
 }
 
 bool Intersect(const CircleCollisionComponent& a, const CircleCollisionComponent& b)
 {
-	Vector2 aCenter = a.getCenter();
-	Vector2 bCenter = b.getCenter();
-	Vector2 ab = bCenter - aCenter;
-	float distSq = ab.lengthSq();
-	float sumOfRadius = a.getRadius() + b.getRadius();
+	const Vector2 aCenter = a.getCenter();
+	const Vector2 bCenter = b.getCenter();
+	const Vector2 ab = bCenter - aCenter;
+	const float distSq = ab.lengthSq();
+	const float sumOfRadius = a.getRadius() + b.getRadius();
 	return distSq <= sumOfRadius * sumOfRadius;
 }
