@@ -136,7 +136,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
         vertexCode = vShaderStream.str();
         fragmentCode = fShaderStream.str();
         // If tess control shader path is present, also load a tess control shader
-        if (tcShaderFile != "") {
+        if (!tcShaderFile.empty()) {
             std::ifstream tessControlShaderFile(tcShaderFile);
             std::stringstream tcShaderStream;
             tcShaderStream << tessControlShaderFile.rdbuf();
@@ -144,7 +144,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             tcCode = tcShaderStream.str();
         }
         // If tess evaluation shader path is present, also load a tess evaluation shader
-        if (teShaderFile != "") {
+        if (!teShaderFile.empty()) {
             std::ifstream tessEvalShaderFile(teShaderFile);
             std::stringstream teShaderStream;
             teShaderStream << tessEvalShaderFile.rdbuf();
@@ -152,7 +152,7 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             teCode = teShaderStream.str();
         }
         // If geometry shader path is present, also load a geometry shader
-        if (gShaderFile != "") {
+        if (!gShaderFile.empty()) {
             std::ifstream geometryShaderFile(gShaderFile);
             std::stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
@@ -163,13 +163,13 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     catch (std::exception e) {
         std::ostringstream loadError;
         std::string geomShaderFile = "";
-        if (gShaderFile != "")
+        if (!gShaderFile.empty())
             geomShaderFile = gShaderFile;
 
         loadError << "ERROR::SHADER: Failed to read shader files " << vShaderFile << " " << fShaderFile << " "
             << geomShaderFile << "\n"
             << "\n -- --------------------------------------------------- -- "
-            << std::endl;
+            << '\n';
         Log::error(LogCategory::Render, loadError.str());
     }
     const GLchar* vShaderCode = vertexCode.c_str();
@@ -180,9 +180,9 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     // 2. Now create shader object from source code
     Shader shader;
     shader.compile(vShaderCode, fShaderCode,
-        tcShaderFile != "" ? tcShaderCode : nullptr,
-        teShaderFile != "" ? teShaderCode : nullptr,
-        gShaderFile != "" ? gShaderCode : nullptr);
+                   !tcShaderFile.empty() ? tcShaderCode : nullptr,
+                   !teShaderFile.empty() ? teShaderCode : nullptr,
+                   !gShaderFile.empty() ? gShaderCode : nullptr);
     return shader;
 }
 
@@ -193,7 +193,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
     std::ifstream file(filename);
     if (!file.is_open())
     {
-        Log::error(LogCategory::Application, "File not found: Mesh " + filename);
+        Log::error(LogCategory::Application, "File not found : Mesh " + filename);
     }
 
     std::stringstream fileStream;
