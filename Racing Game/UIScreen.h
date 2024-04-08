@@ -41,4 +41,7 @@ protected:
 	Texture& buttonOn;
 	Texture& buttonOff;
 	Vector2 nextButtonPosition;
+
+	Texture* background;
+	Vector2 backgroundPosition;
 };

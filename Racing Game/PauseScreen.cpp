@@ -1,4 +1,5 @@
 #include "PauseScreen.h"
+#include "DialogBox.h"
 #include "Game.h"
 
 PauseScreen::PauseScreen() : UIScreen()
@@ -7,7 +8,7 @@ PauseScreen::PauseScreen() : UIScreen()
 	Game::instance().getInputSystem().setMouseRelativeMode(false);
 	setTitle("PauseTitle");
 	addButton("ResumeButton", [this]() { close(); } );
-	addButton("QuitButton", [this]() { Game::instance().setState(GameState::Quit); });
+	addButton("QuitButton", [this]() {new DialogBox("QuitText", [this]() {Game::instance().setState(GameState::Quit); });});
 }
 
 PauseScreen::~PauseScreen()

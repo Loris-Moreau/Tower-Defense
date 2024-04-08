@@ -62,6 +62,7 @@ void Game::load()
 
 	Assets::loadTexture(renderer, filePathRes4 + "Textures\\ButtonYellow.png", "ButtonYellow");
 	Assets::loadTexture(renderer, filePathRes4 + "Textures\\ButtonBlue.png", "ButtonBlue");
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\DialogBG.png","DialogBG");
 	
 	//Meshes
 	Assets::loadMesh(filePathRes3 + "Meshes\\Cube.gpmesh", "Mesh_Cube");

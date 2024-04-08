@@ -6,13 +6,14 @@
 #include "Button.h"
 
 UIScreen::UIScreen() :
-	
-	title(nullptr),
-	titlePosition(0.0f, 300.0f),
-	state(UIState::Active),
-	font(Assets::getFont("Carlito")),
-	buttonOn(Assets::getTexture("ButtonYellow")),
-	buttonOff(Assets::getTexture("ButtonBlue"))
+title(nullptr),
+titlePosition(0.0f, 300.0f),
+state(UIState::Active),
+font(Assets::getFont("Carlito")),
+buttonOn(Assets::getTexture("ButtonYellow")),
+buttonOff(Assets::getTexture("ButtonBlue")),
+background(nullptr),
+backgroundPosition(0.0f, 250)
 {
 	Game::instance().pushUI(this);
 }
@@ -42,6 +43,11 @@ void UIScreen::update(float deltaTime)
 
 void UIScreen::draw(Shader& shader)
 {
+	if (background)
+	{
+
+		drawTexture(shader, background, backgroundPosition);
+	}
 	if (title)
 	{
 		drawTexture(shader, title, titlePosition);

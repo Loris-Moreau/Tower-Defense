@@ -150,6 +150,7 @@
     <ClCompile Include="ControllerState.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CubeActor.cpp" />
+    <ClCompile Include="DialogBox.cpp" />
     <ClCompile Include="FollowActor.cpp" />
     <ClCompile Include="FollowCameraComponent.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="ControllerState.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CubeActor.h" />
+    <ClInclude Include="DialogBox.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="FollowActor.h" />
     <ClInclude Include="FollowCameraComponent.h" />
