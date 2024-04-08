@@ -12,10 +12,10 @@ Vector3 LineSegment::pointOnSegment(float t) const
 float LineSegment::minDistSq(const Vector3& point) const
 {
 	// Construct vectors
-	const Vector3 ab = end - start;
-	const Vector3 ba = -1.0f * ab;
-	const Vector3 ac = point - start;
-	const Vector3 bc = point - end;
+	Vector3 ab = end - start;
+	Vector3 ba = -1.0f * ab;
+	Vector3 ac = point - start;
+	Vector3 bc = point - end;
 
 	// Case 1: C projects prior to A
 	if (Vector3::dot(ab, ac) < 0.0f)
@@ -31,8 +31,8 @@ float LineSegment::minDistSq(const Vector3& point) const
 	else
 	{
 		// Compute p
-		const float scalar = Vector3::dot(ac, ab) / Vector3::dot(ab, ab);
-		const Vector3 p = scalar * ab;
+		float scalar = Vector3::dot(ac, ab) / Vector3::dot(ab, ab);
+		Vector3 p = scalar * ab;
 		// Compute length squared of ac - p
 		return (ac - p).lengthSq();
 	}
@@ -40,20 +40,20 @@ float LineSegment::minDistSq(const Vector3& point) const
 
 float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 {
-	const Vector3 u = s1.end - s1.start;
-	const Vector3 v = s2.end - s2.start;
-	const Vector3 w = s1.start - s2.start;
-	const float a = Vector3::dot(u, u);         // always >= 0
-	const float b = Vector3::dot(u, v);
-	const float c = Vector3::dot(v, v);         // always >= 0
-	const float d = Vector3::dot(u, w);
-	const float e = Vector3::dot(v, w);
-	const float D = a * c - b * b;        // always >= 0
+	Vector3 u = s1.end - s1.start;
+	Vector3 v = s2.end - s2.start;
+	Vector3 w = s1.start - s2.start;
+	float a = Vector3::dot(u, u);         // always >= 0
+	float b = Vector3::dot(u, v);
+	float c = Vector3::dot(v, v);         // always >= 0
+	float d = Vector3::dot(u, w);
+	float e = Vector3::dot(v, w);
+	float D = a * c - b * b;        // always >= 0
 	float sc, sN, sD = D;       // sc = sN / sD, default sD = D >= 0
 	float tc, tN, tD = D;       // tc = tN / tD, default tD = D >= 0
 
 	// compute the line parameters of the two closest points
-	if (Maths::nearZero(D))
+	if (Maths::nearZero(D)) 
 	{
 		// the lines are almost parallel
 		sN = 0.0;         // force using point P0 on segment S1
@@ -62,8 +62,8 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 		tD = c;
 	}
 	// get the closest points on the infinite lines
-	else
-	{
+	else 
+	{                 
 		sN = (b * e - c * d);
 		tN = (a * e - b * d);
 		if (sN < 0.0) {        // sc < 0 => the s=0 edge is visible
@@ -79,7 +79,7 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 	}
 
 	// tc < 0 => the t=0 edge is visible
-	if (tN < 0.0) {
+	if (tN < 0.0) {            
 		tN = 0.0;
 		// recompute sc for this edge
 		if (-d < 0.0)
@@ -92,15 +92,15 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 		}
 	}
 	// tc > 1  => the t=1 edge is visible
-	else if (tN > tD)
-	{
+	else if (tN > tD) 
+	{      
 		tN = tD;
 		// recompute sc for this edge
 		if (-d + b < 0.0)
 			sN = 0;
 		else if ((-d + b) > a)
 			sN = sD;
-		else
+		else 
 		{
 			sN = (-d + b);
 			sD = a;
@@ -111,7 +111,7 @@ float LineSegment::minDistSq(const LineSegment& s1, const LineSegment& s2)
 	tc = (Maths::nearZero(tN) ? 0.0f : tN / tD);
 
 	// get the difference of the two closest points
-	const Vector3   dP = w + (sc * u) - (tc * v);  // =  S1(sc) - S2(tc)
+	Vector3   dP = w + (sc * u) - (tc * v);  // =  S1(sc) - S2(tc)
 
 	return dP.lengthSq();   // return the closest distance squared
 }

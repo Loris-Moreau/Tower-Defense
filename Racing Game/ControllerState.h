@@ -28,3 +28,4 @@ private:
 	float rightTrigger;
 	bool isConnected;
 };
+

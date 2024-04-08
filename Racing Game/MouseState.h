@@ -18,3 +18,4 @@ private:
 	Vector2 scrollWheel;
 	bool isRelativeMode;
 };
+

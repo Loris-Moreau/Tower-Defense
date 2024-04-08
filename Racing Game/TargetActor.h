@@ -6,3 +6,4 @@ class TargetActor : public Actor
 public:
 	TargetActor();
 };
+

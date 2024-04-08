@@ -14,12 +14,12 @@ OrbitActor::OrbitActor() : Actor(), cameraComponent(nullptr), meshComponent(null
 
 void OrbitActor::actorInput(const InputState& inputState)
 {
-	const Vector2 mousePosition = inputState.mouse.getPosition();
-	const float x = mousePosition.x;
-	const float y = mousePosition.y;
+	Vector2 mousePosition = inputState.mouse.getPosition();
+	float x = mousePosition.x;
+	float y = mousePosition.y;
 	if (inputState.mouse.getButtonState(3) == ButtonState::Held)
 	{
-		constexpr float maxMouseSpeed = 500.0f;
+		const float maxMouseSpeed = 500.0f;
 		const float maxOrbitSpeed = Maths::pi * 8;
 
 		float yawSpeed = 0.0f;
@@ -40,7 +40,7 @@ void OrbitActor::actorInput(const InputState& inputState)
 	}
 }
 
-void OrbitActor::setVisible(bool visible) const
+void OrbitActor::setVisible(bool visible)
 {
 	meshComponent->setVisible(visible);
 }

@@ -22,10 +22,10 @@ void MeshComponent::draw(Shader& shader)
 {
 	if (mesh)
 	{
-		const Matrix4 wt = owner.getWorldTransform();
+		Matrix4 wt = owner.getWorldTransform();
 		shader.setMatrix4("uWorldTransform", wt);
 		shader.setFloat("uSpecPower", mesh->getSpecularPower());
-		const Texture* t = mesh->getTexture(textureIndex);
+		Texture* t = mesh->getTexture(textureIndex);
 		if (t)
 		{
 			t->setActive();

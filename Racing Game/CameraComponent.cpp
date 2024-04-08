@@ -5,7 +5,7 @@ CameraComponent::CameraComponent(Actor* owner, int updateOrder) : Component(owne
 {
 }
 
-void CameraComponent::setViewMatrix(const Matrix4& view) const
+void CameraComponent::setViewMatrix(const Matrix4& view)
 {
 	Game& game = owner.getGame();
 	game.getRenderer().setViewMatrix(view);

@@ -9,7 +9,7 @@ Quaternion::Quaternion(float xP, float yP, float zP, float wP)
 
 Quaternion::Quaternion(const Vector3& axis, float angle)
 {
-	const float scalar = Maths::sin(angle / 2.0f);
+	float scalar = Maths::sin(angle / 2.0f);
 	x = axis.x * scalar;
 	y = axis.y * scalar;
 	z = axis.z * scalar;
@@ -33,7 +33,7 @@ void Quaternion::conjugate()
 
 void Quaternion::normalize()
 {
-	const float len = length();
+	float len = length();
 	x /= len;
 	y /= len;
 	z /= len;

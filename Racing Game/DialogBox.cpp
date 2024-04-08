@@ -1,8 +1,7 @@
 #include "DialogBox.h"
 #include "Assets.h"
 
-DialogBox::DialogBox(const string& text, std::function<void()>
-onValidate) : UIScreen()
+DialogBox::DialogBox(const string& text, std::function<void()> onValidate) : UIScreen()
 {
 	background = &Assets::getTexture("DialogBG");
 	backgroundPosition = Vector2::zero;
@@ -12,6 +11,7 @@ onValidate) : UIScreen()
 	addButton("OKButton", [onValidate]() { onValidate(); });
 	addButton("CancelButton", [this]() { close(); });
 }
+
 DialogBox::~DialogBox()
 {
 }

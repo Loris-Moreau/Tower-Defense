@@ -20,7 +20,7 @@ void Mesh::addTexture(Texture* texture)
 	textures.emplace_back(texture);
 }
 
-Texture* Mesh::getTexture(int index) const
+Texture* Mesh::getTexture(int index)
 {
 	if (index < textures.size())
 	{

@@ -50,7 +50,7 @@ void AABB::rotate(const Quaternion& q)
 
 bool AABB::contains(const Vector3& point) const
 {
-	const bool outside = point.x < min.x ||
+	bool outside = point.x < min.x ||
 		point.y < min.y ||
 		point.z < min.z ||
 		point.x > max.x ||

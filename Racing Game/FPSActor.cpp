@@ -10,25 +10,23 @@
 #include "BoxComponent.h"
 #include "Collisions.h"
 
-FPSActor::FPSActor() :
-	Actor(),
+FPSActor::FPSActor() : 
+	Actor(), 
 	moveComponent(nullptr),
-	audioComponent(nullptr),
 	meshComponent(nullptr),
 	cameraComponent(nullptr),
-	lastFootstep(0.0f),
 	boxComponent(nullptr)
 {
 	moveComponent = new MoveComponent(this);
 	cameraComponent = new FPSCameraComponent(this);
-
+	
 	FPSModel = new Actor();
 	FPSModel->setScale(0.75f);
 	meshComponent = new MeshComponent(FPSModel);
 	meshComponent->setMesh(Assets::getMesh("Mesh_Rifle"));
 
 	boxComponent = new BoxComponent(this);
-	const AABB collision(Vector3(-25.0f, -25.0f, -87.5f), Vector3(25.0f, 25.0f, 87.5f));
+	AABB collision(Vector3(-25.0f, -25.0f, -87.5f), Vector3(25.0f, 25.0f, 87.5f));
 	boxComponent->setObjectBox(collision);
 	boxComponent->setShouldRotate(false);
 }
@@ -36,17 +34,6 @@ FPSActor::FPSActor() :
 void FPSActor::updateActor(float dt)
 {
 	Actor::updateActor(dt);
-
-	/*
-	// Play the footstep if we're moving and haven't recently
-	lastFootstep -= dt;
-	if (!Maths::nearZero(moveComponent->getForwardSpeed()) && lastFootstep <= 0.0f)
-	{
-		footstep.setPaused(false);
-		footstep.restart();
-		lastFootstep = 0.5f;
-	}
-	*/
 
 	// Update position and rotation of model relatively to position
 	Vector3 modelPosition = getPosition();
@@ -85,10 +72,10 @@ void FPSActor::actorInput(const InputState& inputState)
 	moveComponent->setForwardSpeed(forwardSpeed);
 	moveComponent->setStrafeSpeed(strafeSpeed);
 	// Mouse mouvement
-	const Vector2 mousePosition = inputState.mouse.getPosition();
-	const float x = mousePosition.x;
-	const float y = mousePosition.y;
-	constexpr int maxMouseSpeed = 500;
+	Vector2 mousePosition = inputState.mouse.getPosition();
+	float x = mousePosition.x;
+	float y = mousePosition.y;
+	const int maxMouseSpeed = 500;
 	const float maxAngularSpeed = Maths::pi * 8;
 	float angularSpeed = 0.0f;
 	if (x != 0)
@@ -117,10 +104,10 @@ void FPSActor::shoot()
 {
 	// Get start point (in center of screen on near plane)
 	Vector3 screenPoint(0.0f, 0.0f, 0.0f);
-	const Vector3 start = getGame().getRenderer().unproject(screenPoint);
+	Vector3 start = getGame().getRenderer().unproject(screenPoint);
 	// Get end point (in center of screen, between near and far)
 	screenPoint.z = 0.9f;
-	const Vector3 end = getGame().getRenderer().unproject(screenPoint);
+	Vector3 end = getGame().getRenderer().unproject(screenPoint);
 	// Get direction vector
 	Vector3 dir = end - start;
 	dir.normalize();
@@ -132,17 +119,7 @@ void FPSActor::shoot()
 	ball->rotateToNewForward(dir);
 }
 
-/*
-void FPSActor::setFootstepSurface(float value)
-{
-	// Pause here because the way I setup the parameter in FMOD
-	// changing it will play a footstep
-	footstep.setPaused(true);
-	footstep.setParameter("Surface", value);
-}
-*/
-
-void FPSActor::setVisible(bool isVisible) const
+void FPSActor::setVisible(bool isVisible)
 {
 	meshComponent->setVisible(isVisible);
 }
@@ -155,8 +132,8 @@ void FPSActor::fixCollisions()
 	const AABB& playerBox = boxComponent->getWorldBox();
 	Vector3 pos = getPosition();
 
-	const auto& planes = getGame().getPlanes();
-	for (const auto pa : planes)
+	auto& planes = getGame().getPlanes();
+	for (auto pa : planes)
 	{
 		// Do we collide with this PlaneActor?
 		const AABB& planeBox = pa->getBox()->getWorldBox();
@@ -171,11 +148,11 @@ void FPSActor::fixCollisions()
 			float dz2 = planeBox.min.z - playerBox.max.z;
 
 			// Set dx to whichever of dx1/dx2 have a lower abs
-			const float dx = Maths::abs(dx1) < Maths::abs(dx2) ? dx1 : dx2;
+			float dx = Maths::abs(dx1) < Maths::abs(dx2) ? dx1 : dx2;
 			// Ditto for dy
-			const float dy = Maths::abs(dy1) < Maths::abs(dy2) ? dy1 : dy2;
+			float dy = Maths::abs(dy1) < Maths::abs(dy2) ? dy1 : dy2;
 			// Ditto for dz
-			const float dz = Maths::abs(dz1) < Maths::abs(dz2) ? dz1 : dz2;
+			float dz = Maths::abs(dz1) < Maths::abs(dz2) ? dz1 : dz2;
 
 			// Whichever is closest, adjust x/y position
 			if (Maths::abs(dx) <= Maths::abs(dy) && Maths::abs(dx) <= Maths::abs(dz))

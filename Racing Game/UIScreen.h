@@ -1,11 +1,9 @@
 #pragma once
-
 #include <string>
 #include <functional>
 #include <vector>
 #include "Vector2.h"
 #include "Color.h"
-#include "Font.h"
 
 using std::string;
 using std::vector;
@@ -20,7 +18,7 @@ class UIScreen
 public:
 	UIScreen();
 	virtual ~UIScreen();
-	
+
 	UIState getState() const { return state; }
 	void setTitle(const string& titleP, const Vector3& color = Color::white, int pointSize = 40);
 
@@ -29,19 +27,19 @@ public:
 	virtual void processInput(const class InputState& inputState);
 	void close();
 	void addButton(const string& name, std::function<void()> onClick);
-	
+
 protected:
-	void drawTexture(Shader& shader, Texture* texture, const Vector2& offset = Vector2::zero, float scale = 1.0f);
+	void drawTexture(class Shader& shader, class Texture* texture, const Vector2& offset = Vector2::zero, float scale = 1.0f);
+
 	class Font& font;
-	Texture* title;
+	class Texture* title;
 	Vector2 titlePosition;
 	UIState state;
-
 	vector<class Button*> buttons;
-	Texture& buttonOn;
-	Texture& buttonOff;
+	class Texture& buttonOn;
+	class Texture& buttonOff;
 	Vector2 nextButtonPosition;
-
-	Texture* background;
+	class Texture* background;
 	Vector2 backgroundPosition;
 };
+

@@ -64,7 +64,7 @@ public:
 	// Spherical Linear Interpolation
 	static Quaternion slerp(const Quaternion& a, const Quaternion& b, float f)
 	{
-		const float rawCosm = Quaternion::dot(a, b);
+		float rawCosm = Quaternion::dot(a, b);
 
 		float cosom = -rawCosm;
 		if (rawCosm >= 0.0f)
@@ -111,9 +111,9 @@ public:
 
 		// Vector component is:
 		// ps * qv + qs * pv + pv x qv
-		const Vector3 qv(q.x, q.y, q.z);
-		const Vector3 pv(p.x, p.y, p.z);
-		const Vector3 newVec = p.w * qv + q.w * pv + Vector3::cross(pv, qv);
+		Vector3 qv(q.x, q.y, q.z);
+		Vector3 pv(p.x, p.y, p.z);
+		Vector3 newVec = p.w * qv + q.w * pv + Vector3::cross(pv, qv);
 		retVal.x = newVec.x;
 		retVal.y = newVec.y;
 		retVal.z = newVec.z;
@@ -127,3 +127,4 @@ public:
 
 	static const Quaternion identity;
 };
+

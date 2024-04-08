@@ -24,18 +24,13 @@ void MoveComponent::setStrafeSpeed(float strafeSpeedP)
 	strafeSpeed = strafeSpeedP;
 }
 
-void MoveComponent::setLateralSpeed(float lateralSpeedP)
-{
-	lateralSpeed = lateralSpeedP;
-}
-
 void MoveComponent::update(float dt)
 {
 	if (!Maths::nearZero(angularSpeed))
 	{
 		Quaternion newRotation = owner.getRotation();
-		const float angle = angularSpeed * dt;
-		const Quaternion increment(Vector3::unitZ, angle);
+		float angle = angularSpeed * dt;
+		Quaternion increment(Vector3::unitZ, angle);
 		newRotation = Quaternion::concatenate(newRotation, increment);
 		owner.setRotation(newRotation);
 	}

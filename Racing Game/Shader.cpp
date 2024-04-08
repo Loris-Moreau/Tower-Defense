@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-void Shader::unload() const
+void Shader::unload()
 {
     glDeleteProgram(id);
 }
@@ -22,7 +22,7 @@ void Shader::compile(const GLchar* vertexSource, const GLchar* fragmentSource,
     compileVertexShader(vertexSource);
     bool tessExists = compileTessControlShader(tessControlSource);
     tessExists &= compileTessEvalShader(tessEvalSource);
-    const bool gsExists = compileGeometryShader(geometrySource);
+    bool gsExists = compileGeometryShader(geometrySource);
     compileFragmentShader(fragmentSource);
     createShaderProgram(tessExists, gsExists);
     printAllParams(id);
@@ -173,7 +173,7 @@ void Shader::setMatrix4(const GLchar* name, const Matrix4& matrix)
 
 void Shader::printShaderInfoLog(GLuint shaderIndex)
 {
-    constexpr int max_length = 2048;
+    int max_length = 2048;
     int actual_length = 0;
     char log[2048];
     glGetShaderInfoLog(shaderIndex, max_length, &actual_length, log);
@@ -184,7 +184,7 @@ void Shader::printShaderInfoLog(GLuint shaderIndex)
 
 void Shader::printProgrammeInfoLog(GLuint id)
 {
-    constexpr int max_length = 2048;
+    int max_length = 2048;
     int actual_length = 0;
     char log[2048];
     glGetProgramInfoLog(id, max_length, &actual_length, log);

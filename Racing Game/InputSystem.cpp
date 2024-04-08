@@ -5,11 +5,12 @@
 #include "Maths.h"
 #include "Window.h"
 
-InputSystem::InputSystem() :
+InputSystem::InputSystem() : 
 	inputState(),
 	isCursorDisplayed(false),
 	controller(nullptr)
-{}
+{
+}
 
 bool InputSystem::initialize()
 {
@@ -41,7 +42,7 @@ void InputSystem::close()
 	}
 }
 
-bool InputSystem::processEvent(const SDL_Event& event)
+bool InputSystem::processEvent(SDL_Event& event)
 {
 	bool isRunning = true;
 	switch (event.type)
@@ -84,7 +85,7 @@ void InputSystem::update()
 	{
 		inputState.mouse.currentButtons = SDL_GetMouseState(&x, &y);
 	}
-	
+
 	inputState.mouse.position.x = static_cast<float>(x);
 	inputState.mouse.position.y = static_cast<float>(y);
 	if (!inputState.mouse.isRelativeMode)
@@ -93,7 +94,7 @@ void InputSystem::update()
 		inputState.mouse.position.x -= WINDOW_WIDTH * 0.5f;
 		inputState.mouse.position.y = WINDOW_HEIGHT * 0.5f - inputState.mouse.position.y;
 	}
-	
+
 	// Controller
 	// Buttons
 	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++)
@@ -102,7 +103,7 @@ void InputSystem::update()
 	}
 
 	// Triggers
-	inputState.controller.leftTrigger = filter1D(SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERLEFT));
+	inputState.controller.leftTrigger =	filter1D(SDL_GameControllerGetAxis(controller,	SDL_CONTROLLER_AXIS_TRIGGERLEFT));
 	inputState.controller.rightTrigger = filter1D(SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERRIGHT));
 
 	// Sticks
@@ -130,7 +131,7 @@ void InputSystem::setMouseCursor(bool isCursorDisplayedP)
 
 void InputSystem::setMouseRelativeMode(bool isMouseRelativeOnP)
 {
-	const SDL_bool set = isMouseRelativeOnP ? SDL_TRUE : SDL_FALSE;
+	SDL_bool set = isMouseRelativeOnP ? SDL_TRUE : SDL_FALSE;
 	SDL_SetRelativeMouseMode(set);
 
 	inputState.mouse.isRelativeMode = isMouseRelativeOnP;
@@ -138,11 +139,11 @@ void InputSystem::setMouseRelativeMode(bool isMouseRelativeOnP)
 
 float InputSystem::filter1D(int input)
 {
-	constexpr int deadZone = CONTROLLER_DEAD_ZONE_1D;
-	constexpr int maxValue = CONTROLLER_MAX_VALUE;
+	const int deadZone = CONTROLLER_DEAD_ZONE_1D;
+	const int maxValue = CONTROLLER_MAX_VALUE;
 	float retVal = 0.0f;
 
-	const int absValue = input > 0 ? input : -input;
+	int absValue = input > 0 ? input : -input;
 	if (absValue > deadZone)
 	{
 		// Compute fractional value between dead zone and max value
@@ -158,13 +159,13 @@ float InputSystem::filter1D(int input)
 
 Vector2 InputSystem::filter2D(int inputX, int inputY)
 {
-	constexpr float deadZone = CONTROLLER_DEAD_ZONE_2D;
-	constexpr float maxValue = CONTROLLER_MAX_VALUE;
+	const float deadZone = CONTROLLER_DEAD_ZONE_2D;
+	const float maxValue = CONTROLLER_MAX_VALUE;
 
 	Vector2 dir;
 	dir.x = static_cast<float>(inputX);
 	dir.y = static_cast<float>(inputY);
-	const float length = dir.length();
+	float length = dir.length();
 
 	// If length < deadZone, should be no input
 	if (length < deadZone)

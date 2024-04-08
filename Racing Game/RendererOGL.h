@@ -23,11 +23,11 @@ public:
 	IRenderer::Type type() { return Type::OGL; }
 
 	void addSprite(class SpriteComponent* sprite);
-	void removeSprite(const SpriteComponent* sprite);
-	void drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void removeSprite(class SpriteComponent* sprite);
+	void drawSprite(const class Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
 
 	void addMesh(class MeshComponent* mesh);
-	void removeMesh(const MeshComponent* mesh);
+	void removeMesh(class MeshComponent* mesh);
 
 	DirectionalLight& getDirectionalLight() { return dirLight; }
 
@@ -48,7 +48,7 @@ private:
 	void drawMeshes();
 	void drawSprites();
 	void drawUI();
-	
+
 	Window* window;
 	SDL_GLContext context;
 	VertexArray* spriteVertexArray;
@@ -62,3 +62,4 @@ private:
 	Vector3 ambientLight;
 	DirectionalLight dirLight;
 };
+

@@ -6,22 +6,19 @@ class FPSActor : public Actor
 {
 public:
 	FPSActor();
-
+	
 	void updateActor(float dt) override;
 	void actorInput(const struct InputState& inputState) override;
 	void shoot();
 
-	void setFootstepSurface(float value);
-	void setVisible(bool isVisible) const;
+	void setVisible(bool isVisible);
 	void fixCollisions();
 
 private:
 	class MoveComponent* moveComponent;
-	class AudioComponent* audioComponent;
 	class MeshComponent* meshComponent;
 	class FPSCameraComponent* cameraComponent;
-	class Actor* FPSModel;
-	float lastFootstep;
+	Actor* FPSModel;
 	class BoxComponent* boxComponent;
 };
 

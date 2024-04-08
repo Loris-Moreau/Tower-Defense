@@ -11,21 +11,15 @@
 #include "OrbitActor.h"
 #include "SplineActor.h"
 #include "TargetActor.h"
-#include <algorithm>
-#include "Random.h"
-#include "Font.h"
-#include "UIScreen.h"
 #include "PauseScreen.h"
 
 bool Game::initialize()
 {
-	const bool isWindowInit = window.initialize();
-	const bool isRendererInit = renderer.initialize(window);
-	const bool isInputInit = inputSystem.initialize();
-	const bool isFontInit = Font::initialize();
-	
-	Random::init();
-	
+	bool isWindowInit = window.initialize();
+	bool isRendererInit = renderer.initialize(window);
+	bool isInputInit = inputSystem.initialize();
+	bool isFontInit = Font::initialize();
+
 	return isWindowInit && isRendererInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
 }
 
@@ -63,6 +57,13 @@ void Game::load()
 	Assets::loadTexture(renderer, filePathRes4 + "Textures\\ButtonYellow.png", "ButtonYellow");
 	Assets::loadTexture(renderer, filePathRes4 + "Textures\\ButtonBlue.png", "ButtonBlue");
 	Assets::loadTexture(renderer, filePathRes4 + "Textures\\DialogBG.png","DialogBG");
+
+	//Radar
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\Crosshair.png","Crosshair");
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\CrosshairRed.png",	"CrosshairRed");
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\Radar.png",	"Radar");
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\Blip.png", "Blip");
+	Assets::loadTexture(renderer, filePathRes4 + "Textures\\RadarArrow.png",	"RadarArrow");
 	
 	//Meshes
 	Assets::loadMesh(filePathRes3 + "Meshes\\Cube.gpmesh", "Mesh_Cube");
@@ -75,36 +76,61 @@ void Game::load()
 	//Fonts
 	Assets::loadFont(filePathRes4 + "Fonts\\Carlito-Regular.ttf", "Carlito");
 	//Assets::loadFont(filePathRes4 + "Fonts\\feet.ttf", "Carlito");
+
+	//Localisation
+	Assets::loadText(filePathRes4 + "Localization\\English.gptext");
+	//Assets::loadText(filePathRes4 + "Localization\\Russian.gptext");
 	
-	//fps = new FPSActor();
-	//orbit = new OrbitActor();
-	//path = new SplineActor();
-	follow = new FollowActor();
-	follow->setSpeed(700.0f); // Changer vitesse 
+	fps = new FPSActor();
 
-	Random rando;
-	// Cube for Boat
-	for (int i = 0; i < 50; i++)
-	{
-		CubeActor* a = new CubeActor();
-		a->setPosition(Vector3(rando.getFloatRange(2000, 50000), rando.getFloatRange(-2500, 2500), rando.getFloatRange(-0.1f,2.0f)));
+	CubeActor* a = new CubeActor();
+	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
+	a->setScale(100.0f);
+	Quaternion q(Vector3::unitY, -Maths::piOver2);
+	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
+	a->setRotation(q);
 
-		//float randScale = rand() % 50 + 450;
-		const float randScale = rando.getFloatRange(200, 950);
-		a->setScale(randScale);
-	}
+	SphereActor* b = new SphereActor();
+	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
+	b->setScale(3.0f);
 
 	// Floor and walls
 	// Setup floor
-	constexpr float start = -10000.0f;
-	constexpr float size = 1000.0f;
-	for (int i = 0; i < 50; i++)
+	const float start = -1250.0f;
+	const float size = 250.0f;
+	for (int i = 0; i < 10; i++)
 	{
-		for (int j = 0; j < 20; j++)
+		for (int j = 0; j < 10; j++)
 		{
 			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(-200 + i * size, start + j * size, 0));
+			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
 		}
+	}
+
+	// Left/right walls
+	q = Quaternion(Vector3::unitX, Maths::piOver2);
+	for (int i = 0; i < 10; i++)
+	{
+		PlaneActor* p = new PlaneActor();
+		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
+		p->setRotation(q);
+
+		p = new PlaneActor();
+		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
+		p->setRotation(q);
+	}
+
+	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
+	// Forward/back walls
+	for (int i = 0; i < 10; i++)
+	{
+		PlaneActor* p = new PlaneActor();
+		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
+		p->setRotation(q);
+
+		p = new PlaneActor();
+		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
+		p->setRotation(q);
 	}
 
 	// Setup lights
@@ -114,13 +140,14 @@ void Game::load()
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
-	/*
-	// Crosshair
+	//HUD
+	hud = new HUD();
+	
+	// Corsshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
-
-
+	
 	TargetActor* t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
 	t = new TargetActor();
@@ -129,22 +156,23 @@ void Game::load()
 	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
 	t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
-	*/
 }
 
 void Game::processInput()
 {
 	inputSystem.preUpdate();
-	// SDL Event
 
+	// SDL Event
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
 		bool isRunning = inputSystem.processEvent(event);
 		if (!isRunning) state = GameState::Quit;
 	}
+
 	inputSystem.update();
 	const InputState& input = inputSystem.getInputState();
+
 	if (state == GameState::Gameplay)
 	{
 		// Escape: pause game
@@ -153,9 +181,10 @@ void Game::processInput()
 			new PauseScreen();
 			return;
 		}
+
 		// Actor input
 		isUpdatingActors = true;
-		for (const auto actor : actors)
+		for (auto actor : actors)
 		{
 			actor->processInput(input);
 		}
@@ -174,14 +203,14 @@ void Game::update(float dt)
 {
 	if (state == GameState::Gameplay)
 	{
-		// Update actors
+		// Update actors 
 		isUpdatingActors = true;
-		for (const auto actor : actors)
+		for (auto actor : actors)
 		{
 			actor->update(dt);
 		}
 		isUpdatingActors = false;
-		
+
 		// Move pending actors to actors
 		for (auto pendingActor : pendingActors)
 		{
@@ -189,7 +218,7 @@ void Game::update(float dt)
 			actors.emplace_back(pendingActor);
 		}
 		pendingActors.clear();
-		
+
 		// Delete dead actors
 		vector<Actor*> deadActors;
 		for (auto actor : actors)
@@ -199,14 +228,14 @@ void Game::update(float dt)
 				deadActors.emplace_back(actor);
 			}
 		}
-		for (const auto deadActor : deadActors)
+		for (auto deadActor : deadActors)
 		{
 			delete deadActor;
 		}
 	}
-	
+
 	// Update UI screens
-	for (const auto ui : UIStack)
+	for (auto ui : UIStack)
 	{
 		if (ui->getState() == UIState::Active)
 		{
@@ -242,7 +271,7 @@ void Game::loop()
 	float dt = 0;
 	while (state != GameState::Quit)
 	{
-		const float dt = timer.computeDeltaTime() / 1000.0f;
+		float dt = timer.computeDeltaTime() / 1000.0f;
 		processInput();
 		update(dt);
 		render();
@@ -250,7 +279,7 @@ void Game::loop()
 	}
 }
 
-void Game::unload() const
+void Game::unload()
 {
 	// Delete actors
 	// Because ~Actor calls RemoveActor, have to use a different style loop
@@ -289,7 +318,7 @@ void Game::addActor(Actor* actor)
 	}
 }
 
-void Game::removeActor(const Actor* actor)
+void Game::removeActor(Actor* actor)
 {
 	// Erase actor from the two vectors
 	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);
@@ -317,8 +346,8 @@ void Game::addPlane(PlaneActor* plane)
 	planes.emplace_back(plane);
 }
 
-void Game::removePlane(const PlaneActor* plane)
+void Game::removePlane(PlaneActor* plane)
 {
-	const auto iter = std::find(begin(planes), end(planes), plane);
+	auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
 }

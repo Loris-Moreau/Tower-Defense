@@ -5,9 +5,10 @@ class PlaneActor : public Actor
 public:
 	PlaneActor();
 	~PlaneActor();
-	class BoxComponent* getBox() const { return box; }
+	class BoxComponent* getBox() { return box; }
 
 
 private:
 	class BoxComponent* box;
 };
+

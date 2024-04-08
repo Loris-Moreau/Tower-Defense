@@ -1,7 +1,7 @@
 #include "Game.h"
 int main(int argc, char** argv)
 {
-	const bool isGameInit = Game::instance().initialize();
+	bool isGameInit = Game::instance().initialize();
 	if (isGameInit)
 	{
 		Game::instance().load();

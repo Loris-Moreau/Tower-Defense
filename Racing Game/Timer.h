@@ -14,8 +14,8 @@ public:
 	void delayTime();
 
 private:
-	static constexpr unsigned int FPS = 60;
-	static constexpr unsigned int FRAME_DELAY = 1000 / FPS;
+	const static unsigned int FPS = 60;
+	const static unsigned int FRAME_DELAY = 1000 / FPS;
 	const unsigned int MAX_DT = 50;
 
 	// Time in milliseconds when frame starts
@@ -27,3 +27,4 @@ private:
 	// Time it tooks to run the loop. Used to cap framerate.
 	unsigned int frameTime;
 };
+

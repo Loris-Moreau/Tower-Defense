@@ -1,15 +1,16 @@
 #include "Font.h"
-
-#include <sstream>
-
 #include "Log.h"
 #include "Texture.h"
+#include "Assets.h"
+#include <sstream>
 
 Font::Font()
-{}
+{
+}
 
 Font::~Font()
-{}
+{
+}
 
 bool Font::initialize()
 {
@@ -28,13 +29,13 @@ void Font::close()
 
 void Font::unload()
 {
-	for (const auto& font : fontData)
+	for (auto& font : fontData)
 	{
 		TTF_CloseFont(font.second);
 	}
 }
 
-Texture* Font::renderText(const string& text, const Vector3& color, int pointSize)
+Texture* Font::renderText(const string& textKey, const Vector3& color, int pointSize)
 {
 	Texture* texture = nullptr;
 	// Convert to SDL_Color
@@ -43,13 +44,16 @@ Texture* Font::renderText(const string& text, const Vector3& color, int pointSiz
 	sdlColor.g = static_cast<Uint8>(color.y * 255);
 	sdlColor.b = static_cast<Uint8>(color.z * 255);
 	sdlColor.a = 255;
+	
 	// Find the font data for this point size
-	const auto iter = fontData.find(pointSize);
+	auto iter = fontData.find(pointSize);
 	if (iter != fontData.end())
 	{
 		TTF_Font* font = iter->second;
+		const string& actualText = Assets::getText(textKey);
 		// Draw this to a surface (blended for alpha)
-		SDL_Surface* surf = TTF_RenderUTF8_Blended(font, text.c_str(), sdlColor);
+		SDL_Surface* surf = TTF_RenderUTF8_Blended(font,
+		actualText.c_str(), sdlColor);
 		if (surf != nullptr)
 		{
 			texture = new Texture();
@@ -70,3 +74,4 @@ void Font::addFontData(int size, TTF_Font* fontSize)
 {
 	fontData.emplace(size, fontSize);
 }
+

@@ -19,3 +19,4 @@ protected:
 	size_t textureIndex;
 	bool isVisible;
 };
+

@@ -30,8 +30,8 @@ int Random::getIntRange(int min, int max)
 
 Vector2 Random::getVector(const Vector2& min, const Vector2& max)
 {
-	const Vector2 r = Vector2(getFloat(), getFloat());
-	const Vector2 diff = max - min;
+	Vector2 r = Vector2(getFloat(), getFloat());
+	Vector2 diff = max - min;
 	return min + Vector2(diff.x * r.x, diff.y * r.y);
 }
 

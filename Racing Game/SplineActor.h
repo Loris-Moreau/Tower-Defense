@@ -6,9 +6,10 @@ public:
 	SplineActor();
 
 	void actorInput(const InputState& inputState) override;
-	void restartSpline() const;
+	void restartSpline();
 
 
 private:
 	class SplineCameraComponent* cameraComponent;
 };
+

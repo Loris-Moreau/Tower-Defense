@@ -2,10 +2,10 @@
 #include "Component.h"
 #include "Texture.h"
 
-class SpriteComponent : public Component
+class SpriteComponent :	public Component
 {
 public:
-	SpriteComponent(Actor* ownerP, const Texture& textureP, int drawOrderP = 100); // Lower draw order: further back
+	SpriteComponent(Actor* ownerP, Texture& textureP, int drawOrderP = 100); // Lower draw order: further back
 	virtual ~SpriteComponent();
 	SpriteComponent() = delete;
 	SpriteComponent(const SpriteComponent&) = delete;
@@ -28,3 +28,4 @@ protected:
 	int texHeight;
 	bool isVisible;
 };
+

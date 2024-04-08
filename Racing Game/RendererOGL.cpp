@@ -11,7 +11,7 @@
 #include <GL/glew.h>
 #include <SDL_image.h>
 
-RendererOGL::RendererOGL() :
+RendererOGL::RendererOGL():
 	window(nullptr),
 	context(nullptr),
 	spriteVertexArray(nullptr),
@@ -68,7 +68,7 @@ bool RendererOGL::initialize(Window& windowP)
 	}
 
 	spriteVertexArray = new VertexArray(spriteVertices, 4, indices, 6);
-	return true;
+    return true;
 }
 
 void RendererOGL::beginDraw()
@@ -116,7 +116,7 @@ void RendererOGL::getScreenDirection(Vector3& outStart, Vector3& outDir) const
 	outStart = unproject(screenPoint);
 	// Get end point (in center of screen, between near and far)
 	screenPoint.z = 0.9f;
-	const Vector3 end = unproject(screenPoint);
+	Vector3 end = unproject(screenPoint);
 	// Get direction vector
 	outDir = end - outStart;
 	outDir.normalize();
@@ -134,7 +134,7 @@ void RendererOGL::drawMeshes()
 	// Lights
 	setLightUniforms(shader);
 	// Draw
-	for (const auto mc : meshes)
+	for (auto mc : meshes)
 	{
 		if (mc->getVisible())
 		{
@@ -146,7 +146,7 @@ void RendererOGL::drawMeshes()
 void RendererOGL::addSprite(SpriteComponent* sprite)
 {
 	// Insert the sprite at the right place in function of drawOrder
-	const int spriteDrawOrder = sprite->getDrawOrder();
+	int spriteDrawOrder = sprite->getDrawOrder();
 	auto iter = begin(sprites);
 	for (; iter != end(sprites); ++iter)
 	{
@@ -155,9 +155,9 @@ void RendererOGL::addSprite(SpriteComponent* sprite)
 	sprites.insert(iter, sprite);
 }
 
-void RendererOGL::removeSprite(const SpriteComponent* sprite)
+void RendererOGL::removeSprite(SpriteComponent* sprite)
 {
-	const auto iter = std::find(begin(sprites), end(sprites), sprite);
+	auto iter = std::find(begin(sprites), end(sprites), sprite);
 	sprites.erase(iter);
 }
 
@@ -166,7 +166,7 @@ void RendererOGL::drawSprites()
 	glDisable(GL_DEPTH_TEST);
 	// Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
-	//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendEquationSeparate(GL_FUNC_ADD, GL_FUNC_ADD);
 	glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
@@ -176,7 +176,7 @@ void RendererOGL::drawSprites()
 	spriteShader.setMatrix4("uViewProj", spriteViewProj);
 	spriteVertexArray->setActive();
 
-	for (const auto sprite : sprites)
+	for (auto sprite : sprites)
 	{
 		if (sprite->getVisible())
 		{
@@ -187,7 +187,7 @@ void RendererOGL::drawSprites()
 
 void RendererOGL::drawUI()
 {
-	for (const auto ui : Game::instance().getUIStack())
+	for (auto ui : Game::instance().getUIStack())
 	{
 		ui->draw(Assets::getShader("Sprite"));
 	}
@@ -207,9 +207,9 @@ void RendererOGL::addMesh(MeshComponent* mesh)
 	meshes.emplace_back(mesh);
 }
 
-void RendererOGL::removeMesh(const MeshComponent* mesh)
+void RendererOGL::removeMesh(MeshComponent* mesh)
 {
-	const auto iter = std::find(begin(meshes), end(meshes), mesh);
+	auto iter = std::find(begin(meshes), end(meshes), mesh);
 	meshes.erase(iter);
 }
 

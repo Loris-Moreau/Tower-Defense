@@ -7,13 +7,13 @@ Window::Window() : SDLWindow(nullptr), width(WINDOW_WIDTH), height(WINDOW_HEIGHT
 
 bool Window::initialize()
 {
-	const int sdlInitResult = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER);
+	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
 	if (sdlInitResult != 0) {
 		Log::error(LogCategory::Video, "Unable to initialize SDL");
 		return false;
 	}
 
-	SDLWindow = SDL_CreateWindow("Basic Physics", 100, 100, width, height, SDL_WINDOW_OPENGL);
+	SDLWindow = SDL_CreateWindow("Basic UI", 100, 100, width, height, SDL_WINDOW_OPENGL);
 	if (!SDLWindow)
 	{
 		Log::error(LogCategory::System, "Failed to create window");
@@ -22,7 +22,7 @@ bool Window::initialize()
 	return true;
 }
 
-void Window::close() const
+void Window::close()
 {
 	SDL_DestroyWindow(SDLWindow);
 }

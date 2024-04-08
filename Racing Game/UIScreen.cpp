@@ -6,14 +6,14 @@
 #include "Button.h"
 
 UIScreen::UIScreen() :
-title(nullptr),
-titlePosition(0.0f, 300.0f),
-state(UIState::Active),
-font(Assets::getFont("Carlito")),
-buttonOn(Assets::getTexture("ButtonYellow")),
-buttonOff(Assets::getTexture("ButtonBlue")),
-background(nullptr),
-backgroundPosition(0.0f, 250)
+	title(nullptr),
+	titlePosition(0.0f, 300.0f),
+	state(UIState::Active),
+	font(Assets::getFont("Carlito")),
+	buttonOn(Assets::getTexture("ButtonYellow")),
+	buttonOff(Assets::getTexture("ButtonBlue")),
+	background(nullptr),
+	backgroundPosition(0.0f, 250)
 {
 	Game::instance().pushUI(this);
 }
@@ -39,20 +39,20 @@ void UIScreen::setTitle(const string& titleP, const Vector3& color, int pointSiz
 }
 
 void UIScreen::update(float deltaTime)
-{}
+{
+}
 
 void UIScreen::draw(Shader& shader)
 {
 	if (background)
 	{
-
 		drawTexture(shader, background, backgroundPosition);
 	}
 	if (title)
 	{
 		drawTexture(shader, title, titlePosition);
 	}
-	for (const auto b : buttons)
+	for (auto b : buttons)
 	{
 		// Draw background of button
 		Texture* tex = b->getHighlighted() ? &buttonOn : &buttonOff;
@@ -66,7 +66,7 @@ void UIScreen::processInput(const InputState& inputState)
 {
 	if (!buttons.empty())
 	{
-		for (const auto b : buttons)
+		for (auto b : buttons)
 		{
 			if (b->containsPoint(inputState.mouse.getPosition()))
 			{
@@ -94,7 +94,7 @@ void UIScreen::addButton(const string& name, std::function<void()> onClick)
 	Vector2 dims(static_cast<float>(buttonOn.getWidth()), static_cast<float>(buttonOn.getHeight()));
 	Button* b = new Button(name, font, onClick, nextButtonPosition, dims);
 	buttons.emplace_back(b);
-	
+
 	// Update position of next button
 	// Move down by height of button plus padding
 	nextButtonPosition.y -= buttonOff.getHeight() + 20.0f;
@@ -102,7 +102,10 @@ void UIScreen::addButton(const string& name, std::function<void()> onClick)
 
 void UIScreen::drawTexture(Shader& shader, Texture* texture, const Vector2& offset, float scale)
 {
-	Matrix4 scaleMat = Matrix4::createScale(static_cast<float>(texture->getWidth()) * scale, static_cast<float>(texture->getHeight()) * scale, 1.0f);
+	Matrix4 scaleMat = Matrix4::createScale(
+		static_cast<float>(texture->getWidth()) * scale,
+		static_cast<float>(texture->getHeight()) * scale,
+		1.0f);
 	Matrix4 transMat = Matrix4::createTranslation(Vector3(offset.x, offset.y, 0.0f));
 	Matrix4 world = scaleMat * transMat;
 	shader.setMatrix4("uWorldTransform", world);

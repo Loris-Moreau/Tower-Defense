@@ -280,9 +280,9 @@ public:
 
 	static Matrix4 createLookAt(const Vector3& eye, const Vector3& target, const Vector3& up)
 	{
-		const Vector3 zaxis = Vector3::normalize(target - eye);
-		const Vector3 xaxis = Vector3::normalize(Vector3::cross(up, zaxis));
-		const Vector3 yaxis = Vector3::normalize(Vector3::cross(zaxis, xaxis));
+		Vector3 zaxis = Vector3::normalize(target - eye);
+		Vector3 xaxis = Vector3::normalize(Vector3::cross(up, zaxis));
+		Vector3 yaxis = Vector3::normalize(Vector3::cross(zaxis, xaxis));
 		Vector3 trans;
 		trans.x = -Vector3::dot(xaxis, eye);
 		trans.y = -Vector3::dot(yaxis, eye);
@@ -312,8 +312,8 @@ public:
 
 	static Matrix4 createPerspectiveFOV(float fovY, float width, float height, float near, float far)
 	{
-		const float yScale = Maths::cot(fovY / 2.0f);
-		const float xScale = yScale * height / width;
+		float yScale = Maths::cot(fovY / 2.0f);
+		float xScale = yScale * height / width;
 		float temp[4][4] =
 		{
 			{ xScale, 0.0f, 0.0f, 0.0f },

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Vector3.h"
 
 namespace Color
@@ -15,3 +14,4 @@ namespace Color
 	static const Vector3 lightPink(1.0f, 0.71f, 0.76f);
 	static const Vector3 lightGreen(0.56f, 0.93f, 0.56f);
 };
+

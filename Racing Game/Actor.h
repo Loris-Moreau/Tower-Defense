@@ -27,7 +27,7 @@ public:
 	const Vector3 getPosition() const { return position; }
 	const float getScale() const { return scale; }
 	const Quaternion getRotation() const { return rotation; }
-	const Matrix4& getWorldTransform() const { return worldTransform; }
+	const Matrix4& getWorldTransform() const { return worldTransform;  }
 
 	void setPosition(Vector3 positionP);
 	void setScale(float scaleP);
@@ -44,10 +44,10 @@ public:
 	void processInput(const struct InputState& inputState);
 	virtual void actorInput(const struct InputState& inputState);
 	void update(float dt);
-	void updateComponents(float dt) const;
+	void updateComponents(float dt);
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);
-	void removeComponent(const Component* component);
+	void removeComponent(Component* component);
 
 private:
 	Game& game;
@@ -60,3 +60,4 @@ private:
 
 	vector<Component*> components;
 };
+

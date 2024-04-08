@@ -13,7 +13,7 @@ void Vector2::set(float xP, float yP)
 
 float Vector2::lengthSq() const
 {
-	return x * x + y * y;
+	return x*x + y*y;
 }
 
 float Vector2::length() const
@@ -23,7 +23,7 @@ float Vector2::length() const
 
 void Vector2::normalize()
 {
-	const float len = length();
+	float len = length();
 	x /= len;
 	y /= len;
 }

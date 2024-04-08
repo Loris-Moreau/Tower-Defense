@@ -13,7 +13,7 @@ public:
 	Component& operator=(const Component&) = delete;
 
 	int getUpdateOrder() const { return updateOrder; }
-	class Actor& getOwner() const { return owner; }
+	class Actor& getOwner() { return owner; }
 
 	virtual void processInput(const struct InputState& inputState);
 	virtual void update(float dt);
@@ -23,3 +23,4 @@ protected:
 	Actor& owner;
 	int updateOrder;		// Order of the component in the actor's updateComponent method
 };
+

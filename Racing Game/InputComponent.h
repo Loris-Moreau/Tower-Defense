@@ -30,3 +30,4 @@ private:
 	SDL_Scancode clockwiseKey;
 	SDL_Scancode counterClockwiseKey;
 };
+
