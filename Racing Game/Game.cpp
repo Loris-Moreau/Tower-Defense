@@ -48,6 +48,8 @@ void Game::load()
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Rifle.png", "Rifle");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\RacingCar.png", "RacingCar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Target.png", "Target");
+	Assets::loadTexture(renderer, "Res\\Textures\\CatWarrior.png",
+    "CatWarrior");
 
 	//UI Textures
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\HealthBar.png", "HealthBar");
@@ -72,7 +74,8 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\Rifle.gpmesh", "Mesh_Rifle");
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
-
+	//Assets::loadMesh("Res\\Meshes\\CatWarrior.gpmesh", "Mesh_CatWarrior");
+	
 	//Fonts
 	Assets::loadFont(filePathRes4 + "Fonts\\Carlito-Regular.ttf", "Carlito");
 	//Assets::loadFont(filePathRes4 + "Fonts\\feet.ttf", "Carlito");
@@ -80,18 +83,24 @@ void Game::load()
 	//Localisation
 	Assets::loadText(filePathRes4 + "Localization\\English.gptext");
 	//Assets::loadText(filePathRes4 + "Localization\\Russian.gptext");
+
+	//Animations
+	Assets::loadSkeleton("Res\\Animations\\CatWarrior.gpskel", "Skel_CatWarrior");
+	Assets::loadAnimation("Res\\Animations\\CatActionIdle.gpanim", "CatActionIdle");
+	Assets::loadAnimation("Res\\Animations\\CatRunMOBA.gpanim", "CatRunMOBA");
+	Assets::loadAnimation("Res\\Animations\\CatRunSprint.gpanim", "CatRunSprint");
 	
 	fps = new FPSActor();
 
 	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
+	a->setPosition(Vector3(225.0f, 105.0f, 0.0f));
 	a->setScale(100.0f);
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
 	a->setRotation(q);
 
 	SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
+	b->setPosition(Vector3(225.0f, -75.0f, 0.0f));
 	b->setScale(3.0f);
 
 	// Floor and walls
@@ -143,9 +152,9 @@ void Game::load()
 	//HUD
 	hud = new HUD();
 	
-	// Corsshair
+	// Crosshair
 	Actor* crosshairActor = new Actor();
-	crosshairActor->setScale(2.0f);
+	crosshairActor->setScale(1.75f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 	
 	TargetActor* t = new TargetActor();
