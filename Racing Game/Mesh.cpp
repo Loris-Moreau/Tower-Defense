@@ -1,5 +1,5 @@
 #include "Mesh.h"
-#include "Maths\VertexArray.h"
+#include "VertexArray.h"
 
 Mesh::Mesh() : vertexArray(nullptr), shaderName(""), radius(0.0f), specularPower(100.0f), box(Vector3::infinity, Vector3::negInfinity)
 {

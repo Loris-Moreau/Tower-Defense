@@ -1,7 +1,5 @@
 #pragma once
-
-#include "Maths\Vector3.h"
-
+#include "Vector3.h"
 struct LineSegment
 {
 	LineSegment(const Vector3& startP, const Vector3& endP);

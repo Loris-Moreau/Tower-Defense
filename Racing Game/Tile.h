@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Actors and Components\Actors\Actor.h"
+#include "Actor.h"
 #include <vector>
-#include "Actors and Components\Components\Sprite\SpriteComponent.h"
-#include "Main\Log.h"
+#include "SpriteComponent.h"
+#include "Log.h"
 #include <SDL_image.h>
-#include "Main\Assets.h"
+#include "Assets.h"
 
 class Tile : public Actor
 {
