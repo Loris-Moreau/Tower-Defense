@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "RendererOGL.h"
+#include "Window/RendererOGL.h"
 using std::string;
 
 class Texture

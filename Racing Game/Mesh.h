@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "Texture.h"
-#include "AABB.h"
+#include "Maths/AABB.h"
 
 using std::string;
 using std::vector;
