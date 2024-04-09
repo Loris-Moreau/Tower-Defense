@@ -1,69 +1,141 @@
-﻿AABB.obj : warning LNK4099: PDB '' was not found with 'AABB.obj' or at ''; linking object as if no debug info
-Actor.obj : warning LNK4099: PDB '' was not found with 'Actor.obj' or at ''; linking object as if no debug info
-Animation.obj : warning LNK4099: PDB '' was not found with 'Animation.obj' or at ''; linking object as if no debug info
-AnimSpriteComponent.obj : warning LNK4099: PDB '' was not found with 'AnimSpriteComponent.obj' or at ''; linking object as if no debug info
-Assets.obj : warning LNK4099: PDB '' was not found with 'Assets.obj' or at ''; linking object as if no debug info
-BackgroundSpriteComponent.obj : warning LNK4099: PDB '' was not found with 'BackgroundSpriteComponent.obj' or at ''; linking object as if no debug info
-BallActor.obj : warning LNK4099: PDB '' was not found with 'BallActor.obj' or at ''; linking object as if no debug info
-BallMoveComponent.obj : warning LNK4099: PDB '' was not found with 'BallMoveComponent.obj' or at ''; linking object as if no debug info
-BoneTransform.obj : warning LNK4099: PDB '' was not found with 'BoneTransform.obj' or at ''; linking object as if no debug info
-BoxComponent.obj : warning LNK4099: PDB '' was not found with 'BoxComponent.obj' or at ''; linking object as if no debug info
-Button.obj : warning LNK4099: PDB '' was not found with 'Button.obj' or at ''; linking object as if no debug info
-Camera.obj : warning LNK4099: PDB '' was not found with 'Camera.obj' or at ''; linking object as if no debug info
-CameraComponent.obj : warning LNK4099: PDB '' was not found with 'CameraComponent.obj' or at ''; linking object as if no debug info
-CircleCollisionComponent.obj : warning LNK4099: PDB '' was not found with 'CircleCollisionComponent.obj' or at ''; linking object as if no debug info
-Collisions.obj : warning LNK4099: PDB '' was not found with 'Collisions.obj' or at ''; linking object as if no debug info
-Component.obj : warning LNK4099: PDB '' was not found with 'Component.obj' or at ''; linking object as if no debug info
-ControllerState.obj : warning LNK4099: PDB '' was not found with 'ControllerState.obj' or at ''; linking object as if no debug info
-Cube.obj : warning LNK4099: PDB '' was not found with 'Cube.obj' or at ''; linking object as if no debug info
-CubeActor.obj : warning LNK4099: PDB '' was not found with 'CubeActor.obj' or at ''; linking object as if no debug info
-DialogBox.obj : warning LNK4099: PDB '' was not found with 'DialogBox.obj' or at ''; linking object as if no debug info
-FollowActor.obj : warning LNK4099: PDB '' was not found with 'FollowActor.obj' or at ''; linking object as if no debug info
-FollowCameraComponent.obj : warning LNK4099: PDB '' was not found with 'FollowCameraComponent.obj' or at ''; linking object as if no debug info
-Font.obj : warning LNK4099: PDB '' was not found with 'Font.obj' or at ''; linking object as if no debug info
-FPSActor.obj : warning LNK4099: PDB '' was not found with 'FPSActor.obj' or at ''; linking object as if no debug info
-FPSCameraComponent.obj : warning LNK4099: PDB '' was not found with 'FPSCameraComponent.obj' or at ''; linking object as if no debug info
-Game.obj : warning LNK4099: PDB '' was not found with 'Game.obj' or at ''; linking object as if no debug info
-HUD.obj : warning LNK4099: PDB '' was not found with 'HUD.obj' or at ''; linking object as if no debug info
-InputComponent.obj : warning LNK4099: PDB '' was not found with 'InputComponent.obj' or at ''; linking object as if no debug info
-InputSystem.obj : warning LNK4099: PDB '' was not found with 'InputSystem.obj' or at ''; linking object as if no debug info
-KeyboardState.obj : warning LNK4099: PDB '' was not found with 'KeyboardState.obj' or at ''; linking object as if no debug info
-LineSegment.obj : warning LNK4099: PDB '' was not found with 'LineSegment.obj' or at ''; linking object as if no debug info
-Log.obj : warning LNK4099: PDB '' was not found with 'Log.obj' or at ''; linking object as if no debug info
-main.obj : warning LNK4099: PDB '' was not found with 'main.obj' or at ''; linking object as if no debug info
-Matrix4.obj : warning LNK4099: PDB '' was not found with 'Matrix4.obj' or at ''; linking object as if no debug info
-Mesh.obj : warning LNK4099: PDB '' was not found with 'Mesh.obj' or at ''; linking object as if no debug info
-MeshComponent.obj : warning LNK4099: PDB '' was not found with 'MeshComponent.obj' or at ''; linking object as if no debug info
-MouseState.obj : warning LNK4099: PDB '' was not found with 'MouseState.obj' or at ''; linking object as if no debug info
-MoveComponent.obj : warning LNK4099: PDB '' was not found with 'MoveComponent.obj' or at ''; linking object as if no debug info
-OrbitActor.obj : warning LNK4099: PDB '' was not found with 'OrbitActor.obj' or at ''; linking object as if no debug info
-OrbitCameraComponent.obj : warning LNK4099: PDB '' was not found with 'OrbitCameraComponent.obj' or at ''; linking object as if no debug info
-PauseScreen.obj : warning LNK4099: PDB '' was not found with 'PauseScreen.obj' or at ''; linking object as if no debug info
-PhysicsSystem.obj : warning LNK4099: PDB '' was not found with 'PhysicsSystem.obj' or at ''; linking object as if no debug info
-Plane.obj : warning LNK4099: PDB '' was not found with 'Plane.obj' or at ''; linking object as if no debug info
-PlaneActor.obj : warning LNK4099: PDB '' was not found with 'PlaneActor.obj' or at ''; linking object as if no debug info
-Quaternion.obj : warning LNK4099: PDB '' was not found with 'Quaternion.obj' or at ''; linking object as if no debug info
-Random.obj : warning LNK4099: PDB '' was not found with 'Random.obj' or at ''; linking object as if no debug info
-Rectangle.obj : warning LNK4099: PDB '' was not found with 'Rectangle.obj' or at ''; linking object as if no debug info
-RendererOGL.obj : warning LNK4099: PDB '' was not found with 'RendererOGL.obj' or at ''; linking object as if no debug info
-Shader.obj : warning LNK4099: PDB '' was not found with 'Shader.obj' or at ''; linking object as if no debug info
-Skeleton.obj : warning LNK4099: PDB '' was not found with 'Skeleton.obj' or at ''; linking object as if no debug info
-Sphere.obj : warning LNK4099: PDB '' was not found with 'Sphere.obj' or at ''; linking object as if no debug info
-SphereActor.obj : warning LNK4099: PDB '' was not found with 'SphereActor.obj' or at ''; linking object as if no debug info
-Spline.obj : warning LNK4099: PDB '' was not found with 'Spline.obj' or at ''; linking object as if no debug info
-SplineActor.obj : warning LNK4099: PDB '' was not found with 'SplineActor.obj' or at ''; linking object as if no debug info
-SplineCameraComponent.obj : warning LNK4099: PDB '' was not found with 'SplineCameraComponent.obj' or at ''; linking object as if no debug info
-SpriteComponent.obj : warning LNK4099: PDB '' was not found with 'SpriteComponent.obj' or at ''; linking object as if no debug info
-TargetActor.obj : warning LNK4099: PDB '' was not found with 'TargetActor.obj' or at ''; linking object as if no debug info
-TargetComponent.obj : warning LNK4099: PDB '' was not found with 'TargetComponent.obj' or at ''; linking object as if no debug info
-Texture.obj : warning LNK4099: PDB '' was not found with 'Texture.obj' or at ''; linking object as if no debug info
-Tile.obj : warning LNK4099: PDB '' was not found with 'Tile.obj' or at ''; linking object as if no debug info
-Timer.obj : warning LNK4099: PDB '' was not found with 'Timer.obj' or at ''; linking object as if no debug info
-UIScreen.obj : warning LNK4099: PDB '' was not found with 'UIScreen.obj' or at ''; linking object as if no debug info
-Vector2.obj : warning LNK4099: PDB '' was not found with 'Vector2.obj' or at ''; linking object as if no debug info
-Vector3.obj : warning LNK4099: PDB '' was not found with 'Vector3.obj' or at ''; linking object as if no debug info
-VertexArray.obj : warning LNK4099: PDB '' was not found with 'VertexArray.obj' or at ''; linking object as if no debug info
-Window.obj : warning LNK4099: PDB '' was not found with 'Window.obj' or at ''; linking object as if no debug info
-Assets.obj : error LNK2001: unresolved external symbol "public: static class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Skeleton,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Skeleton> > > Assets::skeletons" (?skeletons@Assets@@2V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSkeleton@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSkeleton@@@std@@@2@@std@@A)
-Assets.obj : error LNK2001: unresolved external symbol "public: static class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Animation,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Animation> > > Assets::animations" (?animations@Assets@@2V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VAnimation@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VAnimation@@@std@@@2@@std@@A)
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe : fatal error LNK1120: 2 unresolved externals
+﻿C:\VisualStudio\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets(77,5): warning : The process cannot access the file 'c:\users\loris.moreau\documents\github\tower-defense\racing game\x64\debug\vc143.idb' because it is being used by another process.
+C:\VisualStudio\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets(77,5): warning : The process cannot access the file 'c:\users\loris.moreau\documents\github\tower-defense\racing game\x64\debug\vc143.pdb' because it is being used by another process.
+  AABB.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\AABB.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Actor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Actor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Animation.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Animation.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  AnimSpriteComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\AnimSpriteComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Assets.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  BackgroundSpriteComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\BackgroundSpriteComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  BallActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\BallActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  BallMoveComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\BallMoveComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  BoneTransform.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\BoneTransform.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  BoxComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\BoxComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Button.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Button.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Camera.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Camera.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  CameraComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\CameraComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  CircleCollisionComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\CircleCollisionComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Collisions.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Collisions.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Component.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Component.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  ControllerState.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\ControllerState.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Cube.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Cube.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  CubeActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\CubeActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  DialogBox.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\DialogBox.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Generating Code...
+  Compiling...
+  FollowActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\FollowActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  FollowCameraComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\FollowCameraComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Font.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  FPSActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\FPSActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  FPSCameraComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\FPSCameraComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Game.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Game.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  HUD.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\HUD.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  InputComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\InputComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  InputSystem.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\InputSystem.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  KeyboardState.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\KeyboardState.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  LineSegment.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\LineSegment.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Log.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Log.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  main.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\main.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Matrix4.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Matrix4.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Mesh.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Mesh.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  MeshComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MeshComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  MouseState.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MouseState.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  MoveComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\MoveComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  OrbitActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\OrbitActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  OrbitCameraComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\OrbitCameraComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Generating Code...
+  Compiling...
+  PauseScreen.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\PauseScreen.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  PhysicsSystem.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\PhysicsSystem.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Plane.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Plane.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  PlaneActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\PlaneActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Quaternion.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Quaternion.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Random.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Random.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Rectangle.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Rectangle.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  RendererOGL.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\RendererOGL.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Shader.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Shader.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Skeleton.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Skeleton.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Sphere.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Sphere.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  SphereActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\SphereActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Spline.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Spline.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  SplineActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\SplineActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  SplineCameraComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\SplineCameraComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  SpriteComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\SpriteComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  TargetActor.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\TargetActor.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  TargetComponent.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\TargetComponent.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Texture.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Texture.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Tile.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Tile.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Generating Code...
+  Compiling...
+  Timer.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Timer.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  UIScreen.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\UIScreen.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Vector2.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector2.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Vector3.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Vector3.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  VertexArray.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\VertexArray.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Window.cpp
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Window.cpp : fatal  error C1041: cannot open program database 'C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\x64\Debug\vc143.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Generating Code...
