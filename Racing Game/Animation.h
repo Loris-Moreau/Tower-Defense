@@ -1,6 +1,7 @@
 #pragma once
 
-#include "BoneTransform.h"
+//#include "BoneTransform.h"
+#include "Skeleton.h"
 #include <vector>
 #include <string>
 using std::string;

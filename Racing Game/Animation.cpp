@@ -1,5 +1,5 @@
 #include "Animation.h"
-#include "Skeleton.h"
+//#include "Skeleton.h"
 
 void Animation::setNbBones(size_t nbBonesP)
 {

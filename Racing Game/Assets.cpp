@@ -10,9 +10,9 @@ std::map<std::string, Texture> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;
 std::map<std::string, Mesh> Assets::meshes;
 std::map<std::string, Font> Assets::fonts;
-std::map<string, string> Assets::texts;
-std::map<string, Skeleton> skeletons;
-std::map<string, Animation> animations;
+std::map<std::string, string> Assets::texts;
+std::map<std::string, Skeleton> Assets::skeletons;
+std::map<std::string, Animation> Assets::animations;
 
 void Assets::loadText(const string& filename)
 {
