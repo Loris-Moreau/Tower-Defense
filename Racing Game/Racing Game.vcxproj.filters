@@ -38,6 +38,9 @@
     <Filter Include="UI">
       <UniqueIdentifier>{064babf2-8ec2-4558-b35c-cdf57b7ddb82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{8127433c-0084-43d1-b5f1-f9f225bf90b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp">
@@ -210,6 +213,33 @@
     </ClCompile>
     <ClCompile Include="Font.cpp">
       <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="BoneTransform.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScreen.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogBox.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TargetComponent.cpp">
+      <Filter>Code Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -389,6 +419,36 @@
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="BoneTransform.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogBox.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScreen.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetComponent.h">
+      <Filter>Code Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,125 +1,69 @@
-﻿  AABB.cpp
-  Assets.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\vector(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(286,36): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(303,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(326,9): error C2065: 'TTF_Font': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(326,19): error C2065: 'ttfFont': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(326,29): error C3861: 'TTF_OpenFont': identifier not found
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(327,13): error C2065: 'ttfFont': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Assets.cpp(333,32): error C2065: 'ttfFont': undeclared identifier
-  BackgroundSpriteComponent.cpp
-  BallActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  BallMoveComponent.cpp
-  Cube.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  CubeActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  FollowActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  FollowCameraComponent.cpp
-  Font.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\cmath(964,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(16,6): error C3861: 'TTF_Init': identifier not found
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(26,2): error C3861: 'TTF_Quit': identifier not found
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(31,20): error C2065: 'fontData': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(31,2): error C2530: 'font': references must be initialized
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(31,2): error C3531: 'font': a symbol whose type contains 'auto' must have an initializer
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(31,18): error C2143: syntax error: missing ';' before ':'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(31,28): error C2143: syntax error: missing ';' before ')'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(33,3): error C3861: 'TTF_CloseFont': identifier not found
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(42,26): error C2760: syntax error: '(' was unexpected here; expected '<'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(42,26): error C2059: syntax error: '('
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(43,26): error C2760: syntax error: '(' was unexpected here; expected '<'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(43,26): error C2059: syntax error: '('
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(44,26): error C2760: syntax error: '(' was unexpected here; expected '<'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(44,26): error C2059: syntax error: '('
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(47,14): error C2065: 'fontData': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(48): error C3536: 'iter': cannot be used before it is initialized
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(48,14): error C2065: 'fontData': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(50,3): error C2065: 'TTF_Font': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(50,13): error C2065: 'font': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(52,46): error C2065: 'font': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(52,23): error C3861: 'TTF_RenderUTF8_Blended': identifier not found
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(69,34): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(71,2): error C2065: 'fontData': undeclared identifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.cpp(71,25): error C2065: 'fontSize': undeclared identifier
-  FPSActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C2955: 'std::unordered_map': use of class template requires template argument list
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\unordered_map(67,1): message : see declaration of 'std::unordered_map'
-  FPSCameraComponent.cpp
-  Game.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C2955: 'std::unordered_map': use of class template requires template argument list
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\unordered_map(67,1): message : see declaration of 'std::unordered_map'
-  InputComponent.cpp
-  OrbitActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  OrbitCameraComponent.cpp
-  PlaneActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  Quaternion.cpp
-  RendererOGL.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\map(25,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  SphereActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\fstream(26,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  Generating Code...
-  Compiling...
-  TargetActor.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\map(25,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  Texture.cpp
-  Tile.cpp
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(18,29): error C2061: syntax error: identifier 'TTF_Font'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,7): error C2039: 'unordered_map': is not a member of 'std'
-C:\VisualStudio\VC\Tools\MSVC\14.36.32532\include\map(25,1): message : see declaration of 'std'
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,21): error C3646: 'fontData': unknown override specifier
-C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\Racing Game\Font.h(21,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  Timer.cpp
-  Window.cpp
-  Generating Code...
+﻿AABB.obj : warning LNK4099: PDB '' was not found with 'AABB.obj' or at ''; linking object as if no debug info
+Actor.obj : warning LNK4099: PDB '' was not found with 'Actor.obj' or at ''; linking object as if no debug info
+Animation.obj : warning LNK4099: PDB '' was not found with 'Animation.obj' or at ''; linking object as if no debug info
+AnimSpriteComponent.obj : warning LNK4099: PDB '' was not found with 'AnimSpriteComponent.obj' or at ''; linking object as if no debug info
+Assets.obj : warning LNK4099: PDB '' was not found with 'Assets.obj' or at ''; linking object as if no debug info
+BackgroundSpriteComponent.obj : warning LNK4099: PDB '' was not found with 'BackgroundSpriteComponent.obj' or at ''; linking object as if no debug info
+BallActor.obj : warning LNK4099: PDB '' was not found with 'BallActor.obj' or at ''; linking object as if no debug info
+BallMoveComponent.obj : warning LNK4099: PDB '' was not found with 'BallMoveComponent.obj' or at ''; linking object as if no debug info
+BoneTransform.obj : warning LNK4099: PDB '' was not found with 'BoneTransform.obj' or at ''; linking object as if no debug info
+BoxComponent.obj : warning LNK4099: PDB '' was not found with 'BoxComponent.obj' or at ''; linking object as if no debug info
+Button.obj : warning LNK4099: PDB '' was not found with 'Button.obj' or at ''; linking object as if no debug info
+Camera.obj : warning LNK4099: PDB '' was not found with 'Camera.obj' or at ''; linking object as if no debug info
+CameraComponent.obj : warning LNK4099: PDB '' was not found with 'CameraComponent.obj' or at ''; linking object as if no debug info
+CircleCollisionComponent.obj : warning LNK4099: PDB '' was not found with 'CircleCollisionComponent.obj' or at ''; linking object as if no debug info
+Collisions.obj : warning LNK4099: PDB '' was not found with 'Collisions.obj' or at ''; linking object as if no debug info
+Component.obj : warning LNK4099: PDB '' was not found with 'Component.obj' or at ''; linking object as if no debug info
+ControllerState.obj : warning LNK4099: PDB '' was not found with 'ControllerState.obj' or at ''; linking object as if no debug info
+Cube.obj : warning LNK4099: PDB '' was not found with 'Cube.obj' or at ''; linking object as if no debug info
+CubeActor.obj : warning LNK4099: PDB '' was not found with 'CubeActor.obj' or at ''; linking object as if no debug info
+DialogBox.obj : warning LNK4099: PDB '' was not found with 'DialogBox.obj' or at ''; linking object as if no debug info
+FollowActor.obj : warning LNK4099: PDB '' was not found with 'FollowActor.obj' or at ''; linking object as if no debug info
+FollowCameraComponent.obj : warning LNK4099: PDB '' was not found with 'FollowCameraComponent.obj' or at ''; linking object as if no debug info
+Font.obj : warning LNK4099: PDB '' was not found with 'Font.obj' or at ''; linking object as if no debug info
+FPSActor.obj : warning LNK4099: PDB '' was not found with 'FPSActor.obj' or at ''; linking object as if no debug info
+FPSCameraComponent.obj : warning LNK4099: PDB '' was not found with 'FPSCameraComponent.obj' or at ''; linking object as if no debug info
+Game.obj : warning LNK4099: PDB '' was not found with 'Game.obj' or at ''; linking object as if no debug info
+HUD.obj : warning LNK4099: PDB '' was not found with 'HUD.obj' or at ''; linking object as if no debug info
+InputComponent.obj : warning LNK4099: PDB '' was not found with 'InputComponent.obj' or at ''; linking object as if no debug info
+InputSystem.obj : warning LNK4099: PDB '' was not found with 'InputSystem.obj' or at ''; linking object as if no debug info
+KeyboardState.obj : warning LNK4099: PDB '' was not found with 'KeyboardState.obj' or at ''; linking object as if no debug info
+LineSegment.obj : warning LNK4099: PDB '' was not found with 'LineSegment.obj' or at ''; linking object as if no debug info
+Log.obj : warning LNK4099: PDB '' was not found with 'Log.obj' or at ''; linking object as if no debug info
+main.obj : warning LNK4099: PDB '' was not found with 'main.obj' or at ''; linking object as if no debug info
+Matrix4.obj : warning LNK4099: PDB '' was not found with 'Matrix4.obj' or at ''; linking object as if no debug info
+Mesh.obj : warning LNK4099: PDB '' was not found with 'Mesh.obj' or at ''; linking object as if no debug info
+MeshComponent.obj : warning LNK4099: PDB '' was not found with 'MeshComponent.obj' or at ''; linking object as if no debug info
+MouseState.obj : warning LNK4099: PDB '' was not found with 'MouseState.obj' or at ''; linking object as if no debug info
+MoveComponent.obj : warning LNK4099: PDB '' was not found with 'MoveComponent.obj' or at ''; linking object as if no debug info
+OrbitActor.obj : warning LNK4099: PDB '' was not found with 'OrbitActor.obj' or at ''; linking object as if no debug info
+OrbitCameraComponent.obj : warning LNK4099: PDB '' was not found with 'OrbitCameraComponent.obj' or at ''; linking object as if no debug info
+PauseScreen.obj : warning LNK4099: PDB '' was not found with 'PauseScreen.obj' or at ''; linking object as if no debug info
+PhysicsSystem.obj : warning LNK4099: PDB '' was not found with 'PhysicsSystem.obj' or at ''; linking object as if no debug info
+Plane.obj : warning LNK4099: PDB '' was not found with 'Plane.obj' or at ''; linking object as if no debug info
+PlaneActor.obj : warning LNK4099: PDB '' was not found with 'PlaneActor.obj' or at ''; linking object as if no debug info
+Quaternion.obj : warning LNK4099: PDB '' was not found with 'Quaternion.obj' or at ''; linking object as if no debug info
+Random.obj : warning LNK4099: PDB '' was not found with 'Random.obj' or at ''; linking object as if no debug info
+Rectangle.obj : warning LNK4099: PDB '' was not found with 'Rectangle.obj' or at ''; linking object as if no debug info
+RendererOGL.obj : warning LNK4099: PDB '' was not found with 'RendererOGL.obj' or at ''; linking object as if no debug info
+Shader.obj : warning LNK4099: PDB '' was not found with 'Shader.obj' or at ''; linking object as if no debug info
+Skeleton.obj : warning LNK4099: PDB '' was not found with 'Skeleton.obj' or at ''; linking object as if no debug info
+Sphere.obj : warning LNK4099: PDB '' was not found with 'Sphere.obj' or at ''; linking object as if no debug info
+SphereActor.obj : warning LNK4099: PDB '' was not found with 'SphereActor.obj' or at ''; linking object as if no debug info
+Spline.obj : warning LNK4099: PDB '' was not found with 'Spline.obj' or at ''; linking object as if no debug info
+SplineActor.obj : warning LNK4099: PDB '' was not found with 'SplineActor.obj' or at ''; linking object as if no debug info
+SplineCameraComponent.obj : warning LNK4099: PDB '' was not found with 'SplineCameraComponent.obj' or at ''; linking object as if no debug info
+SpriteComponent.obj : warning LNK4099: PDB '' was not found with 'SpriteComponent.obj' or at ''; linking object as if no debug info
+TargetActor.obj : warning LNK4099: PDB '' was not found with 'TargetActor.obj' or at ''; linking object as if no debug info
+TargetComponent.obj : warning LNK4099: PDB '' was not found with 'TargetComponent.obj' or at ''; linking object as if no debug info
+Texture.obj : warning LNK4099: PDB '' was not found with 'Texture.obj' or at ''; linking object as if no debug info
+Tile.obj : warning LNK4099: PDB '' was not found with 'Tile.obj' or at ''; linking object as if no debug info
+Timer.obj : warning LNK4099: PDB '' was not found with 'Timer.obj' or at ''; linking object as if no debug info
+UIScreen.obj : warning LNK4099: PDB '' was not found with 'UIScreen.obj' or at ''; linking object as if no debug info
+Vector2.obj : warning LNK4099: PDB '' was not found with 'Vector2.obj' or at ''; linking object as if no debug info
+Vector3.obj : warning LNK4099: PDB '' was not found with 'Vector3.obj' or at ''; linking object as if no debug info
+VertexArray.obj : warning LNK4099: PDB '' was not found with 'VertexArray.obj' or at ''; linking object as if no debug info
+Window.obj : warning LNK4099: PDB '' was not found with 'Window.obj' or at ''; linking object as if no debug info
+Assets.obj : error LNK2001: unresolved external symbol "public: static class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Skeleton,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Skeleton> > > Assets::skeletons" (?skeletons@Assets@@2V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSkeleton@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSkeleton@@@std@@@2@@std@@A)
+Assets.obj : error LNK2001: unresolved external symbol "public: static class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Animation,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class Animation> > > Assets::animations" (?animations@Assets@@2V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VAnimation@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VAnimation@@@std@@@2@@std@@A)
+C:\Users\loris.moreau\Documents\GitHub\Tower-Defense\x64\Debug\Racing Game.exe : fatal error LNK1120: 2 unresolved externals

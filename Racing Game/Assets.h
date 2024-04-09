@@ -1,12 +1,13 @@
 #pragma once
-#include <map>
-#include <string>
 #include "Texture.h"
 #include "Shader.h"
 #include "Mesh.h"
 #include "Font.h"
 #include "Skeleton.h"
 #include "Animation.h"
+
+#include <map>
+#include <string>
 using std::map;
 using std::string;
 

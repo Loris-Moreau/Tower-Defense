@@ -53,7 +53,7 @@ void Animation::getGlobalPoseAtTime(vector<Matrix4>& outPoses, const Skeleton* i
 		outPoses[0] = Matrix4::identity;
 	}
 	
-	const vector<Skeleton::Bone>& bones = inSkeleton()->getBones();
+	const vector<Skeleton::Bone>& bones = inSkeleton->getBones();
 	// Now setup the poses for the rest
 	for (size_t bone = 1; bone < nbBones; bone++)
 	{

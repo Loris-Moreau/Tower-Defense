@@ -1,4 +1,5 @@
 #pragma once
+
 #include "KeyboardState.h"
 #include "MouseState.h"
 #include "ControllerState.h"
@@ -27,7 +28,7 @@ public:
 	bool initialize();
 	void close();
 
-	const InputState getInputState() const { return inputState; }
+	InputState getInputState() const { return inputState; }
 
 	bool processEvent(SDL_Event& event); // Returns isRunning status
 	void preUpdate();

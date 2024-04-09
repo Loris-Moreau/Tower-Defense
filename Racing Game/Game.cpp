@@ -48,9 +48,8 @@ void Game::load()
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Rifle.png", "Rifle");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\RacingCar.png", "RacingCar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Target.png", "Target");
-	Assets::loadTexture(renderer, "Res\\Textures\\CatWarrior.png",
-    "CatWarrior");
-
+	Assets::loadTexture(renderer, filePathRes5 + "Textures\\CatWarrior.png", "CatWarrior");
+	
 	//UI Textures
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\HealthBar.png", "HealthBar");
 	Assets::loadTexture(renderer, filePathRes3 + "Textures\\Radar.png", "Radar");
@@ -74,7 +73,7 @@ void Game::load()
 	Assets::loadMesh(filePathRes3 + "Meshes\\Rifle.gpmesh", "Mesh_Rifle");
 	Assets::loadMesh(filePathRes3 + "Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh(filePathRes3 + "Meshes\\Target.gpmesh", "Mesh_Target");
-	//Assets::loadMesh("Res\\Meshes\\CatWarrior.gpmesh", "Mesh_CatWarrior");
+	//Assets::loadMesh(filePathRes5 + "Meshes\\CatWarrior.gpmesh", "Mesh_CatWarrior");
 	
 	//Fonts
 	Assets::loadFont(filePathRes4 + "Fonts\\Carlito-Regular.ttf", "Carlito");
@@ -85,10 +84,10 @@ void Game::load()
 	//Assets::loadText(filePathRes4 + "Localization\\Russian.gptext");
 
 	//Animations
-	Assets::loadSkeleton("Res\\Animations\\CatWarrior.gpskel", "Skel_CatWarrior");
-	Assets::loadAnimation("Res\\Animations\\CatActionIdle.gpanim", "CatActionIdle");
-	Assets::loadAnimation("Res\\Animations\\CatRunMOBA.gpanim", "CatRunMOBA");
-	Assets::loadAnimation("Res\\Animations\\CatRunSprint.gpanim", "CatRunSprint");
+	Assets::loadSkeleton(filePathRes5 + "Animations\\CatWarrior.gpskel", "Skel_CatWarrior");
+	Assets::loadAnimation(filePathRes5 + "Animations\\CatActionIdle.gpanim", "CatActionIdle");
+	Assets::loadAnimation(filePathRes5 + "Animations\\CatRunMOBA.gpanim", "CatRunMOBA");
+	Assets::loadAnimation(filePathRes5 + "Animations\\CatRunSprint.gpanim", "CatRunSprint");
 	
 	fps = new FPSActor();
 

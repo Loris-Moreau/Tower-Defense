@@ -272,15 +272,6 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Downloads\opengl-training-master\opengl-training-master\SimpleEngineWithOpenGL\SimpleEngineWithOpenGL-019\Res\Shaders\Sprite.frag" />
-    <None Include="..\..\..\..\Downloads\opengl-training-master\opengl-training-master\SimpleEngineWithOpenGL\SimpleEngineWithOpenGL-019\Res\Shaders\Sprite.vert" />
-    <None Include="..\Assets\Res_016-025\Shaders\Transform.vert" />
-    <None Include="Basic.frag" />
-    <None Include="Basic.vert" />
-    <None Include="Phong.frag" />
-    <None Include="Phong.vert" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="..\Assets\Res_016-025\Shaders\BasicMesh.frag" />
     <Content Include="..\Assets\Res_016-025\Shaders\BasicMesh.vert" />
     <Content Include="..\Assets\Res_016-025\Shaders\Phong.frag" />
