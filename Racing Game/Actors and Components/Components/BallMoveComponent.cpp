@@ -1,12 +1,12 @@
 #include "BallMoveComponent.h"
-#include "..\Actors/Actor.h"
-#include "..\..\Maths/Vector3.h"
+#include "..\Actors\Actor.h"
+#include "..\..\Maths\Vector3.h"
 #include "..\..\LineSegment.h"
 #include "..\..\Collisions.h"
-#include "..\..\Maths/PhysicsSystem.h"
-#include "..\Actors/BallActor.h"
-#include "..\Actors/TargetActor.h"
-#include "..\..\Main/Game.h"
+#include "..\..\Maths\PhysicsSystem.h"
+#include "..\Actors\BallActor.h"
+#include "..\Actors\TargetActor.h"
+#include "..\..\Main\Game.h"
 
 BallMoveComponent::BallMoveComponent(Actor* ownerP) : MoveComponent(ownerP), player(nullptr)
 {

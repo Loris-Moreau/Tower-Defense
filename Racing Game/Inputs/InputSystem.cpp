@@ -2,8 +2,8 @@
 #include <SDL_keyboard.h>
 #include <cstring>
 #include <SDL_mouse.h>
-#include "..\Maths/Maths.h"
-#include "..\Window/Window.h"
+#include "..\Maths\Maths.h"
+#include "..\Window\Window.h"
 
 InputSystem::InputSystem() : 
 	inputState(),

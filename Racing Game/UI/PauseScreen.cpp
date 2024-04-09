@@ -1,5 +1,5 @@
 #include "PauseScreen.h"
-#include "..\Main/Game.h"
+#include "..\Main\Game.h"
 #include "DialogBox.h"
 
 PauseScreen::PauseScreen() : UIScreen()

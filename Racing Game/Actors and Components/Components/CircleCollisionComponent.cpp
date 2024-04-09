@@ -1,5 +1,5 @@
 #include "CircleCollisionComponent.h"
-#include "..\Actors/Actor.h"
+#include "..\Actors\Actor.h"
 
 CircleCollisionComponent::CircleCollisionComponent(Actor* owner) : Component(owner), radius(1.0f)
 {

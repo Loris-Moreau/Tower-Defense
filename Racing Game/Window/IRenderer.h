@@ -1,6 +1,6 @@
 #pragma once
 #include "Window.h"
-#include "..\Maths/Vector2.h"
+#include "..\Maths\Vector2.h"
 
 class IRenderer
 {

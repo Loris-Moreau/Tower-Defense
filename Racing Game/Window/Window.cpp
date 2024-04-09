@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "..\Main/Log.h"
+#include "..\Main\Log.h"
 
 Window::Window() : SDLWindow(nullptr), width(WINDOW_WIDTH), height(WINDOW_HEIGHT)
 {

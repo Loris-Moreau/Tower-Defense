@@ -1,6 +1,6 @@
 #include "Camera.h"
-#include "..\Components/MoveComponent.h"
-#include "..\..\Main/Game.h"
+#include "..\Components\MoveComponent.h"
+#include "..\..\Main\Game.h"
 
 Camera::Camera() : Actor(), moveComponent(nullptr)
 {

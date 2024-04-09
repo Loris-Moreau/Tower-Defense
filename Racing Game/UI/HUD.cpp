@@ -1,8 +1,8 @@
 #include "HUD.h"
-#include "..\Main/Assets.h"
-#include "..\Main/Game.h"
-#include "..\Actors and Components/Components/TargetComponent.h"
-#include "..\Actors and Components/Actors/FPSActor.h"
+#include "..\Main\Assets.h"
+#include "..\Main\Game.h"
+#include "..\Actors and Components\Components\TargetComponent.h"
+#include "..\Actors and Components\Actors\FPSActor.h"
 
 HUD::HUD():
 UIScreen(),

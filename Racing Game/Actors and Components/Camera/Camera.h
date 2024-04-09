@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\Actors and Components/Actors/Actor.h"
+#include "..\..\Actors and Components\Actors\Actor.h"
 
 class Camera : public Actor
 {

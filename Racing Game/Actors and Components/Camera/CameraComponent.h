@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\Components/Component.h"
-#include "..\..\Maths/Matrix4.h"
+#include "..\Components\Component.h"
+#include "..\..\Maths\Matrix4.h"
 
 class CameraComponent : public Component
 {

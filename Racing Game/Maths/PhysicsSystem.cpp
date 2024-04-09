@@ -1,6 +1,6 @@
 #include "PhysicsSystem.h"
 #include "..\Collisions.h"
-#include "..\Actors and Components/Components/BoxComponent.h"
+#include "..\Actors and Components\Components\BoxComponent.h"
 #include <algorithm>
 
 PhysicsSystem::PhysicsSystem()

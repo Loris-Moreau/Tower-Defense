@@ -1,7 +1,7 @@
 #include "MoveComponent.h"
-#include "..\..\Maths/Maths.h"
-#include "..\Actors/Actor.h"
-#include "..\..\Window/Window.h"
+#include "..\..\Maths\Maths.h"
+#include "..\Actors\Actor.h"
+#include "..\..\Window\Window.h"
 
 MoveComponent::MoveComponent(Actor* ownerP, int updateOrderP)
 	: Component(ownerP, updateOrderP), forwardSpeed(0.0f), angularSpeed(0.0f), strafeSpeed(0.0f)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\Maths/Matrix4.h"
+#include "..\Maths\Matrix4.h"
 
 class BoneTransform
 {

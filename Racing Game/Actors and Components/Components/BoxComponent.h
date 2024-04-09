@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "..\..\Maths/AABB.h"
+#include "..\..\Maths\AABB.h"
 
 class BoxComponent : public Component
 {

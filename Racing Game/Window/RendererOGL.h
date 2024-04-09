@@ -1,7 +1,7 @@
 #pragma once
 #include "IRenderer.h"
-#include "..\Maths/VertexArray.h"
-#include "..\Maths/Vector2.h"
+#include "..\Maths\VertexArray.h"
+#include "..\Maths\Vector2.h"
 #include "Shader.h"
 
 #include <vector>

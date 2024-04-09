@@ -1,9 +1,9 @@
 #include "FollowActor.h"
-#include "..\Components/MoveComponent.h"
-#include "..\Camera/FollowCameraComponent.h"
-#include "..\Components/MeshComponent.h"
-#include "..\..\Main/Assets.h"
-#include "..\..\Inputs/InputSystem.h"
+#include "..\Components\MoveComponent.h"
+#include "..\Camera\FollowCameraComponent.h"
+#include "..\Components\MeshComponent.h"
+#include "..\..\Main\Assets.h"
+#include "..\..\Inputs\InputSystem.h"
 
 FollowActor::FollowActor() :
 	Actor(),

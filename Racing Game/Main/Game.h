@@ -1,15 +1,15 @@
 #pragma once
 
 #include <vector>
-#include "..\Actors and Components/Actors/Actor.h"
-#include "..\Actors and Components/Components/Sprite/SpriteComponent.h"
-#include "..\Window/Window.h"
-#include "..\Maths/Vector2.h"
-#include "..\Window/RendererOGL.h"
-#include "..\Inputs/InputSystem.h"
-#include "..\Maths/PhysicsSystem.h"
-#include "..\Actors and Components/Actors/PlaneActor.h"
-#include "..\UI/HUD.h"
+#include "..\Actors and Components\Actors\Actor.h"
+#include "..\Actors and Components\Components\Sprite\SpriteComponent.h"
+#include "..\Window\Window.h"
+#include "..\Maths\Vector2.h"
+#include "..\Window\RendererOGL.h"
+#include "..\Inputs\InputSystem.h"
+#include "..\Maths\PhysicsSystem.h"
+#include "..\Actors and Components\Actors\PlaneActor.h"
+#include "..\UI\HUD.h"
 
 using std::vector;
 

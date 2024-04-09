@@ -1,7 +1,7 @@
 #include "BallActor.h"
-#include "..\Components/MeshComponent.h"
-#include "..\..\Main/Assets.h"
-#include "..\Components/BallMoveComponent.h"
+#include "..\Components\MeshComponent.h"
+#include "..\..\Main\Assets.h"
+#include "..\Components\BallMoveComponent.h"
 
 BallActor::BallActor() : Actor(), lifetimeSpan(2.0f), ballMove(nullptr)
 {

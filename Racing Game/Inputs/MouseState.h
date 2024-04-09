@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\Maths/Vector2.h"
+#include "..\Maths\Vector2.h"
 #include <SDL_stdinc.h>
 
 class MouseState

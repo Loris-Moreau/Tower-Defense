@@ -1,9 +1,9 @@
 #include "TargetActor.h"
-#include "..\Components/MeshComponent.h"
-#include "..\Components/BoxComponent.h"
+#include "..\Components\MeshComponent.h"
+#include "..\Components\BoxComponent.h"
 #include "..\..\Mesh.h"
-#include "..\..\Main/Assets.h"
-#include "..\Components/TargetComponent.h"
+#include "..\..\Main\Assets.h"
+#include "..\Components\TargetComponent.h"
 
 TargetActor::TargetActor()
 {

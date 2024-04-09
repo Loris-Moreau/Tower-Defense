@@ -1,8 +1,8 @@
 #include "UIScreen.h"
 #include "..\Texture.h"
 #include "Font.h"
-#include "..\Main/Assets.h"
-#include "..\Main/Game.h"
+#include "..\Main\Assets.h"
+#include "..\Main\Game.h"
 #include "Button.h"
 
 UIScreen::UIScreen() :

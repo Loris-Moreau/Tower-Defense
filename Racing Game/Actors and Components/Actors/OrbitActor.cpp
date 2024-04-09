@@ -1,8 +1,8 @@
 #include "OrbitActor.h"
-#include "..\Components/MeshComponent.h"
-#include "..\Camera/OrbitCameraComponent.h"
-#include "..\..\Main/Assets.h"
-#include "..\..\Inputs/InputSystem.h"
+#include "..\Components\MeshComponent.h"
+#include "..\Camera\OrbitCameraComponent.h"
+#include "..\..\Main\Assets.h"
+#include "..\..\Inputs\InputSystem.h"
 
 OrbitActor::OrbitActor() : Actor(), cameraComponent(nullptr), meshComponent(nullptr)
 {

@@ -1,8 +1,8 @@
 #include "PlaneActor.h"
-#include "..\Components/MeshComponent.h"
-#include "..\..\Main/Assets.h"
-#include "..\..\Main/Game.h"
-#include "..\Components/BoxComponent.h"
+#include "..\Components\MeshComponent.h"
+#include "..\..\Main\Assets.h"
+#include "..\..\Main\Game.h"
+#include "..\Components\BoxComponent.h"
 
 PlaneActor::PlaneActor() : Actor()
 {

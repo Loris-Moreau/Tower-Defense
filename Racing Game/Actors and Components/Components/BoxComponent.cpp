@@ -1,6 +1,6 @@
 #include "BoxComponent.h"
-#include "..\Actors/Actor.h"
-#include "..\..\Main/Game.h"
+#include "..\Actors\Actor.h"
+#include "..\..\Main\Game.h"
 
 BoxComponent::BoxComponent(Actor* ownerP, int updateOrderP):
 	Component(ownerP, updateOrderP),

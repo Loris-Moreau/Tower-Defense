@@ -1,10 +1,10 @@
 #pragma once
 #include "..\Texture.h"
-#include "..\Window/Shader.h"
+#include "..\Window\Shader.h"
 #include "..\Mesh.h"
-#include "..\UI/Font.h"
-#include "..\Animations/Skeleton.h"
-#include "..\Animations//Animation.h"
+#include "..\UI\Font.h"
+#include "..\Animations\Skeleton.h"
+#include "..\Animations\\Animation.h"
 
 #include <map>
 #include <string>

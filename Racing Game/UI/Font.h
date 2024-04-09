@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\Maths/Vector3.h"
+#include "..\Maths\Vector3.h"
 #include "Color.h"
 #include <string>
 #include <unordered_map>

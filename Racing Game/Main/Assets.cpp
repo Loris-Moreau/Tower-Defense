@@ -3,8 +3,8 @@
 #include <sstream>
 #include <fstream>
 #include "Log.h"
-#include "..\Window/RendererOGL.h"
-#include <rapidjson/document.h>
+#include "..\Window\RendererOGL.h"
+#include <rapidjson\document.h>
 
 std::map<std::string, Texture> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;

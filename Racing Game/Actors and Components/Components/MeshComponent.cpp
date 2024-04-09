@@ -1,6 +1,6 @@
 #include "MeshComponent.h"
-#include "..\Actors/Actor.h"
-#include "..\..\Main/Game.h"
+#include "..\Actors\Actor.h"
+#include "..\..\Main\Game.h"
 #include "..\..\Mesh.h"
 
 MeshComponent::MeshComponent(Actor* owner) : Component(owner), mesh(nullptr), textureIndex(0), isVisible(true)

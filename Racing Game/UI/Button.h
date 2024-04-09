@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <functional>
-#include "..\Maths/Vector2.h"
+#include "..\Maths\Vector2.h"
 
 using std::string;
 

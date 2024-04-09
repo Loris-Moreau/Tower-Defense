@@ -1,5 +1,5 @@
 #pragma once
-#include "..\Actors and Components/Components/MoveComponent.h"
+#include "..\Actors and Components\Components\MoveComponent.h"
 #include <SDL_stdinc.h>
 #include <SDL_scancode.h>
 

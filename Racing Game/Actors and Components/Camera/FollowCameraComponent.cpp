@@ -1,5 +1,5 @@
 #include "FollowCameraComponent.h"
-#include "..\Actors/Actor.h"
+#include "..\Actors\Actor.h"
 
 FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
 	CameraComponent(ownerP),

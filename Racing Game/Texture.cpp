@@ -1,5 +1,5 @@
 #include "Texture.h"
-#include "Main/Log.h"
+#include "Main\Log.h"
 #include <SDL_image.h>
 #include <sstream>
 

@@ -1,5 +1,5 @@
 #include "Shader.h"
-#include "..\Main/Log.h"
+#include "..\Main\Log.h"
 #include <SDL.h>
 
 #include <sstream>

@@ -1,14 +1,14 @@
 #pragma once 
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <GL\glew.h>
+#include <GL\gl.h>
+#include <GL\glu.h>
 
 #include <iostream>
 #include <string>
 #include <fstream>
 
-#include "..\Maths/Vector2.h"
-#include "..\Maths/Matrix4.h"
+#include "..\Maths\Vector2.h"
+#include "..\Maths\Matrix4.h"
 
 // General purpose shader object. Compiles from file, generates
 // compile/link-time error messages and hosts several utility 

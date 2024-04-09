@@ -1,5 +1,5 @@
 #include "CameraComponent.h"
-#include "..\..\Main/Game.h"
+#include "..\..\Main\Game.h"
 
 CameraComponent::CameraComponent(Actor* owner, int updateOrder) : Component(owner, updateOrder)
 {

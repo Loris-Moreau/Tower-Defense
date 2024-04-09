@@ -1,5 +1,5 @@
 #include "SplineActor.h"
-#include "..\Camera/SplineCameraComponent.h"
+#include "..\Camera\SplineCameraComponent.h"
 
 SplineActor::SplineActor() : Actor(), cameraComponent(nullptr)
 {

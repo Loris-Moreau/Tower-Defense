@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL_stdinc.h>
 #include <SDL_gamecontroller.h>
-#include "..\Maths/Vector2.h"
+#include "..\Maths\Vector2.h"
 
 class ControllerState
 {

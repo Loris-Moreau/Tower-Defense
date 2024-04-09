@@ -1,8 +1,8 @@
 #include "Actor.h"
 #include <algorithm>
-#include "..\..\Main/Game.h"
-#include "..\Components/Component.h"
-#include "..\..\Maths/Maths.h"
+#include "..\..\Main\Game.h"
+#include "..\Components\Component.h"
+#include "..\..\Maths\Maths.h"
 
 Actor::Actor() :
 	state(Actor::ActorState::Active),

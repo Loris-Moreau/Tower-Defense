@@ -1,6 +1,6 @@
 #include "Component.h"
-#include "..\Actors/Actor.h"
-#include "..\..\Inputs/InputSystem.h"
+#include "..\Actors\Actor.h"
+#include "..\..\Inputs\InputSystem.h"
 
 Component::Component(Actor* ownerP, int updateOrderP):
 	owner(*ownerP),

@@ -1,7 +1,7 @@
 #include "Font.h"
-#include "..\Main/Log.h"
+#include "..\Main\Log.h"
 #include "..\Texture.h"
-#include "..\Main/Assets.h"
+#include "..\Main\Assets.h"
 #include <sstream>
 
 Font::Font()

@@ -1,8 +1,8 @@
 #pragma once
-#include "Objects/Sphere.h"
-#include "Maths/AABB.h"
+#include "Objects\Sphere.h"
+#include "Maths\AABB.h"
 #include "LineSegment.h"
-#include "Objects/Plane.h"
+#include "Objects\Plane.h"
 #include <vector>
 
 using std::vector;

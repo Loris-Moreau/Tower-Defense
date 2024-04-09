@@ -1,6 +1,6 @@
 #include "Cube.h"
-#include "..\Actors and Components/Components/MeshComponent.h"
-#include "..\Main/Assets.h"
+#include "..\Actors and Components\Components\MeshComponent.h"
+#include "..\Main\Assets.h"
 
 Cube::Cube()
 {

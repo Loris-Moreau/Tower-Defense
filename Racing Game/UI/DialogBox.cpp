@@ -1,5 +1,5 @@
 #include "DialogBox.h"
-#include "..\Main/Assets.h"
+#include "..\Main\Assets.h"
 
 DialogBox::DialogBox(const string& text, std::function<void()> onValidate) : UIScreen()
 {

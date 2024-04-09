@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "..\..\Maths/Vector2.h"
+#include "..\..\Maths\Vector2.h"
 
 class CircleCollisionComponent : public Component
 {

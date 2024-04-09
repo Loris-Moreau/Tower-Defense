@@ -2,7 +2,7 @@
 #include <string>
 #include <functional>
 #include <vector>
-#include "..\Maths/Vector2.h"
+#include "..\Maths\Vector2.h"
 #include "Color.h"
 
 using std::string;

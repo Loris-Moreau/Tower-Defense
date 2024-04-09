@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "..\..\Maths/Vector2.h"
+#include "..\..\Maths\Vector2.h"
 #include <SDL_stdinc.h>
-#include "..\..\Maths/Matrix4.h"
+#include "..\..\Maths\Matrix4.h"
 using std::vector;
 
 class Game;

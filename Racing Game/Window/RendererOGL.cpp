@@ -1,14 +1,14 @@
 #include "RendererOGL.h"
-#include "..\Objects/Rectangle.h"
-#include "..\Main/Assets.h"
-#include "..\Actors and Components/Actors/Actor.h"
-#include "..\Actors and Components/Components/Sprite/SpriteComponent.h"
-#include "..\Actors and Components/Components/MeshComponent.h"
-#include "..\Main/Log.h"
-#include "..\Main/Game.h"
-#include "..\UI/UIScreen.h"
+#include "..\Objects\Rectangle.h"
+#include "..\Main\Assets.h"
+#include "..\Actors and Components\Actors\Actor.h"
+#include "..\Actors and Components\Components\Sprite\SpriteComponent.h"
+#include "..\Actors and Components\Components\MeshComponent.h"
+#include "..\Main\Log.h"
+#include "..\Main\Game.h"
+#include "..\UI\UIScreen.h"
 
-#include <GL/glew.h>
+#include <GL\glew.h>
 #include <SDL_image.h>
 
 RendererOGL::RendererOGL():

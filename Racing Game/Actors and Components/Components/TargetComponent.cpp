@@ -1,5 +1,5 @@
 #include "TargetComponent.h"
-#include "..\..\Main/Game.h"
+#include "..\..\Main\Game.h"
 
 TargetComponent::TargetComponent(Actor* owner) : Component(owner)
 {

@@ -1,6 +1,6 @@
 #include "BackgroundSpriteComponent.h"
-#include "..\..\Actors/Actor.h"
-#include "..\..\..\Objects/Rectangle.h"
+#include "..\..\Actors\Actor.h"
+#include "..\..\..\Objects\Rectangle.h"
 
 BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP):
 	SpriteComponent(ownerP, *texturesP[0], drawOrderP),
