@@ -23,6 +23,7 @@ protected:
 	class Texture* radar;
 	class Texture* blipTex;
 	class Texture* radarArrow;
+	class Texture* healthBar;
 
 	std::vector<class TargetComponent*> targetComponents;
 	bool isTargetingEnemy;

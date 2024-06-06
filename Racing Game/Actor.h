@@ -42,7 +42,7 @@ public:
 	void rotateToNewForward(const Vector3& newForward);
 
 	void processInput(const struct InputState& inputState);
-	virtual void actorInput(const struct InputState& inputState);
+	virtual void actorInput(const InputState& inputState);
 	void update(float dt);
 	void updateComponents(float dt);
 	virtual void updateActor(float dt);

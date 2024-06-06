@@ -15,6 +15,7 @@ HUD::HUD():
 	radar = &Assets::getTexture("Radar");
 	blipTex = &Assets::getTexture("Blip");
 	radarArrow = &Assets::getTexture("RadarArrow");
+	healthBar = &Assets::getTexture("HealthBar");
 }
 
 HUD::~HUD()
@@ -30,9 +31,11 @@ void HUD::update(float dt)
 
 void HUD::draw(Shader& shader)
 {
+	//Crosshair
 	Texture* cross = isTargetingEnemy ? crosshairEnemy : crosshair;
 	drawTexture(shader, cross, Vector2::zero, 2.0f);
 
+	//Radar
 	const Vector2 radarPosition{ -390.0f, 275.0f };
 	drawTexture(shader, radar, radarPosition, 1.0f);
 	for (Vector2& blip : blips)
@@ -40,6 +43,9 @@ void HUD::draw(Shader& shader)
 		drawTexture(shader, blipTex, radarPosition + blip, 1.0f);
 	}
 	drawTexture(shader, radarArrow, radarPosition);
+
+	//HealthBar
+	drawTexture(shader, healthBar, {390.0f, 275.0f}, 1.0f);
 }
 
 void HUD::addTargetComponent(TargetComponent* tc)
@@ -85,12 +91,14 @@ void HUD::updateRadar(float dt)
 	// Convert player position to radar coordinates (x forward, z up)
 	Vector3 playerPos = Game::instance().getPlayer()->getPosition();
 	Vector2 playerPos2D{ playerPos.y, playerPos.x };
+	
 	// Ditto for player forward
 	Vector3 playerForward = Game::instance().getPlayer()->getForward();
 	Vector2 playerForward2D{ playerForward.x, playerForward.y };
 
 	// Use atan2 to get rotation of radar
 	float angle = Maths::atan2(playerForward2D.y, playerForward2D.x);
+	
 	// Make a 2D rotation matrix
 	Matrix4 rotMat = Matrix4::createRotationZ(angle);
 	
@@ -116,5 +124,4 @@ void HUD::updateRadar(float dt)
 			blips.emplace_back(Vector2(blipPosition.x, blipPosition.y));
 		}
 	}
-	
 }
