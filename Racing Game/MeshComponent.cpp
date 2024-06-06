@@ -2,6 +2,8 @@
 #include "Actor.h"
 #include "Game.h"
 #include "Mesh.h"
+#include "LevelLoader.h"
+#include "Assets.h"
 
 MeshComponent::MeshComponent(Actor* owner, bool isSkeletalP) : Component(owner), mesh(nullptr), textureIndex(0), isVisible(true), isSkeletal(isSkeletalP)
 {
@@ -44,4 +46,37 @@ void MeshComponent::setMesh(Mesh& meshP)
 void MeshComponent::setTextureIndex(size_t textureIndexP)
 {
 	textureIndex = textureIndexP;
+}
+
+void MeshComponent::loadProperties(const rapidjson::Value& inObj)
+{
+	Component::loadProperties(inObj);
+
+	std::string meshFile;
+	if (JsonHelper::getString(inObj, "meshFile", meshFile))
+	{
+		setMesh(Assets::getMesh(meshFile));
+	}
+
+	int idx;
+	if (JsonHelper::getInt(inObj, "textureIndex", idx))
+	{
+		textureIndex = static_cast<size_t>(idx);
+	}
+
+	JsonHelper::getBool(inObj, "visible", isVisible);
+	JsonHelper::getBool(inObj, "isSkeletal", isSkeletal);
+}
+
+void MeshComponent::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
+{
+	Component::saveProperties(alloc, inObj);
+
+	if (mesh)
+	{
+		JsonHelper::addString(alloc, inObj, "meshFile", mesh->getName());
+	}
+	JsonHelper::addInt(alloc, inObj, "textureIndex", static_cast<int>(textureIndex));
+	JsonHelper::addBool(alloc, inObj, "visible", isVisible);
+	JsonHelper::addBool(alloc, inObj, "isSkeletal", isSkeletal);
 }

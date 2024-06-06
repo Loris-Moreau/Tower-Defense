@@ -6,6 +6,6 @@ public:
 	PauseScreen();
 	~PauseScreen();
 
-	void processInput(const class InputState& inputState) override;
+	void processInput(const struct InputState& inputState) override;
 };
 

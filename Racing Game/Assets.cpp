@@ -23,6 +23,7 @@ union Vertex
 Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const string& name)
 {
     textures[name] = loadTextureFromFile(renderer, filename.c_str());
+    textures[name].setName(name);
     return textures[name];
 }
 
@@ -56,7 +57,13 @@ Shader& Assets::getShader(const std::string& name)
 
 Mesh Assets::loadMesh(const string& filename, const string& name)
 {
-    meshes[name] = loadMeshFromFile(filename);
+    meshes[name] = Mesh();
+    meshes[name].setName(name);
+    if (loadMeshBinary(filename + ".bin", meshes[name]))
+    {
+        return meshes[name];
+    }
+    loadMeshFromFile(filename, meshes[name]);
     return meshes[name];
 }
 
@@ -145,6 +152,7 @@ const string& Assets::getText(const string& key)
 Skeleton Assets::loadSkeleton(const string& filename, const string& name)
 {
     skeletons[name] = loadSkeletonFromFile(filename);
+    skeletons[name].setName(name);
     return skeletons[name];
 }
 
@@ -162,6 +170,7 @@ Skeleton& Assets::getSkeleton(const std::string& name)
 Animation Assets::loadAnimation(const string& filename, const string& name)
 {
     animations[name] = loadAnimationFromFile(filename);
+    animations[name].setName(name);
     return animations[name];
 }
 
@@ -294,14 +303,13 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     return shader;
 }
 
-Mesh Assets::loadMeshFromFile(const string& filename)
+bool Assets::loadMeshFromFile(const string& filename, Mesh& mesh)
 {
-	Mesh mesh;
-
 	std::ifstream file(filename);
 	if (!file.is_open())
 	{
 		Log::error(LogCategory::Application, "File not found: Mesh " + filename);
+        return false;
 	}
 
 	std::stringstream fileStream;
@@ -316,9 +324,11 @@ Mesh Assets::loadMeshFromFile(const string& filename)
         std::ostringstream s;
         s << "Mesh " << filename << " is not valid json";
         Log::error(LogCategory::Application, s.str());
+        return false;
 	}
 
-	mesh.setShaderName(doc["shader"].GetString());
+    string shaderName = doc["shader"].GetString();
+	mesh.setShaderName(shaderName);
 
     // Set the vertex layout/size based on the format in the file
     VertexArrayLayout layout = VertexArrayLayout::PosNormTex;
@@ -339,13 +349,17 @@ Mesh Assets::loadMeshFromFile(const string& filename)
         std::ostringstream s;
         s << "Mesh " << filename << " has no textures, there should be at least one";
         Log::error(LogCategory::Application, s.str());
+        return false;
 	}
 
-	mesh.setSpecularPower(static_cast<float>(doc["specularPower"].GetDouble()));
+    float specularPower = static_cast<float>(doc["specularPower"].GetDouble());
+	mesh.setSpecularPower(specularPower);
 
+    vector<string> textureNames;
 	for (rapidjson::SizeType i = 0; i < textures.Size(); i++)
 	{
-		std::string texName = textures[i].GetString();
+		string texName = textures[i].GetString();
+        textureNames.emplace_back(texName);
 		Texture& t = getTexture(texName);
 		mesh.addTexture(&t);
 	}
@@ -357,6 +371,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
         std::ostringstream s;
         s << "Mesh " << filename << " has no vertices";
         Log::error(LogCategory::Application, s.str());
+        return false;
 	}
 
 	std::vector<Vertex> vertices;
@@ -371,6 +386,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
             std::ostringstream s;
             s << "Unexpected vertex format for " << filename;
             Log::error(LogCategory::Application, s.str());
+            return false;
 		}
 
 		Vector3 pos(static_cast<float>(vert[0].GetDouble()), static_cast<float>(vert[1].GetDouble()), static_cast<float>(vert[2].GetDouble()));
@@ -428,6 +444,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
         std::ostringstream s;
         s << "Mesh " << filename << " has no indices";
         Log::error(LogCategory::Application, s.str());
+        return false;
 	}
 
 	std::vector<unsigned int> indices;
@@ -440,6 +457,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
             std::ostringstream s;
             s << "Invalid indices for " << filename;
             Log::error(LogCategory::Application, s.str());
+            return false;
 		}
 
 		indices.emplace_back(ind[0].GetUint());
@@ -448,12 +466,99 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	}
 
 	// Now create a vertex array
-	mesh.setVertexArray(new VertexArray(vertices.data(), static_cast<unsigned int>(vertices.size()) / vertSize, layout, indices.data(), static_cast<unsigned int>(indices.size())));
+    unsigned int nbVertices = static_cast<unsigned>(vertices.size()) / vertSize;
+    unsigned int nbIndices = static_cast<unsigned int>(indices.size());
+	mesh.setVertexArray(new VertexArray(vertices.data(), nbVertices, layout, indices.data(), nbIndices));
+    // Save the binary mesh
+    mesh.saveBinary(filename + ".bin", vertices.data(), nbVertices, layout, indices.data(), nbIndices, textureNames, box, radius, specularPower, shaderName);
 
-    Log::info("Loaded mesh " + filename);
 
-	return mesh;
+    Log::info("Loaded mesh and saved binary " + filename);
+
+	return true;
 }
+
+
+bool Assets::loadMeshBinary(const std::string& filename, Mesh& mesh)
+{
+    std::ifstream inFile(filename, std::ios::in | std::ios::binary);
+    if (inFile.is_open())
+    {
+        // Read in header
+        MeshBinHeader header;
+        inFile.read(reinterpret_cast<char*>(&header), sizeof(header));
+
+        // Validate the header signature and version
+        char* sig = header.mSignature;
+        if (sig[0] != 'G' || sig[1] != 'M' || sig[2] != 'S' || sig[3] != 'H' || header.version != binaryVersion)
+        {
+            return false;
+        }
+
+        vector<Texture*> meshTextures;
+        // Read in the texture file names
+        for (uint32_t i = 0; i < header.mbNbTextures; i++)
+        {
+            // Get the file name size
+            uint16_t nameSize = 0;
+            inFile.read(reinterpret_cast<char*>(&nameSize), sizeof(nameSize));
+
+            // Make a buffer of this size
+            char* texName = new char[nameSize];
+            // Read in the texture name
+            inFile.read(texName, nameSize);
+
+            // Get this texture
+            Texture* t = &Assets::getTexture(texName);
+            if (t == nullptr)
+            {
+                // If it's null, use the default texture
+                t = &Assets::getTexture("Default");
+            }
+            meshTextures.emplace_back(t);
+
+            delete[] texName;
+        }
+        mesh.setTextures(meshTextures);
+
+        // Now read in the vertices
+        unsigned vertexSize = VertexArray::getVertexSize(header.mbLayout);
+        char* verts = new char[header.mbNbVertices * vertexSize];
+        inFile.read(verts, header.mbNbVertices * vertexSize);
+
+        // Now read in the indices
+        uint32_t* indices = new uint32_t[header.mbNbIndices];
+        inFile.read(reinterpret_cast<char*>(indices), header.mbNbIndices * sizeof(uint32_t));
+
+        // Now create the vertex array
+        mesh.setVertexArray(new VertexArray(verts, header.mbNbVertices, header.mbLayout, indices, header.mbNbIndices));
+
+        // Cleanup memory
+        delete[] verts;
+        delete[] indices;
+
+        // Set mbBox/mbRadius/specular from header
+        mesh.setBox(header.mbBox);
+        mesh.setRadius(header.mbRadius);
+        mesh.setSpecularPower(header.mbSpecularPower);
+
+
+        uint16_t shaderNameSize = 0;
+        inFile.read(reinterpret_cast<char*>(&shaderNameSize), sizeof(shaderNameSize));
+        char* shaderName = new char[shaderNameSize];
+        inFile.read(shaderName, shaderNameSize);
+
+        mesh.setShaderName(shaderName);
+
+
+        Log::info("Loaded mesh from binary: " + filename);
+
+        inFile.close();
+        return true;
+    }
+    return false;
+}
+
 
 Font Assets::loadFontFromFile(const string& filename)
 {

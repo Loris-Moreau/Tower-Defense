@@ -28,8 +28,13 @@ public:
 	void computeGlobalInvBindPose();
 	void unload();
 
+	const string& getName() const { return name; }
+	void setName(const string& nameP);
+
+
 private:
 	vector<Bone> bones;
 	vector<Matrix4> globalInvBindPoses;
+	string name;
 };
 

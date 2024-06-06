@@ -70,3 +70,8 @@ void Animation::getGlobalPoseAtTime(vector<Matrix4>& outPoses, const Skeleton* i
 void Animation::unload()
 {
 }
+
+void Animation::setName(const string& nameP)
+{
+	name = nameP;
+}

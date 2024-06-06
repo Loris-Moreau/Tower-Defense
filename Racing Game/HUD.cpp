@@ -30,8 +30,8 @@ void HUD::update(float dt)
 
 void HUD::draw(Shader& shader)
 {
-	Texture* cross = isTargetingEnemy ? crosshairEnemy : crosshair;
-	drawTexture(shader, cross, Vector2::zero, 2.0f);
+	//Texture* cross = isTargetingEnemy ? crosshairEnemy : crosshair;
+	//drawTexture(shader, cross, Vector2::zero, 2.0f);
 
 	const Vector2 radarPosition{ -390.0f, 275.0f };
 	drawTexture(shader, radar, radarPosition, 1.0f);
@@ -40,6 +40,10 @@ void HUD::draw(Shader& shader)
 		drawTexture(shader, blipTex, radarPosition + blip, 1.0f);
 	}
 	drawTexture(shader, radarArrow, radarPosition);
+
+	// Draw the mirror (bottom left)
+	Texture* mirror = Game::instance().getRenderer().getMirrorTexture();
+	drawTexture(shader, mirror, Vector2(-350.0f, -250.0f), 1.0f, true);
 }
 
 void HUD::addTargetComponent(TargetComponent* tc)

@@ -12,6 +12,9 @@ public:
 	void setVerticalDistance(float distance);
 	void setTargetDistance(float distance);
 	void setSpringConstant(float springConstantP);
+	ComponentType getType() const override { return ComponentType::FollowCamera; }
+	void loadProperties(const rapidjson::Value& inObj) override;
+	void saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const override;
 
 
 private:

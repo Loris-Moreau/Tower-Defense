@@ -5,6 +5,8 @@
 #include "Mesh.h"
 #include "Skeleton.h"
 #include "Animation.h"
+#include "LevelLoader.h"
+#include "Assets.h"
 
 SkeletalMeshComponent::SkeletalMeshComponent(Actor* owner):
 	MeshComponent(owner, true),
@@ -71,6 +73,43 @@ float SkeletalMeshComponent::playAnimation(const Animation* anim, float playRate
 
 	computeMatrixPalette();
 	return animation->getDuration();
+}
+
+void SkeletalMeshComponent::loadProperties(const rapidjson::Value& inObj)
+{
+	MeshComponent::loadProperties(inObj);
+
+	std::string skelFile;
+	if (JsonHelper::getString(inObj, "skelFile", skelFile))
+	{
+		setSkeleton(Assets::getSkeleton(skelFile));
+	}
+
+	std::string animFile;
+	if (JsonHelper::getString(inObj, "animFile", animFile))
+	{
+		playAnimation(&Assets::getAnimation(animFile));
+	}
+
+	JsonHelper::getFloat(inObj, "animPlayRate", animPlayRate);
+	JsonHelper::getFloat(inObj, "animTime", animTime);
+}
+
+void SkeletalMeshComponent::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
+{
+	MeshComponent::saveProperties(alloc, inObj);
+
+	if (skeleton)
+	{
+		JsonHelper::addString(alloc, inObj, "skelFile", skeleton->getName());
+	}
+	if (animation)
+	{
+		JsonHelper::addString(alloc, inObj, "animFile", animation->getName());
+	}
+
+	JsonHelper::addFloat(alloc, inObj, "animPlayRate", animPlayRate);
+	JsonHelper::addFloat(alloc, inObj, "animTime", animTime);
 }
 
 void SkeletalMeshComponent::computeMatrixPalette()

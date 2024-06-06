@@ -34,3 +34,8 @@ void Skeleton::unload()
 {
 
 }
+
+void Skeleton::setName(const string& nameP)
+{
+	name = nameP;
+}

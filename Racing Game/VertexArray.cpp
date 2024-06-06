@@ -68,3 +68,13 @@ void VertexArray::setActive()
 {
 	glBindVertexArray(vertexArray);
 }
+
+unsigned int VertexArray::getVertexSize(VertexArrayLayout layout)
+{
+	unsigned vertexSize = 8 * sizeof(float);
+	if (layout == VertexArrayLayout::PosNormSkinTex)
+	{
+		vertexSize = 8 * sizeof(float) + 8 * sizeof(char);
+	}
+	return vertexSize;
+}

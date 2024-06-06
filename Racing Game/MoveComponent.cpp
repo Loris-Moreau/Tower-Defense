@@ -2,6 +2,7 @@
 #include "Maths.h"
 #include "Actor.h"
 #include "Window.h"
+#include "LevelLoader.h"
 
 MoveComponent::MoveComponent(Actor* ownerP, int updateOrderP)
 	: Component(ownerP, updateOrderP), forwardSpeed(0.0f), angularSpeed(0.0f), strafeSpeed(0.0f)
@@ -41,4 +42,22 @@ void MoveComponent::update(float dt)
 		newPosition += owner.getRight() * strafeSpeed * dt;
 		owner.setPosition(newPosition);
 	}
+}
+
+void MoveComponent::loadProperties(const rapidjson::Value& inObj)
+{
+	Component::loadProperties(inObj);
+
+	JsonHelper::getFloat(inObj, "angularSpeed", angularSpeed);
+	JsonHelper::getFloat(inObj, "forwardSpeed", forwardSpeed);
+	JsonHelper::getFloat(inObj, "strafeSpeed", strafeSpeed);
+}
+
+void MoveComponent::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
+{
+	Component::saveProperties(alloc, inObj);
+
+	JsonHelper::addFloat(alloc, inObj, "angularSpeed", angularSpeed);
+	JsonHelper::addFloat(alloc, inObj, "forwardSpeed", forwardSpeed);
+	JsonHelper::addFloat(alloc, inObj, "strafeSpeed", strafeSpeed);
 }

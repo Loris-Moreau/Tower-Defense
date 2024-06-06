@@ -85,7 +85,8 @@ private:
                                      const std::string& tcShaderFile = "", const std::string& teShaderFile = "",
                                      const std::string& gShaderFile = "");
 
-    static Mesh loadMeshFromFile(const string& filename);
+    static bool loadMeshFromFile(const string& filename, Mesh& outMesh);
+    static bool loadMeshBinary(const std::string& filename, Mesh& outMesh);
 
     static Font loadFontFromFile(const string& filename);
 
@@ -95,3 +96,23 @@ private:
 
 };
 
+#define _ITERATOR_DEBUG_LEVEL 0
+
+const int binaryVersion = 1;
+struct MeshBinHeader
+{
+    // Signature for file type
+    char mSignature[4] = { 'G', 'M', 'S', 'H' };
+    // Version
+    uint32_t version = binaryVersion;
+    // Vertex layout type
+    VertexArrayLayout mbLayout = VertexArrayLayout::PosNormTex;
+    // Info about how many of each we have
+    uint32_t mbNbTextures = 0;
+    uint32_t mbNbVertices = 0;
+    uint32_t mbNbIndices = 0;
+    // Box/radius of mesh, used for collision
+    AABB mbBox{ Vector3::zero, Vector3::zero };
+    float mbRadius = 0.0f;
+    float mbSpecularPower = 100.0f;
+};

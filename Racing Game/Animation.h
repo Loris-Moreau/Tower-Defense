@@ -25,6 +25,9 @@ public:
 	void getGlobalPoseAtTime(vector<Matrix4>& outPoses, const class Skeleton* inSkeleton, float inTime) const;
 	void unload();
 
+	const string& getName() const { return name; }
+	void setName(const string& nameP);
+
 private:
 	size_t nbBones;
 	size_t nbFrames;
@@ -33,5 +36,7 @@ private:
 	// Transform information for each frame on the track.
 	// Each index in the outer vector is a bone, inner vector is a frame.
 	vector<vector<BoneTransform>> tracks;
+	
+	string name;
 };
 

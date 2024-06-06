@@ -32,7 +32,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : state(GameState::Gameplay), isUpdatingActors(false), player(nullptr), crosshair(nullptr) {}
+	Game() : state(GameState::Gameplay), isUpdatingActors(false), player(nullptr), crosshair(nullptr), hud(nullptr) {}
 
 public:
 	bool initialize();
@@ -58,6 +58,9 @@ public:
 	void removePlane(class PlaneActor* plane);
 	vector<PlaneActor*>& getPlanes() { return planes; }
 	class FollowActor* getPlayer() { return player; }
+	void setPlayer(class FollowActor* playerP);
+	const vector<Actor*>& getActors() const { return actors; }
+
 
 private:
 	void processInput();

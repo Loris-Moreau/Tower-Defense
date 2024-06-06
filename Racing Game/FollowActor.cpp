@@ -4,6 +4,9 @@
 #include "SkeletalMeshComponent.h"
 #include "Assets.h"
 #include "InputSystem.h"
+#include "MirrorCameraComponent.h"
+#include "Game.h"
+#include "LevelLoader.h"
 
 FollowActor::FollowActor() :
 	Actor(),
@@ -21,6 +24,11 @@ FollowActor::FollowActor() :
 	moveComponent = new MoveComponent(this);
 	cameraComponent = new FollowCameraComponent(this);
 	cameraComponent->snapToIdeal();
+
+	MirrorCameraComponent* mirror = new MirrorCameraComponent(this);
+	mirror->snapToIdeal();
+
+	Game::instance().setPlayer(this);
 }
 
 void FollowActor::actorInput(const InputState& inputState)
@@ -75,4 +83,16 @@ void FollowActor::actorInput(const InputState& inputState)
 void FollowActor::setVisible(bool isVisibleP)
 {
 	meshComponent->setVisible(isVisibleP);
+}
+
+void FollowActor::loadProperties(const rapidjson::Value& inObj)
+{
+	Actor::loadProperties(inObj);
+	JsonHelper::getBool(inObj, "moving", isMoving);
+}
+
+void FollowActor::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
+{
+	Actor::saveProperties(alloc, inObj);
+	JsonHelper::addBool(alloc, inObj, "moving", isMoving);
 }

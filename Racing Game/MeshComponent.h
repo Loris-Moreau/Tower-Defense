@@ -13,7 +13,9 @@ public:
 	virtual void draw(class Shader& shader);
 	virtual void setMesh(class Mesh& meshP);
 	void setTextureIndex(size_t textureIndexP);
-
+	ComponentType getType() const override { return ComponentType::Mesh; }
+	void loadProperties(const rapidjson::Value& inObj) override;
+	void saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const override;
 
 protected:
 	Mesh* mesh;

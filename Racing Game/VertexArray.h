@@ -28,6 +28,9 @@ public:
 
 	unsigned int getNbVertices() const { return nbVertices; }
 	unsigned int getNbIndices() const { return nbIndices; }
+	static unsigned int getVertexSize(VertexArrayLayout layout);
+
+
 private:
 	unsigned int nbVertices;
 	unsigned int nbIndices;
