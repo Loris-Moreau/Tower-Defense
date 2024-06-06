@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Actor.h"
+
 class BallActor : public Actor
 {
 public:
@@ -17,4 +19,3 @@ private:
 	class BallMoveComponent* ballMove;
 	float lifetimeSpan;
 };
-

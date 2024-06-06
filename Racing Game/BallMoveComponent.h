@@ -1,5 +1,7 @@
 #pragma once
+
 #include "MoveComponent.h"
+
 class BallMoveComponent : public MoveComponent
 {
 public:
@@ -11,6 +13,5 @@ public:
 	ComponentType getType() const override { return ComponentType::BallMove; }
 
 protected:
-	class Actor* player;
+	Actor* player;
 };
-

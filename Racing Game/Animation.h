@@ -1,4 +1,5 @@
 #pragma once
+
 #include "BoneTransform.h"
 #include <vector>
 #include <string>
@@ -39,4 +40,3 @@ private:
 	
 	string name;
 };
-

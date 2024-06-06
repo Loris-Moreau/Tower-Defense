@@ -1,9 +1,10 @@
 #pragma once
+
 #include <vector>
 #include "Vector2.h"
 #include <SDL_stdinc.h>
 #include "Matrix4.h"
-#include <rapidjson/document.h>
+#include <rapidjson\document.h>
 #include "Component.h"
 
 using std::vector;
@@ -24,7 +25,6 @@ enum class ActorType
 class Actor
 {
 public:
-
 	static const char* typeNames[static_cast<int>(ActorType::NB_ACTOR_TYPES)];
 
 	enum class ActorState
@@ -38,10 +38,10 @@ public:
 	Actor& operator=(const Actor&) = delete;
 
 	Game& getGame() const { return game; }
-	const ActorState getState() const { return state; }
-	const Vector3 getPosition() const { return position; }
-	const float getScale() const { return scale; }
-	const Quaternion getRotation() const { return rotation; }
+	ActorState getState() const { return state; }
+	Vector3 getPosition() const { return position; }
+	float getScale() const { return scale; }
+	Quaternion getRotation() const { return rotation; }
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
 
 	void setPosition(Vector3 positionP);
@@ -105,4 +105,3 @@ private:
 
 	vector<Component*> components;
 };
-

@@ -1,5 +1,5 @@
 #include "VertexArray.h"
-#include <GL/glew.h>
+#include <GL\glew.h>
 
 VertexArray::VertexArray(const void* verticesP, unsigned int nbVerticesP, VertexArrayLayout layout, const unsigned int* indicesP, unsigned int nbIndicesP):
 	nbVertices(nbVerticesP), nbIndices(nbIndicesP), vertexBuffer(0), indexBuffer(0), vertexArray(0)

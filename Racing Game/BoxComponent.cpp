@@ -34,10 +34,12 @@ void BoxComponent::onUpdateWorldTransform()
 
 	worldBox.min *= owner.getScale();
 	worldBox.max *= owner.getScale();
+	
 	if (shouldRotate)
 	{
 		worldBox.rotate(owner.getRotation());
 	}
+	
 	worldBox.min += owner.getPosition();
 	worldBox.max += owner.getPosition();
 }

@@ -14,8 +14,8 @@
 #include "SkeletalMeshComponent.h"
 #include "FollowCameraComponent.h"
 #include "BoxComponent.h"
-#include <rapidjson/stringbuffer.h>
-#include <rapidjson/prettywriter.h>
+#include <rapidjson\stringbuffer.h>
+#include <rapidjson\prettywriter.h>
 
 using std::vector;
 

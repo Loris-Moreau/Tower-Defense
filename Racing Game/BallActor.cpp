@@ -4,7 +4,7 @@
 #include "BallMoveComponent.h"
 #include "LevelLoader.h"
 
-BallActor::BallActor() : Actor(), lifetimeSpan(2.0f), ballMove(nullptr)
+BallActor::BallActor() : Actor(), ballMove(nullptr), lifetimeSpan(2.0f)
 {
 	MeshComponent* mc = new MeshComponent(this);
 	mc->setMesh(Assets::getMesh("Mesh_Sphere"));

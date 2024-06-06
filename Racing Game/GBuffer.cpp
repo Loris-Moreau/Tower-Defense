@@ -1,5 +1,5 @@
 #include "GBuffer.h"
-#include <GL/glew.h>
+#include <GL\glew.h>
 #include "Texture.h"
 
 GBuffer::GBuffer() : bufferID(0)
@@ -67,7 +67,7 @@ void GBuffer::destroy()
 
 Texture* GBuffer::getTexture(GBufferType type)
 {
-	if (textures.size() > 0)
+	if (!textures.empty())
 	{
 		return textures[static_cast<int>(type)];
 	}

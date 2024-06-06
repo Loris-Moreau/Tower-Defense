@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <rapidjson/document.h>
+#include <rapidjson\document.h>
 #include "Quaternion.h"
 #include <functional>
 #include <unordered_map>

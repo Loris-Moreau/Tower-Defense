@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Component.h"
 #include "Matrix4.h"
 
@@ -11,4 +12,3 @@ public:
 protected:
 	void setViewMatrix(const Matrix4& view);
 };
-

@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Log.h"
 #include "RendererOGL.h"
-#include <rapidjson/document.h>
+#include <rapidjson\document.h>
 
 std::map<string, Texture> Assets::textures;
 std::map<string, Shader> Assets::shaders;
@@ -38,7 +38,11 @@ Texture& Assets::getTexture(const string& name)
     return textures[name];
 }
 
-Shader Assets::loadShader(const std::string& vShaderFile, const std::string& fShaderFile, const std::string& tcShaderFile, const std::string& teShaderFile, const std::string& gShaderFile, const std::string& name)
+Shader Assets::loadShader
+(
+    const std::string &vShaderFile, const std::string &fShaderFile, const std::string &tcShaderFile,
+    const std::string &teShaderFile, const std::string &gShaderFile, const std::string &name
+)
 {
     shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, tcShaderFile, teShaderFile, gShaderFile);
     return shaders[name];
@@ -107,10 +111,12 @@ void Assets::loadText(const string& filename)
         Log::error(LogCategory::Application, loadError.str());
         return;
     }
+    
     // Read the entire file to a string stream
     std::stringstream fileStream;
     fileStream << file.rdbuf();
     std::string contents = fileStream.str();
+    
     // Open this file in rapidJSON
     rapidjson::StringStream jsonStr(contents.c_str());
     rapidjson::Document doc;
@@ -122,6 +128,7 @@ void Assets::loadText(const string& filename)
         Log::error(LogCategory::Application, loadError.str());
         return;
     }
+    
     // Parse the text map
     const rapidjson::Value& actions = doc["TextMap"];
     for (rapidjson::Value::ConstMemberIterator itr = actions.MemberBegin(); itr != actions.MemberEnd(); ++itr)
@@ -131,8 +138,7 @@ void Assets::loadText(const string& filename)
             texts.emplace(itr->name.GetString(), itr->value.GetString());
         }
     }
-    Log::info("Loaded localization file: " + filename);
-
+    Log::info("Loaded localization file : " + filename);
 }
 
 const string& Assets::getText(const string& key)
@@ -191,24 +197,30 @@ void Assets::clear()
     for (auto iter : textures)
         iter.second.unload();
     textures.clear();
+    
     // Delete all shaders
     for (auto iter : shaders)
         iter.second.unload();
     shaders.clear();
+    
     // Delete all meshes
     for (auto iter : meshes)
         iter.second.unload();
     meshes.clear();
+    
     // Delete all fonts
     for (auto iter : fonts)
         iter.second.unload();
     fonts.clear();
+    
     // Delete texts
     texts.clear();
+    
     // Delete all skeletons
     for (auto iter : skeletons)
         iter.second.unload();
     skeletons.clear();
+    
     // Delete all animations
     for (auto iter : animations)
         iter.second.unload();
@@ -238,38 +250,48 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     std::string tcCode;
     std::string teCode;
     std::string geometryCode;
-    try {
+    try
+    {
         // Open files
         std::ifstream vertexShaderFile(vShaderFile);
         std::ifstream fragmentShaderFile(fShaderFile);
         std::stringstream vShaderStream, fShaderStream;
+        
         // Read file's buffer contents into streams
         vShaderStream << vertexShaderFile.rdbuf();
         fShaderStream << fragmentShaderFile.rdbuf();
+        
         // close file handlers
         vertexShaderFile.close();
         fragmentShaderFile.close();
+        
         // Convert stream into string
         vertexCode = vShaderStream.str();
         fragmentCode = fShaderStream.str();
+        
         // If tess control shader path is present, also load a tess control shader
-        if (tcShaderFile != "") {
+        if (!tcShaderFile.empty())
+        {
             std::ifstream tessControlShaderFile(tcShaderFile);
             std::stringstream tcShaderStream;
             tcShaderStream << tessControlShaderFile.rdbuf();
             tessControlShaderFile.close();
             tcCode = tcShaderStream.str();
         }
+        
         // If tess evaluation shader path is present, also load a tess evaluation shader
-        if (teShaderFile != "") {
+        if (!teShaderFile.empty())
+        {
             std::ifstream tessEvalShaderFile(teShaderFile);
             std::stringstream teShaderStream;
             teShaderStream << tessEvalShaderFile.rdbuf();
             tessEvalShaderFile.close();
             teCode = teShaderStream.str();
         }
+        
         // If geometry shader path is present, also load a geometry shader
-        if (gShaderFile != "") {
+        if (!gShaderFile.empty())
+        {
             std::ifstream geometryShaderFile(gShaderFile);
             std::stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
@@ -277,16 +299,19 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
             geometryCode = gShaderStream.str();
         }
     }
-    catch (std::exception e) {
+    catch (std::exception e)
+    {
         std::ostringstream loadError;
         std::string geomShaderFile = "";
-        if (gShaderFile != "")
+        if (!gShaderFile.empty())
+        {
             geomShaderFile = gShaderFile;
-
+        }
+        
         loadError << "ERROR::SHADER: Failed to read shader files " << vShaderFile << " " << fShaderFile << " "
             << geomShaderFile << "\n"
             << "\n -- --------------------------------------------------- -- "
-            << std::endl;
+            << '\n';
         Log::error(LogCategory::Render, loadError.str());
     }
     const GLchar* vShaderCode = vertexCode.c_str();
@@ -294,12 +319,16 @@ Shader Assets::loadShaderFromFile(const std::string& vShaderFile, const std::str
     const GLchar* tcShaderCode = tcCode.c_str();
     const GLchar* teShaderCode = teCode.c_str();
     const GLchar* gShaderCode = geometryCode.c_str();
+    
     // 2. Now create shader object from source code
     Shader shader;
-    shader.compile(vShaderCode, fShaderCode,
-        tcShaderFile != "" ? tcShaderCode : nullptr,
-        teShaderFile != "" ? teShaderCode : nullptr,
-        gShaderFile != "" ? gShaderCode : nullptr);
+    shader.compile
+    (
+        vShaderCode, fShaderCode,
+        !tcShaderFile.empty() ? tcShaderCode : nullptr,
+        !teShaderFile.empty() ? teShaderCode : nullptr,
+        !gShaderFile.empty() ? gShaderCode : nullptr
+    );
     return shader;
 }
 
@@ -432,7 +461,7 @@ bool Assets::loadMeshFromFile(const string& filename, Mesh& mesh)
             }
         }
 	}
-
+    
 	// We were computing length squared earlier
 	mesh.setRadius(Maths::sqrt(radius));
     mesh.setBox(box);
@@ -469,15 +498,18 @@ bool Assets::loadMeshFromFile(const string& filename, Mesh& mesh)
     unsigned int nbVertices = static_cast<unsigned>(vertices.size()) / vertSize;
     unsigned int nbIndices = static_cast<unsigned int>(indices.size());
 	mesh.setVertexArray(new VertexArray(vertices.data(), nbVertices, layout, indices.data(), nbIndices));
+    
     // Save the binary mesh
-    mesh.saveBinary(filename + ".bin", vertices.data(), nbVertices, layout, indices.data(), nbIndices, textureNames, box, radius, specularPower, shaderName);
-
-
+    mesh.saveBinary
+    (
+        filename + ".bin", vertices.data(), nbVertices, layout, indices.data(),
+        nbIndices, textureNames, box, radius, specularPower, shaderName
+    );
+    
     Log::info("Loaded mesh and saved binary " + filename);
 
 	return true;
 }
-
 
 bool Assets::loadMeshBinary(const std::string& filename, Mesh& mesh)
 {
@@ -541,16 +573,14 @@ bool Assets::loadMeshBinary(const std::string& filename, Mesh& mesh)
         mesh.setBox(header.mbBox);
         mesh.setRadius(header.mbRadius);
         mesh.setSpecularPower(header.mbSpecularPower);
-
-
+        
         uint16_t shaderNameSize = 0;
         inFile.read(reinterpret_cast<char*>(&shaderNameSize), sizeof(shaderNameSize));
         char* shaderName = new char[shaderNameSize];
         inFile.read(shaderName, shaderNameSize);
 
         mesh.setShaderName(shaderName);
-
-
+        
         Log::info("Loaded mesh from binary: " + filename);
 
         inFile.close();
@@ -559,18 +589,15 @@ bool Assets::loadMeshBinary(const std::string& filename, Mesh& mesh)
     return false;
 }
 
-
 Font Assets::loadFontFromFile(const string& filename)
 {
-    vector<int> fontSizes = {
-        8, 9,
-        10, 11, 12, 14, 16, 18,
-        20, 22, 24, 26, 28,
-        30, 32, 34, 36, 38,
-        40, 42, 44, 46, 48,
-        52, 56,
-        60, 64, 68,
-        72
+    vector<int> fontSizes =
+    {
+        8, 9, 10, 11, 12, 14,
+        16, 18, 20, 22, 24, 26,
+        28, 30, 32, 34, 36, 38,
+        40, 42, 44, 46, 48, 52,
+        56, 60, 64, 68, 72
     };
 
     Font font;
@@ -670,7 +697,7 @@ Skeleton Assets::loadSkeletonFromFile(const string& filename)
             s << "Skeleton " << filename << ": Bone " << i << "is invalid.";
             Log::error(LogCategory::Application, s.str());
         }
-
+        
         const rapidjson::Value& name = bones[i]["name"];
         temp.name = name.GetString();
 

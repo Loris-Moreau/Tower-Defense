@@ -41,7 +41,7 @@ void Animation::getGlobalPoseAtTime(vector<Matrix4>& outPoses, const Skeleton* i
 	float pct = inTime / frameDuration - frame;
 
 	// Setup the pose for the root
-	if (tracks[0].size() > 0)
+	if (!tracks[0].empty())
 	{
 		// Interpolate between the current frame's pose and the next frame
 		BoneTransform interp = BoneTransform::interpolate(tracks[0][frame],	tracks[0][nextFrame], pct);
@@ -57,7 +57,7 @@ void Animation::getGlobalPoseAtTime(vector<Matrix4>& outPoses, const Skeleton* i
 	for (size_t bone = 1; bone < nbBones; bone++)
 	{
 		Matrix4 localMat; // (Defaults to identity)
-		if (tracks[bone].size() > 0)
+		if (!tracks[bone].empty())
 		{
 			BoneTransform interp = BoneTransform::interpolate(tracks[bone][frame], tracks[bone][nextFrame], pct);
 			localMat = interp.toMatrix();

@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Matrix4.h"
+
 class BoneTransform
 {
 public:
@@ -9,4 +11,3 @@ public:
 	Quaternion rotation;
 	Vector3 translation;
 };
-

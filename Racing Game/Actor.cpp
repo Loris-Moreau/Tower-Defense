@@ -5,7 +5,8 @@
 #include "Maths.h"
 #include "LevelLoader.h"
 
-const char* Actor::typeNames[static_cast<int>(ActorType::NB_ACTOR_TYPES)] = {
+const char* Actor::typeNames[static_cast<int>(ActorType::NB_ACTOR_TYPES)] =
+{
 	"Actor",
 	"BallActor",
 	"FollowActor",
@@ -14,12 +15,12 @@ const char* Actor::typeNames[static_cast<int>(ActorType::NB_ACTOR_TYPES)] = {
 };
 
 Actor::Actor() :
+	game(Game::instance()),
 	state(Actor::ActorState::Active),
 	position(Vector3::zero),
 	scale(1.0f),
 	rotation(Quaternion::identity),
-	mustRecomputeWorldTransform(true),
-	game(Game::instance())
+	mustRecomputeWorldTransform(true)
 {
 	game.addActor(this);
 }
@@ -103,6 +104,7 @@ void Actor::rotateToNewForward(const Vector3& newForward)
 	// Figure out difference between original (unit x) and new
 	float dot = Vector3::dot(Vector3::unitX, newForward);
 	float angle = Maths::acos(dot);
+	
 	// Facing down X
 	if (dot > 0.9999f)
 	{
@@ -191,18 +193,18 @@ void Actor::removeComponent(Component* component)
 void Actor::loadProperties(const rapidjson::Value& inObj)
 {
 	// Use strings for different states
-	std::string state;
-	if (JsonHelper::getString(inObj, "state", state))
+	std::string _state;
+	if (JsonHelper::getString(inObj, "state", _state))
 	{
-		if (state == "active")
+		if (_state == "active")
 		{
 			setState(ActorState::Active);
 		}
-		else if (state == "paused")
+		else if (_state == "paused")
 		{
 			setState(ActorState::Paused);
 		}
-		else if (state == "dead")
+		else if (_state == "dead")
 		{
 			setState(ActorState::Dead);
 		}

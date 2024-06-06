@@ -11,7 +11,7 @@
 #include "GBuffer.h"
 #include "PointLightComponent.h"
 
-#include <GL/glew.h>
+#include <GL\glew.h>
 #include <SDL_image.h>
 
 RendererOGL::RendererOGL():

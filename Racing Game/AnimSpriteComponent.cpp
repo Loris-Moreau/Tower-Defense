@@ -15,7 +15,7 @@ AnimSpriteComponent::~AnimSpriteComponent()
 void AnimSpriteComponent::setAnimTextures(const vector<Texture*>& texturesP)
 {
 	animTextures = texturesP;
-	if (animTextures.size() > 0)
+	if (!animTextures.empty())
 	{
 		currentFrame = 0.f;
 		setTexture(*animTextures[0]);
@@ -31,7 +31,7 @@ void AnimSpriteComponent::update(float dt)
 {
 	SpriteComponent::update(dt);
 
-	if (animTextures.size() > 0)
+	if (!animTextures.empty())
 	{
 		currentFrame += animFPS * dt;
 		while (currentFrame >= animTextures.size())
