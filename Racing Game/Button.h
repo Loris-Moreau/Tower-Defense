@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 #include <functional>
 #include "Vector2.h"
@@ -25,9 +24,10 @@ public:
 private:
 	std::function<void()> onClickFunc;
 	string name;
-	Texture* nameTex;
-	Font& font;
+	class Texture* nameTex;
+	class Font& font;
 	Vector2 position;
 	Vector2 dimensions;
 	bool isHighlighted;
 };
+

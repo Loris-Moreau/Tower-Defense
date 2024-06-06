@@ -50,14 +50,12 @@ void AABB::rotate(const Quaternion& q)
 
 bool AABB::contains(const Vector3& point) const
 {
-	bool outside =
-		point.x < min.x ||
+	bool outside = point.x < min.x ||
 		point.y < min.y ||
 		point.z < min.z ||
 		point.x > max.x ||
 		point.y > max.y ||
 		point.z > max.z;
-	
 	return !outside;
 }
 
@@ -66,10 +64,8 @@ float AABB::minDistSq(const Vector3& point) const
 	// Compute differences for each axis
 	float dx = Maths::max(min.x - point.x, 0.0f);
 	dx = Maths::max(dx, point.x - max.x);
-	
 	float dy = Maths::max(min.y - point.y, 0.0f);
 	dy = Maths::max(dy, point.y - max.y);
-	
 	float dz = Maths::max(min.z - point.z, 0.0f);
 	dz = Maths::max(dy, point.z - max.z);
 

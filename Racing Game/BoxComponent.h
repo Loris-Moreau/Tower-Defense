@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Component.h"
 #include "AABB.h"
 
@@ -14,12 +13,11 @@ public:
 	void setShouldRotate(bool shouldRotateP);
 
 	void onUpdateWorldTransform() override;
-	ComponentType getType() const override { return ComponentType::Box; }
-	void loadProperties(const rapidjson::Value& inObj) override;
-	void saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const override;
+
 
 private:
 	AABB objectBox;
 	AABB worldBox;
 	bool shouldRotate;
 };
+

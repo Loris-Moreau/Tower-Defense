@@ -1,5 +1,4 @@
 #pragma once
-
 #include "SpriteComponent.h"
 #include "Vector2.h"
 #include <vector>
@@ -30,8 +29,8 @@ private:
 		Texture& texture;
 		Vector2 offset;
 	};
-	
 	std::vector<BGTexture> textures;
 	Vector2 screenSize;
 	float scrollSpeed;
 };
+

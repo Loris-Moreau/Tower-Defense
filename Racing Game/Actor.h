@@ -1,31 +1,16 @@
 #pragma once
-
 #include <vector>
 #include "Vector2.h"
 #include <SDL_stdinc.h>
 #include "Matrix4.h"
-#include <rapidjson\document.h>
-#include "Component.h"
-
 using std::vector;
 
 class Game;
-
-enum class ActorType
-{
-	Actor = 0,
-	BallActor,
-	FollowActor,
-	PlaneActor,
-	TargetActor,
-
-	NB_ACTOR_TYPES
-};
+class Component;
 
 class Actor
 {
 public:
-	static const char* typeNames[static_cast<int>(ActorType::NB_ACTOR_TYPES)];
 
 	enum class ActorState
 	{
@@ -38,10 +23,10 @@ public:
 	Actor& operator=(const Actor&) = delete;
 
 	Game& getGame() const { return game; }
-	ActorState getState() const { return state; }
-	Vector3 getPosition() const { return position; }
-	float getScale() const { return scale; }
-	Quaternion getRotation() const { return rotation; }
+	const ActorState getState() const { return state; }
+	const Vector3 getPosition() const { return position; }
+	const float getScale() const { return scale; }
+	const Quaternion getRotation() const { return rotation; }
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
 
 	void setPosition(Vector3 positionP);
@@ -64,36 +49,6 @@ public:
 	void addComponent(Component* component);
 	void removeComponent(Component* component);
 
-	virtual ActorType getType() const { return ActorType::Actor; }
-	virtual void loadProperties(const rapidjson::Value& inObj);
-	virtual void saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const;
-	const vector<Component*>& getComponents() const { return components; }
-
-	Component* getComponentOfType(ComponentType type)
-	{
-		Component* comp = nullptr;
-		for (Component* c : components)
-		{
-			if (c->getType() == type)
-			{
-				comp = c;
-				break;
-			}
-		}
-		return comp;
-	}
-
-	// Create an actor with specified properties
-	template <typename T>
-	static Actor* Create(const rapidjson::Value& inObj)
-	{
-		// Dynamically allocate actor of type T
-		T* t = new T();
-		// Call LoadProperties on new actor
-		t->loadProperties(inObj);
-		return t;
-	}
-
 private:
 	Game& game;
 	ActorState state;
@@ -105,3 +60,4 @@ private:
 
 	vector<Component*> components;
 };
+

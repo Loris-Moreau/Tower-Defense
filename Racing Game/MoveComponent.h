@@ -17,9 +17,6 @@ public:
 	void setStrafeSpeed(float strafeSpeedP);
 
 	void update(float dt) override;
-	ComponentType getType() const override { return ComponentType::Move; }
-	void loadProperties(const rapidjson::Value& inObj) override;
-	void saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const override;
 
 
 private:

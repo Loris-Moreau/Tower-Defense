@@ -3,24 +3,14 @@
 #include "Game.h"
 #include "Component.h"
 #include "Maths.h"
-#include "LevelLoader.h"
-
-const char* Actor::typeNames[static_cast<int>(ActorType::NB_ACTOR_TYPES)] =
-{
-	"Actor",
-	"BallActor",
-	"FollowActor",
-	"PlaneActor",
-	"TargetActor",
-};
 
 Actor::Actor() :
-	game(Game::instance()),
 	state(Actor::ActorState::Active),
 	position(Vector3::zero),
 	scale(1.0f),
 	rotation(Quaternion::identity),
-	mustRecomputeWorldTransform(true)
+	mustRecomputeWorldTransform(true),
+	game(Game::instance())
 {
 	game.addActor(this);
 }
@@ -104,7 +94,6 @@ void Actor::rotateToNewForward(const Vector3& newForward)
 	// Figure out difference between original (unit x) and new
 	float dot = Vector3::dot(Vector3::unitX, newForward);
 	float angle = Maths::acos(dot);
-	
 	// Facing down X
 	if (dot > 0.9999f)
 	{
@@ -188,49 +177,4 @@ void Actor::removeComponent(Component* component)
 	{
 		components.erase(iter);
 	}
-}
-
-void Actor::loadProperties(const rapidjson::Value& inObj)
-{
-	// Use strings for different states
-	std::string _state;
-	if (JsonHelper::getString(inObj, "state", _state))
-	{
-		if (_state == "active")
-		{
-			setState(ActorState::Active);
-		}
-		else if (_state == "paused")
-		{
-			setState(ActorState::Paused);
-		}
-		else if (_state == "dead")
-		{
-			setState(ActorState::Dead);
-		}
-	}
-
-	// Load position, rotation, and scale, and compute transform
-	JsonHelper::getVector3(inObj, "position", position);
-	JsonHelper::getQuaternion(inObj, "rotation", rotation);
-	JsonHelper::getFloat(inObj, "scale", scale);
-	computeWorldTransform();
-}
-
-void Actor::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
-{
-	std::string sstate = "active";
-	if (state == ActorState::Paused)
-	{
-		sstate = "paused";
-	}
-	else if (state == ActorState::Dead)
-	{
-		sstate = "dead";
-	}
-
-	JsonHelper::addString(alloc, inObj, "state", sstate);
-	JsonHelper::addVector3(alloc, inObj, "position", position);
-	JsonHelper::addQuaternion(alloc, inObj, "rotation", rotation);
-	JsonHelper::addFloat(alloc, inObj, "scale", scale);
 }

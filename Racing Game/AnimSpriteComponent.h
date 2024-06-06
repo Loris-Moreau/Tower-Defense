@@ -1,5 +1,4 @@
 #pragma once
-
 #include <vector>
 #include "SpriteComponent.h"
 using std::vector;
@@ -19,9 +18,10 @@ public:
 
 	void update(float dt) override;
 
+
 private:
 	vector<Texture*> animTextures;
-	
 	float currentFrame;
 	float animFPS;
 };
+

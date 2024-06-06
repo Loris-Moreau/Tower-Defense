@@ -30,19 +30,17 @@ void BallMoveComponent::update(float dt)
 
 	// Test segment vs world
 	PhysicsSystem::CollisionInfo info;
-	
 	// (Don't collide vs player)
 	if (owner.getGame().getPhysicsSystem().segmentCast(l, info) && info.actor != player)
 	{
 		// If we collided, reflect the ball about the normal
 		dir = Vector3::reflect(dir, info.normal);
 		owner.rotateToNewForward(dir);
-		
 		// Did we hit a target?
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
 		if (target)
 		{
-			dynamic_cast<BallActor*>(&owner)->hitTarget();
+			static_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}
 

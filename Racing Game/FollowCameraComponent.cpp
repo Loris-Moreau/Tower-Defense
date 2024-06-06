@@ -1,6 +1,5 @@
 #include "FollowCameraComponent.h"
 #include "Actor.h"
-#include "LevelLoader.h"
 
 FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
 	CameraComponent(ownerP),
@@ -54,30 +53,6 @@ void FollowCameraComponent::setTargetDistance(float distance)
 void FollowCameraComponent::setSpringConstant(float springConstantP)
 {
 	springConstant = springConstantP;
-}
-
-void FollowCameraComponent::loadProperties(const rapidjson::Value& inObj)
-{
-	CameraComponent::loadProperties(inObj);
-
-	JsonHelper::getVector3(inObj, "actualPos", actualPosition);
-	JsonHelper::getVector3(inObj, "velocity", velocity);
-	JsonHelper::getFloat(inObj, "horzDist", horizontalDistance);
-	JsonHelper::getFloat(inObj, "vertDist", verticalDistance);
-	JsonHelper::getFloat(inObj, "targetDist", targetDistance);
-	JsonHelper::getFloat(inObj, "springConstant", springConstant);
-}
-
-void FollowCameraComponent::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
-{
-	CameraComponent::saveProperties(alloc, inObj);
-
-	JsonHelper::addVector3(alloc, inObj, "actualPos", actualPosition);
-	JsonHelper::addVector3(alloc, inObj, "velocity", velocity);
-	JsonHelper::addFloat(alloc, inObj, "horzDist", horizontalDistance);
-	JsonHelper::addFloat(alloc, inObj, "vertDist", verticalDistance);
-	JsonHelper::addFloat(alloc, inObj, "targetDist", targetDistance);
-	JsonHelper::addFloat(alloc, inObj, "springConstant", springConstant);
 }
 
 Vector3 FollowCameraComponent::computeCameraPosition() const

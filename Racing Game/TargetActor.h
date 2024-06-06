@@ -5,6 +5,5 @@ class TargetActor : public Actor
 {
 public:
 	TargetActor();
-	ActorType getType() const override { return ActorType::TargetActor; }
 };
 

@@ -171,12 +171,6 @@ void Shader::setMatrix4(const GLchar* name, const Matrix4& matrix)
     glUniformMatrix4fv(glGetUniformLocation(id, name), 1, GL_TRUE, matrix.getAsFloatPtr());
 }
 
-void Shader::setMatrix4Multiple(const GLchar* name, const Matrix4* matrices, unsigned int count)
-{
-    GLuint loc = glGetUniformLocation(id, name);
-    glUniformMatrix4fv(loc, count, GL_TRUE, matrices->getAsFloatPtr());
-}
-
 void Shader::printShaderInfoLog(GLuint shaderIndex)
 {
     int max_length = 2048;

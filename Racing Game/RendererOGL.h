@@ -3,9 +3,9 @@
 #include "VertexArray.h"
 #include "Vector2.h"
 #include "Shader.h"
+
 #include <vector>
 #include "DirectionalLight.h"
-using std::vector;
 
 class RendererOGL : public IRenderer
 {
@@ -30,7 +30,6 @@ public:
 	void removeMesh(class MeshComponent* mesh);
 
 	DirectionalLight& getDirectionalLight() { return dirLight; }
-	Vector3 getAmbientLight() const { return ambientLight; }
 
 	void setViewMatrix(const Matrix4& viewP);
 	void setLightUniforms(Shader& shader);
@@ -45,19 +44,8 @@ public:
 	Vector3 unproject(const Vector3& screenPoint) const;
 	void getScreenDirection(Vector3& outStart, Vector3& outDir) const;
 
-	bool createMirrorTarget();
-	void draw3dScene(unsigned int frameBuffer, const Matrix4& view, const Matrix4& proj, float viewportScale, bool lit);
-	Texture* getMirrorTexture() { return mirrorTexture; }
-	void setMirrorView(const Matrix4& view);
-	void initializeGBuffer();
-	void drawFromGBuffer();
-
-	void addPointLight(class PointLightComponent* light);
-	void removePointLight(class PointLightComponent* light);
-	void initializeGPointLight();
-
 private:
-	void drawMeshes(const Matrix4& currentView);
+	void drawMeshes();
 	void drawSprites();
 	void drawUI();
 
@@ -68,18 +56,10 @@ private:
 	Matrix4 view;
 	Matrix4 projection;
 
-	vector<class MeshComponent*> meshes;
-	vector<class SpriteComponent*> sprites;
-	vector<class SkeletalMeshComponent*> skMeshes;
+	std::vector<class MeshComponent*> meshes;
+	std::vector<class SpriteComponent*> sprites;
 
 	Vector3 ambientLight;
 	DirectionalLight dirLight;
-
-	unsigned int mirrorBuffer; // Framebuffer object
-	class Texture* mirrorTexture;
-	Matrix4 mirrorView;
-
-	class GBuffer* gBuffer;
-	vector<class PointLightComponent*> pointLights;
 };
 

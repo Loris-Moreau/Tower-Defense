@@ -3,14 +3,16 @@
 #include "Rectangle.h"
 
 BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector<Texture*>& texturesP, int drawOrderP):
-	SpriteComponent(ownerP, texturesP[0], drawOrderP),
-	screenSize(Vector2(WINDOW_WIDTH, WINDOW_HEIGHT)),
-	scrollSpeed(0.0f)
+	SpriteComponent(ownerP, *texturesP[0], drawOrderP),
+	scrollSpeed(0.0f),
+	screenSize(Vector2(WINDOW_WIDTH, WINDOW_HEIGHT))
 {
 	setTextures(texturesP);
 }
 
-BackgroundSpriteComponent::~BackgroundSpriteComponent() = default;
+BackgroundSpriteComponent::~BackgroundSpriteComponent()
+{
+}
 
 void BackgroundSpriteComponent::update(float dt)
 {

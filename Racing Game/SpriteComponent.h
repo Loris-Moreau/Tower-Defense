@@ -5,13 +5,13 @@
 class SpriteComponent :	public Component
 {
 public:
-	SpriteComponent(Actor* ownerP, Texture* textureP = nullptr, int drawOrderP = 100); // Lower draw order: further back
+	SpriteComponent(Actor* ownerP, Texture& textureP, int drawOrderP = 100); // Lower draw order: further back
 	virtual ~SpriteComponent();
 	SpriteComponent() = delete;
 	SpriteComponent(const SpriteComponent&) = delete;
 	SpriteComponent& operator=(const SpriteComponent&) = delete;
 
-	virtual void setTexture(Texture& textureP);
+	virtual void setTexture(const Texture& textureP);
 	virtual void draw(IRenderer& renderer);
 
 	int getDrawOrder() const { return drawOrder; }
@@ -20,13 +20,9 @@ public:
 	int getVisible() const { return isVisible; }
 
 	void setVisible(bool isVisibleP);
-	ComponentType getType() const override { return ComponentType::Sprite; }
-	void loadProperties(const rapidjson::Value& inObj) override;
-	void saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const override;
-
 
 protected:
-	Texture* texture;
+	Texture texture;
 	int drawOrder;
 	int texWidth;
 	int texHeight;

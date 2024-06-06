@@ -24,12 +24,12 @@ public:
 
 	virtual void update(float dt);
 	virtual void draw(class Shader& shader);
-	virtual void processInput(const struct InputState& inputState);
+	virtual void processInput(const class InputState& inputState);
 	void close();
 	void addButton(const string& name, std::function<void()> onClick);
 
 protected:
-	void drawTexture(class Shader& shader, class Texture* texture, const Vector2& offset = Vector2::zero, float scale = 1.0f, bool flipY = false);
+	void drawTexture(class Shader& shader, class Texture* texture, const Vector2& offset = Vector2::zero, float scale = 1.0f);
 
 	class Font& font;
 	class Texture* title;

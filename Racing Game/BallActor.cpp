@@ -2,9 +2,8 @@
 #include "MeshComponent.h"
 #include "Assets.h"
 #include "BallMoveComponent.h"
-#include "LevelLoader.h"
 
-BallActor::BallActor() : Actor(), ballMove(nullptr), lifetimeSpan(2.0f)
+BallActor::BallActor() : Actor(), lifetimeSpan(2.0f),ballMove(nullptr)
 {
 	MeshComponent* mc = new MeshComponent(this);
 	mc->setMesh(Assets::getMesh("Mesh_Sphere"));
@@ -30,16 +29,5 @@ void BallActor::setPlayer(Actor* player)
 
 void BallActor::hitTarget()
 {
-}
-
-void BallActor::loadProperties(const rapidjson::Value& inObj)
-{
-	Actor::loadProperties(inObj);
-	JsonHelper::getFloat(inObj, "lifespan", lifetimeSpan);
-}
-
-void BallActor::saveProperties(rapidjson::Document::AllocatorType& alloc, rapidjson::Value& inObj) const
-{
-	Actor::saveProperties(alloc, inObj);
-	JsonHelper::addFloat(alloc, inObj, "lifespan", lifetimeSpan);
+	
 }

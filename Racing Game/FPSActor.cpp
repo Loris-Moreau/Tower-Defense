@@ -19,7 +19,7 @@ FPSActor::FPSActor() :
 {
 	moveComponent = new MoveComponent(this);
 	cameraComponent = new FPSCameraComponent(this);
-
+	
 	FPSModel = new Actor();
 	FPSModel->setScale(0.75f);
 	meshComponent = new MeshComponent(FPSModel);
