@@ -45,7 +45,7 @@ void HUD::draw(Shader& shader)
 	drawTexture(shader, radarArrow, radarPosition);
 
 	//HealthBar
-	drawTexture(shader, healthBar, {390.0f, 275.0f}, 1.0f);
+	drawTexture(shader, healthBar, {0.0f, -350.0f}, 1.0f);
 }
 
 void HUD::addTargetComponent(TargetComponent* tc)
