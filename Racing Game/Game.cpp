@@ -66,10 +66,10 @@ void Game::load()
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
 	
-	/*CubeActor* a = new CubeActor();
+	CubeActor* a = new CubeActor();
 	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
 	a->setScale(100.0f);
-	a->setRotation(q);*/
+	a->setRotation(q);
 
 	/*SphereActor* b = new SphereActor();
 	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
@@ -78,22 +78,22 @@ void Game::load()
 	// Floor and walls
 
 	// Setup floor
-	const float beeg = 40;
-	const float start = -1250.0f * (beeg/10);
+	const float loop_amount = 40;
+	const float start = -1250.0f * (loop_amount/10);
 	const float size = 250.0f;
 	
-	for (int i = 0; i < beeg; i++)
+	for (int i = 0; i < loop_amount; i++)
 	{
-		for (int j = 0; j < beeg; j++)
+		for (int j = 0; j < loop_amount; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
 		}
 	}
 	//Ceiling 
-	for (int i = 0; i < beeg; i++)
+	for (int i = 0; i < loop_amount; i++)
 	{
-		for (int j = 0; j < beeg; j++)
+		for (int j = 0; j < loop_amount; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, size * 2.0f));
@@ -102,7 +102,7 @@ void Game::load()
 
 	// Left/right walls
 	q = Quaternion(Vector3::unitX, Maths::piOver2);
-	for (int i = 0; i < beeg; i++)
+	for (int i = 0; i < loop_amount; i++)
 	{
 		PlaneActor* p = new PlaneActor();
 		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
@@ -115,7 +115,7 @@ void Game::load()
 
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
 	// Forward/back walls
-	for (int i = 0; i < beeg; i++)
+	for (int i = 0; i < loop_amount; i++)
 	{
 		PlaneActor* p = new PlaneActor();
 		p->setPosition(Vector3(start - size, start + i * size, 0.0f));

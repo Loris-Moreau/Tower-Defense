@@ -8,8 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63799d93-8885-440a-91b6-1bd4adfb967c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Racing Game/Level1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Racing Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Racing Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/CubeActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/CubeActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/CubeActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/CubeActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/PlaneActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/PlaneActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/Racing Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Racing Game.vcxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/x64/Debug/Racing Game.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/x64/Debug/Racing Game.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.pdb" afterDir="false" />
@@ -128,6 +133,8 @@
       <workItem from="1717767144924" duration="339000" />
       <workItem from="1717768543465" duration="703000" />
       <workItem from="1717769520164" duration="1198000" />
+      <workItem from="1717773769939" duration="2147000" />
+      <workItem from="1717788388951" duration="1921000" />
     </task>
     <servers />
   </component>
