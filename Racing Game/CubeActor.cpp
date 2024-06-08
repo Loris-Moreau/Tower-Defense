@@ -2,7 +2,6 @@
 #include "MeshComponent.h"
 #include "Assets.h"
 #include "Game.h"
-#include "BoxComponent.h"
 
 CubeActor::CubeActor()
 {
@@ -10,10 +9,11 @@ CubeActor::CubeActor()
 	Mesh* mesh = &Assets::getMesh("Mesh_Cube");
 	mc->setMesh(*mesh);
 	//mc->setMesh(Assets::getMesh("Mesh_Cube"));
-	
+
+	// Add collision box
 	box = new BoxComponent(this);
 	box->setObjectBox(mesh->getBox());
-	box->setShouldRotate(true);
+	//box->setShouldRotate(true);
 	
 	getGame().addActor(this);
 }

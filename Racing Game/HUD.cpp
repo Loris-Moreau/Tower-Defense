@@ -27,6 +27,26 @@ void HUD::update(float dt)
 	UIScreen::update(dt);
 	updateCrosshair(dt);
 	updateRadar(dt);
+	updateHealth(dt);
+}
+
+void HUD::updateHealth(float dt)
+{
+	switch (Game::instance().getPlayer()->getHP())
+	{
+	case 3:
+		healthBar = &Assets::getTexture("healthBar");
+		break;
+	case 2:
+		healthBar = &Assets::getTexture("healthBar1");
+		break;
+	case 1:
+		healthBar = &Assets::getTexture("healthBar2");
+		break;
+	default:
+		healthBar = &Assets::getTexture("healthBar3");
+		break;	
+	}
 }
 
 void HUD::draw(Shader& shader)

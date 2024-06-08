@@ -8,13 +8,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63799d93-8885-440a-91b6-1bd4adfb967c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Racing Game/Level1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Door.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Door.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Level2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Res/Textures/Door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Res/Textures/Teleporter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Res/Textures/TheEnd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Teleporter.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/Teleporter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/TheEnd.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Racing Game/TheEnd.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Racing Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Racing Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/Actor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Actor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/Actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Actor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/BoxComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/BoxComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/CircleCollisionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/CircleCollisionComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/CubeActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/CubeActor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/CubeActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/CubeActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Racing Game/PlaneActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/PlaneActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Game.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/HUD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/HUD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/HUD.h" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/HUD.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Level1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/Racing Game.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/Racing Game.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Racing Game/TargetActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/TargetActor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/x64/Debug/Racing Game.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/x64/Debug/Racing Game.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Racing Game/x64/Debug/vc143.pdb" afterDir="false" />
@@ -28,6 +45,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Github/Tower-Defense/Racing Game/Game.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Github/Tower-Defense/Racing Game/Game.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Racing Game/HUD.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -38,32 +57,36 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2hVBT6M3fDpxTIXA7qY5y5MhQNn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C++ Project.Racing Game.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;DOOG&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "C++ Project.Racing Game.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "DOOG",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\morea\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\morea\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\morea\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Racing Game" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -135,6 +158,9 @@
       <workItem from="1717769520164" duration="1198000" />
       <workItem from="1717773769939" duration="2147000" />
       <workItem from="1717788388951" duration="1921000" />
+      <workItem from="1717835866616" duration="2363000" />
+      <workItem from="1717838247865" duration="70000" />
+      <workItem from="1717838560174" duration="677000" />
     </task>
     <servers />
   </component>
@@ -142,6 +168,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>

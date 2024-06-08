@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Actor.h"
+#include "CubeActor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
 #include "Vector2.h"
@@ -9,6 +10,9 @@
 #include "PhysicsSystem.h"
 #include "PlaneActor.h"
 #include "HUD.h"
+#include "Door.h"
+#include "Teleporter.h"
+#include "EndGame.h"
 
 using std::vector;
 
@@ -36,6 +40,7 @@ private:
 
 public:
 	bool initialize();
+	vector<vector<int>> loadLevel(const string& filename);
 	void load();
 	void loop();
 	void unload();
@@ -56,7 +61,14 @@ public:
 	// Game-specific
 	void addPlane(class PlaneActor* plane);
 	void removePlane(class PlaneActor* plane);
+	void addCubes(class CubeActor* cube);
+	void addDoors(class Door* door);
+	void removeCubes(class CubeActor* cube);
 	vector<PlaneActor*>& getPlanes() { return planes; }
+	vector<CubeActor*>& getCubes() { return cubes; }
+	vector<Door*>& getDoors() { return doors; }
+	Teleporter* getTPs() { return teleporter; }
+	EndGame* getEnd() { return endGame; }
 	class FPSActor* getPlayer() { return fps; }
 
 private:
@@ -79,6 +91,9 @@ private:
 	// Game specific
 	class FPSActor* fps;
 	class SpriteComponent* crosshair;
+	vector<CubeActor*> cubes;
+	vector<Door*> doors;
 	vector<PlaneActor*> planes;
+	Teleporter* teleporter;
+	EndGame* endGame;
 };
-

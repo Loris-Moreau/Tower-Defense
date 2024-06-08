@@ -1,4 +1,6 @@
 #include "Game.h"
+#include <algorithm>
+#include <sstream>
 #include "Actor.h"
 #include "Timer.h"
 #include "Assets.h"
@@ -7,11 +9,12 @@
 #include "SphereActor.h"
 #include "PlaneActor.h"
 #include "FPSActor.h"
-#include "FollowActor.h"
-#include "OrbitActor.h"
-#include "SplineActor.h"
 #include "TargetActor.h"
 #include "PauseScreen.h"
+#include "TheEnd.h"
+#include "Teleporter.h"
+
+using namespace std;
 
 bool Game::initialize()
 {
@@ -21,6 +24,33 @@ bool Game::initialize()
 	bool isFontInit = Font::initialize();
 
 	return isWindowInit && isRendererInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
+}
+
+vector<vector<int>> Game::loadLevel(const string& filename)
+{
+	ifstream file(filename);
+	vector<vector<int>> level1;
+	string line;
+	
+	if (!file.is_open())
+	{
+		std::cerr << "Failed to open level file" << '\n';
+		return level;
+	}
+	
+	while (getline(file, line)) 
+	{
+		vector<int> row;
+		istringstream iss(line);
+		int value;
+		while (iss >> value) 
+		{
+			row.push_back(value);
+		}
+		level.push_back(row);
+	}
+
+	return level;
 }
 
 void Game::load()
@@ -49,7 +79,11 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Textures\\Radar.png", "Radar");
 	Assets::loadTexture(renderer, "Res\\Textures\\Blip.png", "Blip");
 	Assets::loadTexture(renderer, "Res\\Textures\\RadarArrow.png", "RadarArrow");
-
+	
+	Assets::loadTexture(renderer, "Res\\Textures\\TheEnd.png", "TheEnd");
+	Assets::loadTexture(renderer, "Res\\Textures\\Teleporter.png", "Teleporter");
+	Assets::loadTexture(renderer, "Res\\Textures\\Door.png", "Door");
+	
 	Assets::loadMesh("Res\\Meshes\\Cube.gpmesh", "Mesh_Cube");
 	Assets::loadMesh("Res\\Meshes\\Plane.gpmesh", "Mesh_Plane");
 	Assets::loadMesh("Res\\Meshes\\Sphere.gpmesh", "Mesh_Sphere");
@@ -63,69 +97,96 @@ void Game::load()
 
 	fps = new FPSActor();
 
-	Quaternion q(Vector3::unitY, -Maths::piOver2);
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
+	std::vector<std::vector<int>> level = loadLevel("level1.txt");
+	std::vector<std::vector<int>> level2 = loadLevel("level2.txt");
+
+	const Vector3 cubeSize = Vector3(500.0f, 500.0f, 1000.0f);
+	const float startX = -1250.0f;
+	const float startY = -1250.0f;
+
+	for (size_t y = 0; y < level.size(); ++y)
+	{
+		for (size_t x = 0; x < level[y].size(); ++x)
+		{
+			if (level[y][x] == 1)
+			{
+				CubeActor* cube = new CubeActor();
+				cube->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 0.0f));
+				cube->setScale(cubeSize);
+			}
+			else if (level[y][x] == 2)
+			{
+				fps->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 100.0f));
+			}
+			else if (level[y][x] == 4)
+			{
+				Door* door = new Door();
+				door->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 0.0f));
+				door->setScale(Vector3(200.0f, 500.0f, 1000.0f));
+			}
+			else if (level[y][x] == 5)
+			{
+				teleporter = new Teleporter();
+				teleporter->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 0.0f));
+				teleporter->setScale(Vector3(50.0f, 350.0f, 450.0f));
+			}
+			
+		}
+
+		for (size_t y = 0; y < level2.size(); ++y)
+		{
+			for (size_t x = 0; x < level2[y].size(); ++x)
+			{
+				if (level2[y][x] == 1)
+				{
+					CubeActor* cube = new CubeActor();
+					cube->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 1100.0f));
+					cube->setScale(Vector3(500.0f, 500.0f, 1000.0f));
+				}
+				else if (level2[y][x] == 3)
+				{
+					theEnd = new TheEnd();
+					theEnd->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 850.0f));
+					theEnd->setScale(Vector3(50.0f, 350.0f, 500.0f));
+				}
+			}
+		}	
+	}
 	
-	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
-	a->setScale(100.0f);
-	a->setRotation(q);
-
-	/*SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	b->setScale(3.0f);*/
-
 	// Floor and walls
 
 	// Setup floor
-	const float loop_amount = 40;
-	const float start = -1250.0f * (loop_amount/10);
-	const float size = 250.0f;
-	
-	for (int i = 0; i < loop_amount; i++)
+	const float start = -1250.0f;
+	const float size = 550.0f;
+	for (int i = 0; i < 15; i++)
 	{
-		for (int j = 0; j < loop_amount; j++)
+		for (int j = 0; j < 15; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
 		}
 	}
-	//Ceiling 
-	for (int i = 0; i < loop_amount; i++)
+
+	// Setup floor 2
+	for (int i = 0; i < 15; i++)
 	{
-		for (int j = 0; j < loop_amount; j++)
+		for (int j = 0; j < 15; j++)
 		{
 			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(start + i * size, start + j * size, size * 2.0f));
+			p->setPosition(Vector3(start + i * size, start + j * size, 550.0f));
 		}
 	}
 
-	// Left/right walls
-	q = Quaternion(Vector3::unitX, Maths::piOver2);
-	for (int i = 0; i < loop_amount; i++)
+	// Setup floor 3
+	for (int i = 0; i < 15; i++)
 	{
-		PlaneActor* p = new PlaneActor();
-		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
-		p->setRotation(q);
-
-		p = new PlaneActor();
-		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
-		p->setRotation(q);
+		for (int j = 0; j < 15; j++)
+		{
+			PlaneActor* p = new PlaneActor();
+			p->setPosition(Vector3(start + i * size, start + j * size, 1100.0f));
+		}
 	}
-
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
-	// Forward/back walls
-	for (int i = 0; i < loop_amount; i++)
-	{
-		PlaneActor* p = new PlaneActor();
-		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
-		p->setRotation(q);
-
-		p = new PlaneActor();
-		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
-		p->setRotation(q);
-	}
-
+	
 	// Setup lights
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
 	DirectionalLight& dir = renderer.getDirectionalLight();
@@ -338,4 +399,20 @@ void Game::removePlane(PlaneActor* plane)
 {
 	auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
+}
+
+void Game::addCubes(CubeActor* cube)
+{
+	cubes.emplace_back(cube);
+}
+
+void Game::addDoors(Door* door)
+{
+	doors.emplace_back(door);
+}
+
+void Game::removeCubes(CubeActor* cube)
+{
+	auto iter = std::find(begin(cubes), end(cubes), cube);
+	cubes.erase(iter);
 }

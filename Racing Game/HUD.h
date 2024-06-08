@@ -8,6 +8,7 @@ public:
 	~HUD();
 
 	void update(float dt) override;
+	void updateHealth(float dt);
 	void draw(class Shader& shader) override;
 
 	void addTargetComponent(class TargetComponent* tc);
@@ -31,4 +32,3 @@ protected:
 	float radarRange;
 	float radarRadius;
 };
-
