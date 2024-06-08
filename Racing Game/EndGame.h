@@ -3,11 +3,11 @@
 #include "Actor.h"
 #include "BoxComponent.h"
 
-class TheEnd : public Actor
+class EndGame : public Actor
 {
 public:
-    TheEnd();
-    ~TheEnd();
+    EndGame();
+    ~EndGame();
     
     class BoxComponent* getBox() {return box;}
 

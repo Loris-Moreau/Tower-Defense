@@ -32,7 +32,7 @@ void HUD::update(float dt)
 
 void HUD::updateHealth(float dt)
 {
-	switch (Game::instance().getPlayer()->getHP())
+	/*switch (Game::instance().getPlayer()->getHealth())
 	{
 	case 3:
 		healthBar = &Assets::getTexture("healthBar");
@@ -46,7 +46,7 @@ void HUD::updateHealth(float dt)
 	default:
 		healthBar = &Assets::getTexture("healthBar3");
 		break;	
-	}
+	}*/
 }
 
 void HUD::draw(Shader& shader)
@@ -63,9 +63,12 @@ void HUD::draw(Shader& shader)
 		drawTexture(shader, blipTex, radarPosition + blip, 1.0f);
 	}
 	drawTexture(shader, radarArrow, radarPosition);
+}
 
-	//HealthBar
-	drawTexture(shader, healthBar, {0.0f, -350.0f}, 1.0f);
+void HUD::drawHitPoints(Shader& shader, Texture* hitPoints)
+{
+	const Vector2 hitPointPosition {-475.f,-350.f};
+	drawTexture(shader, hitPoints, hitPointPosition);
 }
 
 void HUD::addTargetComponent(TargetComponent* tc)

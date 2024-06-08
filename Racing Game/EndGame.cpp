@@ -1,10 +1,10 @@
-#include "TheEnd.h"
+#include "EndGame.h"
 #include "MeshComponent.h"
 #include "Assets.h"
 #include "BoxComponent.h"
 #include "Game.h"
 
-TheEnd::TheEnd()
+EndGame::EndGame()
 {
     MeshComponent* mc = new MeshComponent(this);
     Mesh* mesh = &Assets::getMesh("Mesh_Cube");
@@ -13,4 +13,4 @@ TheEnd::TheEnd()
     box->setObjectBox(mesh->getBox());
 }
 
-TheEnd::~TheEnd() = default;
+EndGame::~EndGame() = default;

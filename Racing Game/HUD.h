@@ -8,16 +8,16 @@ public:
 	~HUD();
 
 	void update(float dt) override;
-	void updateHealth(float dt);
 	void draw(class Shader& shader) override;
+	void drawHitPoints(Shader& shader, Texture* hitPoints);
 
 	void addTargetComponent(class TargetComponent* tc);
 	void removeTargetComponent(class TargetComponent* tc);
 
-
 protected:
 	void updateCrosshair(float deltaTime);
 	void updateRadar(float deltaTime);
+	void updateHealth(float dt);
 
 	class Texture* crosshair;
 	class Texture* crosshairEnemy;

@@ -11,8 +11,6 @@
 #include "FPSActor.h"
 #include "TargetActor.h"
 #include "PauseScreen.h"
-#include "TheEnd.h"
-#include "Teleporter.h"
 
 using namespace std;
 
@@ -29,7 +27,7 @@ bool Game::initialize()
 vector<vector<int>> Game::loadLevel(const string& filename)
 {
 	ifstream file(filename);
-	vector<vector<int>> level1;
+	vector<vector<int>> level;
 	string line;
 	
 	if (!file.is_open())
@@ -145,9 +143,9 @@ void Game::load()
 				}
 				else if (level2[y][x] == 3)
 				{
-					theEnd = new TheEnd();
-					theEnd->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 850.0f));
-					theEnd->setScale(Vector3(50.0f, 350.0f, 500.0f));
+					endGame = new EndGame();
+					endGame->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 850.0f));
+					endGame->setScale(Vector3(50.0f, 350.0f, 500.0f));
 				}
 			}
 		}	

@@ -40,7 +40,7 @@ private:
 
 public:
 	bool initialize();
-	vector<vector<int>> loadLevel(const string& filename);
+	vector<vector<int>> loadLevel(const std::string& filename);
 	void load();
 	void loop();
 	void unload();
