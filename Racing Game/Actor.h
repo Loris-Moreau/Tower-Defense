@@ -16,12 +16,12 @@ public:
 	{
 		Active, Paused, Dead
 	};
-
+	
 	Actor();
 	virtual ~Actor();
 	Actor(const Actor&) = delete;
 	Actor& operator=(const Actor&) = delete;
-
+	
 	Game& getGame() const { return game; }
 	const ActorState getState() const { return state; }
 	const Vector3 getPosition() const { return position; }
@@ -48,7 +48,7 @@ public:
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);
 	void removeComponent(Component* component);
-
+		
 private:
 	Game& game;
 	ActorState state;
@@ -57,6 +57,5 @@ private:
 	Quaternion rotation;
 	Matrix4 worldTransform;
 	bool mustRecomputeWorldTransform;
-
 	vector<Component*> components;
 };

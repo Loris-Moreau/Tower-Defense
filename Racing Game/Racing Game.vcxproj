@@ -301,8 +301,8 @@
     <None Include="Res\Shaders\Sprite.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Level1.txt" />
-    <Content Include="Level2.txt" />
+    <Content Include="Res\Levels\Level1.txt" />
+    <Content Include="Res\Levels\Level2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

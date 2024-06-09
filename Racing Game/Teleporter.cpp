@@ -7,7 +7,7 @@
 Teleporter::Teleporter()
 {
     MeshComponent* mc = new MeshComponent(this);
-    Mesh* mesh = &Assets::getMesh("Mesh_Cube");
+    Mesh* mesh = &Assets::getMesh("Mesh_Teleporter");
     mc->setMesh(*mesh);
 
     //add collision bax

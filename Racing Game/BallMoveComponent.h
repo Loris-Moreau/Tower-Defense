@@ -10,6 +10,5 @@ public:
 	void update(float dt) override;
 
 protected:
-	Actor* player;
+	class Actor* player;
 };
-

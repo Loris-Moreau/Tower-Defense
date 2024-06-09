@@ -11,6 +11,8 @@
 #include "FPSActor.h"
 #include "TargetActor.h"
 #include "PauseScreen.h"
+#include "EndGame.h"
+#include "Teleporter.h"
 
 using namespace std;
 
@@ -89,14 +91,17 @@ void Game::load()
 	Assets::loadMesh("Res\\Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh("Res\\Meshes\\Target.gpmesh", "Mesh_Target");
 
+	Assets::loadMesh("Res\\Meshes\\EndGame.gpmesh", "Mesh_EndGame");
+	Assets::loadMesh("Res\\Meshes\\Teleporter.gpmesh", "Mesh_Teleporter");
+	Assets::loadMesh("Res\\Meshes\\Door.gpmesh", "Mesh_Door");
+
 	Assets::loadFont("Res\\Fonts\\Carlito-Regular.ttf", "Carlito");
 	Assets::loadText("Res\\Localization\\English.gptext");
-
-
+	
 	fps = new FPSActor();
 
-	std::vector<std::vector<int>> level = loadLevel("Res\\Levels\\level1.txt");
-	std::vector<std::vector<int>> level2 = loadLevel("Res\\Levels\\level2.txt");
+	std::vector<std::vector<int>> level = loadLevel("Res\\Levels\\Level1.txt");
+	std::vector<std::vector<int>> level2 = loadLevel("Res\\Levels\\Level2.txt");
 
 	const Vector3 cubeSize = Vector3(500.0f, 500.0f, 1000.0f);
 	const float startX = -1250.0f;
@@ -116,6 +121,12 @@ void Game::load()
 			{
 				fps->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 100.0f));
 			}
+			else if (level2[y][x] == 3)
+			{
+				endGame = new EndGame();
+				endGame->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 850.0f));
+				endGame->setScale(Vector3(50.0f, 350.0f, 500.0f));
+			}
 			else if (level[y][x] == 4)
 			{
 				Door* door = new Door();
@@ -128,7 +139,6 @@ void Game::load()
 				teleporter->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 0.0f));
 				teleporter->setScale(Vector3(50.0f, 350.0f, 450.0f));
 			}
-			
 		}
 
 		for (size_t y = 0; y < level2.size(); ++y)
@@ -141,34 +151,50 @@ void Game::load()
 					cube->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 1100.0f));
 					cube->setScale(Vector3(500.0f, 500.0f, 1000.0f));
 				}
+				else if (level[y][x] == 2)
+				{
+					fps->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 100.0f));
+				}
 				else if (level2[y][x] == 3)
 				{
 					endGame = new EndGame();
 					endGame->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 850.0f));
 					endGame->setScale(Vector3(50.0f, 350.0f, 500.0f));
 				}
+				else if (level[y][x] == 4)
+				{
+					Door* door = new Door();
+					door->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 0.0f));
+					door->setScale(Vector3(200.0f, 500.0f, 1000.0f));
+				}
+				else if (level[y][x] == 5)
+				{
+					teleporter = new Teleporter();
+					teleporter->setPosition(Vector3(startX + x * cubeSize.x, startY + y * cubeSize.y, 0.0f));
+					teleporter->setScale(Vector3(50.0f, 350.0f, 450.0f));
+				}
 			}
 		}	
 	}
 	
 	// Floor and walls
-
 	// Setup floor
-	const float start = -1250.0f;
-	const float size = 550.0f;
-	for (int i = 0; i < 15; i++)
+	constexpr float loop_amount = 20;
+	const float start = -1250.0f  ;
+	const float size = 500.0f;
+	for (int i = 0; i < loop_amount; i++)
 	{
-		for (int j = 0; j < 15; j++)
+		for (int j = 0; j < loop_amount; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
 		}
 	}
-
+	
 	// Setup floor 2
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < loop_amount; i++)
 	{
-		for (int j = 0; j < 15; j++)
+		for (int j = 0; j < loop_amount; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, 550.0f));
@@ -176,9 +202,9 @@ void Game::load()
 	}
 
 	// Setup floor 3
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < loop_amount; i++)
 	{
-		for (int j = 0; j < 15; j++)
+		for (int j = 0; j < loop_amount; j++)
 		{
 			PlaneActor* p = new PlaneActor();
 			p->setPosition(Vector3(start + i * size, start + j * size, 1100.0f));
@@ -194,15 +220,9 @@ void Game::load()
 	
 	// HUD
 	hud = new HUD();
-
-	/*TargetActor* t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));*/
+	
+	TargetActor* t = new TargetActor();
+	t->setPosition(Vector3(1985.0f, 1700.0f, 200.0f));
 }
 
 void Game::processInput()

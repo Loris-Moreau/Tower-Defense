@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Actor.h"
 #include "BoxComponent.h"
 
@@ -10,7 +9,7 @@ public:
     ~Teleporter();
     
     class BoxComponent* getBox() {return box;}
-
+    
 private:
     class BoxComponent* box;
 };

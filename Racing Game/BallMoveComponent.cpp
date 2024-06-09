@@ -40,7 +40,7 @@ void BallMoveComponent::update(float dt)
 		TargetActor* target = dynamic_cast<TargetActor*>(info.actor);
 		if (target)
 		{
-			static_cast<BallActor*>(&owner)->hitTarget();
+			dynamic_cast<BallActor*>(&owner)->hitTarget();
 		}
 	}
 

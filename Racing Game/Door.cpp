@@ -7,7 +7,7 @@
 Door::Door()
 {
     MeshComponent* mc = new MeshComponent(this);
-    Mesh* mesh = &Assets::getMesh("Mesh_Cube");
+    Mesh* mesh = &Assets::getMesh("Mesh_Door");
     mc->setMesh(*mesh);
     box = new BoxComponent(this);
     box->setObjectBox(mesh->getBox());
@@ -25,7 +25,6 @@ void Door::openDoor()
     if(isOpen == true)
     {
         setPosition(Vector3(0.0f, 0.0f, -650.0f));
-        //setState(ActorState::Dead);
     }
 }
 
