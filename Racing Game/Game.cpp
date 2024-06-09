@@ -95,8 +95,8 @@ void Game::load()
 
 	fps = new FPSActor();
 
-	std::vector<std::vector<int>> level = loadLevel("level1.txt");
-	std::vector<std::vector<int>> level2 = loadLevel("level2.txt");
+	std::vector<std::vector<int>> level = loadLevel("Res\\Levels\\level1.txt");
+	std::vector<std::vector<int>> level2 = loadLevel("Res\\Levels\\level2.txt");
 
 	const Vector3 cubeSize = Vector3(500.0f, 500.0f, 1000.0f);
 	const float startX = -1250.0f;
